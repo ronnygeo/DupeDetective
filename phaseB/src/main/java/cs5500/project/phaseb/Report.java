@@ -1,5 +1,8 @@
 package phaseb;
 
+/**
+ * Interface that generates an analysis about the assignment submissions
+ */
 public interface Report {
     /**
      * Provided a submission Id, returns the generated report for that student's submission
@@ -21,7 +24,7 @@ public interface Report {
      * For a provided submission Id, returns an array of scores compared to each submission individually
      *
      * @param submissionId
-     * @return
+     * @return an array of scores after comparison
      */
     public int[] getAllScores(int submissionId);
 }
