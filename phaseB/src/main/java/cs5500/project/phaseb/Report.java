@@ -1,4 +1,4 @@
-package phaseb;
+package cs5500.project.phaseb;
 
 public interface Report {
     /**
