@@ -10,7 +10,7 @@ public interface User {
      *
      * @param username
      * @param pass
-     * @return Student
+     * @return User
      */
     public User login(String username, String pass);
 

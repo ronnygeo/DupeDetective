@@ -7,7 +7,7 @@ public interface PDStrategy {
 
     /**
      * Method to invoke the plagiarism detection inside the given assignment
-     * @param a An Assignment object to check plagiarism in
+     * @param a,An Assignment object to check plagiarism in
      */
     public void checkPlagiarism(Assignment a);
 }
