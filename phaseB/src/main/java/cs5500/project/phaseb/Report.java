@@ -2,27 +2,26 @@ package phaseb;
 
 public interface Report {
     /**
-     * Provided a submission ID, returns the generated report for that student's submission
+     * Provided a submission Id, returns the generated report for that student's submission
      *
-     * @param SubmissionID
+     * @param submissionId
      * @return Report
      */
-    public Report getReport(int submissionID);
+    public Report getReport(int submissionId);
 
     /**
-     * For a provided submission ID, returns the calculated score of plagiarism with the other submissions
+     * For a provided submission Id, returns the calculated score of plagiarism with the other submissions
      *
-     * @param submissionID
+     * @param submissionId
      * @return Score of plagiarism
      */
-    public int getScore(int submissionID);
+    public int getScore(int submissionId);
 
     /**
-     * For a provided submission ID, returns an array of scores compared to each submission individually
+     * For a provided submission Id, returns an array of scores compared to each submission individually
      *
-     * @param submissionID
+     * @param submissionId
      * @return
      */
-    public int[] getAllScores(int submissionID);
-
+    public int[] getAllScores(int submissionId);
 }
