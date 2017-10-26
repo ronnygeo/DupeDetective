@@ -1,13 +1,12 @@
-package phaseb;
+package cs5500.project.phaseb;
 
 /**
- * Interface provides accept() method for all the Entities of the system
+ * Interface that provides visitor method for all the Entities of the system
  */
 public interface Entity {
     /**
-     * Accepts the EntityVisitor and passes the respective Entity
-     *
-     * @param entityVisitor
+     * Accepts and forwards the visitor to associated entities
+     * @param visitor
      */
-    public void accept(EntityVisitor entityVisitor);
+    public void accept(EntityVisitor visitor);
 }
