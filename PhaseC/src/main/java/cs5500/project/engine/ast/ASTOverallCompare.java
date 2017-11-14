@@ -1,5 +1,6 @@
 package cs5500.project.engine.ast;
 
+import cs5500.project.engine.CustomComparator;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.StructuralPropertyDescriptor;
 
@@ -9,7 +10,7 @@ import java.util.List;
 public class ASTOverallCompare {
 
     @SuppressWarnings("unchecked")
-    public static boolean equals(ASTNode left, ASTNode right) {
+    public static boolean compare(ASTNode left, ASTNode right) {
         // if both are null, they are equal, but if only one, they aren't
         if (left == null && right == null) {
             return true;
@@ -34,7 +35,7 @@ public class ASTOverallCompare {
                 }
             } else if (property.isChildProperty()) {
                 // recursively call this function on child nodes
-                if (!equals((ASTNode) leftVal, (ASTNode) rightVal)) {
+                if (!compare((ASTNode) leftVal, (ASTNode) rightVal)) {
                     return false;
                 }
             } else if (property.isChildListProperty()) {
@@ -44,7 +45,7 @@ public class ASTOverallCompare {
                         .iterator();
                 while (leftValIt.hasNext() && rightValIt.hasNext()) {
                     // recursively call this function on child nodes
-                    if (!equals(leftValIt.next(), rightValIt.next())) {
+                    if (!compare(leftValIt.next(), rightValIt.next())) {
                         return false;
                     }
                 }
