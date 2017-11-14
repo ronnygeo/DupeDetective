@@ -2,3 +2,6 @@
 /.idea/
 *.iml
 /PhaseC/target/
+*.class
+target/
+/phaseB/target/
