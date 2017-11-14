@@ -8,7 +8,7 @@ import com.google.common.hash.HashCode;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 
-public class MD5Parser {
+public class MD5Generator {
 
     public static String getMD5File(String filename) {
         try {

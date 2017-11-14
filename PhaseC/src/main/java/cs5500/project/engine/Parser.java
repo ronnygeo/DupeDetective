@@ -13,8 +13,4 @@ public interface Parser<T> {
      */
     public T parse(String txt);
 
-    /**
-     * Sets the version of the Parser to use
-     */
-    public void setVersion();
 }
