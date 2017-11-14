@@ -1,8 +1,6 @@
 package cs5500.project.engine.ast;
 
 import cs5500.project.engine.CustomComparator;
-import org.eclipse.jdt.core.dom.AST;
-import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 /**
@@ -22,7 +20,8 @@ public class ASTStructureCompare implements CustomComparator<CompilationUnit> {
         ASTStructureVisitor astVisitor2 = new ASTStructureVisitor();
         obj1.accept(astVisitor1);
         obj1.accept(astVisitor2);
-        System.out.println(astVisitor1.getNodes().toString());
+        System.out.println(astVisitor1.getList().toString());
+
         return 0;
     }
 }
