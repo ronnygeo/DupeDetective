@@ -10,47 +10,45 @@ import java.util.List;
 public class ASTOverallCompare {
 
     @SuppressWarnings("unchecked")
-    public static boolean compare(ASTNode left, ASTNode right) {
+    public static boolean compare(ASTNode ast1, ASTNode ast2) {
         // if both are null, they are equal, but if only one, they aren't
-        if (left == null && right == null) {
+        if (ast1 == null && ast2 == null) {
             return true;
-        } else if (left == null || right == null) {
+        } else if (ast1 == null || ast2 == null) {
             return false;
         }
         // if node types are the same we can assume that they will have the same
         // properties
-        if (left.getNodeType() != right.getNodeType()) {
+        if (ast1.getNodeType() != ast2.getNodeType()) {
             return false;
         }
-        List<StructuralPropertyDescriptor> props = left
-                .structuralPropertiesForType();
+
+        List<StructuralPropertyDescriptor> props = ast1.structuralPropertiesForType();
         for (StructuralPropertyDescriptor property : props) {
-            Object leftVal = left.getStructuralProperty(property);
-            Object rightVal = right.getStructuralProperty(property);
+            Object ast1Val = ast1.getStructuralProperty(property);
+            Object ast2Val = ast2.getStructuralProperty(property);
             if (property.isSimpleProperty()) {
                 // check for simple properties (primitive types, Strings, ...)
                 // with normal equality
-                if (!leftVal.equals(rightVal)) {
+                if (!ast1Val.equals(ast2Val)) {
                     return false;
                 }
             } else if (property.isChildProperty()) {
                 // recursively call this function on child nodes
-                if (!compare((ASTNode) leftVal, (ASTNode) rightVal)) {
+                if (!compare((ASTNode) ast1Val, (ASTNode) ast2Val)) {
                     return false;
                 }
             } else if (property.isChildListProperty()) {
-                Iterator<ASTNode> leftValIt = ((Iterable<ASTNode>) leftVal)
-                        .iterator();
-                Iterator<ASTNode> rightValIt = ((Iterable<ASTNode>) rightVal)
-                        .iterator();
-                while (leftValIt.hasNext() && rightValIt.hasNext()) {
+                Iterator<ASTNode> ast1ValIt = ((Iterable<ASTNode>) ast1Val).iterator();
+                Iterator<ASTNode> ast2ValIt = ((Iterable<ASTNode>) ast2Val).iterator();
+                while (ast1ValIt.hasNext() && ast2ValIt.hasNext()) {
                     // recursively call this function on child nodes
-                    if (!compare(leftValIt.next(), rightValIt.next())) {
+                    if (!compare(ast1ValIt.next(), ast2ValIt.next())) {
                         return false;
                     }
                 }
                 // one of the value lists have additional elements
-                if (leftValIt.hasNext() || rightValIt.hasNext()) {
+                if (ast1ValIt.hasNext() || ast2ValIt.hasNext()) {
                     return false;
                 }
             }
