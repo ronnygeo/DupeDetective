@@ -23,23 +23,6 @@ public class CustomASTParser implements Parser<CompilationUnit> {
         ASTParser parser = ASTParser.newParser(AST.JLS3);
         parser.setSource(txt.toCharArray());
         parser.setKind(ASTParser.K_COMPILATION_UNIT);
-        final CompilationUnit cu = (CompilationUnit) parser.createAST(null);
-        return cu;
+        return (CompilationUnit) parser.createAST(null);
     }
-
-    /**
-     * @return
-     */
-    public String getTxt() {
-        return txt;
-    }
-
-    /**
-     * @param txt
-     */
-    public void setTxt(String txt) {
-        this.txt = txt;
-    }
-
-    private String txt;
 }

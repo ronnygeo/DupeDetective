@@ -12,8 +12,10 @@ public class TestAST {
     public static void main(String[] args) {
 
         ASTParser parser = ASTParser.newParser(AST.JLS3);
-        parser.setSource(("import org.java.*; \n public class A { int i = 9;  \n int j; \n public A() {} \n " +
-                "@Override\npublic String parse(String txt) {txt.trim(); return txt;} \n ArrayList<Integer> al = new ArrayList<Integer>();j=1000; }").toCharArray());
+        parser.setSource(("import org.java.*; \n public class A { public A() {} \n" +
+                "@Override\npublic String parse(String txt) {int i = 9;  \n int j; \n " +
+                "if (i>10) j = 0; else j=1; \n txt.trim(); return txt;} " +
+                "\n ArrayList<Integer> al = new ArrayList<Integer>();j=1000; }").toCharArray());
         parser.setKind(ASTParser.K_COMPILATION_UNIT);
         final CompilationUnit cu = (CompilationUnit) parser.createAST(null);
 
@@ -23,7 +25,7 @@ public class TestAST {
 
             @Override
             public boolean visit(ImportDeclaration node) {
-                System.out.println(node.getName());
+                System.out.println(node.getName().getFullyQualifiedName() + node.getNodeType()+node.getStartPosition()+ node.getLength());
                 return false; // do not continue to avoid usage info
             }
 
@@ -54,7 +56,7 @@ public class TestAST {
 
             public boolean visit(MemberRef node) {
                 System.out.println(node);
-                return false; // do not continue to avoid usage info
+                return true; // do not continue to avoid usage info
             }
 
             public boolean visit(CompilationUnit node) {
@@ -105,8 +107,13 @@ public class TestAST {
             }
 
             public boolean visit(ForStatement node) {
+                System.out.println(node.getParent());
                 System.out.println(node.getBody());
                 System.out.println(node.getExpression());
+                return true; // do not continue to avoid usage info
+            }
+
+            public boolean visit(Statement node) {
                 return true; // do not continue to avoid usage info
             }
 
@@ -117,9 +124,10 @@ public class TestAST {
                 return true; // do not continue to avoid usage info
             }
             public boolean visit(IfStatement node) {
+                System.out.println("If statement: " + node);
                 System.out.println(node.getExpression());
-                System.out.println(node.getThenStatement());
-                System.out.println(node.getElseStatement());
+                System.out.println(node.getThenStatement().getNodeType());
+                System.out.println(node.getElseStatement().getNodeType());
                 return true; // do not continue to avoid usage info
             }
 

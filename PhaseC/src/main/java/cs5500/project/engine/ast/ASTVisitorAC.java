@@ -189,6 +189,14 @@ public abstract class ASTVisitorAC extends ASTVisitor implements ParseVisitor {
     public abstract boolean visit(IfStatement node);
 
     /**
+     * Post Visit operations for the given component
+     *
+     * @param node An If Statement
+     * @return a boolean whether to traverse subtrees or not
+     */
+    public abstract boolean postVisit(IfStatement node);
+
+    /**
      * Visit the given component using this visitor
      * @param node An Expression Statement
      * @return a boolean whether to traverse subtrees or not
@@ -243,6 +251,14 @@ public abstract class ASTVisitorAC extends ASTVisitor implements ParseVisitor {
      * @return a boolean whether to traverse subtrees or not
      */
     public abstract boolean visit(SwitchStatement node);
+
+    /**
+     * Post Visit the given component using this visitor
+     *
+     * @param node A Switch Statement
+     * @return a boolean whether to traverse subtrees or not
+     */
+    public abstract boolean postVisit(SwitchStatement node);
 
     /**
      * Visit the given component using this visitor
@@ -356,6 +372,14 @@ public abstract class ASTVisitorAC extends ASTVisitor implements ParseVisitor {
      */
     @Override
     public abstract boolean visit(ConditionalExpression node);
+
+    /**
+     * POST Visit the given component using this visitor
+     *
+     * @param node A ConditionExpression
+     * @return a boolean whether to traverse subtrees or not
+     */
+    public abstract boolean postVisit(ConditionalExpression node);
 
     /**
      * Visit the given component using this visitor
