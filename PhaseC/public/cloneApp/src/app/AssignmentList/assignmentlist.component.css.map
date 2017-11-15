@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,SAAS;EACP,gBAAgB,EAAE,kBAAkB;EACpC,KAAK,EAAE,KAAK",
+"sources": ["assignmentlist.component.sass"],
+"names": [],
+"file": "assignmentlist.component.css"
+}

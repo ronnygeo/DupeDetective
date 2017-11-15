@@ -1,0 +1,11 @@
+<h2>My Assignments</h2>
+<ul class="assignments">
+  <li *ngFor="let assignment of assignments" [class.selected]="hero === selectedHero">
+    <a routerLink="/assignment/{{assignment.id}}">
+    <span class="badge">{{assignment.id}}</span>
+    <span>{{assignment.name}}</span>
+    <span>{{assignment.course}}</span>
+    </a>
+  </li>
+</ul>
+
