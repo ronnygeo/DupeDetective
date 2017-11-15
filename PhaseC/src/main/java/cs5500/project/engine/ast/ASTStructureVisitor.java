@@ -45,7 +45,6 @@ public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ClassInstanceCreation node) {
-//        nodes.add(new ASTObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -193,12 +192,10 @@ public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
      * Method called once the visit is complete on the given component
      *
      * @param node A For loop Statement
-     * @return a boolean whether to traverse subtrees or not
      */
     @Override
-    public boolean postVisit(ForStatement node) {
+    public void endVisit(ForStatement node) {
         nodes.add(new ASTObject("endloop", node.getNodeType(), node.getStartPosition(), node.getLength()));
-        return false;
     }
 
     /**
@@ -217,12 +214,10 @@ public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
      * Method called once the visit is complete on the given component
      *
      * @param node A Enhanced For loop Statement
-     * @return a boolean whether to traverse subtrees or not
      */
     @Override
-    public boolean postVisit(EnhancedForStatement node) {
+    public void endVisit(EnhancedForStatement node) {
         nodes.add(new ASTObject("endloop", node.getNodeType(), node.getStartPosition(), node.getLength()));
-        return false;
     }
 
     /**
@@ -241,13 +236,10 @@ public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
      * Method called once the visit is complete on the given component
      *
      * @param node A While loop Statement
-     * @return a boolean whether to traverse subtrees or not
      */
     @Override
-    public boolean postVisit(WhileStatement node) {
+    public void endVisit(WhileStatement node) {
         nodes.add(new ASTObject("endloop", node.getNodeType(), node.getStartPosition(), node.getLength()));
-
-        return false;
     }
 
     /**
@@ -266,12 +258,10 @@ public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
      * Method called once the visit is complete on the given component
      *
      * @param node A Do while loop Statement
-     * @return a boolean whether to traverse subtrees or not
      */
     @Override
-    public boolean postVisit(DoStatement node) {
+    public void endVisit(DoStatement node) {
         nodes.add(new ASTObject("endloop", node.getNodeType(), node.getStartPosition(), node.getLength()));
-        return false;
     }
 
     /**
@@ -294,7 +284,7 @@ public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ContinueStatement node) {
-//        nodes.add(new ASTObject(node.getLabel().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -314,12 +304,10 @@ public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
      * Post Visit operations for the given component
      *
      * @param node An If Statement
-     * @return a boolean whether to traverse subtrees or not
      */
     @Override
-    public boolean postVisit(IfStatement node) {
+    public void endVisit(IfStatement node) {
         nodes.add(new ASTObject("endcond", node.getNodeType(), node.getStartPosition(), node.getLength()));
-        return true;
     }
 
     /**
@@ -422,11 +410,9 @@ public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
      * Post Visit the given component using this visitor
      *
      * @param node A Switch Statement
-     * @return a boolean whether to traverse subtrees or not
      */
-    public boolean postVisit(SwitchStatement node) {
+    public void endVisit(SwitchStatement node) {
         nodes.add(new ASTObject("endswitch", node.getNodeType(), node.getStartPosition(), node.getLength()));
-        return false;
     }
 
     /**
@@ -462,6 +448,18 @@ public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
     @Override
     public boolean visit(TypeDeclarationStatement node) {
         nodes.add(new ASTObject(node.getDeclaration().getName().getIdentifier(), node.getDeclaration().getNodeType(), node.getStartPosition(), node.getLength()));
+        return true;
+    }
+
+    /**
+     * Visit the given component using this visitor
+     *
+     * @param node A Type Declaration
+     * @return a boolean whether to traverse subtrees or not
+     */
+    @Override
+    public boolean visit(TypeDeclaration node) {
+        nodes.add(new ASTObject(node.getName().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -557,7 +555,7 @@ public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
     @Override
     public boolean visit(Assignment node) {
         nodes.add(new ASTObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
-        return false;
+        return true;
     }
 
     /**
@@ -700,6 +698,7 @@ public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(PostfixExpression node) {
+        //TODO: Handle postfix to normal assignment
         nodes.add(new ASTObject(node.getOperator().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
@@ -712,6 +711,7 @@ public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(PrefixExpression node) {
+        //TODO: Handle postfix to normal assignment
         nodes.add(new ASTObject(node.getOperator().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
@@ -763,6 +763,31 @@ public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
         nodes.add(new ASTObject(node.getType().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
+
+    /**
+     * Visit the given component using this visitor
+     *
+     * @param node A Variable Declaration Expression
+     * @return a boolean whether to traverse subtrees or not
+     */
+    @Override
+    public boolean visit(ArrayInitializer node) {
+        nodes.add(new ASTObject(node.expressions().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        return true;
+    }
+
+    /**
+     * Visit the given component using this visitor
+     *
+     * @param node A Variable Declaration Expression
+     * @return a boolean whether to traverse subtrees or not
+     */
+    @Override
+    public boolean visit(ArrayCreation node) {
+        nodes.add(new ASTObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        return true;
+    }
+
 
     /**
      * Returns the list of nodes in the AST

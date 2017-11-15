@@ -121,9 +121,8 @@ public abstract class ASTVisitorAC extends ASTVisitor implements ParseVisitor {
     /**
      * Method called once the visit is complete on the given component
      * @param node A For loop Statement
-     * @return a boolean whether to traverse subtrees or not
      */
-    public abstract boolean postVisit(ForStatement node);
+    public abstract void endVisit(ForStatement node);
 
     /**
      * Visit the given component using this visitor
@@ -135,9 +134,8 @@ public abstract class ASTVisitorAC extends ASTVisitor implements ParseVisitor {
     /**
      * Method called once the visit is complete on the given component
      * @param node A Enhanced For loop Statement
-     * @return a boolean whether to traverse subtrees or not
      */
-    public abstract boolean postVisit(EnhancedForStatement node);
+    public abstract void endVisit(EnhancedForStatement node);
 
     /**
      * Visit the given component using this visitor
@@ -149,9 +147,8 @@ public abstract class ASTVisitorAC extends ASTVisitor implements ParseVisitor {
     /**
      * Method called once the visit is complete on the given component
      * @param node A While loop Statement
-     * @return a boolean whether to traverse subtrees or not
      */
-    public abstract boolean postVisit(WhileStatement node);
+    public abstract void endVisit(WhileStatement node);
 
     /**
      * Visit the given component using this visitor
@@ -163,9 +160,8 @@ public abstract class ASTVisitorAC extends ASTVisitor implements ParseVisitor {
     /**
      * Method called once the visit is complete on the given component
      * @param node A Do while loop Statement
-     * @return a boolean whether to traverse subtrees or not
      */
-    public abstract boolean postVisit(DoStatement node);
+    public abstract void endVisit(DoStatement node);
 
     /**
      * Visit the given component using this visitor
@@ -192,9 +188,30 @@ public abstract class ASTVisitorAC extends ASTVisitor implements ParseVisitor {
      * Post Visit operations for the given component
      *
      * @param node An If Statement
+     */
+    public abstract void endVisit(IfStatement node);
+
+
+    /**
+     * Visit the given component using this visitor
+     * @param node A Switch Statement
      * @return a boolean whether to traverse subtrees or not
      */
-    public abstract boolean postVisit(IfStatement node);
+    public abstract boolean visit(SwitchStatement node);
+
+    /**
+     * Post Visit the given component using this visitor
+     *
+     * @param node A Switch Statement
+     */
+    public abstract void endVisit(SwitchStatement node);
+
+    /**
+     * Visit the given component using this visitor
+     * @param node A Switch Case Statement
+     * @return a boolean whether to traverse subtrees or not
+     */
+    public abstract boolean visit(SwitchCase node);
 
     /**
      * Visit the given component using this visitor
@@ -245,27 +262,6 @@ public abstract class ASTVisitorAC extends ASTVisitor implements ParseVisitor {
      */
     public abstract boolean visit(ConstructorInvocation node);
 
-    /**
-     * Visit the given component using this visitor
-     * @param node A Switch Statement
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public abstract boolean visit(SwitchStatement node);
-
-    /**
-     * Post Visit the given component using this visitor
-     *
-     * @param node A Switch Statement
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public abstract boolean postVisit(SwitchStatement node);
-
-    /**
-     * Visit the given component using this visitor
-     * @param node A Switch Case Statement
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public abstract boolean visit(SwitchCase node);
 
     /**
      * Visit the given component using this visitor
@@ -280,6 +276,14 @@ public abstract class ASTVisitorAC extends ASTVisitor implements ParseVisitor {
      * @return a boolean whether to traverse subtrees or not
      */
     public abstract boolean visit(TypeDeclarationStatement node);
+
+    /**
+     * Visit the given component using this visitor
+     * @param node A Type Declaration
+     * @return a boolean whether to traverse subtrees or not
+     */
+    public abstract boolean visit(TypeDeclaration node);
+
 
     /**
      * Visit the given component using this visitor

@@ -1,0 +1,1 @@
+//public class A { List<String> i; public void incr() {i = new ArrayList<>();} }
