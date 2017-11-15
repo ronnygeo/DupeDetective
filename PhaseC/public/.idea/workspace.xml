@@ -2,32 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="774a9b00-1f93-41f1-8cda-2bd103cfc747" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/AssignmentDetail/assignmentdetail.component.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/AssignmentDetail/assignmentdetail.component.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/AssignmentDetail/assignmentdetail.component.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/AssignmentDetail/assignmentdetail.component.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/AssignmentDetail/assignmentdetail.component.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/AssignmentList/assignmentlist.component.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/AssignmentList/assignmentlist.component.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/AssignmentList/assignmentlist.component.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/Home/home.component.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/Home/home.component.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/Home/home.component.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/SubmissionList/submissionlist.component.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/SubmissionList/submissionlist.component.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/SubmissionList/submissionlist.component.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/UploadSubmission/uploadsubmission.component.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/UploadSubmission/uploadsubmission.component.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/UploadSubmission/uploadsubmission.component.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/assignment.service.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/assignment.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/mock-assignments.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloneApp/src/app/in-memory-data.service.ts" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cloneApp/src/app/mock-assignments.ts" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloneApp/package-lock.json" afterPath="$PROJECT_DIR$/cloneApp/package-lock.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloneApp/package.json" afterPath="$PROJECT_DIR$/cloneApp/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloneApp/src/app/AssignmentDetail/assignmentdetail.component.html" afterPath="$PROJECT_DIR$/cloneApp/src/app/AssignmentDetail/assignmentdetail.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloneApp/src/app/AssignmentDetail/assignmentdetail.component.ts" afterPath="$PROJECT_DIR$/cloneApp/src/app/AssignmentDetail/assignmentdetail.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloneApp/src/app/app.component.html" afterPath="$PROJECT_DIR$/cloneApp/src/app/app.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloneApp/src/app/app.module.ts" afterPath="$PROJECT_DIR$/cloneApp/src/app/app.module.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloneApp/src/styles.css" afterPath="$PROJECT_DIR$/cloneApp/src/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloneApp/src/styles.sass" afterPath="$PROJECT_DIR$/cloneApp/src/styles.sass" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloneApp/tslint.json" afterPath="$PROJECT_DIR$/cloneApp/tslint.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloneApp/src/app/assignment.service.ts" afterPath="$PROJECT_DIR$/cloneApp/src/app/assignment.service.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/cloneApp/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -41,20 +25,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cloneApp/src/app/app.module.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="20" lean-forward="false" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#58#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -64,6 +35,14 @@
         <option value="TypeScript File" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>hero</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>assignment</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -80,7 +59,6 @@
         <option value="$PROJECT_DIR$/cloneApp/src/app/SubmissionList/submissionlist.component.sass" />
         <option value="$PROJECT_DIR$/cloneApp/src/app/UploadSubmission/uploadsubmission.html" />
         <option value="$PROJECT_DIR$/cloneApp/src/app/assignment.ts" />
-        <option value="$PROJECT_DIR$/cloneApp/src/app/mock-assignments.ts" />
         <option value="$PROJECT_DIR$/cloneApp/src/app/UploadSubmission/uploadsubmission.component.ts" />
         <option value="$PROJECT_DIR$/cloneApp/src/app/AssignmentList/assignmentlist.component.sass" />
         <option value="$PROJECT_DIR$/cloneApp/src/app/SubmissionList/submissionlist.component.html" />
@@ -88,15 +66,17 @@
         <option value="$PROJECT_DIR$/cloneApp/src/app/AssignmentList/assignment.service.ts" />
         <option value="$PROJECT_DIR$/cloneApp/src/app/Home/home.component.ts" />
         <option value="$PROJECT_DIR$/cloneApp/src/app/Home/home.component.html" />
-        <option value="$PROJECT_DIR$/cloneApp/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/cloneApp/src/app/AssignmentList/assignmentlist.component.ts" />
         <option value="$PROJECT_DIR$/cloneApp/src/app/SubmissionList/submissionlist.component.ts" />
-        <option value="$PROJECT_DIR$/cloneApp/src/app/assignment.service.ts" />
         <option value="$PROJECT_DIR$/cloneApp/src/app/app-routing.module.ts" />
         <option value="$PROJECT_DIR$/cloneApp/src/app/AssignmentList/assignmentlist.component.html" />
+        <option value="$PROJECT_DIR$/cloneApp/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/cloneApp/src/app/mock-assignments.ts" />
+        <option value="$PROJECT_DIR$/cloneApp/src/app/in-memory-data.service.ts" />
         <option value="$PROJECT_DIR$/cloneApp/src/app/AssignmentDetail/assignmentdetail.component.html" />
         <option value="$PROJECT_DIR$/cloneApp/src/app/AssignmentDetail/assignmentdetail.component.ts" />
-        <option value="$PROJECT_DIR$/cloneApp/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/cloneApp/src/app/assignment.service.ts" />
+        <option value="$PROJECT_DIR$/cloneApp/src/app/app.component.html" />
       </list>
     </option>
   </component>
@@ -297,12 +277,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1510709578457</updated>
-      <workItem from="1510709585191" duration="9439000" />
+      <workItem from="1510709585191" duration="10903000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9923000" />
+    <option name="totallyTimeSpent" value="11387000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -459,14 +439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cloneApp/src/app/mock-assignments.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cloneApp/src/app/app.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -547,32 +519,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cloneApp/src/app/app.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cloneApp/src/app/AssignmentList/assignmentlist.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cloneApp/src/app/assignment.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -613,29 +565,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cloneApp/src/app/AssignmentDetail/assignmentdetail.component.html">
+    <entry file="file://$PROJECT_DIR$/cloneApp/src/app/mock-assignments.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cloneApp/src/app/AssignmentDetail/assignmentdetail.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" column="30" lean-forward="false" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cloneApp/src/app/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="20" lean-forward="false" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+        <state relative-caret-position="129">
+          <caret line="23" column="23" lean-forward="false" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
           <folding>
             <element signature="e#0#58#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloneApp/src/app/in-memory-data.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloneApp/src/app/AssignmentDetail/assignmentdetail.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloneApp/src/app/assignment.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-66">
+          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloneApp/src/app/AssignmentDetail/assignmentdetail.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="34" column="3" lean-forward="true" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloneApp/src/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="47" lean-forward="false" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -29,6 +29,11 @@ export class AssignmentDetailComponent implements OnInit {
       .subscribe(assignment => this.assignment = assignment);
   }
 
+  save(): void {
+    this.assignmentService.updateAssignment(this.assignment)
+      .subscribe(() => this.goBack());
+  }
+
   // Go back to previous page
   goBack(): void {
     this.location.back();
