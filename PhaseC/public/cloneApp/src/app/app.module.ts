@@ -2,23 +2,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import {AssignmentListComponent} from './components/AssignmentList/assignmentlist.component';
-import {UploadSubmissionComponent} from './components/UploadSubmission/uploadsubmission.component';
-import {SubmissionListComponent} from './components/SubmissionList/submissionlist.component';
+import {AssignmentListComponent} from './components/assignmentlist/assignmentlist.component';
+import {UploadSubmissionComponent} from './components/uploadsubmission/uploadsubmission.component';
+import {SubmissionListComponent} from './components/submissionlist/submissionlist.component';
 import {AssignmentService} from "./services/assignment.service";
 import { AppRoutingModule } from './/app-routing.module';
-import {HomeComponent} from "./components/Home/home.component";
-import {AssignmentDetailComponent} from "./components/AssignmentDetail/assignmentdetail.component";
+import {HomeComponent} from "./components/home/home.component";
+import {AssignmentDetailComponent} from "./components/assignmentdetail/assignmentdetail.component";
 import {HttpClientModule} from "@angular/common/http";
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FileService} from "./services/file.service";
-import {ReportComponent} from "./components/Report/report.component";
+import {ReportComponent} from "./components/report/report.component";
 import {ReportService} from "./services/report.service";
 import {UserService} from "./services/user.service";
 import {SubmissionService} from "./services/submission.service";
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     , AssignmentDetailComponent
     , SubmissionListComponent
     , UploadSubmissionComponent
-    , ReportComponent, NavbarComponent
+    , ReportComponent, NavbarComponent, LoginComponent, RegisterComponent
   ],
   imports: [
     BrowserModule,
