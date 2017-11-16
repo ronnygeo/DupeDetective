@@ -15,7 +15,7 @@ public class ASTHashObject {
         this.type = type;
         this.offset = offset;
         this.length = length;
-        this.hash = 0;
+        this.hash = 0l;
     }
 
     /**
@@ -84,17 +84,25 @@ public class ASTHashObject {
     private Integer offset;
     private Integer length;
 
-    public Integer getHash() {
+    public Long getHash() {
         return hash;
     }
 
-    public void setHash(Integer hash) {
+    public void setHash(Long hash) {
         this.hash = hash;
     }
 
     public void addToHash(HashCode hash) {
-        this.hash += hash.asInt();
+        this.hash += hash.asLong();
     }
 
-    private Integer hash;
+    public void addToHash(Integer hash) {
+        this.hash += hash;
+    }
+
+    public void addToHash(Long hash) {
+        this.hash += hash;
+    }
+
+    private Long hash;
 }

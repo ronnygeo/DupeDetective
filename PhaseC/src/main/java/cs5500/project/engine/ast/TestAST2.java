@@ -19,6 +19,7 @@ public class TestAST2 {
         cu.accept(new ASTVisitor() {
 
             Set names = new HashSet();
+            ASTHashObject aho;
 
             @Override
             public boolean visit(ImportDeclaration node) {
@@ -82,14 +83,8 @@ public class TestAST2 {
                 return true; // do not continue to avoid usage info
             }
 
-            public boolean preVisit(CompilationUnit node) {
-                System.out.println(node.imports());
-                return true; // do not continue to avoid usage info
-            }
-
-            public boolean postVisit(CompilationUnit node) {
+            public void endVisit(CompilationUnit node) {
 //                System.out.println(node.imports());
-                return true; // do not continue to avoid usage info
             }
 
             public boolean visit(CompilationUnit node) {
@@ -121,8 +116,7 @@ public class TestAST2 {
             @Override
             public boolean visit(MethodDeclaration node) {
                 SimpleName name = node.getName();
-//                System.out.println(name + " returns "+ node.getBody().statements());
-                this.names.add(name.getIdentifier());
+                aho = new ASTHashObject(node.getName().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength());
                 System.out.println("Declaration of method '"+name+"' at line "+cu.getLineNumber(name.getStartPosition()) + " returns " + node.getReturnType2());
                 return true; // do not continue to avoid usage info
             }
@@ -135,11 +129,13 @@ public class TestAST2 {
 
 
             public boolean visit(ReturnStatement node) {
+                aho.addToHash(node.hashCode());
                 System.out.println("returning: " + node.getExpression());
                 return false; // do not continue to avoid usage info
             }
 
             public boolean visit(ForStatement node) {
+                aho.addToHash(node.hashCode());
                 System.out.println(node.getParent());
                 System.out.println(node.getBody());
                 System.out.println(node.getExpression());
@@ -167,6 +163,7 @@ public class TestAST2 {
             }
 
             public boolean visit(IfStatement node) {
+                aho.addToHash(node.hashCode());
 //                System.out.println("If statement: " + node);
                 System.out.println(node.getExpression());
                 System.out.println(node.getThenStatement().getNodeType());
@@ -176,6 +173,7 @@ public class TestAST2 {
 
             public boolean visit(ExpressionStatement node) {
                 System.out.println(node.getExpression());
+                aho.addToHash(node.hashCode());
                 return true; // do not continue to avoid usage info
             }
 
@@ -183,25 +181,33 @@ public class TestAST2 {
                 System.out.println(node.getExpression());
                 System.out.println(node.getName());
                 System.out.println(node.arguments());
+                aho.addToHash(node.hashCode());
                 return true; // do not continue to avoid usage info
             }
 
             public boolean visit(AssertStatement node) {
                 System.out.println(node.getExpression());
                 System.out.println(node.getMessage());
+                aho.addToHash(node.hashCode());
                 return false; // do not continue to avoid usage info
             }
+
             public boolean visit(BreakStatement node) {
                 System.out.println(node.getLabel());
+                aho.addToHash(node.hashCode());
                 return false; // do not continue to avoid usage info
             }
+
             public boolean visit(ContinueStatement node) {
                 System.out.println(node.getLabel());
+                aho.addToHash(node.hashCode());
                 return false; // do not continue to avoid usage info
             }
             public boolean visit(DoStatement node) {
                 System.out.println(node.getExpression());
                 System.out.println(node.getBody());
+                aho.addToHash(node.hashCode());
+
                 return true; // do not continue to avoid usage info
             }
             public boolean visit(EmptyStatement node) {
@@ -239,10 +245,12 @@ public class TestAST2 {
             }
             public boolean visit(TypeDeclarationStatement node) {
                 System.out.println(node.getDeclaration());
+                aho.addToHash(node.hashCode());
                 return true; // do not continue to avoid usage info
             }
             public boolean visit(TypeDeclaration node) {
                 System.out.println(node.getName().getIdentifier());
+                aho.addToHash(node.hashCode());
                 return true; // do not continue to avoid usage info
             }
 
@@ -250,6 +258,7 @@ public class TestAST2 {
                 System.out.println(node.getBody());
                 System.out.println(node.getFinally());
                 System.out.println(node.catchClauses());
+                aho.addToHash(node.hashCode());
                 return true; // do not continue to avoid usage info
             }
 
@@ -276,6 +285,8 @@ public class TestAST2 {
                 for (Iterator iter = node.fragments().iterator(); iter.hasNext();) {
                     VariableDeclarationFragment fragment = (VariableDeclarationFragment) iter.next();
                     System.out.println(fragment.getName().toString());
+
+
 //                    this.names.add(fragment.getName().toString());
                 }
                 return true; // prevent that SimpleName is interpreted as reference
@@ -283,6 +294,7 @@ public class TestAST2 {
 
             @Override
             public boolean visit(VariableDeclarationFragment node) {
+                aho.addToHash(node.hashCode());
                 SimpleName name = node.getName();
                 this.names.add(name.getIdentifier());
                 System.out.println("Declaration of '"+name+"' at line"+cu.getLineNumber(name.getStartPosition()));
@@ -292,6 +304,7 @@ public class TestAST2 {
             public boolean visit(Annotation node) {
                 String name = node.getTypeName().getFullyQualifiedName();
                 System.out.println("Annotation " + name);
+                aho.addToHash(node.hashCode());
                 return false; // do not continue to avoid usage info
             }
 
@@ -385,12 +398,15 @@ public class TestAST2 {
             @Override
             public boolean visit(StringLiteral node) {
 //                System.out.println(node.getLiteralValue());
+                aho.addToHash(node.hashCode());
                 return false; // do not continue to avoid usage info
             }
 
             @Override
             public boolean visit(ThisExpression node) {
                 System.out.println(node.getQualifier());
+                aho.addToHash(node.hashCode());
+
                 return false; // do not continue to avoid usage info
             }
             @Override
@@ -406,6 +422,7 @@ public class TestAST2 {
             }
 
         });
+
     }
 
 }

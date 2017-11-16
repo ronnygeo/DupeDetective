@@ -142,8 +142,22 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(MethodDeclaration node) {
+        currentNode = new ASTHashObject(node.getName().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength());
         return true;
     }
+
+    /**
+     * Post Visit the method declaration, add it to the node list
+     *
+     * @param node A Method Declaration
+     * @return a boolean whether to traverse subtrees or not
+     */
+    @Override
+    public void endVisit(MethodDeclaration node) {
+        nodes.add(currentNode);
+        resetCurrentNode();
+    }
+
 
     /**
      * Visit the given component using this visitor
@@ -164,6 +178,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ReturnStatement node) {
+//        addHashToCurrentNode(node);
         return false;
     }
 
@@ -175,6 +190,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ForStatement node) {
+//        addHashToCurrentNode(node);
         return true;
     }
 
@@ -215,6 +231,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(WhileStatement node) {
+//        addHashToCurrentNode(node);
         return true;
     }
 
@@ -235,6 +252,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(DoStatement node) {
+//        addHashToCurrentNode(node);
         return true;
     }
 
@@ -277,6 +295,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(IfStatement node) {
+//        addHashToCurrentNode(node);
         return true;
     }
 
@@ -297,6 +316,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ExpressionStatement node) {
+//        addHashToCurrentNode(node);
         return true;
     }
 
@@ -308,6 +328,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(MethodInvocation node) {
+//        addHashToCurrentNode(node);
         return true;
     }
 
@@ -319,6 +340,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(AssertStatement node) {
+//        addHashToCurrentNode(node);
         return false;
     }
 
@@ -330,6 +352,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(EmptyStatement node) {
+//        addHashToCurrentNode(node);
         return false;
     }
 
@@ -341,6 +364,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(LabeledStatement node) {
+//        addHashToCurrentNode(node);
         return true;
     }
 
@@ -352,6 +376,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(SuperConstructorInvocation node) {
+//        addHashToCurrentNode(node);
         return false;
     }
 
@@ -363,6 +388,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ConstructorInvocation node) {
+//        addHashToCurrentNode(node);
         return false;
     }
 
@@ -426,6 +452,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(TypeDeclaration node) {
+//        addHashToCurrentNode(node);
         return true;
     }
 
@@ -437,6 +464,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(TryStatement node) {
+//        addHashToCurrentNode(node);
         return true;
     }
 
@@ -448,6 +476,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(CatchClause node) {
+//        addHashToCurrentNode(node);
         return true;
     }
 
@@ -459,6 +488,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ThrowStatement node) {
+//        addHashToCurrentNode(node);
         return false;
     }
 
@@ -480,6 +510,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(VariableDeclarationStatement node) {
+        addHashToCurrentNode(node.getType().hashCode());
         return true;
     }
 
@@ -491,6 +522,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(VariableDeclarationFragment node) {
+        addHashToCurrentNode(node.hashCode());
         return true;
     }
 
@@ -513,6 +545,10 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(Assignment node) {
+        System.out.println("Assignment");
+        addHashToCurrentNode(node.getRightHandSide().hashCode());
+        addHashToCurrentNode(node.getOperator().hashCode());
+        addHashToCurrentNode(2 * node.getLeftHandSide().hashCode());
         return true;
     }
 
@@ -724,6 +760,18 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
         return true;
     }
 
+    private void addHashToCurrentNode(Integer hash) {
+        if (currentNode != null) currentNode.addToHash(hash);
+    }
+
+    private void addNodeToCurrentNode(ASTNode node) {
+        if (currentNode != null) currentNode.addToHash(node.hashCode());
+    }
+
+    private void resetCurrentNode() {
+        currentNode = null;
+    }
+
 
 
     /**
@@ -734,6 +782,7 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
         return nodes;
     }
 
+    private ASTHashObject currentNode;
     private List<ASTHashObject> nodes;
     private HashCode currentTreeHash;
 }
