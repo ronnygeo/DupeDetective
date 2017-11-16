@@ -12,24 +12,24 @@ import {AssignmentDetailComponent} from "./components/AssignmentDetail/assignmen
 import {HttpClientModule} from "@angular/common/http";
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
-import {AboutComponent} from "./components/About/about.component";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FileService} from "./services/file.service";
 import {ReportComponent} from "./components/Report/report.component";
 import {ReportService} from "./services/report.service";
 import {UserService} from "./services/user.service";
 import {SubmissionService} from "./services/submission.service";
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent
+    , NavbarComponent
     , HomeComponent
-      , AboutComponent
     , AssignmentListComponent
     , AssignmentDetailComponent
     , SubmissionListComponent
     , UploadSubmissionComponent
-    , ReportComponent
+    , ReportComponent, NavbarComponent
   ],
   imports: [
     BrowserModule,

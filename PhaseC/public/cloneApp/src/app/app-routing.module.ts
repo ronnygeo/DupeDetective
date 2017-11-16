@@ -4,7 +4,6 @@ import {AssignmentListComponent} from "./components/AssignmentList/assignmentlis
 import {HomeComponent} from "./components/Home/home.component";
 import {SubmissionListComponent} from "./components/SubmissionList/submissionlist.component";
 import {AssignmentDetailComponent} from "./components/AssignmentDetail/assignmentdetail.component";
-import {AboutComponent} from "./components/About/about.component";
 import {UploadSubmissionComponent} from "./components/UploadSubmission/uploadsubmission.component";
 
 const routes: Routes = [
@@ -13,7 +12,6 @@ const routes: Routes = [
   { path: 'assignments', component: AssignmentListComponent },
   { path: 'submission/upload', component: UploadSubmissionComponent },
   { path: '', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
   { path: '', redirectTo: '', pathMatch: 'full' }
 ];
 
