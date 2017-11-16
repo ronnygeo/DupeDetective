@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Assignment} from "../assignment";
-import {AssignmentService} from "../assignment.service";
+import {Assignment} from "../../models/assignment";
+import {AssignmentService} from "../../services/assignment.service";
 
+/**
+ * The Component that creates the Assignment List page
+ */
 @Component({
   selector: 'app-assignment-list',
   templateUrl: './assignmentlist.component.html',

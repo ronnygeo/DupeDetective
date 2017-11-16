@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Assignment} from "./assignment";
+import {Assignment} from "../models/assignment";
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -9,13 +9,24 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+/**
+ * Report Service that performs all communication related to reports with the server
+ */
 @Injectable()
-export class AssignmentService {
+export class ReportService {
 
-  private assignmentUrl = 'api/assignments';  // URL to web api
+  private assignmentUrl = 'api/reports';  // URL to web api
 
+  /**
+   * Default Constructor
+   * @param {HttpClient} http the http client service
+   */
   constructor(private http: HttpClient) { }
 
+  /**
+   * Get all the assignments
+   * @returns {Observable<Assignment[]>} an Observable for the array of Assignments
+   */
   getAssignments(): Observable<Assignment[]> {
     return this.http.get<Assignment[]>(this.assignmentUrl)
       .pipe(
@@ -23,7 +34,11 @@ export class AssignmentService {
       );
   }
 
-  /** GET assignment by id. Will 404 if id not found */
+  /**
+   * GET assignment by id. Will 404 if id not found
+   * @param {number} id the id of the assignment to retrieve
+   * @returns {Observable<Assignment>} an Observable for the Assignments
+   */
   getAssignment(id: number): Observable<Assignment> {
     const url = `${this.assignmentUrl}/${id}`;
     return this.http.get<Assignment>(url).pipe(
@@ -32,9 +47,13 @@ export class AssignmentService {
     );
   }
 
-  /** Update an assignment **/
-  updateAssignment (hero: Assignment): Observable<any> {
-    return this.http.put(this.assignmentUrl, hero, httpOptions).pipe(
+  /**
+   * Update an assignment
+   * @param {Assignment} assignment
+   * @returns {Observable<any>}
+   */
+  updateAssignment (assignment: Assignment): Observable<any> {
+    return this.http.put(this.assignmentUrl, assignment, httpOptions).pipe(
       catchError(this.handleError<any>('updateAssignment'))
     );
   }

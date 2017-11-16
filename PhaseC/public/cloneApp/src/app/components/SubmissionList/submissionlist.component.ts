@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Assignment} from "../assignment";
+import {Assignment} from "../../models/assignment";
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import {AssignmentService} from "../assignment.service";
+import {AssignmentService} from "../../services/assignment.service";
 
 
 @Component({

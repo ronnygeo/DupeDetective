@@ -2,18 +2,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import {AssignmentListComponent} from './AssignmentList/assignmentlist.component';
-import {UploadSubmissionComponent} from './UploadSubmission/uploadsubmission.component';
-import {SubmissionListComponent} from './SubmissionList/submissionlist.component';
-import {AssignmentService} from "./assignment.service";
+import {AssignmentListComponent} from './components/AssignmentList/assignmentlist.component';
+import {UploadSubmissionComponent} from './components/UploadSubmission/uploadsubmission.component';
+import {SubmissionListComponent} from './components/SubmissionList/submissionlist.component';
+import {AssignmentService} from "./services/assignment.service";
 import { AppRoutingModule } from './/app-routing.module';
-import {HomeComponent} from "./Home/home.component";
-import {AssignmentDetailComponent} from "./AssignmentDetail/assignmentdetail.component";
+import {HomeComponent} from "./components/Home/home.component";
+import {AssignmentDetailComponent} from "./components/AssignmentDetail/assignmentdetail.component";
 import {HttpClientModule} from "@angular/common/http";
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
-import {AboutComponent} from "./About/about.component";
-
+import { InMemoryDataService } from './services/in-memory-data.service';
+import {AboutComponent} from "./components/About/about.component";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {FileService} from "./services/file.service";
+import {ReportComponent} from "./components/Report/report.component";
+import {ReportService} from "./services/report.service";
+import {UserService} from "./services/user.service";
+import {SubmissionService} from "./services/submission.service";
 
 @NgModule({
   declarations: [
@@ -23,11 +28,13 @@ import {AboutComponent} from "./About/about.component";
     , AssignmentListComponent
     , AssignmentDetailComponent
     , SubmissionListComponent
-    // , UploadSubmissionComponent
+    , UploadSubmissionComponent
+    , ReportComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    NgbModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
@@ -37,7 +44,7 @@ import {AboutComponent} from "./About/about.component";
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [AssignmentService],
+  providers: [AssignmentService, FileService, ReportService, UserService, SubmissionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

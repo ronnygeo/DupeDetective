@@ -1,21 +1,23 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Assignment} from "../assignment";
+import {Assignment} from "../../models/assignment";
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import {AssignmentService} from "../assignment.service";
+import {ReportService} from "../../services/report.service";
 
-
+/**
+ * The Component that creates the Report page
+ */
 @Component({
   selector: 'app-submission-list',
-  templateUrl: './assignmentdetail.component.html',
-  styleUrls: ['./assignmentdetail.component.css']
+  templateUrl: './report.component.html',
+  styleUrls: ['./report.component.css']
 })
-export class AssignmentDetailComponent implements OnInit {
+export class ReportComponent implements OnInit {
 
   private assignment: Assignment;
 
   constructor(private route: ActivatedRoute,
-              private assignmentService: AssignmentService,
+              private reportService: ReportService,
               private location: Location) {}
 
   ngOnInit() {
@@ -25,12 +27,12 @@ export class AssignmentDetailComponent implements OnInit {
   // Get the assignment
   getAssignment(): void {
     const id = +this.route.snapshot.paramMap.get('assignmentId');
-    this.assignmentService.getAssignment(id)
+    this.reportService.getAssignment(id)
       .subscribe(assignment => this.assignment = assignment);
   }
 
   save(): void {
-    this.assignmentService.updateAssignment(this.assignment)
+    this.reportService.updateAssignment(this.assignment)
       .subscribe(() => this.goBack());
   }
 
