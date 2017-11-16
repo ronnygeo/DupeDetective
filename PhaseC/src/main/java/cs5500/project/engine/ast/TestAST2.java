@@ -1,6 +1,5 @@
 package cs5500.project.engine.ast;
 
-import cs5500.project.engine.ASTObject;
 import org.eclipse.jdt.core.dom.*;
 
 import java.util.HashSet;

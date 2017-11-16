@@ -7,9 +7,9 @@ import org.eclipse.jdt.core.dom.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
+public class ASTSampleVisitor extends ASTVisitorAC implements ParseVisitor {
 
-    public ASTHashVisitor() {
+    public ASTSampleVisitor() {
         nodes = new ArrayList<>();
     }
 
@@ -725,16 +725,15 @@ public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
     }
 
 
-
     /**
      * Returns the list of nodes in the AST
      * @return list of nodes in AST
      */
-    public List<ASTHashObject> getList() {
+    public List<ASTObject> getList() {
         return nodes;
     }
 
-    private List<ASTHashObject> nodes;
+    private List<ASTObject> nodes;
     private HashCode currentTreeHash;
 }
 

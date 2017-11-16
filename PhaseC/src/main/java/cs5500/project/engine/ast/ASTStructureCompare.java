@@ -1,6 +1,5 @@
 package cs5500.project.engine.ast;
 
-import cs5500.project.engine.ASTObject;
 import cs5500.project.engine.CustomComparator;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
