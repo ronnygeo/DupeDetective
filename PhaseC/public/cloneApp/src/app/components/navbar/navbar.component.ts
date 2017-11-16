@@ -36,4 +36,8 @@ export class NavbarComponent implements OnInit {
   checkHome(): boolean {
     return (this.currentRt === "" || this.currentRt === "/" || this.currentRt === "/login" || this.currentRt === "/register");
   }
+
+  isLoggedIn(): boolean {
+    return false;
+  }
 }

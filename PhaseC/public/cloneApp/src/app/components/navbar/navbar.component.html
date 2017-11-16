@@ -12,20 +12,20 @@
         <!--<a class="nav-link" routerLink="">home <span class="sr-only">(current)</span></a>-->
         <!--</li>-->
         <li class="nav-item">
-        <a class="nav-link" routerLink="/assignments">Assignments</a>
+        <a class="nav-link" routerLink="/assignments" *ngIf="isLoggedIn()">Assignments</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#about">Submissions</a>
+          <a class="nav-link js-scroll-trigger" href="/submissions" *ngIf="isLoggedIn()">Submissions</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#about">Report</a>
+          <a class="nav-link js-scroll-trigger" href="/report" *ngIf="isLoggedIn()">Report</a>
         </li>
         <li class="nav-item dropdown"  ngbDropdown>
         <a class="nav-link dropdown-toggle" routerLink="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Login/Signup</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01" ngbDropdownMenu>
-        <a class="dropdown-item" routerLink="/login">Login</a>
-        <a class="dropdown-item" routerLink="/register">Signup</a>
-        <a class="dropdown-item" routerLink="/logout">Logout</a>
+        <a class="dropdown-item" routerLink="/login" *ngIf="!isLoggedIn()">Login</a>
+        <a class="dropdown-item" routerLink="/register" *ngIf="!isLoggedIn()">Signup</a>
+        <a class="dropdown-item" routerLink="/logout" *ngIf="isLoggedIn()">Logout</a>
         </div>
         </li>
       </ul>
