@@ -1,9 +1,7 @@
 package engine.ast.tests;
 
 import cs5500.project.engine.Parser;
-import cs5500.project.engine.ast.ASTOverallCompare;
 import cs5500.project.engine.ast.ASTStructureCompare;
-import cs5500.project.engine.ast.ASTStructureVisitor;
 import cs5500.project.engine.ast.CustomASTParser;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Test;

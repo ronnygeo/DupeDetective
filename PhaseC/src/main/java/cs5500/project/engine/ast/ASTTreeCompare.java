@@ -7,7 +7,7 @@ import org.eclipse.jdt.core.dom.StructuralPropertyDescriptor;
 import java.util.Iterator;
 import java.util.List;
 
-public class ASTOverallCompare {
+public class ASTTreeCompare {
 
     @SuppressWarnings("unchecked")
     public static boolean compare(ASTNode ast1, ASTNode ast2) {
