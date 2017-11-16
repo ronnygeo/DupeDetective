@@ -12,12 +12,14 @@ import {AssignmentDetailComponent} from "./AssignmentDetail/assignmentdetail.com
 import {HttpClientModule} from "@angular/common/http";
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
+import {AboutComponent} from "./About/about.component";
 
 
 @NgModule({
   declarations: [
     AppComponent
     , HomeComponent
+      , AboutComponent
     , AssignmentListComponent
     , AssignmentDetailComponent
     , SubmissionListComponent
