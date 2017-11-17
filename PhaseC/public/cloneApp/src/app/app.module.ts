@@ -22,6 +22,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {AlertService} from "./services/alert.service";
+import { ComparedocumentsComponent } from './components/comparedocuments/comparedocuments.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import {AlertService} from "./services/alert.service";
     , AssignmentDetailComponent
     , SubmissionListComponent
     , UploadSubmissionComponent
-    , ReportComponent, NavbarComponent, LoginComponent, RegisterComponent
+    , ReportComponent, NavbarComponent, LoginComponent, RegisterComponent, ComparedocumentsComponent
   ],
   imports: [
     BrowserModule,
