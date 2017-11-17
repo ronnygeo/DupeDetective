@@ -9,7 +9,10 @@ import {FileService} from "../../services/file.service";
 })
 export class UploadSubmissionComponent implements OnInit {
 
-  private fileList: FileList;
+  private fileContent: string;
+  private filename: string;
+  private assignmentId: number;
+  private userId: number;
 
   constructor(private fileService: FileService) {
   }
@@ -17,16 +20,31 @@ export class UploadSubmissionComponent implements OnInit {
   ngOnInit() {
   }
 
-  fileChange(event): void {
-    this.fileList = event.target.files;
+  // fileChange(event): void {
+  //   this.fileList = event.target.files;
+  // }
+
+  fileChange($event): void {
+    this.readThis($event.target);
+  }
+
+  readThis(inputValue: any): void {
+    const file: File = inputValue.files[0];
+    const myReader: FileReader = new FileReader();
+
+    myReader.onloadend = (e) => {
+      this.fileContent = myReader.result;
+    };
+    myReader.readAsText(file);
+
   }
 
   upload() {
-    if (this.fileList.length > 0) {
-      this.fileService.upload(this.fileList[0]).subscribe(
-        data => console.log('success'),
-        error => console.log(error)
-      );
+    if (this.fileContent != null || this.filename != null) {
+      // this.fileService.upload().subscribe(
+      //   data => console.log('success'),
+      //   error => console.log(error)
+      // );
     }
   }
 }
