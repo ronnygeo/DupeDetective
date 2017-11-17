@@ -19,7 +19,13 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 7, name: 'Elasticsearch', course: 'CS5610'}
     ];
 
-    const submissions: Submission[] = [];
+    const submissions: Submission[] = [
+      {id: 1, name: "final", userId: 1, assignmentId: 1, submittedOn: "11/15/2017 11:00 PM"},
+      {id: 2, name: "final", userId: 2, assignmentId: 1, submittedOn: "11/14/2017 11:00 PM"},
+      {id: 3, name: "final", userId: 3, assignmentId: 1, submittedOn: "11/16/2017 11:00 PM"},
+      {id: 4, name: "final", userId: 1, assignmentId: 2, submittedOn: "11/20/2017 11:00 PM"},
+      {id: 5, name: "final", userId: 2, assignmentId: 2, submittedOn: "11/21/2017 11:00 PM"},
+    ];
 
     const files = [];
 
@@ -31,7 +37,7 @@ export class InMemoryDataService implements InMemoryDbService {
       {id: 1, name: "Bob", username: "bob", password: "12345"}
     ];
 
-    const report: Report[] = []
+    const report: Report[] = [];
     return {users, assignments, submissions, files};
   }
 }

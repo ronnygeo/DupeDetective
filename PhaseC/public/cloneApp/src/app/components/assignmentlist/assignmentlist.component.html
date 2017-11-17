@@ -13,9 +13,8 @@
         </thead>
         <tbody>
         <tr *ngFor="let assignment of assignments">
-
             <td>{{assignment.id}}</td>
-          <td><a routerLink="/assignment/{{assignment.id}}">{{assignment.name}}</a></td>
+          <td><a routerLink="/submission/{{assignment.id}}">{{assignment.name}}</a></td>
             <td>{{assignment.course}}</td>
         </tr>
         </tbody>

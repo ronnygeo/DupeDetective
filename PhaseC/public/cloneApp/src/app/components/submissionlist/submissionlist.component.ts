@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Assignment} from "../../models/assignment";
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import {Submission} from "../../models/submission";
+import {SubmissionService} from "../../services/submission.service";
+import {AssignmentDetailComponent} from "../assignmentdetail/assignmentdetail.component";
 import {AssignmentService} from "../../services/assignment.service";
 
 
@@ -12,19 +14,24 @@ import {AssignmentService} from "../../services/assignment.service";
 })
 export class SubmissionListComponent implements OnInit {
 
-  private assignment: Assignment;
+  private submissions: Submission[];
 
   constructor(private route: ActivatedRoute,
-              private assignmentService: AssignmentService,
+              private submissionService: SubmissionService,
               private location: Location) {}
 
   ngOnInit() {
-    this.getAssignment();
+    this.getSubmissions();
   }
 
-  getAssignment(): void {
-    const id = +this.route.snapshot.paramMap.get('assignmentId');
-    this.assignmentService.getAssignment(id)
-      .subscribe(assignment => this.assignment = assignment);
-}
+  getSubmissions(): void {
+    if (this.route.snapshot.paramMap.get('assignmentId') != null && this.route.snapshot.paramMap.get('assignmentId') !== "") {
+      const id = +this.route.snapshot.paramMap.get('assignmentId');
+      this.submissionService.getSubmissions(id)
+        .subscribe(submission => this.submissions = submission);
+      } else {
+      this.submissionService.getAllSubmissions()
+      .subscribe(submission => this.submissions = submission);
+      }
+    }
 }

@@ -7,11 +7,14 @@ import {AssignmentDetailComponent} from "./components/assignmentdetail/assignmen
 import {UploadSubmissionComponent} from "./components/uploadsubmission/uploadsubmission.component";
 import {LoginComponent} from "./components/login/login.component";
 import {RegisterComponent} from "./components/register/register.component";
+import {ReportComponent} from "./components/report/report.component";
 
 const routes: Routes = [
-  { path: 'assignment/:assignmentId/submissions', component: SubmissionListComponent },
-  { path: 'assignment/:assignmentId', component: AssignmentDetailComponent },
   { path: 'assignments', component: AssignmentListComponent },
+  { path: 'assignment/:assignmentId', component: AssignmentDetailComponent },
+  { path: 'submissions', component: SubmissionListComponent },
+  { path: 'report', component: ReportComponent },
+  { path: 'submission/:assignmentId', component: SubmissionListComponent },
   { path: 'submission/upload', component: UploadSubmissionComponent },
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
