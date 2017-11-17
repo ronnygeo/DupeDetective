@@ -3,6 +3,7 @@
 <div class="card card-login mx-auto mt-5" style="color: #777;">
   <div class="card-header">Login</div>
   <div class="card-body">
+    <div *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">{{message.text}}</div>
     <form>
       <div class="form-group">
         <label for="InputUsername">Username</label>

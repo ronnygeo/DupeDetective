@@ -5,6 +5,7 @@
 
 <div class="content-wrapper" *ngIf="!isHome()">
   <div class="container">
+    <div *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">{{message.text}}</div>
     <router-outlet></router-outlet>
   </div>
 </div>

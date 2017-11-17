@@ -37,7 +37,19 @@ export class NavbarComponent implements OnInit {
     return (this.currentRt === "" || this.currentRt === "/" || this.currentRt === "/login" || this.currentRt === "/register");
   }
 
+  // TODO: Move to user service
   isLoggedIn(): boolean {
-    return false;
+    return localStorage.getItem('currentUser') != null;
+  }
+
+  // TODO: Move to user service
+  isGrader(): boolean {
+    return true;
+  }
+
+  logout(): void {
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/login']);
   }
 }

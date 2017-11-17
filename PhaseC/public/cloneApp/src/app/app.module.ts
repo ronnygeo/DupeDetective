@@ -21,6 +21,7 @@ import {SubmissionService} from "./services/submission.service";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import {AlertService} from "./services/alert.service";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { RegisterComponent } from './components/register/register.component';
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [AssignmentService, FileService, ReportService, UserService, SubmissionService],
+  providers: [AssignmentService, FileService, ReportService, UserService, SubmissionService, AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

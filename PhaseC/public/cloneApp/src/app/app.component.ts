@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Event, NavigationEnd, Router} from "@angular/router";
+import {AlertService} from "./services/alert.service";
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,12 @@ import {Event, NavigationEnd, Router} from "@angular/router";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Dupe Detective';
+  private message: any;
 
   private currentRoute;
+  public currentUser;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private alertService: AlertService) { }
 
   /**
    * On page load
@@ -23,6 +25,8 @@ export class AppComponent implements OnInit {
         this.currentRoute = event.url;
       }
     });
+
+    this.alertService.getMessage().subscribe(message => { this.message = message; });
   }
 
   /**

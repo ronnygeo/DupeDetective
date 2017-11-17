@@ -2,31 +2,42 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="homeNav">
   <div class="container">
     <a class="navbar-brand js-scroll-trigger" routerLink="">Dupe Detective</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      Menu
+    <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
+      <button (click)="isCollapsed = !isCollapsed"
+              class="navbar-toggler pull-xs-right hidden-sm-up" type="button"
+              aria-controls="bd-main-nav"
+              aria-label="Toggle navigation">
       <i class="fa fa-bars"></i>
     </button>
-    <div class="collapse navbar-collapse" id="homenavResponsive">
+    <div class="navbar-toggleable-xs navbar-collapse" id="bd-main-nav"
+         [attr.aria-expanded]="!isCollapsed" [ngClass]="{collapse: isCollapsed}">
+    <!--<div class="collapse navbar-collapse" id="homenavResponsive">-->
       <ul class="navbar-nav ml-auto">
         <!--<li class="nav-item active">-->
         <!--<a class="nav-link" routerLink="">home <span class="sr-only">(current)</span></a>-->
         <!--</li>-->
-        <li class="nav-item">
-        <a class="nav-link" routerLink="/assignments" *ngIf="isLoggedIn()">Assignments</a>
+        <!--<li class="nav-item">-->
+        <li (click)="isCollapsed = true" class="nav-item" *ngIf="isLoggedIn() && isGrader()">
+        <a class="nav-link" routerLink="/assignments">Assignments</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="/submissions" *ngIf="isLoggedIn()">Submissions</a>
+        <li (click)="isCollapsed = true"  class="nav-item" *ngIf="isLoggedIn() && isGrader()">
+          <a class="nav-link js-scroll-trigger" routerLink="/submissions">Submissions</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="/report" *ngIf="isLoggedIn()">Report</a>
+        <li (click)="isCollapsed = true"  class="nav-item" *ngIf="isLoggedIn() && isGrader()">
+          <a class="nav-link js-scroll-trigger" routerLink="/report">Report</a>
         </li>
-        <li class="nav-item dropdown"  ngbDropdown>
+        <li (click)="isCollapsed = true"  class="nav-item dropdown"  ngbDropdown  *ngIf="!isLoggedIn()">
         <a class="nav-link dropdown-toggle" routerLink="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Login/Signup</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01" ngbDropdownMenu>
-        <a class="dropdown-item" routerLink="/login" *ngIf="!isLoggedIn()">Login</a>
-        <a class="dropdown-item" routerLink="/register" *ngIf="!isLoggedIn()">Signup</a>
-        <a class="dropdown-item" routerLink="/logout" *ngIf="isLoggedIn()">Logout</a>
+        <a class="dropdown-item" routerLink="/login">Login</a>
+        <a class="dropdown-item" routerLink="/register">Signup</a>
         </div>
+        </li>
+        <li (click)="isCollapsed = true"  class="nav-item" *ngIf="isLoggedIn() && !isGrader()">
+          <a class="nav-link js-scroll-trigger" routerLink="/submission/upload">Upload Assignment</a>
+        </li>
+        <li (click)="isCollapsed = true" *ngIf="isLoggedIn()" class="nav-item">
+          <a class="nav-link js-scroll-trigger"  href="" (click)="logout()">Logout</a>
         </li>
       </ul>
     </div>
