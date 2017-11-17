@@ -1,4 +1,5 @@
 public class B {
     public void main(String[] args) {
-    private float i = 9;
+    float i = 9;
+    i = k+2;
     } }

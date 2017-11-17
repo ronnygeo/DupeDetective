@@ -35,16 +35,26 @@ public class ASTHashVisitorTests {
 
     @Test
     public void testTwoMethods() {
-        String testCode = "package com.example.test;\nimport org.java.*; \n public class A { public A() {}; public void main(String[] args) {System.out.println(\"Hello World\");} }\n";
+        String testCode = "package com.example.test;\nimport org.java.*; \n public class A { public A() {}; public void main(String[] args, String t) {" +
+                 "i = k+2;" +
+                "System.out.println(\"Hello World\");} }\n";
+
+        String testCode2 = "package com.example.test;\nimport org.java.*; \n public class B { public B() {}; public void main(String[] args, String test) {" +
+                "i = j+2;" + "System.out.println(\"Hello World\");} }\n";
 
         Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu = astParser.parse(testCode);
+        CompilationUnit cu2 = astParser.parse(testCode2);
 
         ASTVisitor visitor = new ASTHashVisitor();
+        ASTVisitor visitor2 = new ASTHashVisitor();
         cu.accept(visitor);
+        cu2.accept(visitor2);
 
         List<ASTHashObject> hashedList = ((ASTHashVisitor) visitor).getList();
+        List<ASTHashObject> hashedList2 = ((ASTHashVisitor) visitor2).getList();
 
+        System.out.println(hashedList.get(1).getHash() + " " + hashedList.get(1).getHash());
         assertTrue(hashedList.size() == 2);
     }
 
