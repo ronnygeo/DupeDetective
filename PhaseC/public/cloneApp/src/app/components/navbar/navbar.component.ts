@@ -13,6 +13,7 @@ import {NavigationEnd, Router} from "@angular/router";
 export class NavbarComponent implements OnInit {
 
   private currentRt;
+  private isCollapsed = true;
 
   constructor(private router: Router) { }
 
@@ -27,14 +28,6 @@ export class NavbarComponent implements OnInit {
       }
     });
 
-  }
-
-  /**
-   * Is the current page home
-   * @returns {boolean}
-   */
-  checkHome(): boolean {
-    return (this.currentRt === "" || this.currentRt === "/" || this.currentRt === "/login" || this.currentRt === "/register");
   }
 
   // TODO: Move to user service
