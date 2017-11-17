@@ -11,7 +11,9 @@
     <div class="navbar-toggleable-xs navbar-collapse" id="bd-main-nav"
          [attr.aria-expanded]="!isCollapsed" [ngClass]="{collapse: isCollapsed}">
       <ul class="navbar-nav ml-auto">
-
+        <li (click)="isCollapsed = true"  class="nav-item" *ngIf="!isLoggedIn()">
+          <a class="nav-link js-scroll-trigger" routerLink="/">Home</a>
+        </li>
         <li (click)="isCollapsed = true" class="nav-item" *ngIf="isLoggedIn() && isGrader()">
         <a class="nav-link" routerLink="/assignments">Assignments</a>
         </li>
@@ -40,32 +42,3 @@
     </div>
   </div>
 </nav>
-
-<!--&lt;!&ndash;Navbar for all others&ndash;&gt;-->
-<!--<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" *ngIf="!checkHome()">-->
-  <!--<a class="navbar-brand" routerLink="">Dupe Detective</a>-->
-  <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">-->
-    <!--<span class="navbar-toggler-icon"></span>-->
-  <!--</button>-->
-  <!--<div class="collapse navbar-collapse" id="navbarsExampleDefault">-->
-    <!--<ul class="navbar-nav mr-auto">-->
-      <!--<li class="nav-item active">-->
-        <!--<a class="nav-link" routerLink="">home <span class="sr-only">(current)</span></a>-->
-      <!--</li>-->
-      <!--<li class="nav-item">-->
-        <!--<a class="nav-link" routerLink="/assignments">Assignments</a>-->
-      <!--</li>-->
-      <!--&lt;!&ndash;<li class="nav-item">&ndash;&gt;-->
-        <!--&lt;!&ndash;<a class="nav-link disabled" href="#">Disabled</a>&ndash;&gt;-->
-      <!--&lt;!&ndash;</li>&ndash;&gt;-->
-      <!--<li class="nav-item dropdown"  ngbDropdown>-->
-        <!--<a class="nav-link dropdown-toggle" routerLink="" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Dropdown</a>-->
-        <!--<div class="dropdown-menu" aria-labelledby="dropdown02" ngbDropdownMenu>-->
-          <!--<a class="dropdown-item" routerLink="/login">Login</a>-->
-          <!--<a class="dropdown-item" routerLink="/register">Signup</a>-->
-          <!--<a class="dropdown-item" routerLink="/logout">Logout</a>-->
-        <!--</div>-->
-      <!--</li>-->
-    <!--</ul>-->
-  <!--</div>-->
-<!--</nav>-->
