@@ -16,5 +16,6 @@ public class A {
     public static void main(String[] args) {
         System.out.println("String".hashCode());
         System.out.println("String".hashCode());
+        new System(1, "hello");
     }
 }

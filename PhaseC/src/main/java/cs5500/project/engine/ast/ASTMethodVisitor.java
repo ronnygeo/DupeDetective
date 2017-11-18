@@ -44,7 +44,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ClassInstanceCreation node) {
-        return false;
+        return true;
     }
 
     /**
@@ -219,7 +219,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ForStatement node) {
-//        addHashToCurrentNode(node);
         return true;
     }
 
@@ -302,7 +301,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(BreakStatement node) {
-        addNodeToCurrentNode(node);
+        addHashToCurrentNode(node.getLabel().hashCode());
         return false;
     }
 
@@ -314,7 +313,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ContinueStatement node) {
-        addNodeToCurrentNode(node);
+        addNodeToCurrentNode(node.getLabel());
         return false;
     }
 
@@ -584,6 +583,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(BooleanLiteral node) {
+        addHashToCurrentNode("bool".hashCode());
         return false;
     }
 
@@ -606,6 +606,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(CharacterLiteral node) {
+        addHashToCurrentNode("char".hashCode());
         return false;
     }
 
@@ -674,6 +675,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(NullLiteral node) {
+        addHashToCurrentNode("null".hashCode());
         return false;
     }
 
@@ -685,6 +687,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(NumberLiteral node) {
+        addHashToCurrentNode("number".hashCode());
         return false;
     }
 
@@ -729,6 +732,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(StringLiteral node) {
+        addHashToCurrentNode("string".hashCode());
         return false;
     }
 
@@ -740,6 +744,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ThisExpression node) {
+        addHashToCurrentNode("this".hashCode());
         return false;
     }
 
