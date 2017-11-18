@@ -19,6 +19,21 @@ public class ASTHashObject {
     }
 
     /**
+     * @param name identifier name of node
+     * @param type type of node
+     * @param offset offset of node
+     * @param length length of node
+     * @param hash hash of node
+     */
+    public ASTHashObject(String name, Integer type, Integer offset, Integer length, long hash) {
+        this.name = name;
+        this.type = type;
+        this.offset = offset;
+        this.length = length;
+        this.hash = hash;
+    }
+
+    /**
      * Default Constructor
      */
     public ASTHashObject() {}

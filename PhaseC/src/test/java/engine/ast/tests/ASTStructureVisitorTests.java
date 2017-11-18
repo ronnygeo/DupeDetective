@@ -23,7 +23,7 @@ public class ASTStructureVisitorTests {
         ASTVisitor visitor = new ASTStructureVisitor();
         cu.accept(visitor);
 
-        assertEquals(new ArrayList<Integer>(), ((ASTStructureVisitor) visitor).getList());
+        assertEquals(16, ((ASTStructureVisitor) visitor).getList().size());
     }
 
     @Test
@@ -36,7 +36,7 @@ public class ASTStructureVisitorTests {
         ASTVisitor visitor = new ASTStructureVisitor();
         cu.accept(visitor);
 
-        assertEquals(new ArrayList<Integer>(), ((ASTStructureVisitor) visitor).getList());
+        assertEquals(7, ((ASTStructureVisitor) visitor).getList().size());
     }
 
     @Test
@@ -51,7 +51,7 @@ public class ASTStructureVisitorTests {
         ASTVisitor visitor = new ASTStructureVisitor();
         cu.accept(visitor);
 
-        assertEquals(new ArrayList<Integer>(), ((ASTStructureVisitor) visitor).getList());
+        assertEquals(33, ((ASTStructureVisitor) visitor).getList().size());
     }
 
     @Test
@@ -66,15 +66,13 @@ public class ASTStructureVisitorTests {
         ASTVisitor visitor = new ASTStructureVisitor();
         cu.accept(visitor);
 
-        assertEquals(new ArrayList<Integer>(), ((ASTStructureVisitor) visitor).getList());
+        assertEquals(30, ((ASTStructureVisitor) visitor).getList().size());
     }
 
     @Test
     public void testArrayOps() {
-        String testCode = "\n public class A { public A() {} \n" +
-                "@Override\npublic String parse(String txt) {int i = 9;  \n int j; \n " +
-                "if (i>10) j = 0; else j=1; \n txt.trim(); return txt;} " +
-                "\n ArrayList<Integer> al = new ArrayList<Integer>();j=1000; }";
+        String testCode = "\n public class A { \n" +
+                "@Override\npublic String parse(String txt) {ArrayList<Integer> al = new ArrayList<Integer>();j=1000;}}";
 
         Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu = astParser.parse(testCode);
@@ -82,8 +80,6 @@ public class ASTStructureVisitorTests {
         ASTVisitor visitor = new ASTStructureVisitor();
         cu.accept(visitor);
 
-        assertEquals(new ArrayList<Integer>(), ((ASTStructureVisitor) visitor).getList());
+        assertEquals(19, ((ASTStructureVisitor) visitor).getList().size());
     }
-
-    //TODO: Add tests for different modifiers private/public
 }

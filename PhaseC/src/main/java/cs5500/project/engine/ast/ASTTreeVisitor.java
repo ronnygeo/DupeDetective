@@ -20,7 +20,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(PackageDeclaration node) {
-        nodes.add(new ASTObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -32,7 +32,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ImportDeclaration node) {
-        nodes.add(new ASTObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -55,7 +55,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(TagElement node) {
-        nodes.add(new ASTObject(node.getTagName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getTagName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -67,7 +67,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(VariableDeclaration node) {
-        nodes.add(new ASTObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -79,7 +79,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(Modifier node) {
-        nodes.add(new ASTObject(node.getKeyword().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getKeyword().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -91,7 +91,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(MemberRef node) {
-        nodes.add(new ASTObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -114,7 +114,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(Comment node) {
-        nodes.add(new ASTObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -148,7 +148,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(MethodDeclaration node) {
-        nodes.add(new ASTObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -171,7 +171,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ReturnStatement node) {
-        nodes.add(new ASTObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -183,7 +183,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ForStatement node) {
-        nodes.add(new ASTObject("loop", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("loop", node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -194,7 +194,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public void endVisit(ForStatement node) {
-        nodes.add(new ASTObject("endloop", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("endloop", node.getNodeType(), node.getStartPosition(), node.getLength()));
     }
 
     /**
@@ -205,7 +205,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(EnhancedForStatement node) {
-        nodes.add(new ASTObject("loop", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("loop", node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -216,7 +216,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public void endVisit(EnhancedForStatement node) {
-        nodes.add(new ASTObject("endloop", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("endloop", node.getNodeType(), node.getStartPosition(), node.getLength()));
     }
 
     /**
@@ -227,7 +227,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(WhileStatement node) {
-        nodes.add(new ASTObject("loop", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("loop", node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -238,7 +238,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public void endVisit(WhileStatement node) {
-        nodes.add(new ASTObject("endloop", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("endloop", node.getNodeType(), node.getStartPosition(), node.getLength()));
     }
 
     /**
@@ -249,7 +249,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(DoStatement node) {
-        nodes.add(new ASTObject("loop", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("loop", node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -260,7 +260,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public void endVisit(DoStatement node) {
-        nodes.add(new ASTObject("endloop", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("endloop", node.getNodeType(), node.getStartPosition(), node.getLength()));
     }
 
     /**
@@ -271,7 +271,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(BreakStatement node) {
-        nodes.add(new ASTObject(node.getLabel().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getLabel().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -283,7 +283,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ContinueStatement node) {
-        nodes.add(new ASTObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -295,7 +295,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(IfStatement node) {
-        nodes.add(new ASTObject("cond", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("cond", node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -306,7 +306,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public void endVisit(IfStatement node) {
-        nodes.add(new ASTObject("endcond", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("endcond", node.getNodeType(), node.getStartPosition(), node.getLength()));
     }
 
     /**
@@ -317,7 +317,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ExpressionStatement node) {
-        nodes.add(new ASTObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -329,7 +329,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(MethodInvocation node) {
-        nodes.add(new ASTObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -341,7 +341,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(AssertStatement node) {
-        nodes.add(new ASTObject(node.getMessage().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getMessage().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -353,7 +353,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(EmptyStatement node) {
-        nodes.add(new ASTObject("empty", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("empty", node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -365,7 +365,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(LabeledStatement node) {
-        nodes.add(new ASTObject(node.getLabel().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getLabel().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -377,7 +377,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(SuperConstructorInvocation node) {
-        nodes.add(new ASTObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -389,7 +389,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ConstructorInvocation node) {
-        nodes.add(new ASTObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -401,7 +401,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(SwitchStatement node) {
-        nodes.add(new ASTObject("switch", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("switch", node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -411,7 +411,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      * @param node A Switch Statement
      */
     public void endVisit(SwitchStatement node) {
-        nodes.add(new ASTObject("endswitch", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("endswitch", node.getNodeType(), node.getStartPosition(), node.getLength()));
     }
 
     /**
@@ -422,7 +422,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(SwitchCase node) {
-        nodes.add(new ASTObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -434,7 +434,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(SynchronizedStatement node) {
-        nodes.add(new ASTObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -446,7 +446,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(TypeDeclarationStatement node) {
-        nodes.add(new ASTObject(node.getDeclaration().getName().getIdentifier(), node.getDeclaration().getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getDeclaration().getName().getIdentifier(), node.getDeclaration().getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -458,7 +458,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(TypeDeclaration node) {
-        nodes.add(new ASTObject(node.getName().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getName().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -470,7 +470,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(TryStatement node) {
-        nodes.add(new ASTObject("try", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("try", node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -482,7 +482,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(CatchClause node) {
-        nodes.add(new ASTObject(node.getException().getName().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getException().getName().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -494,7 +494,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ThrowStatement node) {
-        nodes.add(new ASTObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -505,7 +505,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(SimpleName node) {
-        nodes.add(new ASTObject(node.getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -517,7 +517,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(VariableDeclarationStatement node) {
-        nodes.add(new ASTObject(node.getType().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getType().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -529,7 +529,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(VariableDeclarationFragment node) {
-        nodes.add(new ASTObject(node.getName().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getName().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -541,7 +541,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(Annotation node) {
-        nodes.add(new ASTObject(node.getTypeName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getTypeName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -553,7 +553,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(Assignment node) {
-        nodes.add(new ASTObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -565,7 +565,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(BooleanLiteral node) {
-        nodes.add(new ASTObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -577,7 +577,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(CastExpression node) {
-        nodes.add(new ASTObject(node.getType().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getType().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -589,7 +589,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(CharacterLiteral node) {
-        nodes.add(new ASTObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -601,7 +601,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ConditionalExpression node) {
-        nodes.add(new ASTObject("cond", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("cond", node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -612,7 +612,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      * @return a boolean whether to traverse subtrees or not
      */
     public boolean postVisit(ConditionalExpression node) {
-        nodes.add(new ASTObject("endcond", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("endcond", node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -624,7 +624,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(InfixExpression node) {
-        nodes.add(new ASTObject(node.getOperator().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getOperator().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -636,7 +636,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(InstanceofExpression node) {
-        nodes.add(new ASTObject("instanceOf", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("instanceOf", node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -648,7 +648,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(Name node) {
-        nodes.add(new ASTObject(node.getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -660,7 +660,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(NullLiteral node) {
-        nodes.add(new ASTObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -672,7 +672,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(NumberLiteral node) {
-        nodes.add(new ASTObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -684,7 +684,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ParenthesizedExpression node) {
-        nodes.add(new ASTObject("block", node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("block", node.getNodeType(), node.getStartPosition(), node.getLength()));
 
         return true;
     }
@@ -698,7 +698,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
     @Override
     public boolean visit(PostfixExpression node) {
         //TODO: Handle postfix to normal assignment
-        nodes.add(new ASTObject(node.getOperator().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getOperator().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -711,7 +711,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
     @Override
     public boolean visit(PrefixExpression node) {
         //TODO: Handle postfix to normal assignment
-        nodes.add(new ASTObject(node.getOperator().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getOperator().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -723,7 +723,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(StringLiteral node) {
-        nodes.add(new ASTObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -735,7 +735,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ThisExpression node) {
-        nodes.add(new ASTObject(node.getQualifier().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getQualifier().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -747,7 +747,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(TypeLiteral node) {
-        nodes.add(new ASTObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 
@@ -759,7 +759,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(VariableDeclarationExpression node) {
-        nodes.add(new ASTObject(node.getType().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.getType().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -771,7 +771,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ArrayInitializer node) {
-        nodes.add(new ASTObject(node.expressions().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.expressions().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -783,7 +783,7 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ArrayCreation node) {
-        nodes.add(new ASTObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return true;
     }
 
@@ -792,10 +792,10 @@ public class ASTTreeVisitor extends ASTVisitorAC implements ParseVisitor {
      * Returns the list of nodes in the AST
      * @return list of nodes in AST
      */
-    public List<ASTObject> getList() {
+    public List<ASTHashObject> getList() {
         return nodes;
     }
 
-    private List<ASTObject> nodes;
+    private List<ASTHashObject> nodes;
 }
 

@@ -97,4 +97,6 @@ public class ASTStructureCompareTests {
         ASTStructureCompare astc = new ASTStructureCompare();
         assertEquals(0.5, astc.compare(cu1, cu2), 0.01);
     }
+
+    //TODO: Add tests for different modifiers private/public
 }

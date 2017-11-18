@@ -30,10 +30,23 @@ public class ASTMethodVisitorTests {
     }
 
     @Test
+    public void testNoMethod() {
+        String testCode = "public class B { private float i = 9; }";
+
+        CompilationUnit cu = astParser.parse(testCode);
+
+        ASTVisitor visitor = new ASTMethodVisitor();
+        cu.accept(visitor);
+
+        List<ASTHashObject> hashedList = ((ASTMethodVisitor) visitor).getList();
+
+        assertTrue(hashedList.size() == 0);
+    }
+
+    @Test
     public void testNodeListNotZero() {
         String testCode = "public class B { public void main(String[] args) {private float i = 9;} }";
 
-        Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu = astParser.parse(testCode);
 
         ASTVisitor visitor = new ASTMethodVisitor();
@@ -53,7 +66,6 @@ public class ASTMethodVisitorTests {
         String testCode2 = "package com.example.test;\nimport org.java.*; \n public class B { public B() {}; public void main(String[] args, String test) {" +
                 "i = j+2;" + "System.out.println(\"Hello World\");} }\n";
 
-        Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu = astParser.parse(testCode);
         CompilationUnit cu2 = astParser.parse(testCode2);
 
@@ -74,7 +86,6 @@ public class ASTMethodVisitorTests {
                 "\npublic String parse(Integer num) {} \n} ";
         String testCode2 = "\n public class A {" +
                 "\npublic String parse(Float num) {} \n} ";
-        Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu1 = astParser.parse(testCode1);
         CompilationUnit cu2 = astParser.parse(testCode2);
 
@@ -92,7 +103,6 @@ public class ASTMethodVisitorTests {
                 "\npublic String parse(Integer num) {} \n} ";
         String testCode2 = "\n public class A {" +
                 "\npublic String parse(Integer num, Float num2) {} \n} ";
-        Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu1 = astParser.parse(testCode1);
         CompilationUnit cu2 = astParser.parse(testCode2);
 
@@ -110,7 +120,6 @@ public class ASTMethodVisitorTests {
                 "\npublic String parse(String txt) {return \"hello\";} \n} ";
         String testCode2 = "\n public class A {" +
                 "\npublic String parse(String txt) {return \"Hello!\";} \n} ";
-        Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu1 = astParser.parse(testCode1);
         CompilationUnit cu2 = astParser.parse(testCode2);
 
@@ -128,7 +137,6 @@ public class ASTMethodVisitorTests {
                 "\npublic String parse(String txt) {return i;} \n} ";
         String testCode2 = "\n public class A {" +
                 "\npublic String parse(String txt) {return j;} \n} ";
-        Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu1 = astParser.parse(testCode1);
         CompilationUnit cu2 = astParser.parse(testCode2);
 
@@ -146,7 +154,6 @@ public class ASTMethodVisitorTests {
                 "\npublic String parse(String txt) {return \"hello\";} \n} ";
         String testCode2 = "\n public class A {" +
                 "\npublic String parse(String txt) {return \"world\";} \n} ";
-        Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu1 = astParser.parse(testCode1);
         CompilationUnit cu2 = astParser.parse(testCode2);
 

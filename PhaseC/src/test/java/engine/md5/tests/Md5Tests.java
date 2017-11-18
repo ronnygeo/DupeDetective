@@ -6,6 +6,9 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+/**
+ * Tests for the MD5 checksum class
+ */
 public class Md5Tests {
 
     ClassLoader classLoader = getClass().getClassLoader();

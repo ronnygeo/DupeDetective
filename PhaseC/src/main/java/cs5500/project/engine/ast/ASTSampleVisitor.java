@@ -729,11 +729,11 @@ public class ASTSampleVisitor extends ASTVisitorAC implements ParseVisitor {
      * Returns the list of nodes in the AST
      * @return list of nodes in AST
      */
-    public List<ASTObject> getList() {
+    public List<ASTHashObject> getList() {
         return nodes;
     }
 
-    private List<ASTObject> nodes;
+    private List<ASTHashObject> nodes;
     private HashCode currentTreeHash;
 }
 
