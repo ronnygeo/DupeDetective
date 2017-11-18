@@ -3,7 +3,7 @@ package engine.ast.tests;
 import cs5500.project.engine.Parser;
 import cs5500.project.engine.ast.ASTHashObject;
 import cs5500.project.engine.ast.ASTMethodVisitor;
-import cs5500.project.engine.ast.ASTStructureVisitor;
+import cs5500.project.engine.ast.ASTMethodVisitor;
 import cs5500.project.engine.ast.CustomASTParser;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -35,6 +36,21 @@ public class ASTMethodVisitorTests {
         assertTrue(hashedList.size() > 0);
     }
 
+    @Test
+    public void testBasicVariableDecl() {
+        String testCode = "public class B { public void main(String[] args) {private float i = 9;} }";
+
+        Parser<CompilationUnit> astParser = new CustomASTParser();
+        CompilationUnit cu = astParser.parse(testCode);
+
+        ASTVisitor visitor = new ASTMethodVisitor();
+        cu.accept(visitor);
+
+        List<ASTHashObject> hashedList = ((ASTMethodVisitor) visitor).getList();
+
+        System.out.println(hashedList.size());
+        assertEquals((Long) 2704083857L, hashedList.get(0).getHash());
+    }
 
     @Test
     public void testTwoMethods() {
@@ -59,69 +75,77 @@ public class ASTMethodVisitorTests {
 
         assertTrue(hashedList.size() == hashedList2.size());
     }
-
+    
     @Test
-    public void testBasicVariableDecl() {
-        String testCode = "public class B { public void main(String[] args) {private float i = 9;} }";
-
+    public void testMethodDifferentParams() {
+        String testCode1 = "\n public class A {" +
+                "\npublic String parse(Integer num) {} \n} ";
+        String testCode2 = "\n public class A {" +
+                "\npublic String parse(Float num) {} \n} ";
         Parser<CompilationUnit> astParser = new CustomASTParser();
-        CompilationUnit cu = astParser.parse(testCode);
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
 
-        ASTVisitor visitor = new ASTMethodVisitor();
-        cu.accept(visitor);
+        ASTVisitor visitor1 = new ASTMethodVisitor();
+        ASTVisitor visitor2 = new ASTMethodVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
 
-        List<ASTHashObject> hashedList = ((ASTMethodVisitor) visitor).getList();
-
-        System.out.println(hashedList.size());
-        assertEquals((Long) 2704083857L, hashedList.get(0).getHash());
+        assertNotEquals(((ASTMethodVisitor) visitor1).getList().get(0).getHash(), ((ASTMethodVisitor) visitor2).getList().get(0).getHash());
     }
 
     @Test
-    public void testMethodDifferentParams() {
-        String testCode = "\n public class A {\n" +
-                "@Override\npublic String parse(String txt) {int i = 9;  \n int j; \n " +
-                "if (i>10) j = 0; else j=1; \n }";
-
+    public void testMethodMultipleParams() {
+        String testCode1 = "\n public class A {" +
+                "\npublic String parse(Integer num) {} \n} ";
+        String testCode2 = "\n public class A {" +
+                "\npublic String parse(Integer num, Float num2) {} \n} ";
         Parser<CompilationUnit> astParser = new CustomASTParser();
-        CompilationUnit cu = astParser.parse(testCode);
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
 
-        ASTVisitor visitor = new ASTStructureVisitor();
-        cu.accept(visitor);
+        ASTVisitor visitor1 = new ASTMethodVisitor();
+        ASTVisitor visitor2 = new ASTMethodVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
 
-        assertEquals(new ArrayList<Integer>(), ((ASTStructureVisitor) visitor).getList());
+        assertNotEquals(((ASTMethodVisitor) visitor1).getList().get(0).getHash(), ((ASTMethodVisitor) visitor2).getList().get(0).getHash());
     }
 
     @Test
     public void testMethodDifferentReturn() {
         String testCode1 = "\n public class A {" +
-                "\npublic String parse(String txt) {return null;} \n} ";
+                "\npublic String parse(String txt) {return \"hello\";} \n} ";
         String testCode2 = "\n public class A {" +
                 "\npublic String parse(String txt) {return \"Hello!\";} \n} ";
         Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu1 = astParser.parse(testCode1);
         CompilationUnit cu2 = astParser.parse(testCode2);
 
-        ASTVisitor visitor1 = new ASTStructureVisitor();
-        ASTVisitor visitor2 = new ASTStructureVisitor();
+        ASTVisitor visitor1 = new ASTMethodVisitor();
+        ASTVisitor visitor2 = new ASTMethodVisitor();
         cu1.accept(visitor1);
-        cu1.accept(visitor2);
+        cu2.accept(visitor2);
 
-        assertEquals(new ArrayList<Integer>(), ((ASTStructureVisitor) visitor1).getList());
+        assertEquals(((ASTMethodVisitor) visitor1).getList().get(0).getHash(), ((ASTMethodVisitor) visitor2).getList().get(0).getHash());
     }
 
     @Test
-    public void testArrayOps() {
-        String testCode = "\n public class A { public A() {} \n" +
-                "@Override\npublic String parse(String txt) {int i = 9;  \n int j; \n " +
-                "if (i>10) j = 0; else j=1; \n txt.trim(); return txt;} " +
-                "\n ArrayList<Integer> al = new ArrayList<Integer>();j=1000; }";
-
+    public void testMethodSame() {
+        String testCode1 = "\n public class A {" +
+                "\npublic String parse(String txt) {return i;} \n} ";
+        String testCode2 = "\n public class A {" +
+                "\npublic String parse(String txt) {return j;} \n} ";
         Parser<CompilationUnit> astParser = new CustomASTParser();
-        CompilationUnit cu = astParser.parse(testCode);
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
 
-        ASTVisitor visitor = new ASTStructureVisitor();
-        cu.accept(visitor);
+        ASTVisitor visitor1 = new ASTMethodVisitor();
+        ASTVisitor visitor2 = new ASTMethodVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
 
-        assertEquals(new ArrayList<Integer>(), ((ASTStructureVisitor) visitor).getList());
+        assertEquals(((ASTMethodVisitor) visitor1).getList().get(0).getHash(), ((ASTMethodVisitor) visitor2).getList().get(0).getHash());
     }
+
 }

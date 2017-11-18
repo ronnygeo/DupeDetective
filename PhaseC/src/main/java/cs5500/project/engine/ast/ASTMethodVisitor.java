@@ -66,9 +66,22 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(SimpleType node) {
-        addNodeToCurrentNode(node);
-        return false;
+        System.out.println("Type: " + node);
+        typeCheck = true;
+        return true;
     }
+
+    /**
+     * Visit the given component using this visitor
+     *
+     * @param node A SimpleType
+     * @return a boolean whether to traverse subtrees or not
+     */
+    @Override
+    public void endVisit(SimpleType node) {
+        typeCheck = false;
+    }
+
 
     /**
      * Visit the given component using this visitor
@@ -194,8 +207,8 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ReturnStatement node) {
-        addNodeToCurrentNode(node);
-        return false;
+        addHashToCurrentNode("return".hashCode());
+        return true;
     }
 
     /**
@@ -506,6 +519,10 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(SimpleName node) {
+        if (typeCheck) {
+            addHashToCurrentNode(node.getIdentifier().hashCode());
+            typeCheck = false;
+        }
         return false;
     }
 
@@ -770,14 +787,23 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
         return true;
     }
 
+    /**
+     * @param hash
+     */
     private void addHashToCurrentNode(Integer hash) {
         if (currentNode != null) currentNode.addToHash(hash);
     }
 
+    /**
+     * @param node
+     */
     private void addNodeToCurrentNode(ASTNode node) {
         if (currentNode != null) currentNode.addToHash(node.hashCode());
     }
 
+    /**
+     *
+     */
     private void resetCurrentNode() {
         currentNode = null;
     }
@@ -795,5 +821,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
     private ASTHashObject currentNode;
     private List<ASTHashObject> nodes;
     private HashCode currentTreeHash;
+    private boolean typeCheck = false;
 }
 
