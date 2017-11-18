@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ASTHashVisitor extends ASTVisitorAC implements ParseVisitor {
+public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
 
-    public ASTHashVisitor() {
+    public ASTMethodVisitor() {
         nodes = new ArrayList<>();
     }
 

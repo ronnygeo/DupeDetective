@@ -84,4 +84,6 @@ public class ASTStructureVisitorTests {
 
         assertEquals(new ArrayList<Integer>(), ((ASTStructureVisitor) visitor).getList());
     }
+
+    //TODO: Add tests for different modifiers private/public
 }
