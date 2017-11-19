@@ -1,6 +1,7 @@
 package engine.ast.tests;
 
 import cs5500.project.engine.Parser;
+import cs5500.project.engine.ast.ASTLoopCompare;
 import cs5500.project.engine.ast.ASTLoopVisitor;
 import cs5500.project.engine.ast.CustomASTParser;
 import org.eclipse.jdt.core.dom.ASTVisitor;
@@ -38,8 +39,9 @@ public class ASTLoopCompareTests {
         cu1.accept(visitor1);
         cu2.accept(visitor2);
 
+        ASTLoopCompare astc = new ASTLoopCompare();
         System.out.println(((ASTLoopVisitor) visitor1).getList().get(0));
-        assertEquals(((ASTLoopVisitor) visitor1).getList().get(0), ((ASTLoopVisitor) visitor2).getList().get(0));
+        assertEquals(1, astc.compare(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()));
 
     }
 
