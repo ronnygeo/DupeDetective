@@ -13,8 +13,8 @@ import java.util.List;
 public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
 
     public ASTLoopVisitor() {
-        allNodes = new ArrayList<>();
-        resetCurrentNodes();
+        nodes = new ArrayList<>();
+        currentNode = new ASTHashObject();
     }
 
     /**
@@ -185,7 +185,7 @@ public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ForStatement node) {
-        resetCurrentNodes();
+        resetCurrentNode(node);
         return true;
     }
 
@@ -207,7 +207,7 @@ public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(EnhancedForStatement node) {
-        resetCurrentNodes();
+        resetCurrentNode(node);
         return true;
     }
 
@@ -229,7 +229,7 @@ public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(WhileStatement node) {
-        resetCurrentNodes();
+        resetCurrentNode(node);
         return true;
     }
 
@@ -251,7 +251,7 @@ public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(DoStatement node) {
-        resetCurrentNodes();
+        resetCurrentNode(node);
         return true;
     }
 
@@ -297,7 +297,7 @@ public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(IfStatement node) {
-        resetCurrentNodes();
+        resetCurrentNode(node);
         return true;
     }
 
@@ -403,7 +403,7 @@ public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(SwitchStatement node) {
-        resetCurrentNodes();
+        resetCurrentNode(node);
         return true;
     }
 
@@ -788,22 +788,22 @@ public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
      * @param node An ASTNode
      */
     private void addNodeToNodes(ASTHashObject node) {
-        currentNodes.add(node);
+        currentNode.addNode(node);
     }
     
     /**
      * Reset the nodes in the current list of nodes
      */
-    private void resetCurrentNodes() {
-        currentNodes = new ArrayList<>();
+    private void resetCurrentNode(ASTNode node) {
+        currentNode = new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), node.hashCode());
     }
 
     /**
      * Adds the current nodes list to all node list
      */
     private void addCurrentNodeToNodes() {
-        allNodes.add(currentNodes);
-        resetCurrentNodes();
+        nodes.add(currentNode);
+        currentNode = new ASTHashObject();
     }
 
 
@@ -812,11 +812,11 @@ public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
      * Returns the list of nodes in the AST
      * @return list of nodes in AST
      */
-    public List<List<ASTHashObject>> getList() {
-        return allNodes;
+    public List<ASTHashObject> getList() {
+        return nodes;
     }
 
-    private List<ASTHashObject> currentNodes;
-    private List<List<ASTHashObject>> allNodes;
+    private ASTHashObject currentNode;
+    private List<ASTHashObject> nodes;
 }
 

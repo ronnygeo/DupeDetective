@@ -2,6 +2,9 @@ package cs5500.project.engine.ast;
 
 import com.google.common.hash.HashCode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ASTHashObject {
 
     /**
@@ -16,6 +19,7 @@ public class ASTHashObject {
         this.offset = offset;
         this.length = length;
         this.hash = 0l;
+        this.nodes = new ArrayList<>();
     }
 
     /**
@@ -31,6 +35,7 @@ public class ASTHashObject {
         this.offset = offset;
         this.length = length;
         this.hash = hash;
+        this.nodes = new ArrayList<>();
     }
 
     /**
@@ -94,10 +99,6 @@ public class ASTHashObject {
         this.length = length;
     }
 
-    private String name;
-    private Integer type;
-    private Integer offset;
-    private Integer length;
 
     public Long getHash() {
         return hash;
@@ -119,5 +120,24 @@ public class ASTHashObject {
         this.hash += hash;
     }
 
+    private String name;
+    private Integer type;
+    private Integer offset;
+    private Integer length;
     private Long hash;
+
+    public List<ASTHashObject> getNodes() {
+        return nodes;
+    }
+
+    public void setNodes(List<ASTHashObject> nodes) {
+        this.nodes = nodes;
+    }
+
+    public void addNode(ASTHashObject node) {
+        if (this.name != null)
+        this.nodes.add(node);
+    }
+
+    private List<ASTHashObject> nodes;
 }

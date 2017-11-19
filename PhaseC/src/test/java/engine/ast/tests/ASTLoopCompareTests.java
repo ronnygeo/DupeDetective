@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 public class ASTLoopCompareTests {
@@ -38,7 +39,7 @@ public class ASTLoopCompareTests {
         cu2.accept(visitor2);
 
         System.out.println(((ASTLoopVisitor) visitor1).getList().get(0));
-        assertArrayEquals(((ASTLoopVisitor) visitor1).getList().get(0).toArray(), ((ASTLoopVisitor) visitor2).getList().get(0).toArray());
+        assertEquals(((ASTLoopVisitor) visitor1).getList().get(0), ((ASTLoopVisitor) visitor2).getList().get(0));
 
     }
 
