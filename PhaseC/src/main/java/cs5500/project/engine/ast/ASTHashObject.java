@@ -5,6 +5,9 @@ import com.google.common.hash.HashCode;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ASTHashObject that stores the data about a node in the tree
+ */
 public class ASTHashObject {
 
     /**
@@ -44,100 +47,124 @@ public class ASTHashObject {
     public ASTHashObject() {}
 
     /**
-     * @return
+     * @return the name of the Node
      */
     public String getName() {
         return name;
     }
 
     /**
-     * @param name
+     * @param name  the name of the Node
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * @return
+     * @return the type of the node
      */
     public Integer getType() {
         return type;
     }
 
     /**
-     * @param type
+     * @param type  the type of the node
      */
     public void setType(Integer type) {
         this.type = type;
     }
 
     /**
-     * @return
+     * @return the starting position of the node in the file
      */
     public Integer getoffset() {
         return offset;
     }
 
     /**
-     * @param offset
+     * @param offset the starting position of the node in the file
      */
     public void setoffset(Integer offset) {
         this.offset = offset;
     }
 
     /**
-     * @return
+     * @return the length of the node in the file
      */
     public Integer getLength() {
         return length;
     }
 
     /**
-     * @param length
+     * @param length the length of the node in the file
      */
     public void setLength(Integer length) {
         this.length = length;
     }
 
 
+    /**
+     * @return the computed hash of the node
+     */
     public Long getHash() {
         return hash;
     }
 
+    /**
+     * @param hash  the computed hash of the node
+     */
     public void setHash(Long hash) {
         this.hash = hash;
     }
 
+    /**
+     * @param hash add this hash to node hash
+     */
     public void addToHash(HashCode hash) {
         this.hash += hash.asLong();
     }
 
+    /**
+     * @param hash add this hash to node hash
+     */
     public void addToHash(Integer hash) {
         this.hash += hash;
     }
 
+    /**
+     * @param hash add this hash to node hash
+     */
     public void addToHash(Long hash) {
         this.hash += hash;
     }
 
-    private String name;
-    private Integer type;
-    private Integer offset;
-    private Integer length;
-    private Long hash;
 
+    /**
+     * @return the list of nodes that lives in this node
+     */
     public List<ASTHashObject> getNodes() {
         return nodes;
     }
 
+    /**
+     * @param nodes the list of nodes that lives in this node
+     */
     public void setNodes(List<ASTHashObject> nodes) {
         this.nodes = nodes;
     }
 
+    /**
+     * @param node add this node to list of nodes
+     */
     public void addNode(ASTHashObject node) {
         if (this.name != null)
         this.nodes.add(node);
     }
 
     private List<ASTHashObject> nodes;
+    private String name;
+    private Integer type;
+    private Integer offset;
+    private Integer length;
+    private Long hash;
 }
