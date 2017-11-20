@@ -17,10 +17,15 @@ public class Runner {
                 "\npublic String parse(String txt) { \n " +
                 "int i=0; while(i<7) {i = j; new System(); i++;}} \n} ";
 
+        //TODO: Initialize new report object
+        //TODO: Add all report Items to the report object
         PDContext md5 = new PDContext(new MD5Strategy());
         PDContext contextStructure = new PDContext(new ASTStructureStrategy());
         PDContext methodStructure = new PDContext(new ASTMethodStrategy());
         PDContext loopStructure = new PDContext(new ASTLoopStrategy());
+
+        //TODO: Save the report object
+
 
         System.out.println("MD5: " + md5.executeStrategy(code1, code2));
         System.out.println("Structure: " + contextStructure.executeStrategy(code1, code2));

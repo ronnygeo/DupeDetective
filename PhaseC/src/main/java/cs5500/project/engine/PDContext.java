@@ -1,5 +1,9 @@
 package cs5500.project.engine;
 
+import cs5500.project.spring.data.ReportItem;
+
+import java.util.List;
+
 /**
  * The context for the strategy pattern
  */
@@ -24,7 +28,7 @@ public class PDContext {
 	/**
 	 * Execute the operation with the strategy
 	 */
-	public float executeStrategy(String code1, String code2){
+	public List<ReportItem> executeStrategy(String code1, String code2){
 			return pdStrategy.checkPlagiarism(code1, code2);
 		}
 }

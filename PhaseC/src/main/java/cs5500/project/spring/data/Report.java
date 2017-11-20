@@ -1,13 +1,17 @@
 package cs5500.project.spring.data;
 
+import org.mongojack.MongoCollection;
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+@MongoCollection(name = "reports")
 public class Report{
 	
 	@Id private String id;
 	private int submissionId;
 	private int score;
-	
+	private List<ReportItem> items;
+
 	public String getId() {
 		return id;
 	}
@@ -30,5 +34,13 @@ public class Report{
 
 	public void setScore(int score) {
 		this.score = score;
+	}
+
+	public List<ReportItem> getItems() {
+		return items;
+	}
+
+	public void setItems(List<ReportItem> items) {
+		this.items = items;
 	}
 }

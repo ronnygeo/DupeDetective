@@ -56,7 +56,9 @@ public class ASTLoopCompare implements CustomComparator<List<ASTHashObject>> {
         LCSCompare lcsc = new LCSCompare();
         System.out.println("l1: " + l1.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
         System.out.println("l2" + l2.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
-        return lcsc.compare(l1.stream().map(ASTHashObject::getType).map(i -> (long) i).collect(Collectors.toList()),
-                l2.stream().map(ASTHashObject::getType).map(i -> (long) i).collect(Collectors.toList())) / (float) Math.max(l1.size(), l2.size());
+//        List<Long>lcsList = lcsc.compare(l1.stream().map(ASTHashObject::getType).map(item -> ((long) item)).collect(Collectors.toList()),
+//                l2.stream().map(ASTHashObject::getType).map(item -> ((long) item)).collect(Collectors.toList()));
+//        return lcsList.size()/ (float) Math.max(l1.size(), l2.size());
+        return 0;
     }
 }

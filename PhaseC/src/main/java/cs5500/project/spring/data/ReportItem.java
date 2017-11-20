@@ -1,83 +1,175 @@
 package cs5500.project.spring.data;
 
+import org.mongojack.Id;
+
+/**
+ * An item is part of the report
+ */
 public class ReportItem {
 
     /**
-     * @param name identifier name of node
-     * @param type type of node
-     * @param offset offset of node
-     * @param length length of node
+     * @param id the id
+     * @param refFileId the reference file id
+     * @param refOffset the reference file offset
+     * @param refLength the reference file length
+     * @param similarFildId similar file id
+     * @param similarOffset similar file offset
+     * @param similarLength similar file length
+     * @param score score computed by the model
+     * @param model the model used in computation
      */
-    public ReportItem(String name, Integer type, Integer offset, Integer length) {
-        this.name = name;
-        this.type = type;
-        this.offset = offset;
-        this.length = length;
+    public ReportItem(Integer id, Integer refFileId, Integer refOffset, Integer refLength, Integer similarFildId, Integer similarOffset, Integer similarLength, Integer score, Integer model) {
+        this.id = id;
+        this.refFileId = refFileId;
+        this.refOffset = refOffset;
+        this.refLength = refLength;
+        this.similarFildId = similarFildId;
+        this.similarOffset = similarOffset;
+        this.similarLength = similarLength;
+        this.score = score;
+        this.model = model;
     }
 
     /**
-     * Default Constructor
+     * Default constructor
      */
     public ReportItem() {}
 
     /**
-     * @return the name of the node
+     * @return the id
      */
-    public String getName() {
-        return name;
+    public Integer getId() {
+        return id;
     }
 
     /**
-     * @param name name of the node
+     * @param id the id
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     /**
-     * @return
+     * @return the reference file id
      */
-    public Integer getType() {
-        return type;
+    public Integer getRefFileId() {
+        return refFileId;
     }
 
     /**
-     * @param type
+     * @param refFileId the reference file id
      */
-    public void setType(Integer type) {
-        this.type = type;
+    public void setRefFileId(Integer refFileId) {
+        this.refFileId = refFileId;
     }
 
     /**
-     * @return
+     * @return  the reference file offset
      */
-    public Integer getoffset() {
-        return offset;
+    public Integer getRefOffset() {
+        return refOffset;
     }
 
     /**
-     * @param offset
+     * @param refOffset the reference file offset
      */
-    public void setoffset(Integer offset) {
-        this.offset = offset;
+    public void setRefOffset(Integer refOffset) {
+        this.refOffset = refOffset;
     }
 
     /**
-     * @return
+     * @return the reference file length
      */
-    public Integer getLength() {
-        return length;
+    public Integer getRefLength() {
+        return refLength;
     }
 
     /**
-     * @param length
+     * @param refLength the reference file length
      */
-    public void setLength(Integer length) {
-        this.length = length;
+    public void setRefLength(Integer refLength) {
+        this.refLength = refLength;
     }
 
-    private String name;
-    private Integer type;
-    private Integer offset;
-    private Integer length;
+    /**
+     * @return the similar file id
+     */
+    public Integer getSimilarFildId() {
+        return similarFildId;
+    }
+
+    /**
+     * @param similarFildId the similar file id
+     */
+    public void setSimilarFildId(Integer similarFildId) {
+        this.similarFildId = similarFildId;
+    }
+
+    /**
+     * @return the similar file offset
+     */
+    public Integer getSimilarOffset() {
+        return similarOffset;
+    }
+
+    /**
+     * @param similarOffset the similar file offset
+     */
+    public void setSimilarOffset(Integer similarOffset) {
+        this.similarOffset = similarOffset;
+    }
+
+    /**
+     * @return the similar file length
+     */
+    public Integer getSimilarLength() {
+        return similarLength;
+    }
+
+    /**
+     * @param similarLength the similar file length
+     */
+    public void setSimilarLength(Integer similarLength) {
+        this.similarLength = similarLength;
+    }
+
+    /**
+     * @return score computed by the model
+     */
+    public Integer getScore() {
+        return score;
+    }
+
+    /**
+     * @param score score computed by the model
+     */
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    /**
+     * @return the model for the report
+     */
+    public Integer getModel() {
+        return model;
+    }
+
+    /**
+     * @param model the model used for the report
+     */
+    public void setModel(Integer model) {
+        this.model = model;
+    }
+
+    @Id
+    private Integer id;
+    private Integer refFileId;
+    private Integer refOffset;
+    private Integer refLength;
+    private Integer similarFildId;
+    private Integer similarOffset;
+    private Integer similarLength;
+    private Integer score;
+    private Integer model;
+
 }
