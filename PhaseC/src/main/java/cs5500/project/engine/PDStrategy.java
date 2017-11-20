@@ -8,5 +8,5 @@ public interface PDStrategy {
     /**
      * Method to invoke the plagiarism detection inside the given assignment
      */
-    public void checkPlagiarism();
+    public float checkPlagiarism(String testCode1, String testCode2);
 }

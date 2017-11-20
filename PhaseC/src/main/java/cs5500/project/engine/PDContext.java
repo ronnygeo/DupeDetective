@@ -24,7 +24,7 @@ public class PDContext {
 	/**
 	 * Execute the operation with the strategy
 	 */
-	public void executeStrategy(){
-			pdStrategy.checkPlagiarism();
+	public float executeStrategy(String code1, String code2){
+			return pdStrategy.checkPlagiarism(code1, code2);
 		}
 }
