@@ -20,18 +20,18 @@ public class ASTHashCompare implements CustomComparator<CompilationUnit> {
      */
     @Override
     public float compare(CompilationUnit obj1, CompilationUnit obj2) {
-        ASTVisitor astVisitor1 = new ASTStructureVisitor();
-        ASTVisitor astVisitor2 = new ASTStructureVisitor();
+        ASTVisitor astVisitor1 = new ASTMethodVisitor();
+        ASTVisitor astVisitor2 = new ASTMethodVisitor();
         obj1.accept(astVisitor1);
         obj2.accept(astVisitor2);
 
-        List<ASTHashObject> l1 = ((ASTStructureVisitor)astVisitor1).getList();
-        List<ASTHashObject> l2 = ((ASTStructureVisitor)astVisitor2).getList();
+        List<ASTHashObject> l1 = ((ASTMethodVisitor)astVisitor1).getList();
+        List<ASTHashObject> l2 = ((ASTMethodVisitor)astVisitor2).getList();
 
-        HashCompare hc = new HashCompare();
-        System.out.println(l1.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
-        System.out.println(l2.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
-        return hc.compare(l1.stream().map(ASTHashObject::getType).collect(Collectors.toList()),
-                l2.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
+        LCSCompare lcsc = new LCSCompare();
+        System.out.println(l1.stream().map(ASTHashObject::getHash).collect(Collectors.toList()));
+        System.out.println(l2.stream().map(ASTHashObject::getHash).collect(Collectors.toList()));
+        return lcsc.compare(l1.stream().map(ASTHashObject::getHash).collect(Collectors.toList()),
+                l2.stream().map(ASTHashObject::getHash).collect(Collectors.toList()))/(float) Math.max(l1.size(), l2.size());
     }
 }

@@ -1,0 +1,11 @@
+<div class="card mx-auto mt-5">
+  <div class="card-header">Upload Submission</div>
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <input type="file" class="form-control" (change)="fileChange($event)" name="file" />
+      </div>
+<a class="btn btn-primary btn-block white-text" (click)="upload()">Upload!</a>
+    </form>
+  </div>
+</div>

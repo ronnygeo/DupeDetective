@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Compare two lists using LCS algorithm
  */
-public class LCSCompare implements CustomComparator<List<Integer>> {
+public class LCSCompare implements CustomComparator<List<Long>> {
 
     /**
      * Compare the first object with the other
@@ -17,7 +17,7 @@ public class LCSCompare implements CustomComparator<List<Integer>> {
      * @param obj2 : the second object to compare
      * @return a value that represents how similar the two documents are
      */
-    public float compare(List<Integer> obj1, List<Integer> obj2) {
-        return (ListUtils.longestCommonSubsequence(obj1, obj2).size() /(float) Math.max(obj1.size(), obj2.size()));
+    public float compare(List<Long> obj1, List<Long> obj2) {
+        return (ListUtils.longestCommonSubsequence(obj1, obj2).size());
     }
 }

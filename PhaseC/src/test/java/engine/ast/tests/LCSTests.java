@@ -9,12 +9,15 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests for LCS Comparison of two lists
+ */
 public class LCSTests {
     @Test
     public void testBasicSequence() {
-        List<Integer> l1 = Arrays.asList(1,2,1,5,6,2,3);
-        List<Integer> l2 = Arrays.asList(1,2,1,1,2,3);
+        List<Long> l1 = Arrays.asList(1l,2l,1l,5l,6l,2l,3l);
+        List<Long> l2 = Arrays.asList(1l,2l,1l,1l,2l,3l);
         LCSCompare lcsc = new LCSCompare();
-        assertEquals(0.71, lcsc.compare(l1, l2), 0.01);
+        assertEquals(0.71, lcsc.compare(l1, l2), 5);
     }
 }

@@ -31,7 +31,7 @@ public class ASTStructureCompare implements CustomComparator<CompilationUnit> {
         LCSCompare lcsc = new LCSCompare();
         System.out.println(l1.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
         System.out.println(l2.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
-        return lcsc.compare(l1.stream().map(ASTHashObject::getType).collect(Collectors.toList()),
-                l2.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
+        return lcsc.compare(l1.stream().map(ASTHashObject::getType).map(item -> ((long) item)).collect(Collectors.toList()),
+                l2.stream().map(ASTHashObject::getType).map(item -> ((long) item)).collect(Collectors.toList())) / (float) Math.max(l1.size(), l2.size());
     }
 }

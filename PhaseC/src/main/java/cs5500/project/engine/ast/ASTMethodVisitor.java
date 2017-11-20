@@ -793,21 +793,23 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
     }
 
     /**
-     * @param hash
+     * Add the hash value of a node to the current node
+     * @param hash the hash value of a node
      */
     private void addHashToCurrentNode(Integer hash) {
         if (currentNode != null) currentNode.addToHash(hash);
     }
 
     /**
-     * @param node
+     * Add the given node to list of nodes of current node
+     * @param node an AST node
      */
     private void addNodeToCurrentNode(ASTNode node) {
         if (currentNode != null) currentNode.addToHash(node.hashCode());
     }
 
     /**
-     *
+     * Reset the current node
      */
     private void resetCurrentNode() {
         currentNode = null;
@@ -825,7 +827,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
 
     private ASTHashObject currentNode;
     private List<ASTHashObject> nodes;
-    private HashCode currentTreeHash;
     private boolean typeCheck = false;
 }
 
