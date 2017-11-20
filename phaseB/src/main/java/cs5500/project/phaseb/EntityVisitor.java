@@ -38,6 +38,6 @@ public interface EntityVisitor {
      *
      * @param file
      */
-    public void visit(File file);
+    public void visit(FileObj file);
 
 }

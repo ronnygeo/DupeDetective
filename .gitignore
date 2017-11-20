@@ -1,4 +1,10 @@
 .DS_Store
-/.idea/
 *.iml
 /PhaseC/target/
+*.class
+target/
+/phaseB/target/
+
+node_modules
+.idea
+/PhaseC/public/.idea/workspace.xml
