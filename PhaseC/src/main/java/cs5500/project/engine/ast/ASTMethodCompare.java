@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 /**
  * Class that compares the hashes inside the AST
  */
-public class ASTHashCompare implements CustomComparator<List<ASTHashObject>> {
+public class ASTMethodCompare implements CustomComparator<List<ASTHashObject>> {
     /**
      * Compare the first object with the other
      *

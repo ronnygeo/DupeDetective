@@ -1,15 +1,14 @@
 package cs5500.project.engine;
 
-import cs5500.project.engine.ast.ASTStructureCompare;
-import cs5500.project.engine.ast.ASTStructureVisitor;
-import cs5500.project.engine.ast.CustomASTParser;
+import cs5500.project.engine.ast.*;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 /**
- * AST Strategy for code structure
+ * AST Strategy for loop comparison
  */
-public class ASTStructureStrategy implements PDStrategy {
+public class ASTLoopStrategy implements PDStrategy {
+
 	/**
 	 * Method to invoke the plagiarism detection inside the given assignment
 	 */
@@ -22,10 +21,10 @@ public class ASTStructureStrategy implements PDStrategy {
 		CompilationUnit cu1 = astParser.parse(testCode1);
 		CompilationUnit cu2 = astParser.parse(testCode2);
 
-		ASTVisitor visitor1 = new ASTStructureVisitor();
-		ASTVisitor visitor2 = new ASTStructureVisitor();
+		ASTVisitor visitor1 = new ASTLoopVisitor();
+		ASTVisitor visitor2 = new ASTLoopVisitor();
 		cu1.accept(visitor1);
 		cu2.accept(visitor2);
-		new ASTStructureCompare().compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList());
+		new ASTLoopCompare().compare(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList());
 	}
 }

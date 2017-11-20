@@ -13,6 +13,9 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+/**
+ * AST Loop Comparison tests
+ */
 public class ASTLoopCompareTests {
 
     private Parser<CompilationUnit> astParser;

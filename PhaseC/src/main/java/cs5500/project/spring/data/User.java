@@ -1,4 +1,4 @@
-package cs5500.project.spring;
+package cs5500.project.spring.data;
 
 /**
  * Interface for Users in the system; namely, Student, Grader
