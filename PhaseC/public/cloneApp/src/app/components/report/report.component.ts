@@ -3,7 +3,13 @@ import {Assignment} from "../../models/assignment";
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {ReportService} from "../../services/report.service";
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {ComparedocumentsComponent} from "../comparedocuments/comparedocuments.component";
+import {AssignmentService} from "../../services/assignment.service";
+import {UserService} from "../../services/user.service";
+import {User} from "../../models/user";
+import {SubmissionService} from "../../services/submission.service";
+import {Report} from "../../models/report";
 
 /**
  * The Component that creates the Report page
@@ -11,33 +17,52 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-submission-list',
   templateUrl: './report.component.html',
-  styleUrls: ['./report.component.css']
+  styleUrls: ['./report.component.css'],
+  entryComponents: [ComparedocumentsComponent]
 })
 export class ReportComponent implements OnInit {
 
-  closeResult: string;
-
   private assignment: Assignment;
+  private assignments: Assignment[];
+  private student1: User;
+  private student2: User;
+  private students: User[];
+  private exactCopy = false;
+  private report: Report;
 
   constructor(private route: ActivatedRoute,
               private reportService: ReportService,
               private location: Location,
-              private modalService: NgbModal) {}
+              private modalService: NgbModal,
+              private assignmentService: AssignmentService,
+              private userService: UserService,
+              private submissionService: SubmissionService) {}
 
   ngOnInit() {
-    this.getAssignment();
+    this.getReport();
+    this.getAllAssignments();
+    this.getAllUsers();
+  }
+
+  // Gets all the users
+  getAllUsers() {
+    this.userService.getUsers().subscribe(users => this.students = users.filter(u => u.grader === false));
+  }
+  // Gets all the assignments
+  getAllAssignments() {
+    this.assignmentService.getAssignments().subscribe(assignments => this.assignments = assignments);
   }
 
   // Get the assignment
-  getAssignment(): void {
-    const id = +this.route.snapshot.paramMap.get('assignmentId');
-    this.reportService.getAssignment(id)
-      .subscribe(assignment => this.assignment = assignment);
-  }
-
-  save(): void {
-    this.reportService.updateAssignment(this.assignment)
-      .subscribe(() => this.goBack());
+  getReport(): void {
+      if (this.route.snapshot.paramMap.get('submissionId') != null && this.route.snapshot.paramMap.get('assignmentId') !== "") {
+      const id = +this.route.snapshot.paramMap.get('submissionId');
+      this.reportService.getReport(id)
+        .subscribe(report => this.report = report);
+    } else {
+      this.reportService.getReport(1)
+        .subscribe(report => this.report = report);
+    }
   }
 
   // Go back to previous page
@@ -45,21 +70,10 @@ export class ReportComponent implements OnInit {
     this.location.back();
   }
 
-  open(content) {
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+  // Open the modal to display comparison
+  open(model) {
+    const modalRef = this.modalService.open(ComparedocumentsComponent);
+    modalRef.componentInstance.model = model;
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
 }

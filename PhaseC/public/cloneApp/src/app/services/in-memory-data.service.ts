@@ -30,14 +30,14 @@ export class InMemoryDataService implements InMemoryDbService {
     const files = [];
 
     const users: User[] = [
-      {id: 1, name: "Ronny", username: "ronny", password: "12345"},
-      {id: 1, name: "Joyal", username: "joyal", password: "12345"},
-      {id: 1, name: "Shalin", username: "shalin", password: "12345"},
-      {id: 1, name: "Nikhila", username: "nikhila", password: "12345"},
-      {id: 1, name: "Bob", username: "bob", password: "12345"}
+      {id: 1, name: "Ronny", username: "ronny", password: "12345", grader: false},
+      {id: 1, name: "Joyal", username: "joyal", password: "12345", grader: false},
+      {id: 1, name: "Shalin", username: "shalin", password: "12345", grader: false},
+      {id: 1, name: "Nikhila", username: "nikhila", password: "12345", grader: false},
+      {id: 1, name: "Bob", username: "bob", password: "12345", grader: true}
     ];
 
-    const report: Report[] = [];
-    return {users, assignments, submissions, files};
+    const reports: Report[] = [];
+    return {users, assignments, submissions, files, reports};
   }
 }
