@@ -1,30 +1,34 @@
 package cs5500.project.engine;
 
-/**
- * Interface that generates an analysis about the assignment submissions
- */
-public interface Report {
-    /**
-     * Provided a submission Id, returns the generated report for that student's submission
-     *
-     * @param submissionId
-     * @return Report
-     */
-    public Report getReport(int submissionId);
+import org.springframework.data.annotation.Id;
 
-    /**
-     * For a provided submission Id, returns the calculated score of plagiarism with the other submissions
-     *
-     * @param submissionId
-     * @return Score of plagiarism
-     */
-    public int getScore(int submissionId);
+public class Report{
+	
+	@Id private String id;
+	private int submissionId;
+	private int score;
+	
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * For a provided submission Id, returns an array of scores compared to each submission individually
-     *
-     * @param submissionId
-     * @return an array of scores after comparison
-     */
-    public int[] getAllScores(int submissionId);
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public int getSubmissionId() {
+		return submissionId;
+	}
+
+	public void setSubmissionId(int submissionId) {
+		this.submissionId = submissionId;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
 }
