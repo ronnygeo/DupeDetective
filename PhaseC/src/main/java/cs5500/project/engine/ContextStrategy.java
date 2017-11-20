@@ -1,6 +1,6 @@
 package cs5500.project.engine;
 
-public class XYZStrategy {
+public class ContextStrategy{
 	private Detector detect;
 	
 }
