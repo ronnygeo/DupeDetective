@@ -1,4 +1,4 @@
-package cs5500.project.spring;
+package cs5500.project.spring.data;
 
 public class ReportItem {
 
