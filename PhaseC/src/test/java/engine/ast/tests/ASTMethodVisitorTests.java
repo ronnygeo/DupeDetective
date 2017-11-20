@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- *
+ * AST method visitor tests
  */
 public class ASTMethodVisitorTests {
 
