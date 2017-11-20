@@ -1,8 +1,11 @@
 package engine.ast.tests;
 
 import cs5500.project.engine.Parser;
+import cs5500.project.engine.ast.ASTLoopVisitor;
 import cs5500.project.engine.ast.ASTStructureCompare;
+import cs5500.project.engine.ast.ASTStructureVisitor;
 import cs5500.project.engine.ast.CustomASTParser;
+import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Test;
 
@@ -16,8 +19,14 @@ public class ASTStructureCompareTests {
         Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu1 = astParser.parse(testCode1);
         CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(0.875, astc.compare(cu1, cu2), 0.01);
+        assertEquals(0.875, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -27,8 +36,14 @@ public class ASTStructureCompareTests {
         Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu1 = astParser.parse(testCode1);
         CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(1, astc.compare(cu1, cu2), 0.01);
+        assertEquals(1, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -38,8 +53,14 @@ public class ASTStructureCompareTests {
         Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu1 = astParser.parse(testCode1);
         CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(1, astc.compare(cu1, cu2), 0.01);
+        assertEquals(1, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -49,8 +70,14 @@ public class ASTStructureCompareTests {
         Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu1 = astParser.parse(testCode1);
         CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(1, astc.compare(cu1, cu2), 0.01);
+        assertEquals(0.76, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -61,8 +88,14 @@ public class ASTStructureCompareTests {
         Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu1 = astParser.parse(testCode1);
         CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(0.375, astc.compare(cu1, cu2), 0.01);
+        assertEquals(0.375, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -72,8 +105,14 @@ public class ASTStructureCompareTests {
         Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu1 = astParser.parse(testCode1);
         CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(0.95, astc.compare(cu1, cu2), 0.01);
+        assertEquals(0.95, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -83,8 +122,14 @@ public class ASTStructureCompareTests {
         Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu1 = astParser.parse(testCode1);
         CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(0.84, astc.compare(cu1, cu2), 0.01);
+        assertEquals(0.86, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -94,8 +139,14 @@ public class ASTStructureCompareTests {
         Parser<CompilationUnit> astParser = new CustomASTParser();
         CompilationUnit cu1 = astParser.parse(testCode1);
         CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(0.5, astc.compare(cu1, cu2), 0.01);
+        assertEquals(0.53, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     //TODO: Add tests for different modifiers private/public

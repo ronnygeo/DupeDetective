@@ -8,8 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * AST Visitor implementation that visits methods
+ */
 public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
 
+    /**
+     * Default constructor
+     */
     public ASTMethodVisitor() {
         nodes = new ArrayList<>();
     }

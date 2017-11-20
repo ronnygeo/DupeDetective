@@ -1,5 +1,8 @@
 package cs5500.project.engine;
 
+/**
+ * AST Strategy for code structure
+ */
 public class ASTStructureStrategy implements PDStrategy {
 	private Detector detect;
 

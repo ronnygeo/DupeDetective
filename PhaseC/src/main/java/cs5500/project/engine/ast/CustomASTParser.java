@@ -6,7 +6,7 @@ import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 /**
- *
+ * AST Parser that creates the AST compilation unit from the code
  */
 public class CustomASTParser implements Parser<CompilationUnit> {
 

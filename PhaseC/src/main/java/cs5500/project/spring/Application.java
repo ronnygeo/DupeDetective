@@ -1,4 +1,4 @@
-package cs5500.project.web;
+package cs5500.project.spring;
 
 
 import org.springframework.boot.SpringApplication;

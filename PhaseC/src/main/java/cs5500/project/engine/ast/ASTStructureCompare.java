@@ -8,26 +8,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- *
+ * AST comparator that compares the structure of the code
  */
-public class ASTStructureCompare implements CustomComparator<CompilationUnit> {
+public class ASTStructureCompare implements CustomComparator<List<ASTHashObject>> {
     /**
      * Compare the first object with the other
      *
-     * @param obj1 : the first object to compare
-     * @param obj2 : the second object to compare
+     * @param l1 : the first list to compare
+     * @param l2 : the second list to compare
      * @return a value that represents how similar the two documents are
      */
     @Override
-    public float compare(CompilationUnit obj1, CompilationUnit obj2) {
-        ASTVisitor astVisitor1 = new ASTStructureVisitor();
-        ASTVisitor astVisitor2 = new ASTStructureVisitor();
-        obj1.accept(astVisitor1);
-        obj2.accept(astVisitor2);
-
-        List<ASTHashObject> l1 = ((ASTStructureVisitor)astVisitor1).getList();
-        List<ASTHashObject> l2 = ((ASTStructureVisitor)astVisitor2).getList();
-
+    public float compare(List<ASTHashObject> l1, List<ASTHashObject> l2) {
         LCSCompare lcsc = new LCSCompare();
         System.out.println(l1.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
         System.out.println(l2.stream().map(ASTHashObject::getType).collect(Collectors.toList()));

@@ -6,8 +6,14 @@ import org.eclipse.jdt.core.dom.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * AST visitor that visits nodes and keeps a list of node types
+ */
 public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
 
+    /**
+     * Default constructor
+     */
     public ASTStructureVisitor() {
         nodes = new ArrayList<>();
     }
