@@ -76,7 +76,6 @@ public class ASTLoopCompare implements CustomComparator<List<ASTHashObject>> {
             for (int j=0; j < l2.size(); j++) {
                 if (i == j) {
                     float val = getScoreNodes(l1.get(i).getNodes(), l2.get(j).getNodes());
-                    System.out.println(val);
                     sum += val;
                     count++;
                 } else if (i == j + 1) {
@@ -101,17 +100,11 @@ public class ASTLoopCompare implements CustomComparator<List<ASTHashObject>> {
      */
     private float getScoreNodes(List<ASTHashObject> l1, List<ASTHashObject> l2) {
         LCSCompare lcsc = new LCSCompare();
-        System.out.println("Before: " + l1.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
-        System.out.println("Before: " + l2.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
         List<ASTHashObject>lcsList = lcsc.compare(l1, l2);
 
-        float score = lcsList.size() / (float) Math.max(l1.size(), l2.size());
+        float score = lcsList.size() / ((float) Math.max(l1.size(), l2.size()) + 1);
         cleanLists(l1, lcsList);
         cleanLists(l2, lcsList);
-
-        System.out.println("LCS: " + lcsList.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
-        System.out.println("After: " + l1.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
-        System.out.println("After: " + l2.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
 
         return score;
     }

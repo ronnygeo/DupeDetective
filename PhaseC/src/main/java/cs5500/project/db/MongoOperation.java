@@ -1,11 +1,10 @@
 package cs5500.project.db;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.MongoClient;
+import com.mongodb.*;
 import cs5500.project.spring.data.Report;
 import cs5500.project.spring.data.ReportItem;
+import cs5500.project.spring.data.Submission;
+import org.bson.Document;
 import org.mongojack.JacksonDBCollection;
 import org.mongojack.WriteResult;
 
@@ -18,7 +17,7 @@ import java.util.List;
 public class MongoOperation {
 
     /**
-     * @param report
+     * @param report the Report object to insert
      * @return the id of saved object
      */
     public static void saveReport(Report report) {
@@ -28,10 +27,34 @@ public class MongoOperation {
         try (MongoClient mongoClient = new MongoClient("localhost", 27017)) {
             db = mongoClient.getDB("dd");
             collection = db.getCollection("reports");
-
             collection.insert(getReportDocument(report));
-
         }
+     }
+
+
+    /**
+     * Gets all the files of an assignment
+     * @param assignmentId the assignment id
+     * @return a list of submissions
+     */
+     public static List<Submission> getSubmissions(Integer assignmentId) {
+         List<Submission> l = new ArrayList<>();
+         BasicDBObject searchQuery;
+         DBCursor cursor;
+         try (MongoClient mongoClient = new MongoClient("localhost", 27017)) {
+             DB database = mongoClient.getDB("dd");
+             DBCollection collection = database.getCollection("submissions");
+             searchQuery = new BasicDBObject();
+             searchQuery.put("assignmentId", assignmentId);
+             cursor = collection.find(searchQuery);
+
+             while (cursor.hasNext()) {
+                 Submission submission = new Submission();
+                 submission.createFromMongoObj(cursor.next());
+                 l.add(submission);
+             }
+         }
+         return l;
      }
 
      private static BasicDBObject getReportDocument(Report report) {

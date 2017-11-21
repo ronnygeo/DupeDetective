@@ -5,6 +5,7 @@ import cs5500.project.spring.data.ReportItem;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**

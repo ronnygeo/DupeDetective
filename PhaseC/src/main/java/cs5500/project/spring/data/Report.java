@@ -16,7 +16,7 @@ public class Report{
 	 * @param refFileId reference file id
 	 * @param similarFileId similar file id
 	 */
-	public Report(Integer submissionId, Integer refFileId, Integer similarFileId) {
+	public Report(String submissionId, String refFileId, String similarFileId) {
 		this.submissionId = submissionId;
 		this.refFileId = refFileId;
 		this.similarFileId = similarFileId;
@@ -68,49 +68,49 @@ public class Report{
 	/**
 	 * @return the reference file id
 	 */
-	public Integer getRefFileId() {
+	public String getRefFileId() {
 		return refFileId;
 	}
 
 	/**
 	 * @param refFileId the reference file id
 	 */
-	public void setRefFileId(Integer refFileId) {
+	public void setRefFileId(String refFileId) {
 		this.refFileId = refFileId;
 	}
 
 	/**
 	 * @return the similar file id
 	 */
-	public Integer getSimilarFileId() {
+	public String getSimilarFileId() {
 		return similarFileId;
 	}
 
 	/**
 	 * @param similarFileId the similar file id
 	 */
-	public void setSimilarFileId(Integer similarFileId) {
+	public void setSimilarFileId(String similarFileId) {
 		this.similarFileId = similarFileId;
 	}
 
 	/**
 	 * @return the submission id
 	 */
-	public Integer getSubmissionId() {
+	public String getSubmissionId() {
 		return submissionId;
 	}
 
 	/**
 	 * @param submissionId the submission id
 	 */
-	public void setSubmissionId(Integer submissionId) {
+	public void setSubmissionId(String submissionId) {
 		this.submissionId = submissionId;
 	}
 
 	@Id private String id;
-	private Integer submissionId;
-	private Integer refFileId;
-	private Integer similarFileId;
+	private String submissionId;
+	private String refFileId;
+	private String similarFileId;
 	private List<ReportItem> items;
 
 }
