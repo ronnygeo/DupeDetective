@@ -38,6 +38,7 @@ public class MongoOperation {
          BasicDBObject document = new BasicDBObject();
          document.put("refFileId", report.getRefFileId());
          document.put("similarFileId", report.getSimilarFileId());
+         document.put("submissionId", report.getSubmissionId());
 
          List<BasicDBObject> dbItems = new ArrayList<>();
 
