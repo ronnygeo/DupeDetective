@@ -11,7 +11,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  * SubmissionRepository class which extends the MongoRepository and queries the Submission
  * table in the database
  */
-@RepositoryRestResource(collectionResourceRel = "files", path = "submissions")
+@RepositoryRestResource(collectionResourceRel = "submissions", path = "submissions")
 public interface SubmissionRepository extends MongoRepository<Submission, String>{
 
 	/**
