@@ -1,11 +1,20 @@
 package cs5500.project.db;
 
 import com.mongodb.DBObject;
+import org.springframework.data.annotation.Id;
 
 /**
  * Submission Object that stores information about submission
  */
 public class Submission {
+
+    // constructor for initialization
+    public Submission(String id, String assignmentId, String studentId) {
+        super();
+        this.id = id;
+        this.assignmentId = assignmentId;
+        this.studentId = studentId;
+    }
 
     /**
      * @return the id of the submission
@@ -135,6 +144,7 @@ public class Submission {
 
     }
 
+    @Id
     private String id;
     private String name;
     private String studentId;
