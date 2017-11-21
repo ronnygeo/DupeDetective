@@ -1,5 +1,9 @@
 package cs5500.project.engine.ast;
 
+import cs5500.project.engine.Model;
+import cs5500.project.spring.data.ReportItem;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ASTUtilities {
@@ -24,5 +28,23 @@ public class ASTUtilities {
                 }
             }
         }
+    }
+
+    /**
+     * Creates ReportItem objects from the two provided lists
+     * @param l1 the first list
+     * @param l2 the second list
+     * @return a list of ReportItems from the given list
+     */
+    public static List<ReportItem> createReportItems(List<ASTHashObject> l1, List<ASTHashObject> l2, Float score) {
+        List<ReportItem> items = new ArrayList<>();
+        for (int i=0; i < l1.size(); i++) {
+            ASTHashObject tmp1 = l1.get(i);
+            ASTHashObject tmp2 = l2.get(i);
+
+            ReportItem ri = new ReportItem(tmp1.getoffset(), tmp1.getLength(), tmp2.getoffset(), tmp2.getLength(), Model.ASTStructure.getValue(), score);
+            items.add(ri);
+        }
+        return items;
     }
 }

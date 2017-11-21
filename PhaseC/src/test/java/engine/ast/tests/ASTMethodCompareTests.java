@@ -36,7 +36,7 @@ public class ASTMethodCompareTests {
 
         ASTMethodCompare astmc = new ASTMethodCompare();
 
-        assertEquals(3, astmc.compare(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()).size());
+        assertEquals(1.0, astmc.getScore(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class ASTMethodCompareTests {
         cu2.accept(visitor2);
         ASTMethodCompare astmc = new ASTMethodCompare();
 
-        assertEquals(3, astmc.compare(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()).size());
+        assertEquals(1, astmc.compare(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()).size());
     }
 
     @Test
@@ -72,6 +72,6 @@ public class ASTMethodCompareTests {
         cu2.accept(visitor2);
         ASTMethodCompare astmc = new ASTMethodCompare();
 
-        assertEquals(3, astmc.compare(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()).size());
+        assertEquals(1, astmc.getScore(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.01);
     }
 }

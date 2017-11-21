@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static cs5500.project.engine.ast.ASTUtilities.cleanLists;
+import static cs5500.project.engine.ast.ASTUtilities.createReportItems;
 
 /**
  * Class that compares the hashes inside the AST
@@ -29,15 +30,12 @@ public class ASTMethodCompare implements CustomComparator<List<ASTHashObject>> {
         System.out.println("Before: " + l2.stream().map(ASTHashObject::getHash).collect(Collectors.toList()));
         List<ASTHashObject>lcsList = lcsc.compare(l1, l2);
 
-        float score = lcsList.size() / (float) Math.max(l1.size(), l2.size());
+        float score = getScore(l1, l2);
+
         cleanLists(l1, lcsList);
         cleanLists(l2, lcsList);
 
-        System.out.println("LCS: " + lcsList.stream().map(ASTHashObject::getHash).collect(Collectors.toList()));
-        System.out.println("After: " + l1.stream().map(ASTHashObject::getHash).collect(Collectors.toList()));
-        System.out.println("After: " + l2.stream().map(ASTHashObject::getHash).collect(Collectors.toList()));
-
-        return null;
+        return createReportItems(l1, l2, score);
     }
 
     /**

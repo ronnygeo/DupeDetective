@@ -26,7 +26,6 @@ public class ASTStructureStrategy implements PDStrategy {
 		ASTVisitor visitor2 = new ASTStructureVisitor();
 		cu1.accept(visitor1);
 		cu2.accept(visitor2);
-		return null;
-//		return new ASTStructureCompare().compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList());
+		return new ASTStructureCompare().compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList());
 	}
 }

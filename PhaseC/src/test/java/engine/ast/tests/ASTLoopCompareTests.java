@@ -9,7 +9,6 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
@@ -43,8 +42,7 @@ public class ASTLoopCompareTests {
         cu2.accept(visitor2);
 
         ASTLoopCompare astc = new ASTLoopCompare();
-        System.out.println(((ASTLoopVisitor) visitor1).getList().get(0));
-        assertEquals(1, astc.compare(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()));
+        assertEquals(0.71, astc.getScore(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.01);
 
     }
 

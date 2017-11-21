@@ -529,7 +529,6 @@ public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(VariableDeclarationFragment node) {
-       addNodeToNodes(new ASTHashObject(node.getName().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength(), node.hashCode()));
         return true;
     }
 
@@ -757,7 +756,7 @@ public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(VariableDeclarationExpression node) {
-       addNodeToNodes(new ASTHashObject(node.getType().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), node.hashCode()));
+//       addNodeToNodes(new ASTHashObject(node.getType().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), node.hashCode()));
         return true;
     }
 
