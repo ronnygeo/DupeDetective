@@ -10,13 +10,13 @@ import {Report} from "../models/report";
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const assignments: Assignment[] = [
-      { id: 1, name: 'Phase A', course: 'CS5500'},
-      { id: 2, name: 'Phase B', course: 'CS5500'},
-      { id: 3, name: 'Phase C', course: 'CS5500'},
-      { id: 4, name: 'Homework 1', course: 'CS5500'},
-      { id: 5, name: 'Homework 2', course: 'CS5500'},
-      { id: 6, name: 'Crawling', course: 'CS5610'},
-      { id: 7, name: 'Elasticsearch', course: 'CS5610'}
+      { id: "1", name: 'Phase A', course: 'CS5500', isAnalyzed: false},
+      { id: "2", name: 'Phase B', course: 'CS5500', isAnalyzed: false},
+      { id: "3", name: 'Phase C', course: 'CS5500', isAnalyzed: false},
+      { id: "4", name: 'Homework 1', course: 'CS5500', isAnalyzed: false},
+      { id: "5", name: 'Homework 2', course: 'CS5500', isAnalyzed: false},
+      { id: "6", name: 'Crawling', course: 'CS5610', isAnalyzed: false},
+      { id: "7", name: 'Elasticsearch', course: 'CS5610', isAnalyzed: false}
     ];
 
     const submissions: Submission[] = [
@@ -29,15 +29,15 @@ export class InMemoryDataService implements InMemoryDbService {
 
     const files = [];
 
-    const users: User[] = [
-      {id: 1, name: "Ronny", username: "ronny", password: "12345", grader: false},
-      {id: 1, name: "Joyal", username: "joyal", password: "12345", grader: false},
-      {id: 1, name: "Shalin", username: "shalin", password: "12345", grader: false},
-      {id: 1, name: "Nikhila", username: "nikhila", password: "12345", grader: false},
-      {id: 1, name: "Bob", username: "bob", password: "12345", grader: true}
+    const users = [
+      {id: "1", name: "Ronny", username: "ronny", password: "ronny", grader: false},
+      {id: "2", name: "Joyal", username: "joyal", password: "12345", grader: false},
+      {id: "3", name: "Shalin", username: "shalin", password: "12345", grader: false},
+      {id: "4", name: "Nikhila", username: "nikhila", password: "12345", grader: false},
+      {id: "5", name: "Bob", username: "bob", password: "12345", grader: true}
     ];
 
     const reports: Report[] = [];
-    return {users, assignments, submissions, files, reports};
+    return {users, assignments, reports};
   }
 }

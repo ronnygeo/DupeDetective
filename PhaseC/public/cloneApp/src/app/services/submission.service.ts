@@ -7,7 +7,10 @@ import { catchError, map, tap } from 'rxjs/operators';
 import {Submission} from "../models/submission";
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders(
+    { 'Content-Type': 'application/json',
+     'Authorization': 'Bearer ' + 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9....'}
+    )
 };
 
 /**
@@ -16,7 +19,7 @@ const httpOptions = {
 @Injectable()
 export class SubmissionService {
 
-  private submissionUrl = 'api/submissions';  // URL to web api
+  private submissionUrl = 'http://localhost:8080/submissions';  // URL to web api
 
   /**
    * Default Constructor
@@ -41,7 +44,7 @@ export class SubmissionService {
    * @returns {Observable<Assignment>} an Observable for the Assignments
    */
   getSubmissions(id: number): Observable<Submission[]> {
-    const url = `${this.submissionUrl}/${id}`;
+    const url = `${this.submissionUrl}?assignmentId=${id}`;
     return this.http.get<Submission[]>(url).pipe(
       tap(console.log),
       catchError(this.handleError<Submission[]>(`getSubmission id=${id}`))
@@ -49,14 +52,17 @@ export class SubmissionService {
   }
 
   /**
-   * Update an assignment
-   * @param {Submission} submission
-   * @returns {Observable<any>}
+   * Upload the given submission to server
+   * @param data form data
+   * @returns {Observable<any | any>}
    */
-  updateAssignment (submission: Submission): Observable<any> {
-    return this.http.put(this.submissionUrl, submission, httpOptions).pipe(
-      catchError(this.handleError<any>('updateAssignment'))
-    );
+  uploadSubmission(data) {
+    // It is very important to leave the Content-Type empty
+    // do not use headers.append('Content-Type', 'multipart/form-data');
+    return this.http.post(`${this.submissionUrl}/new`, JSON.stringify(data), httpOptions)
+      .pipe(
+        catchError(this.handleError<any>('uploadSubmission'))
+      );
   }
 
   /**

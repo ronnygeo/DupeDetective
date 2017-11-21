@@ -15,16 +15,22 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface SubmissionRepository extends MongoRepository<Submission, String>{
 
 	/**
+	 * Fetch all the submissions
+	 * @return list of all submissions
+	 */
+	List<Submission> findAll();
+
+	/**
 	 * method to return a list of submissions with the given assignment Id
 	 * @param assignmentId assignment id
 	 * @return list of Submissions
 	 */
-		List<Submission> findByAssignmentId(@Param("assignmentId") int assignmentId);
+		List<Submission> findByAssignmentId(@Param("assignmentId") String assignmentId);
 
 	/**
 	 * method that returns a list of submissions with the given studentId
 	 * @param studentId studentId
 	 * @return list of Submissions
 	 */
-		List<Submission> findByStudentId(@Param("studentId") int studentId);
+		List<Submission> findByStudentId(@Param("studentId") String studentId);
 }

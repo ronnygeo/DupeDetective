@@ -2,8 +2,9 @@
  * Class that maintains User structure
  */
 export class User {
-  id: number;
+  id: string;
   name: string;
+  email: string;
   username: string;
   password: string;
   grader: boolean;

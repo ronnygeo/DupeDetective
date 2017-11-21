@@ -3,8 +3,6 @@ package cs5500.project.db;
 import com.mongodb.DBObject;
 import org.springframework.data.annotation.Id;
 
-import java.util.Date;
-
 /**
  * Submission Object that stores information about submission
  */
@@ -16,8 +14,7 @@ public class Submission {
      * @param studentId student id
      */
     public Submission(String id, String assignmentId, String studentId) {
-        super();
-        this.id = id;
+        this.Id = id;
         this.assignmentId = assignmentId;
         this.studentId = studentId;
     }
@@ -50,14 +47,14 @@ public class Submission {
      * @return the id of the submission
      */
     public String getId() {
-        return id;
+        return Id;
     }
 
     /**
      * @param id the id of the submission
      */
     public void setId(String id) {
-        this.id = id;
+        this.Id = id;
     }
 
     /**
@@ -163,7 +160,6 @@ public class Submission {
      * @param obj A mongo DB Object
      */
     public void createFromMongoObj(DBObject obj) {
-        id = obj.get("id").toString();
         name = obj.get("name").toString();
         studentId = obj.get("studentId").toString();
         assignmentId = obj.get("assignmentId").toString();
@@ -175,7 +171,7 @@ public class Submission {
     }
 
     @Id
-    private String id;
+    private String Id;
     private String name;
     private String studentId;
     private String assignmentId;

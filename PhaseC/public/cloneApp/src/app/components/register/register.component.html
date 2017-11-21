@@ -7,21 +7,29 @@
       <div class="form-group">
         <div class="form-row">
             <label for="exampleInputName">Name</label>
-            <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Enter name">
+            <input class="form-control" id="exampleInputName" [(ngModel)]="name" name="name" type="text" aria-describedby="nameHelp" placeholder="Enter name">
         </div>
       </div>
       <div class="form-group">
         <label for="exampleInputEmail">Email address</label>
-        <input class="form-control" id="exampleInputEmail" type="email" aria-describedby="emailHelp" placeholder="Enter email">
-      </div><div class="form-group">
+        <input class="form-control" [(ngModel)]="email" name="email" id="exampleInputEmail" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputGrader">Grader/Student</label>
+        <select [(ngModel)]="grader" class="form-control" id="exampleInputGrader" name="grader" aria-describedby="graderHelp">
+          <option value="true" selected>Grader</option>
+          <option value="false">Student</option>
+        </select>
+      </div>
+      <div class="form-group">
         <label for="exampleInputUsername">Username</label>
-        <input class="form-control" id="exampleInputUsername" type="text" aria-describedby="usernameHelp" placeholder="Enter Username">
+        <input [(ngModel)]="username"  class="form-control" id="exampleInputUsername" type="text" name="username" aria-describedby="usernameHelp" placeholder="Enter Username">
       </div>
       <div class="form-group">
         <div class="form-row">
           <div class="col-md-6">
             <label for="exampleInputPassword1">Password</label>
-            <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
+            <input class="form-control" [(ngModel)]="password" id="exampleInputPassword1" type="password" name="password" placeholder="Password">
           </div>
           <div class="col-md-6">
             <label for="exampleConfirmPassword">Confirm password</label>

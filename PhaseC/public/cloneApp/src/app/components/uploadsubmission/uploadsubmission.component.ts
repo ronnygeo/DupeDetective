@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FileService} from "../../services/file.service";
+import {SubmissionService} from "../../services/submission.service";
+import {AssignmentService} from "../../services/assignment.service";
+import {Assignment} from "../../models/assignment";
 
+/**
+ * Upload submission component
+ */
 @Component({
   selector: 'app-upload-submission',
   templateUrl: './uploadsubmission.component.html',
@@ -11,25 +16,36 @@ export class UploadSubmissionComponent implements OnInit {
 
   private fileContent: string;
   private filename: string;
-  private assignmentId: number;
-  private userId: number;
+  private assignmentId: string;
+  private userId: string;
+  private assignments: Assignment[];
 
-  constructor(private fileService: FileService) {
+  constructor(private submissionService: SubmissionService,
+              private assignmentService: AssignmentService) {
   }
 
+  /**
+   * On page load
+   */
   ngOnInit() {
+    this.userId = JSON.parse(localStorage.getItem('currentUser'))["id"];
+    this.assignmentService.getAssignments().subscribe(assignments => {
+      this.assignments = assignments;
+      this.assignmentId = this.assignments[0].id;
+    });
   }
 
-  // fileChange(event): void {
-  //   this.fileList = event.target.files;
-  // }
-
+  /**
+   * on file change read it tt
+   * @param $event
+   */
   fileChange($event): void {
     this.readThis($event.target);
   }
 
   readThis(inputValue: any): void {
     const file: File = inputValue.files[0];
+    this.filename = inputValue.files[0].name;
     const myReader: FileReader = new FileReader();
 
     myReader.onloadend = (e) => {
@@ -40,11 +56,12 @@ export class UploadSubmissionComponent implements OnInit {
   }
 
   upload() {
-    if (this.fileContent != null || this.filename != null) {
-      // this.fileService.upload().subscribe(
-      //   data => console.log('success'),
-      //   error => console.log(error)
-      // );
+    if (this.fileContent != null || this.filename != null || this.assignmentId != null || this.userId != null) {
+      this.submissionService.uploadSubmission({"filename": this.filename, "filecontent": this.fileContent,
+        "assignmentId": this.assignmentId, "userId": this.userId, "submittedOn": new Date().toJSON(), "checksum": "4ghvg77"}).subscribe(
+        data => console.log('success'),
+        error => console.log(error)
+      );
     }
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-login',
@@ -17,14 +18,13 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    localStorage.setItem('currentUser', JSON.stringify({"username": this.username, "password": this.password, "grader": true}));
-    // TODO: Move to user service
-    const grader = true;
-    if (grader) {
-    this.router.navigate(['/assignments']);
-    } else {
-      this.router.navigate(['/submission/upload']);
-    }
-
+    this.userService.getUser(this.username, this.password).subscribe(user => {
+      localStorage.setItem("currentUser", JSON.stringify(user[0]));
+      if (user && user.grader) {
+        this.router.navigate(['/assignments']);
+      } else if (user && !user.grader) {
+        this.router.navigate(['/submissions/new']);
+      }
+    });
   }
 }

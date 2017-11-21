@@ -3,12 +3,12 @@ package cs5500.project.db;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Assignment class which has details about an assignment for example the id,course,
  * year, date it was analyzed,due date etc
  */
-
 public class Assignment {
 
 	/**
@@ -21,11 +21,11 @@ public class Assignment {
 	 * @param creationDate creation date
 	 * @param analyzedDate date analyzed
 	 */
-	public Assignment(int id, String name, String course, int year,
+	public Assignment(String id, String name, String course, int year,
 			boolean isAnalyzed, Date dueDate, Date creationDate,
 			Date analyzedDate) {
 		
-		this.id = id;
+		this.Id = id;
 		this.name = name;
 		this.course = course;
 		this.year = year;
@@ -36,18 +36,24 @@ public class Assignment {
 	}
 
 	/**
-	 * @return the id
+	 * Default Constructor
 	 */
-	public int getId() {
-		return id;
+	public Assignment() {}
+
+	/**
+	 * @return id
+	 */
+	public String getId() {
+		return Id;
 	}
 
 	/**
-	 * @param id the id
+	 * @param id id
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String id) {
+		this.Id = id;
 	}
+
 
 	/**
 	 * @return the name of the node
@@ -147,11 +153,11 @@ public class Assignment {
 		this.analyzedDate = analyzedDate;
 	}
 
-	@Id private int id;
+	@Id private String Id;
 	private String name;
 	private String course;
-	private int year;
 	private boolean isAnalyzed;
+	private int year;
 	private Date dueDate;
 	private Date creationDate;
 	private Date analyzedDate;

@@ -13,7 +13,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {FileService} from "./services/file.service";
 import {ReportComponent} from "./components/report/report.component";
 import {ReportService} from "./services/report.service";
 import {UserService} from "./services/user.service";
@@ -40,15 +39,15 @@ import { ComparedocumentsComponent } from './components/comparedocuments/compare
     FormsModule,
     NgbModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule,
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+    HttpClientModule
+    // // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // // and returns simulated server responses.
+    // // Remove it when a real server is ready to receive requests.
+    // , HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, { dataEncapsulation: false }
+    // )
   ],
-  providers: [AssignmentService, FileService, ReportService, UserService, SubmissionService, AlertService],
+  providers: [AssignmentService, ReportService, UserService, SubmissionService, AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

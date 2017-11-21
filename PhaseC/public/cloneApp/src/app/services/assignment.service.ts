@@ -15,7 +15,7 @@ const httpOptions = {
 @Injectable()
 export class AssignmentService {
 
-  private assignmentUrl = 'api/assignments';  // URL to web api
+  private assignmentUrl = 'http://localhost:8080/assignments';  // URL to web api
 
   /**
    * Default Constructor
@@ -30,7 +30,8 @@ export class AssignmentService {
   getAssignments(): Observable<Assignment[]> {
     return this.http.get<Assignment[]>(this.assignmentUrl)
       .pipe(
-        catchError(this.handleError('getAssignments', []))
+        catchError(this.handleError('getAssignments', [])),
+        map(r => r["_embedded"])
       );
   }
 
@@ -43,6 +44,7 @@ export class AssignmentService {
     const url = `${this.assignmentUrl}/${id}`;
     return this.http.get<Assignment>(url).pipe(
       tap(console.log),
+      map(r => r["_embedded"]),
       catchError(this.handleError<Assignment>(`getAssignment id=${id}`))
     );
   }

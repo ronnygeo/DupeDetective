@@ -21,6 +21,9 @@ export class AssignmentListComponent implements OnInit {
   }
 
   getAssignments(): void {
-    this.assignmentService.getAssignments().subscribe(assignments => this.assignments = assignments);
+    this.assignmentService.getAssignments().subscribe(assignments => {
+      console.log(assignments);
+      this.assignments = assignments;
+    });
   }
 }

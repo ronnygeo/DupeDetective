@@ -18,10 +18,10 @@ const routes: Routes = [
   { path: 'report', component: ReportComponent },
   { path: 'submission/:assignmentId', component: SubmissionListComponent },
   { path: 'submissions/new', component: UploadSubmissionComponent },
-  { path: '', component: HomeComponent },
+  // { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '', redirectTo: '', pathMatch: 'full' }
+  { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({

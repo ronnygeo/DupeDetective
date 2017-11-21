@@ -12,28 +12,20 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  * AssignmentRepository class which extends the MongoRepository and queries the Assignment
  * table in the database
  */
-
-@RepositoryRestResource(collectionResourceRel = "assignments", path = "assignments")
+@RepositoryRestResource(collectionResourceRel = "assignment", path = "assignments")
 public interface AssignmentRepository extends MongoRepository<Assignment, String>{
 
     /**
      * method to return all assignments
      * @return a list of assignments
      */
-    List<Assignment> findAllByCourseNotNull();
-
-    /**
-     * method to return assignment with the givenId
-     * @param assignmentId assignment id to fetch
-     * @return an Assignment
-     */
-    Assignment findById(@Param("assignmentId") int assignmentId);
+    List<Assignment> findAll();
 
     /**
      * method that returns a list of assignments of the given course
      * @param course a course
      * @return list of Assignments
      */
-    List<Assignment> findByCourse(@Param("course") int course);
+    List<Assignment> findByCourse(@Param("course") String course);
 
 }

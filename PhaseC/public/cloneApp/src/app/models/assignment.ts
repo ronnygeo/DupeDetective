@@ -2,7 +2,8 @@
  * Class that maintains Assignment structure
  */
 export class Assignment {
-  id: number;
+  id: string;
   name: string;
   course: string;
+  isAnalyzed: boolean;
 }

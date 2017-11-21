@@ -16,7 +16,7 @@ const httpOptions = {
 @Injectable()
 export class UserService {
 
-  private userUrl = 'api/users';
+  private userUrl = 'http://localhost:8080/users';
 
   constructor(private http: HttpClient) { }
 
@@ -44,9 +44,12 @@ export class UserService {
     );
   }
 
-  /** Update an assignment **/
-  updateUser (user: User): Observable<any> {
-    return this.http.put(this.userUrl, user, httpOptions).pipe(
+  /** Create a new user
+   * @param data json object
+   * @returns {Observable<User>} a user observable
+   * */
+  createUser (data): Observable<User> {
+    return this.http.post(this.userUrl, data, httpOptions).pipe(
       catchError(this.handleError<any>('updateUser'))
     );
   }
