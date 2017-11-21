@@ -20,7 +20,7 @@ public class Runner {
                 "\npublic String parse(String txt) { \n " +
                 "int i=0; while(i<7) {i = j; new System(); i++;}} \n} ";
 
-        Report report = new Report(1, 2);
+        Report report = new Report(1, 1, 2);
 //        PDContext md5 = new PDContext(new MD5Strategy());
         PDContext contextStructure = new PDContext(new ASTStructureStrategy());
         PDContext methodStructure = new PDContext(new ASTMethodStrategy());
