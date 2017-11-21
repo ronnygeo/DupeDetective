@@ -1,7 +1,7 @@
 package cs5500.project.engine.ast;
 
 import cs5500.project.engine.Model;
-import cs5500.project.spring.data.ReportItem;
+import cs5500.project.db.ReportItem;
 
 import java.util.ArrayList;
 import java.util.List;

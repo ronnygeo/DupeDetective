@@ -1,4 +1,4 @@
-package cs5500.project.spring.data;
+package cs5500.project.db;
 
 import org.springframework.data.annotation.Id;
 

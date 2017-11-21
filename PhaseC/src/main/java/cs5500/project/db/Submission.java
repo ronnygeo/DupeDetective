@@ -1,4 +1,4 @@
-package cs5500.project.spring.data;
+package cs5500.project.db;
 
 import com.mongodb.DBObject;
 
@@ -38,28 +38,28 @@ public class Submission {
     /**
      * @return the student id
      */
-    public Integer getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
 
     /**
      * @param studentId  the student id
      */
-    public void setStudentId(Integer studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 
     /**
      * @return the assignment id
      */
-    public Integer getAssignmentId() {
+    public String getAssignmentId() {
         return assignmentId;
     }
 
     /**
      * @param assignmentId the assignment id
      */
-    public void setAssignmentId(Integer assignmentId) {
+    public void setAssignmentId(String assignmentId) {
         this.assignmentId = assignmentId;
     }
 
@@ -126,8 +126,8 @@ public class Submission {
     public void createFromMongoObj(DBObject obj) {
         id = obj.get("id").toString();
         name = obj.get("name").toString();
-        studentId = Integer.parseInt(obj.get("studentId").toString());
-        assignmentId = Integer.parseInt(obj.get("assignmentId").toString());
+        studentId = obj.get("studentId").toString();
+        assignmentId = obj.get("assignmentId").toString();
         submittedOn = obj.get("submittedOn").toString();
         filename = obj.get("filename").toString();
         filecontent = obj.get("filecontent").toString();
@@ -137,8 +137,8 @@ public class Submission {
 
     private String id;
     private String name;
-    private Integer studentId;
-    private Integer assignmentId;
+    private String studentId;
+    private String assignmentId;
     private String submittedOn;
     private String filename;
     private String filecontent;

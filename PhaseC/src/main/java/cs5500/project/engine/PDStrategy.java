@@ -1,6 +1,6 @@
 package cs5500.project.engine;
 
-import cs5500.project.spring.data.ReportItem;
+import cs5500.project.db.ReportItem;
 
 import java.util.List;
 

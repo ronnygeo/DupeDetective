@@ -1,7 +1,7 @@
 package cs5500.project.engine;
 
 import cs5500.project.engine.ast.*;
-import cs5500.project.spring.data.ReportItem;
+import cs5500.project.db.ReportItem;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 

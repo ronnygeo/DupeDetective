@@ -1,9 +1,7 @@
 package cs5500.project.engine.ast;
 
 import cs5500.project.engine.CustomComparator;
-import cs5500.project.spring.data.ReportItem;
-import org.eclipse.jdt.core.dom.ASTVisitor;
-import org.eclipse.jdt.core.dom.CompilationUnit;
+import cs5500.project.db.ReportItem;
 
 import java.util.List;
 import java.util.stream.Collectors;
