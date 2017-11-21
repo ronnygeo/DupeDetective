@@ -38,7 +38,6 @@ public class MongoOperation {
 
     /**
      * @param report the Report object to insert
-     * @return the id of saved object
      */
     public void saveReport(Report report) {
 
@@ -78,6 +77,11 @@ public class MongoOperation {
          return l;
      }
 
+    /**
+     * Convert Report object to mongo object
+     * @param report the Report object
+     * @return the mongoDB object
+     */
      private BasicDBObject getReportDocument(Report report) {
          BasicDBObject document = new BasicDBObject();
          document.put("refFileId", report.getRefFileId());

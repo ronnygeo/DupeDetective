@@ -18,13 +18,13 @@ public interface AssignmentRepository extends MongoRepository<Assignment, String
 
     /**
      * method to return all assignments
-     * @return
+     * @return a list of assignments
      */
     List<Assignment> findAllByCourseNotNull();
 
     /**
      * method to return assignment with the givenId
-     * @param assignmentId
+     * @param assignmentId assignment id to fetch
      * @return an Assignment
      */
     Assignment findById(@Param("assignmentId") int assignmentId);

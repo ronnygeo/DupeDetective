@@ -11,7 +11,6 @@ public class ASTUtilities {
      * Remove the nodes not in LCS from the given list
      * @param l the list to clean
      * @param lcsList the list with LCS nodes
-     * @return new list with only the LCS nodes as objects
      */
     public static void cleanLists(List<ASTHashObject> l, List<ASTHashObject> lcsList) {
         int tmpIndex = 0;
@@ -34,6 +33,7 @@ public class ASTUtilities {
      * Creates ReportItem objects from the two provided lists
      * @param l1 the first list
      * @param l2 the second list
+     * @param score the score of comparison
      * @return a list of ReportItems from the given list
      */
     public static List<ReportItem> createReportItems(List<ASTHashObject> l1, List<ASTHashObject> l2, Float score) {

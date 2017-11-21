@@ -10,8 +10,17 @@ import org.springframework.data.annotation.Id;
  */
 
 public class Assignment {
-	
-	//constructor for initialization
+
+	/**
+	 * @param id the id
+	 * @param name name of assignment
+	 * @param course course
+	 * @param year year
+	 * @param isAnalyzed is the assignment analyzed
+	 * @param dueDate due date for the assignment
+	 * @param creationDate creation date
+	 * @param analyzedDate date analyzed
+	 */
 	public Assignment(int id, String name, String course, int year,
 			boolean isAnalyzed, Date dueDate, Date creationDate,
 			Date analyzedDate) {
@@ -27,64 +36,57 @@ public class Assignment {
 	}
 
 	/**
-	 * @return
+	 * @return the id
 	 */
-	// getter and setter method for Id
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * @param id
+	 * @param id the id
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	/**
-	 * @return
+	 * @return the name of the node
 	 */
-	// getter method for assignment name
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * @param name
+	 * @param name the name of the node
 	 */
-	// setter method for assignment name
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * @return
+	 * @return the course of this assignment
 	 */
-	// getter method for course name
 	public String getCourse() {
 		return course;
 	}
 
 	/**
-	 * @param course
+	 * @param course the course of this assignment
 	 */
-	// setter method for course name
 	public void setCourse(String course) {
 		this.course = course;
 	}
 
 	/**
-	 * @return
+	 * @return the year of assignment
 	 */
-	// getter method for year attribute
 	public int getYear() {
 		return year;
 	}
 
 	/**
-	 * @param year
+	 * @param year the year of assignment
 	 */
-	// setter method for year attribute
 	public void setYear(int year) {
 		this.year = year;
 	}
@@ -104,30 +106,28 @@ public class Assignment {
 	}
 
 	/**
-	 * @return
+	 * @return the due date
 	 */
-	// setter and getter methods for dueDate attribute
 	public Date getDueDate() {
 		return dueDate;
 	}
 
 	/**
-	 * @param dueDate
+	 * @param dueDate the due date
 	 */
 	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
 	}
 
 	/**
-	 * @return
+	 * @return the creation date
 	 */
-	// setter and getter methods for created date attribute
 	public Date getCreationDate() {
 		return creationDate;
 	}
 
 	/**
-	 * @param creationDate
+	 * @param creationDate the creation date
 	 */
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;

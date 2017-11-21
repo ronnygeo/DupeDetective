@@ -11,9 +11,9 @@ import java.util.Date;
 public class Submission {
 
     /**
-     * @param id
-     * @param assignmentId
-     * @param studentId
+     * @param id id
+     * @param assignmentId assignment id
+     * @param studentId student id
      */
     public Submission(String id, String assignmentId, String studentId) {
         super();
@@ -28,13 +28,13 @@ public class Submission {
     public Submission() {}
 
     /**
-     * @param name
-     * @param studentId
-     * @param assignmentId
-     * @param submittedOn
-     * @param filename
-     * @param filecontent
-     * @param checksum
+     * @param name name of submission
+     * @param studentId student id
+     * @param assignmentId assignment id
+     * @param submittedOn date submitted on
+     * @param filename filename
+     * @param filecontent content of the file
+     * @param checksum checksum of the content
      */
     public Submission(String name, String studentId, String assignmentId, String submittedOn, String filename, String filecontent, String checksum) {
         this.name = name;
