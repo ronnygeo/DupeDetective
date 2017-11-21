@@ -99,7 +99,8 @@ public class ASTLoopCompare implements CustomComparator<List<ASTHashObject>> {
         LCSCompare lcsc = new LCSCompare();
         List<ASTHashObject>lcsList = lcsc.compare(l1, l2);
 
-        float score = lcsList.size() / ((float) Math.max(l1.size(), l2.size()) + 1);
+        float score = lcsList.size() / ((float) Math.max(l1.size(), l2.size()));
+        if (Float.isNaN(score)) score = 0;
         cleanLists(l1, lcsList);
         cleanLists(l2, lcsList);
 

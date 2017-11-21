@@ -26,6 +26,6 @@ public interface AssignmentRepository extends MongoRepository<Assignment, String
      * @param course a course
      * @return list of Assignments
      */
-    List<Assignment> findByCourse(@Param("course") String course);
+    List<Assignment> findAssignmentByCourse(@Param("course") String course);
 
 }

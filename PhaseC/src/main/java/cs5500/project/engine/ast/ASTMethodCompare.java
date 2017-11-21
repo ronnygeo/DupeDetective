@@ -46,7 +46,8 @@ public class ASTMethodCompare implements CustomComparator<List<ASTHashObject>> {
         System.out.println("Before: " + l2.stream().map(ASTHashObject::getHash).collect(Collectors.toList()));
         List<ASTHashObject>lcsList = lcsc.compare(l1, l2);
 
-        float score = lcsList.size() / ((float) Math.max(l1.size(), l2.size()) + 1);
+        float score = lcsList.size() / ((float) Math.max(l1.size(), l2.size()));
+        if (Float.isNaN(score)) score = 0;
         cleanLists(l1, lcsList);
         cleanLists(l2, lcsList);
 

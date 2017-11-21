@@ -23,6 +23,6 @@ public interface UserRepository extends MongoRepository<User, String>{
      * @param username user id to fetch
      * @return a User
      */
-    User findByUsernameAndPassword(@RequestParam("username") String username, @RequestParam("password") String password);
+    User findUsersByUsernameAndPassword(@RequestParam("username") String username, @RequestParam("password") String password);
 
 }

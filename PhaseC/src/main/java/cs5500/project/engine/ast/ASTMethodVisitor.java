@@ -72,7 +72,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(SimpleType node) {
-        System.out.println("Type: " + node);
         typeCheck = true;
         return true;
     }
@@ -742,7 +741,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
 
     /**
      * Visit the given component using this visitor
-     *
      * @param node A this Expression
      * @return a boolean whether to traverse subtrees or not
      */

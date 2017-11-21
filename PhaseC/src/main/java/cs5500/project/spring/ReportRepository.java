@@ -19,5 +19,5 @@ public interface ReportRepository extends MongoRepository<Report, String>{
 	 * @param submissionId submission id
 	 * @return a list of reports
 	 */
-	List<Report> findBySubmissionId(@Param("submissionId") int submissionId);
+	List<Report> findReportsBySubmissionId(@Param("submissionId") int submissionId);
 }
