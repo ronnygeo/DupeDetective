@@ -81,7 +81,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      * Visit the given component using this visitor
      *
      * @param node A SimpleType
-     * @return a boolean whether to traverse subtrees or not
      */
     @Override
     public void endVisit(SimpleType node) {
@@ -184,7 +183,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      * Post Visit the method declaration, add it to the node list
      *
      * @param node A Method Declaration
-     * @return a boolean whether to traverse subtrees or not
      */
     @Override
     public void endVisit(MethodDeclaration node) {

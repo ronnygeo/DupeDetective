@@ -2,13 +2,8 @@ package cs5500.project.db;
 
 import com.mongodb.*;
 import cs5500.project.ReadProperties;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * Class that performs operations on mongo for the backend
@@ -38,7 +33,6 @@ public class MongoOperation {
 
     /**
      * @param report the Report object to insert
-     * @return the id of saved object
      */
     public void saveReport(Report report) {
 
@@ -78,26 +72,92 @@ public class MongoOperation {
          return l;
      }
 
-     private BasicDBObject getReportDocument(Report report) {
-         BasicDBObject document = new BasicDBObject();
-         document.put("refFileId", report.getRefFileId());
-         document.put("similarFileId", report.getSimilarFileId());
-         document.put("submissionId", report.getSubmissionId());
-
-         List<BasicDBObject> dbItems = new ArrayList<>();
-
-         for (ReportItem ri: report.getItems()) {
-             BasicDBObject documentDetail = new BasicDBObject();
-             documentDetail.put("refFileOffset", ri.getRefOffset());
-             documentDetail.put("similarFileOffset", ri.getSimilarOffset());
-             documentDetail.put("refFileLength", ri.getRefLength());
-             documentDetail.put("similarFileLength", ri.getSimilarLength());
-             documentDetail.put("model", ri.getModel());
-             documentDetail.put("score", ri.getScore());
-             dbItems.add(documentDetail);
+    /**
+     * save the submission to mongo
+     * @param submission a submission object
+     */
+     public void saveSubmission(Submission submission) {
+         DB db;
+         DBCollection collection;
+         try (MongoClient mongoClient = new MongoClient(host, port)) {
+             db = mongoClient.getDB(database);
+             collection = db.getCollection(colSubmission);
+             collection.insert(getSubmissionDocument(submission));
          }
-
-         document.put("lines", dbItems);
-         return document;
      }
+
+    /**
+     * save the assigment to mongo
+     * @param assignment a submission object
+     */
+    public void saveAssignment(Assignment assignment) {
+        DB db;
+        DBCollection collection;
+        try (MongoClient mongoClient = new MongoClient(host, port)) {
+            db = mongoClient.getDB(database);
+            collection = db.getCollection(colAssignment);
+            collection.insert(getAssignmentDocument(assignment));
+        }
+    }
+
+    /**
+     * Convert Report object to mongo object
+     * @param report the Report object
+     * @return the mongoDB object
+     */
+    private BasicDBObject getReportDocument(Report report) {
+        BasicDBObject document = new BasicDBObject();
+        document.put("refFileId", report.getRefFileId());
+        document.put("similarFileId", report.getSimilarFileId());
+        document.put("submissionId", report.getSubmissionId());
+
+        List<BasicDBObject> dbItems = new ArrayList<>();
+
+        for (ReportItem ri: report.getItems()) {
+            BasicDBObject documentDetail = new BasicDBObject();
+            documentDetail.put("refFileOffset", ri.getRefOffset());
+            documentDetail.put("similarFileOffset", ri.getSimilarOffset());
+            documentDetail.put("refFileLength", ri.getRefLength());
+            documentDetail.put("similarFileLength", ri.getSimilarLength());
+            documentDetail.put("model", ri.getModel());
+            documentDetail.put("score", ri.getScore());
+            dbItems.add(documentDetail);
+        }
+        document.put("lines", dbItems);
+        return document;
+    }
+
+    /**
+     * Convert Submission object to mongo object
+     * @param submission the Submission object
+     * @return the mongoDB object
+     */
+    private BasicDBObject getSubmissionDocument(Submission submission) {
+        BasicDBObject document = new BasicDBObject();
+        document.put("assignmentId", submission.getAssignmentId());
+        document.put("studentId", submission.getStudentId());
+        document.put("filename", submission.getFilename());
+        document.put("filecontent", submission.getFilecontent());
+        document.put("checksum", submission.getChecksum());
+        document.put("name", submission.getName());
+        document.put("submittedOn", submission.getSubmittedOn());
+        return document;
+    }
+
+    /**
+     * Convert Assignment object to mongo object
+     * @param assignment the Assignment object
+     * @return the mongoDB object
+     */
+    private BasicDBObject getAssignmentDocument(Assignment assignment) {
+        BasicDBObject document = new BasicDBObject();
+        document.put("assignmentId", assignment.getName());
+        document.put("studentId", assignment.getYear());
+        document.put("filename", assignment.isAnalyzed());
+        document.put("filecontent", assignment.getCourse());
+        document.put("checksum", assignment.getCreationDate());
+        document.put("name", assignment.getDueDate());
+        document.put("submittedOn", assignment.getAnalyzedDate());
+        return document;
+    }
 }

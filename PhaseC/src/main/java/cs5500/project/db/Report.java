@@ -1,6 +1,7 @@
 package cs5500.project.db;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,7 +108,8 @@ public class Report{
 		this.submissionId = submissionId;
 	}
 
-	@Id private String id;
+	@Id
+	private String id;
 	private String submissionId;
 	private String refFileId;
 	private String similarFileId;

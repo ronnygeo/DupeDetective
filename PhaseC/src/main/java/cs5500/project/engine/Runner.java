@@ -13,6 +13,7 @@ public class Runner {
 
     /**
      * Start analysis of documents
+     * @param assignmentId assignment id to analyze
      */
     public static void analyze(Integer assignmentId) {
         MongoOperation mongo = new MongoOperation();

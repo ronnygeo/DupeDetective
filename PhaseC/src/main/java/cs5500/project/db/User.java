@@ -8,8 +8,8 @@ public interface User {
     /**
      * For a given username, password; returns the valid User object linked to those credentials
      *
-     * @param username
-     * @param pass
+     * @param username the username
+     * @param pass password of user
      * @return User
      */
     public User login(String username, String pass);
@@ -17,8 +17,8 @@ public interface User {
     /**
      * For a user object, returns true if the User is created in the system, else; false.
      *
-     * @param user
-     * @return Boolean
+     * @param user User object
+     * @return Boolean result of registering
      */
     public boolean register(User user);
 }

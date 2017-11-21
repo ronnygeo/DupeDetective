@@ -13,10 +13,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  */
 @RepositoryRestResource(collectionResourceRel = "reports", path = "reports")
 public interface ReportRepository extends MongoRepository<Report, String>{
-	
-	// method to return a list of reports with the given submission Id
-	List<Report> findBySubmissionId(@Param("subId") int subId);
 
-	// method that returns a list of reports with the given score
-	List<Report> findByScore(@Param("score") int score);
+	// method to return a list of reports with the given submission Id
+	List<Report> findBySubmissionId(@Param("submissionId") int submissionId);
 }
