@@ -1,40 +1,84 @@
 package cs5500.project.db;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.MongoClient;
-import cs5500.project.spring.data.Report;
-import cs5500.project.spring.data.ReportItem;
-import org.mongojack.JacksonDBCollection;
-import org.mongojack.WriteResult;
+import com.mongodb.*;
+import cs5500.project.ReadProperties;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Class that performs operations on mongo for the backend
  */
 public class MongoOperation {
 
+    private String database;
+    private String host;
+    private Integer port;
+    private String colReport;
+    private String colSubmission;
+    private String colAssignment;
+    private final String PROPERTIES_FILE = "mongo.properties";
+
     /**
-     * @param report
+     * Default constructor
+     */
+    public MongoOperation() {
+        ReadProperties mongoProps = new ReadProperties();
+        host = mongoProps.readKey(PROPERTIES_FILE, "host");
+        port = Integer.parseInt(mongoProps.readKey(PROPERTIES_FILE, "port"));
+        database = mongoProps.readKey(PROPERTIES_FILE, "db");
+        colReport = mongoProps.readKey(PROPERTIES_FILE, "colReport");
+        colSubmission = mongoProps.readKey(PROPERTIES_FILE, "colSubmission");
+        colAssignment = mongoProps.readKey(PROPERTIES_FILE, "colAssignment");
+    }
+
+    /**
+     * @param report the Report object to insert
      * @return the id of saved object
      */
-    public static void saveReport(Report report) {
+    public void saveReport(Report report) {
 
         DB db;
         DBCollection collection;
-        try (MongoClient mongoClient = new MongoClient("localhost", 27017)) {
-            db = mongoClient.getDB("dd");
-            collection = db.getCollection("reports");
-
+        try (MongoClient mongoClient = new MongoClient(host, port)) {
+            db = mongoClient.getDB(database);
+            collection = db.getCollection(colReport);
             collection.insert(getReportDocument(report));
-
         }
      }
 
-     private static BasicDBObject getReportDocument(Report report) {
+
+    /**
+     * Gets all the files of an assignment
+     * @param assignmentId the assignment id
+     * @return a list of submissions
+     */
+     public List<Submission> getSubmissions(Integer assignmentId) {
+         List<Submission> l = new ArrayList<>();
+         BasicDBObject searchQuery;
+         DBCursor cursor;
+
+         try (MongoClient mongoClient = new MongoClient(host, port)) {
+             DB db = mongoClient.getDB(database);
+             DBCollection collection = db.getCollection(colSubmission);
+             searchQuery = new BasicDBObject();
+             searchQuery.put("assignmentId", assignmentId);
+             cursor = collection.find(searchQuery);
+
+             while (cursor.hasNext()) {
+                 Submission submission = new Submission();
+                 submission.createFromMongoObj(cursor.next());
+                 l.add(submission);
+             }
+         }
+         return l;
+     }
+
+     private BasicDBObject getReportDocument(Report report) {
          BasicDBObject document = new BasicDBObject();
          document.put("refFileId", report.getRefFileId());
          document.put("similarFileId", report.getSimilarFileId());

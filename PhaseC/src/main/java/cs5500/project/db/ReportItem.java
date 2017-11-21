@@ -1,4 +1,4 @@
-package cs5500.project.spring.data;
+package cs5500.project.db;
 
 /**
  * An item is part of the report
