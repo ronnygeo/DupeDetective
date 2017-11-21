@@ -1,6 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RegisterComponent } from './register.component';
+import {RegisterComponent} from './register.component';
+import {FormsModule} from "@angular/forms";
+import {UserService} from "../../services/user.service";
+import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -8,9 +12,15 @@ describe('RegisterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ]
+      imports: [FormsModule],
+      declarations: [RegisterComponent],
+      providers: [UserService, HttpClientModule, HttpClient, HttpHandler, {
+        provide: Router, useClass: class {
+          navigate = jasmine.createSpy("navigate");
+        }
+      }]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

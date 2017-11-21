@@ -6,7 +6,6 @@ import {AssignmentListComponent} from './components/assignmentlist/assignmentlis
 import {UploadSubmissionComponent} from './components/uploadsubmission/uploadsubmission.component';
 import {SubmissionListComponent} from './components/submissionlist/submissionlist.component';
 import {AssignmentService} from "./services/assignment.service";
-import { AppRoutingModule } from './/app-routing.module';
 import {HomeComponent} from "./components/home/home.component";
 import {HttpClientModule} from "@angular/common/http";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -14,9 +13,9 @@ import {ReportComponent} from "./components/report/report.component";
 import {ReportService} from "./services/report.service";
 import {UserService} from "./services/user.service";
 import {SubmissionService} from "./services/submission.service";
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {LoginComponent} from './components/login/login.component';
+import {RegisterComponent} from './components/register/register.component';
 import {AlertService} from "./services/alert.service";
 import { ComparedocumentsComponent } from './components/comparedocuments/comparedocuments.component';
 import {AssignmentNewComponent} from "./components/assignmentnew/assignmentnew.component";
@@ -43,4 +42,5 @@ import {AssignmentNewComponent} from "./components/assignmentnew/assignmentnew.c
   providers: [AssignmentService, ReportService, UserService, SubmissionService, AlertService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
