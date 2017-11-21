@@ -28,7 +28,7 @@ export class ReportComponent implements OnInit {
   private student2: User;
   private students: User[];
   private exactCopy = false;
-  private report: Report;
+  private report: Report[];
 
   constructor(private route: ActivatedRoute,
               private reportService: ReportService,
@@ -56,13 +56,15 @@ export class ReportComponent implements OnInit {
   // Get the assignment
   getReport(): void {
       if (this.route.snapshot.paramMap.get('submissionId') != null && this.route.snapshot.paramMap.get('assignmentId') !== "") {
-      const id = +this.route.snapshot.paramMap.get('submissionId');
-      this.reportService.getReport(id)
-        .subscribe(report => this.report = report);
-    } else {
-      this.reportService.getReport(1)
+      const submissionId = this.route.snapshot.paramMap.get('submissionId');
+      const assignmentId = this.route.snapshot.paramMap.get('assignmentId');
+      this.reportService.getReport(submissionId)
         .subscribe(report => this.report = report);
     }
+    // else {
+    //   this.reportService.getReport(1)
+    //     .subscribe(report => this.report = report);
+    // }
   }
 
   // Go back to previous page

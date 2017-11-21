@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   private email: string;
   private username: string;
   private password: string;
-  private grader: boolean;
+  private grader: boolean = false;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -22,10 +22,14 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
-    const data = {"name": this.name, "email": this.email, "username": this.username, "password": this.password}
+    const data = {"name": this.name, "email": this.email, "username": this.username, "password": this.password, "grader": this.grader}
     this.userService.createUser(data).subscribe(user => {
       localStorage.setItem("currentUser", JSON.stringify(user));
-      this.router.navigate(['/submissions/new']);
+      if (user && user.grader) {
+        this.router.navigate(['/assignments']);
+      } else if (user && !user.grader) {
+        this.router.navigate(['/submissions/new']);
+      }
     });
   }
 

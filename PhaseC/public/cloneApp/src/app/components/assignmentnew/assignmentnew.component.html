@@ -1,0 +1,16 @@
+<div class="card mx-auto mt-5">
+  <div class="card-header">Upload Submission</div>
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <label for="InputName">Name</label>
+        <input [(ngModel)]="name" class="form-control" name="name" id="InputName" type="text" aria-describedby="nameHelp" placeholder="name">
+      </div>
+      <div class="form-group">
+        <label for="InputCourse">Course</label>
+        <input [(ngModel)]="course" class="form-control" name="course" id="InputCourse" type="text" placeholder="Course">
+      </div>
+      <a class="btn btn-primary btn-block white-text" (click)="save()">Save</a>
+    </form>
+  </div>
+</div>

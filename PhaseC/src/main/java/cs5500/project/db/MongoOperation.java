@@ -51,7 +51,7 @@ public class MongoOperation {
      * @param assignmentId the assignment id
      * @return a list of submissions
      */
-     public List<Submission> getSubmissions(Integer assignmentId) {
+     public List<Submission> getSubmissions(String assignmentId) {
          List<Submission> l = new ArrayList<>();
          BasicDBObject searchQuery;
          DBCursor cursor;
@@ -64,41 +64,16 @@ public class MongoOperation {
              cursor = collection.find(searchQuery);
 
              while (cursor.hasNext()) {
-                 Submission submission = new Submission();
-                 submission.createFromMongoObj(cursor.next());
-                 l.add(submission);
+                 DBObject dbo = cursor.next();
+                 if (dbo != null) {
+                     Submission submission = new Submission();
+                     submission.createFromMongoObj(dbo);
+                     l.add(submission);
+                 }
              }
          }
          return l;
      }
-
-    /**
-     * save the submission to mongo
-     * @param submission a submission object
-     */
-     public void saveSubmission(Submission submission) {
-         DB db;
-         DBCollection collection;
-         try (MongoClient mongoClient = new MongoClient(host, port)) {
-             db = mongoClient.getDB(database);
-             collection = db.getCollection(colSubmission);
-             collection.insert(getSubmissionDocument(submission));
-         }
-     }
-
-    /**
-     * save the assigment to mongo
-     * @param assignment a submission object
-     */
-    public void saveAssignment(Assignment assignment) {
-        DB db;
-        DBCollection collection;
-        try (MongoClient mongoClient = new MongoClient(host, port)) {
-            db = mongoClient.getDB(database);
-            collection = db.getCollection(colAssignment);
-            collection.insert(getAssignmentDocument(assignment));
-        }
-    }
 
     /**
      * Convert Report object to mongo object
@@ -124,40 +99,6 @@ public class MongoOperation {
             dbItems.add(documentDetail);
         }
         document.put("lines", dbItems);
-        return document;
-    }
-
-    /**
-     * Convert Submission object to mongo object
-     * @param submission the Submission object
-     * @return the mongoDB object
-     */
-    private BasicDBObject getSubmissionDocument(Submission submission) {
-        BasicDBObject document = new BasicDBObject();
-        document.put("assignmentId", submission.getAssignmentId());
-        document.put("studentId", submission.getStudentId());
-        document.put("filename", submission.getFilename());
-        document.put("filecontent", submission.getFilecontent());
-        document.put("checksum", submission.getChecksum());
-        document.put("name", submission.getName());
-        document.put("submittedOn", submission.getSubmittedOn());
-        return document;
-    }
-
-    /**
-     * Convert Assignment object to mongo object
-     * @param assignment the Assignment object
-     * @return the mongoDB object
-     */
-    private BasicDBObject getAssignmentDocument(Assignment assignment) {
-        BasicDBObject document = new BasicDBObject();
-        document.put("assignmentId", assignment.getName());
-        document.put("studentId", assignment.getYear());
-        document.put("filename", assignment.isAnalyzed());
-        document.put("filecontent", assignment.getCourse());
-        document.put("checksum", assignment.getCreationDate());
-        document.put("name", assignment.getDueDate());
-        document.put("submittedOn", assignment.getAnalyzedDate());
         return document;
     }
 }

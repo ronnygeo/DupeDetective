@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
 import {Event, NavigationEnd, Router} from "@angular/router";
 import {AlertService} from "./services/alert.service";
 

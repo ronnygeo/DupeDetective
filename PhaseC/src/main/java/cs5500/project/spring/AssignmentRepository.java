@@ -12,7 +12,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  * AssignmentRepository class which extends the MongoRepository and queries the Assignment
  * table in the database
  */
-@RepositoryRestResource(collectionResourceRel = "assignment", path = "assignments")
+@RepositoryRestResource(collectionResourceRel = "assignments", path = "assignments")
 public interface AssignmentRepository extends MongoRepository<Assignment, String>{
 
     /**

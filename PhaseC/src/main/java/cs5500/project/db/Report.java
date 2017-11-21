@@ -35,14 +35,14 @@ public class Report{
 	 * @return the id of the report
 	 */
 	public String getId() {
-		return Id;
+		return id;
 	}
 
 	/**
 	 * @param id the id of the report
 	 */
 	public void setId(String id) {
-		this.Id = id;
+		this.id = id;
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class Report{
 	}
 
 	@Id
-	private String Id;
+	private String id;
 	private String submissionId;
 	private String refFileId;
 	private String similarFileId;

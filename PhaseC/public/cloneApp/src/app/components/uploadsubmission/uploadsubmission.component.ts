@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {SubmissionService} from "../../services/submission.service";
 import {AssignmentService} from "../../services/assignment.service";
 import {Assignment} from "../../models/assignment";
+import { Location } from '@angular/common';
+
 
 /**
  * Upload submission component
@@ -21,7 +23,8 @@ export class UploadSubmissionComponent implements OnInit {
   private assignments: Assignment[];
 
   constructor(private submissionService: SubmissionService,
-              private assignmentService: AssignmentService) {
+              private assignmentService: AssignmentService,
+              private location: Location) {
   }
 
   /**
@@ -31,7 +34,7 @@ export class UploadSubmissionComponent implements OnInit {
     this.userId = JSON.parse(localStorage.getItem('currentUser'))["id"];
     this.assignmentService.getAssignments().subscribe(assignments => {
       this.assignments = assignments;
-      this.assignmentId = this.assignments[0].id;
+      this.assignmentId = assignments && assignments.length > 0 ? this.assignments[0].id : null;
     });
   }
 
@@ -58,9 +61,11 @@ export class UploadSubmissionComponent implements OnInit {
   upload() {
     if (this.fileContent != null || this.filename != null || this.assignmentId != null || this.userId != null) {
       this.submissionService.uploadSubmission({"filename": this.filename, "filecontent": this.fileContent,
-        "assignmentId": this.assignmentId, "userId": this.userId, "submittedOn": new Date().toJSON(), "checksum": "4ghvg77"}).subscribe(
-        data => console.log('success'),
-        error => console.log(error)
+        "assignmentId": this.assignmentId, "studentId": this.userId, "submittedOn": new Date().toJSON(), "checksum": "4ghvg77"}).subscribe(
+        data => {
+          console.log('success');
+          location.reload();
+        }
       );
     }
   }

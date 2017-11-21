@@ -16,7 +16,7 @@ const httpOptions = {
 @Injectable()
 export class ReportService {
 
-  private reportUrl = 'api/reports';  // URL to web api
+  private reportUrl = 'http://localhost:8080/reports';  // URL to web api
 
   /**
    * Default Constructor
@@ -31,6 +31,7 @@ export class ReportService {
   getReports(): Observable<Report[]> {
     return this.http.get<Report[]>(this.reportUrl)
       .pipe(
+        map(r => r["_embedded"]),
         catchError(this.handleError('getReport', []))
       );
   }
@@ -40,11 +41,12 @@ export class ReportService {
    * @param {number} id the id of the report to retrieve
    * @returns {Observable<Report>} an Observable for the Assignments
    */
-  getReport(id: number): Observable<Report> {
-    const url = `${this.reportUrl}/${id}`;
-    return this.http.get<Report>(url).pipe(
+  getReport(id: string): Observable<Report[]> {
+    const url = `${this.reportUrl}?submissionId=${id}`;
+    return this.http.get<Report[]>(url).pipe(
+      map(r => r["_embedded"]),
       tap(console.log),
-      catchError(this.handleError<Report>(`getReport id=${id}`))
+      catchError(this.handleError<Report[]>(`getReport id=${id}`))
     );
   }
 

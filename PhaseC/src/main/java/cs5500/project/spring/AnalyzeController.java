@@ -19,9 +19,9 @@ public class AnalyzeController {
      * @param id assignment id to process
      * @return a promise of string
      */
-    @RequestMapping(value = "/analyze/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/assignment/{id}/analyze", method = RequestMethod.GET)
     @ResponseBody
-    public DeferredResult<String> analyze(@PathVariable("id") Integer id) {
+    public DeferredResult<String> analyze(@PathVariable("id") String id) {
         DeferredResult<String> defResult = new DeferredResult<>();
 
         new Thread(() -> {

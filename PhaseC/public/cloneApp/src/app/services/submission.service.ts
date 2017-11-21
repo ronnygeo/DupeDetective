@@ -5,6 +5,7 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import {Submission} from "../models/submission";
+import {filter} from "rxjs/operator/filter";
 
 const httpOptions = {
   headers: new HttpHeaders(
@@ -34,6 +35,7 @@ export class SubmissionService {
   getAllSubmissions(): Observable<Submission[]> {
     return this.http.get<Submission[]>(this.submissionUrl)
       .pipe(
+        map(r => r["_embedded"]["submissions"]),
         catchError(this.handleError('getAllSubmissions', []))
       );
   }
@@ -43,9 +45,10 @@ export class SubmissionService {
    * @param {number} id the id of the assignment to retrieve
    * @returns {Observable<Assignment>} an Observable for the Assignments
    */
-  getSubmissions(id: number): Observable<Submission[]> {
+  getSubmissions(id: string): Observable<Submission[]> {
     const url = `${this.submissionUrl}?assignmentId=${id}`;
     return this.http.get<Submission[]>(url).pipe(
+      map(r => r["_embedded"]["submissions"]),
       tap(console.log),
       catchError(this.handleError<Submission[]>(`getSubmission id=${id}`))
     );
@@ -59,7 +62,7 @@ export class SubmissionService {
   uploadSubmission(data) {
     // It is very important to leave the Content-Type empty
     // do not use headers.append('Content-Type', 'multipart/form-data');
-    return this.http.post(`${this.submissionUrl}/new`, JSON.stringify(data), httpOptions)
+    return this.http.post(`${this.submissionUrl}`, JSON.stringify(data), httpOptions)
       .pipe(
         catchError(this.handleError<any>('uploadSubmission'))
       );
@@ -74,7 +77,6 @@ export class SubmissionService {
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
       // Let the app keep running by returning an empty result.

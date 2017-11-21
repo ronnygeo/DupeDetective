@@ -18,12 +18,15 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    this.userService.getUser(this.username, this.password).subscribe(user => {
-      localStorage.setItem("currentUser", JSON.stringify(user[0]));
-      if (user && user.grader) {
-        this.router.navigate(['/assignments']);
-      } else if (user && !user.grader) {
-        this.router.navigate(['/submissions/new']);
+    this.userService.getUser(this.username, this.password).subscribe(users => {
+      if (users !== undefined && JSON.stringify(users) !== "undefined") {
+        const user = users.filter(u => u["username"] === this.username && u["password"] === this.password)[0];
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        if (user && user["grader"]) {
+          this.router.navigate(['/assignments']);
+        } else if (user && !user["grader"]) {
+          this.router.navigate(['/submissions/new']);
+        }
       }
     });
   }

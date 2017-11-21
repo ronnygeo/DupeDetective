@@ -160,14 +160,18 @@ public class Submission {
      * @param obj A mongo DB Object
      */
     public void createFromMongoObj(DBObject obj) {
-        name = obj.get("name").toString();
-        studentId = obj.get("studentId").toString();
-        assignmentId = obj.get("assignmentId").toString();
-        submittedOn = obj.get("submittedOn").toString();
-        filename = obj.get("filename").toString();
-        filecontent = obj.get("filecontent").toString();
-        checksum = obj.get("checksum").toString();
+        name = checkNull(obj.get("name").toString());
+        studentId = checkNull(obj.get("studentId").toString());
+        assignmentId = checkNull(obj.get("assignmentId").toString());
+        submittedOn = checkNull(obj.get("submittedOn").toString());
+        filename = checkNull(obj.get("filename").toString());
+        filecontent = checkNull(obj.get("filecontent").toString());
+        checksum = checkNull(obj.get("checksum").toString());
+    }
 
+    private String checkNull(String val) {
+        System.out.println(val);
+        return val != null? val: "";
     }
 
     @Id

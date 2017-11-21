@@ -26,4 +26,8 @@ export class AssignmentListComponent implements OnInit {
       this.assignments = assignments;
     });
   }
+
+  analyze(id: string): void {
+    this.assignmentService.analyze(id).subscribe(res => console.log(res));
+  }
 }

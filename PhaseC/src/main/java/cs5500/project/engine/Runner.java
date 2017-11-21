@@ -15,10 +15,9 @@ public class Runner {
      * Start analysis of documents
      * @param assignmentId assignment id to analyze
      */
-    public static void analyze(Integer assignmentId) {
+    public static void analyze(String assignmentId) {
         MongoOperation mongo = new MongoOperation();
         List<Submission> submissions = mongo.getSubmissions(assignmentId);
-
         // Iterate through all the files and compare each one side by side for the given assignment
         for (int i = 0; i < submissions.size(); i++) {
             for (int j = i + 1; j < submissions.size(); j++) {
@@ -47,9 +46,5 @@ public class Runner {
                 mongo.saveReport(report2);
             }
         }
-    }
-
-    public static void main(String[] args) {
-        analyze(1);
     }
 }

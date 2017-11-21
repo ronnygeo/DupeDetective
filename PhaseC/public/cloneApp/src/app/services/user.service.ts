@@ -5,6 +5,7 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import {User} from "../models/user";
+import {filter} from "rxjs/operator/filter";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -27,6 +28,7 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.userUrl)
       .pipe(
+        map(r => r["_embedded"]["users"]),
         catchError(this.handleError('getAssignments', []))
       );
   }
@@ -35,12 +37,13 @@ export class UserService {
    *
    * @param {string} username
    * @param {string} password
-   * @returns {Observable<User>}
+   * @returns {Observable<User[]>}
    */
-  getUser(username: string, password: string): Observable<User> {
+  getUser(username: string, password: string): Observable<User[]> {
     const url = `${this.userUrl}?username=${username}&password=${password}`;
-    return this.http.get<User>(url).pipe(
-      catchError(this.handleError<User>(`getUser user=${username}`))
+    return this.http.get<User[]>(url).pipe(
+      map(r => r["_embedded"]["users"]),
+      catchError(this.handleError<User[]>(`getUser user=${username}`))
     );
   }
 

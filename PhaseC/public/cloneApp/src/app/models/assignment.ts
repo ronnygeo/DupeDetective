@@ -5,5 +5,5 @@ export class Assignment {
   id: string;
   name: string;
   course: string;
-  isAnalyzed: boolean;
+  analyzed: boolean;
 }
