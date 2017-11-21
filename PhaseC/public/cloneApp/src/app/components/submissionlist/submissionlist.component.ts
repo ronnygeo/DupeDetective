@@ -3,9 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {Submission} from "../../models/submission";
 import {SubmissionService} from "../../services/submission.service";
-import {AssignmentDetailComponent} from "../assignmentdetail/assignmentdetail.component";
-import {AssignmentService} from "../../services/assignment.service";
-
 
 @Component({
   selector: 'app-submission-list',
@@ -26,9 +23,10 @@ export class SubmissionListComponent implements OnInit {
 
   getSubmissions(): void {
     if (this.route.snapshot.paramMap.get('assignmentId') != null && this.route.snapshot.paramMap.get('assignmentId') !== "") {
-      const id = +this.route.snapshot.paramMap.get('assignmentId');
+      const id: string = this.route.snapshot.paramMap.get('assignmentId');
+      console.log(id);
       this.submissionService.getSubmissions(id)
-        .subscribe(submission => this.submissions = submission);
+        .subscribe(submission => this.submissions = submission.filter(s => s.assignmentId === id));
       } else {
       this.submissionService.getAllSubmissions()
       .subscribe(submission => this.submissions = submission);

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
+import {isUndefined} from "util";
 
 @Component({
   selector: 'app-navbar',
@@ -30,14 +31,25 @@ export class NavbarComponent implements OnInit {
 
   }
 
-  // TODO: Move to user service
+  /**
+   * Fn to check if user loggedin
+   * @returns {boolean} true or false
+   */
   isLoggedIn(): boolean {
     return localStorage.getItem('currentUser') != null;
   }
 
-  // TODO: Move to user service
+  /**
+   * Fn to check if user is grader
+   * @returns {boolean} true or false
+   */
   isGrader(): boolean {
-    return true;
+    const tmp = localStorage.getItem("currentUser");
+    if (tmp && !isUndefined(tmp) && JSON.parse(tmp)["grader"] === true) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   logout(): void {

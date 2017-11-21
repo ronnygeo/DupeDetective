@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import {Report} from "../models/report";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,7 +16,7 @@ const httpOptions = {
 @Injectable()
 export class ReportService {
 
-  private assignmentUrl = 'api/reports';  // URL to web api
+  private reportUrl = 'http://localhost:8080/reports';  // URL to web api
 
   /**
    * Default Constructor
@@ -24,37 +25,28 @@ export class ReportService {
   constructor(private http: HttpClient) { }
 
   /**
-   * Get all the assignments
-   * @returns {Observable<Assignment[]>} an Observable for the array of Assignments
+   * Get all the reports
+   * @returns {Observable<Report[]>} an Observable for the array of Assignments
    */
-  getAssignments(): Observable<Assignment[]> {
-    return this.http.get<Assignment[]>(this.assignmentUrl)
+  getReports(): Observable<Report[]> {
+    return this.http.get<Report[]>(this.reportUrl)
       .pipe(
-        catchError(this.handleError('getAssignments', []))
+        map(r => r["_embedded"]),
+        catchError(this.handleError('getReport', []))
       );
   }
 
   /**
-   * GET assignment by id. Will 404 if id not found
-   * @param {number} id the id of the assignment to retrieve
-   * @returns {Observable<Assignment>} an Observable for the Assignments
+   * GET report by id. Will 404 if id not found
+   * @param {number} id the id of the report to retrieve
+   * @returns {Observable<Report>} an Observable for the Assignments
    */
-  getAssignment(id: number): Observable<Assignment> {
-    const url = `${this.assignmentUrl}/${id}`;
-    return this.http.get<Assignment>(url).pipe(
+  getReport(id: string): Observable<Report[]> {
+    const url = `${this.reportUrl}?submissionId=${id}`;
+    return this.http.get<Report[]>(url).pipe(
+      map(r => r["_embedded"]),
       tap(console.log),
-      catchError(this.handleError<Assignment>(`getAssignment id=${id}`))
-    );
-  }
-
-  /**
-   * Update an assignment
-   * @param {Assignment} assignment
-   * @returns {Observable<any>}
-   */
-  updateAssignment (assignment: Assignment): Observable<any> {
-    return this.http.put(this.assignmentUrl, assignment, httpOptions).pipe(
-      catchError(this.handleError<any>('updateAssignment'))
+      catchError(this.handleError<Report[]>(`getReport id=${id}`))
     );
   }
 
