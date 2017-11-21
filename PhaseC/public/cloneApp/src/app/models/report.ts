@@ -1,5 +1,6 @@
 export class Report {
-  id: number;
-  submissionId: number;
-  fileId: number;
+  id: string;
+  submissionId: string;
+  refFileId: string;
+  similarFileId: string;
 }

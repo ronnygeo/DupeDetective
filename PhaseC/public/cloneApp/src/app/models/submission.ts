@@ -2,9 +2,11 @@
  * Class that maintains Submission structure
  */
 export class Submission {
-  id: number;
+  id: string;
   name: string;
-  userId: number;
-  assignmentId: number;
+  studentId: string;
+  assignmentId: string;
   submittedOn: string;
+  filename: string;
+  filecontent: string;
 }
