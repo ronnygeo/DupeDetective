@@ -36,7 +36,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(0.875, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+        assertEquals(0.875, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(1, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+        assertEquals(1, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -68,7 +68,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(1, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+        assertEquals(1, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -84,7 +84,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(0.76, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+        assertEquals(0.76, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -101,7 +101,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(0.375, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+        assertEquals(0.375, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -117,7 +117,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(0.95, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+        assertEquals(0.95, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -133,7 +133,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(0.86, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+        assertEquals(0.86, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -149,7 +149,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTStructureCompare astc = new ASTStructureCompare();
-        assertEquals(0.53, astc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+        assertEquals(0.53, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     //TODO: Add tests for different modifiers private/public

@@ -1,83 +1,123 @@
 package cs5500.project.spring.data;
 
+/**
+ * An item is part of the report
+ */
 public class ReportItem {
 
     /**
-     * @param name identifier name of node
-     * @param type type of node
-     * @param offset offset of node
-     * @param length length of node
+     * @param refOffset the reference file offset
+     * @param refLength the reference file length
+     * @param similarOffset similar file offset
+     * @param similarLength similar file length
+     * @param model the model used in computation
+     * @param score
      */
-    public ReportItem(String name, Integer type, Integer offset, Integer length) {
-        this.name = name;
-        this.type = type;
-        this.offset = offset;
-        this.length = length;
+    public ReportItem(Integer refOffset, Integer refLength, Integer similarOffset, Integer similarLength, Integer model, Float score) {
+        this.refOffset = refOffset;
+        this.refLength = refLength;
+        this.similarOffset = similarOffset;
+        this.similarLength = similarLength;
+        this.model = model;
+        this.score = score;
     }
 
     /**
-     * Default Constructor
+     * Default constructor
      */
     public ReportItem() {}
 
     /**
-     * @return the name of the node
+     * @return  the reference file offset
      */
-    public String getName() {
-        return name;
+    public Integer getRefOffset() {
+        return refOffset;
     }
 
     /**
-     * @param name name of the node
+     * @param refOffset the reference file offset
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setRefOffset(Integer refOffset) {
+        this.refOffset = refOffset;
     }
+
+    /**
+     * @return the reference file length
+     */
+    public Integer getRefLength() {
+        return refLength;
+    }
+
+    /**
+     * @param refLength the reference file length
+     */
+    public void setRefLength(Integer refLength) {
+        this.refLength = refLength;
+    }
+
+    /**
+     * @return the similar file offset
+     */
+    public Integer getSimilarOffset() {
+        return similarOffset;
+    }
+
+    /**
+     * @param similarOffset the similar file offset
+     */
+    public void setSimilarOffset(Integer similarOffset) {
+        this.similarOffset = similarOffset;
+    }
+
+    /**
+     * @return the similar file length
+     */
+    public Integer getSimilarLength() {
+        return similarLength;
+    }
+
+    /**
+     * @param similarLength the similar file length
+     */
+    public void setSimilarLength(Integer similarLength) {
+        this.similarLength = similarLength;
+    }
+
+    /**
+     * @return the model for the report
+     */
+    public Integer getModel() {
+        return model;
+    }
+
+    /**
+     * @param model the model used for the report
+     */
+    public void setModel(Integer model) {
+        this.model = model;
+    }
+
 
     /**
      * @return
      */
-    public Integer getType() {
-        return type;
+    public Float getScore() {
+        return score;
     }
 
     /**
-     * @param type
+     * @param score
      */
-    public void setType(Integer type) {
-        this.type = type;
+    public void setScore(Float score) {
+        this.score = score;
     }
 
-    /**
-     * @return
-     */
-    public Integer getoffset() {
-        return offset;
-    }
+    private Integer refOffset;
+    private Integer refLength;
+    private Integer similarOffset;
+    private Integer similarLength;
+    private Integer model;
+    private Float score;
 
-    /**
-     * @param offset
-     */
-    public void setoffset(Integer offset) {
-        this.offset = offset;
-    }
 
-    /**
-     * @return
-     */
-    public Integer getLength() {
-        return length;
-    }
-
-    /**
-     * @param length
-     */
-    public void setLength(Integer length) {
-        this.length = length;
-    }
-
-    private String name;
-    private Integer type;
-    private Integer offset;
-    private Integer length;
 }

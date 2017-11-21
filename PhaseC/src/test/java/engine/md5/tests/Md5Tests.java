@@ -10,28 +10,25 @@ import static org.junit.Assert.assertNotEquals;
  * Tests for the MD5 checksum class
  */
 public class Md5Tests {
-
-    ClassLoader classLoader = getClass().getClassLoader();
-
     @Test
     public void testMd5Value() {
-        String file = classLoader.getResource("engine/md5/tests/test.txt").getFile();
+        String file = this.getClass().getResource("/test.txt").getFile();
         MD5Generator md5 = new MD5Generator();
         assertEquals("cba8589898ec23aab33e2eba90bad873", md5.getMD5File(file));
     }
 
     @Test
     public void testMd5SimilarFiles() {
-        String file1 = classLoader.getResource("engine/md5/tests/test.txt").getFile();
-        String file2 = classLoader.getResource("engine/md5/tests/sameTest.txt").getFile();
+        String file1 =  this.getClass().getResource("/test.txt").getFile();
+        String file2 =  this.getClass().getResource("/sameTest.txt").getFile();
         MD5Generator md5 = new MD5Generator();
         assertEquals(md5.getMD5File(file1), md5.getMD5File(file2));
     }
 
     @Test
     public void testMd5DifferentFiles() {
-        String file1 = classLoader.getResource("engine/md5/tests/test.txt").getFile();
-        String file2 = classLoader.getResource("engine/md5/tests/diffTest.txt").getFile();
+        String file1 =  this.getClass().getResource("/test.txt").getFile();
+        String file2 =  this.getClass().getResource("/diffTest.txt").getFile();
         MD5Generator md5 = new MD5Generator();
         assertNotEquals(md5.getMD5File(file1), md5.getMD5File(file2));
     }
