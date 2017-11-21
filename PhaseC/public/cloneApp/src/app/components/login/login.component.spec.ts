@@ -2,9 +2,9 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {LoginComponent} from './login.component';
 import {FormsModule} from '@angular/forms';
-import {UserService} from '../../services/user.service.ts';
 import {HttpClientModule, HttpClient, HttpHandler} from '@angular/common/http';
 import {Router} from "@angular/router";
+import {UserService} from "../../services/user.service";
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
