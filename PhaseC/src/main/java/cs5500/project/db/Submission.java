@@ -157,8 +157,8 @@ public class Submission {
     }
 
     /**
-     * @param val
-     * @return
+     * @param val the value to check if null
+     * @return returns the value if not null else blank
      */
     private String checkNull(Object val) {
         return val != null? val.toString(): "";

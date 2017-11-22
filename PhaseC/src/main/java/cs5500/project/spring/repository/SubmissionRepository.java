@@ -29,5 +29,5 @@ public interface SubmissionRepository extends MongoRepository<Submission, String
 	 * @param studentId studentId
 	 * @return list of Submissions
 	 */
-		List<Submission> findSubmissionsByStudentId(@Param("studentId") String studentId);
+	List<Submission> findSubmissionsByStudentId(@Param("studentId") String studentId);
 }

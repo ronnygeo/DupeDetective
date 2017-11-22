@@ -50,52 +50,91 @@ public class User {
         this.grader = grader;
     }
 
+    /**
+     * Default constructor
+     */
     public User() {}
 
+    /**
+     * @return the id
+     */
     public String getId() {
         return Id;
     }
 
+    /**
+     * @param id the id
+     */
     public void setId(String id) {
         this.Id = id;
     }
 
+    /**
+     * @return name of user
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @param name name of user
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * @return the email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * @param email the email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * @return username
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * @param username username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * @return password
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * @param password password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     * @return if the user is a grader
+     */
     public boolean isGrader() {
         return grader;
     }
 
+    /**
+     * @param grader if the user is a grader
+     */
     public void setGrader(boolean grader) {
         this.grader = grader;
     }

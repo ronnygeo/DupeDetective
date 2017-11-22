@@ -114,8 +114,6 @@ public class MongoOperation {
             count.put(ri.getModel(), count.getOrDefault(ri.getModel(), 0) + 1);
         }
 
-        System.out.println(scores);
-        System.out.println(count);
         document.put("md5Result", scores.get(Model.MD5.getValue()) == 1);
         document.put("structureScore", scores.getOrDefault(Model.ASTStructure.getValue(), 0f)/count.getOrDefault(Model.ASTStructure.getValue(), 1));
         document.put("loopScore", scores.getOrDefault(Model.ASTLoop.getValue(), 0f)/count.getOrDefault(Model.ASTLoop.getValue(), 1));
