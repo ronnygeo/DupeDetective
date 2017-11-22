@@ -93,12 +93,14 @@ public class MongoOperation {
     private BasicDBObject getReportDocument(Report report) {
         BasicDBObject document = new BasicDBObject();
         Map<Integer, Float> scores = new HashMap<>();
+        Map<Integer, Integer> count = new HashMap<>();
         document.put("refFileId", report.getRefFileId());
         document.put("similarFileId", report.getSimilarFileId());
         document.put("submissionId", report.getSubmissionId());
 
         List<BasicDBObject> dbItems = new ArrayList<>();
 
+        //TODO: Refactor this whole method
         for (ReportLine ri: report.getLines()) {
             BasicDBObject documentDetail = new BasicDBObject();
             documentDetail.put("refFileOffset", ri.getRefOffset());
@@ -108,21 +110,22 @@ public class MongoOperation {
             documentDetail.put("model", ri.getModel());
             documentDetail.put("score", ri.getScore());
             dbItems.add(documentDetail);
-            if (!scores.containsKey(ri.getModel())) {
-                scores.put(ri.getModel(), ri.getScore());
-            }
+            scores.put(ri.getModel(), scores.getOrDefault(ri.getModel(), 0.0f) + ri.getScore());
+            count.put(ri.getModel(), count.getOrDefault(ri.getModel(), 0) + 1);
         }
 
+        System.out.println(scores);
+        System.out.println(count);
         document.put("md5Result", scores.get(Model.MD5.getValue()) == 1);
-        document.put("structureScore", scores.get(Model.ASTStructure.getValue()));
-        document.put("loopScore", scores.get(Model.ASTLoop.getValue()));
-        document.put("methodScore", scores.get(Model.ASTMethod.getValue()));
-        document.put("winnowingScore", scores.get(Model.WINNOWING.getValue()));
+        document.put("structureScore", scores.getOrDefault(Model.ASTStructure.getValue(), 0f)/count.getOrDefault(Model.ASTStructure.getValue(), 1));
+        document.put("loopScore", scores.getOrDefault(Model.ASTLoop.getValue(), 0f)/count.getOrDefault(Model.ASTLoop.getValue(), 1));
+        document.put("methodScore", scores.getOrDefault(Model.ASTMethod.getValue(), 0f)/count.getOrDefault(Model.ASTMethod.getValue(), 1));
+        document.put("winnowingScore", scores.getOrDefault(Model.WINNOWING.getValue(), 0f)/count.getOrDefault(Model.WINNOWING.getValue(), 1));
 
         float overallScore = 0;
         for (Integer key: scores.keySet()) {
             if (key != Model.MD5.getValue()) {
-                overallScore += weights.get(key) * scores.get(key);
+                overallScore += weights.get(key) * (scores.getOrDefault(key, 0f)/count.getOrDefault(key, 1));
             }
         }
         document.put("overallScore", overallScore);
