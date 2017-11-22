@@ -2,10 +2,12 @@ package cs5500.project.db;
 
 import com.mongodb.DBObject;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Submission Object that stores information about submission
  */
+@Document(collection="submission")
 public class Submission {
 
     /**

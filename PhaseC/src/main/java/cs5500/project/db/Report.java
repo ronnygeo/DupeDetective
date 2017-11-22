@@ -1,6 +1,7 @@
 package cs5500.project.db;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 /**
  * The Report object
  */
+@Document(collection="report")
 public class Report{
 
 

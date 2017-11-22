@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * Assignment class which has details about an assignment for example the id,course,
  * year, date it was analyzed,due date etc
  */
+@Document(collection = "assignment")
 public class Assignment {
 
 	/**

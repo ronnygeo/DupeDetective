@@ -47,5 +47,6 @@ public class Runner {
                 mongo.saveReport(report2);
             }
         }
+        //TODO: Once completed set analyzed flag to true for assignment id
     }
 }
