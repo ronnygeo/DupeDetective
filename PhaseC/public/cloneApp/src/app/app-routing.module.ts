@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'submissions', component: SubmissionListComponent },
   { path: 'compare', component: ComparedocumentsComponent },
   { path: 'reports', component: ReportComponent },
-  { path: 'assignment/:assignmentId/submission/:submissionId/report', component: ReportComponent },
+  { path: 'assignment/:assignmentId/submission/:submissionId/reports', component: ReportComponent },
   { path: 'submission/:assignmentId', component: SubmissionListComponent },
   { path: 'submissions/new', component: UploadSubmissionComponent },
   { path: '', component: HomeComponent },

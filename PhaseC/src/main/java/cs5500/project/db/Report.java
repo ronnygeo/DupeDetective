@@ -47,7 +47,7 @@ public class Report{
 	}
 
 	/**
-	 * @return items the lines in the report
+	 * @return the lines in the report
 	 */
 	public List<ReportLine> getLines() {
 		return lines;
@@ -61,7 +61,7 @@ public class Report{
 	}
 
 	/**
-	 * @param lines add these items to the report items
+	 * @param lines add these lines to the report items
 	 */
 	public void addLines(List<ReportLine> lines) {
 		this.lines.addAll(lines);
@@ -110,50 +110,86 @@ public class Report{
 	}
 
 
+	/**
+	 * @return overall score of all the models
+	 */
 	public float getOverallScore() {
 		return overallScore;
 	}
 
+	/**
+	 * @param overallScore overall score of all the models
+	 */
 	public void setOverallScore(float overallScore) {
 		this.overallScore = overallScore;
 	}
 
+	/**
+	 * @return score from AST structure model
+	 */
 	public float getStructureScore() {
 		return structureScore;
 	}
 
+	/**
+	 * @param structureScore score from AST structure model
+	 */
 	public void setStructureScore(float structureScore) {
 		this.structureScore = structureScore;
 	}
 
+	/**
+	 * @return score from AST Loop model
+	 */
 	public float getLoopScore() {
 		return loopScore;
 	}
 
+	/**
+	 * @param loopScore score from AST Loop model
+	 */
 	public void setLoopScore(float loopScore) {
 		this.loopScore = loopScore;
 	}
 
+	/**
+	 * @return score from AST method model
+	 */
 	public float getMethodScore() {
 		return methodScore;
 	}
 
+	/**
+	 * @param methodScore score from AST method model
+	 */
 	public void setMethodScore(float methodScore) {
 		this.methodScore = methodScore;
 	}
 
+	/**
+	 * @return score from the winnowing mode
+	 */
 	public float getWinnowingScore() {
 		return winnowingScore;
 	}
 
+	/**
+	 * @param winnowingScore score from the winnowing mode
+	 */
 	public void setWinnowingScore(float winnowingScore) {
 		this.winnowingScore = winnowingScore;
 	}
 
+	/**
+	 * @return  whether md5 checksum is same or not
+	 */
 	public boolean isMd5Result() {
 		return md5Result;
 	}
 
+	/**
+	 * @param md5Result whether md5 checksum is same or not
+	 */
 	public void setMd5Result(boolean md5Result) {
 		this.md5Result = md5Result;
 	}

@@ -28,10 +28,10 @@ export class ReportService {
    * Get all the reports
    * @returns {Observable<Report[]>} an Observable for the array of Assignments
    */
-  getReports(): Observable<Report[]> {
+  getAllReports(): Observable<Report[]> {
     return this.http.get<Report[]>(this.reportUrl)
       .pipe(
-        map(r => r["_embedded"]),
+        map(r => r["_embedded"]["reports"]),
         catchError(this.handleError('getReport', []))
       );
   }
@@ -44,7 +44,7 @@ export class ReportService {
   getReport(id: string): Observable<Report[]> {
     const url = `${this.reportUrl}?submissionId=${id}`;
     return this.http.get<Report[]>(url).pipe(
-      map(r => r["_embedded"]),
+      map(r => r["_embedded"]["reports"]),
       tap(console.log),
       catchError(this.handleError<Report[]>(`getReport id=${id}`))
     );
