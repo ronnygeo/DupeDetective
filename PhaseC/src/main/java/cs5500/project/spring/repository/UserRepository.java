@@ -3,6 +3,7 @@ package cs5500.project.spring.repository;
 
 import cs5500.project.db.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.data.querydsl.binding.QuerydslBindings;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -21,5 +22,6 @@ public interface UserRepository extends MongoRepository<User, String> {
      * @param username user id to fetch
      * @return a User
      */
+    @Query("{ 'username' : ?0, 'password' }")
     User findFirstByUsernameAndPassword(@RequestParam("username") String username, @RequestParam("password") String password);
 }
