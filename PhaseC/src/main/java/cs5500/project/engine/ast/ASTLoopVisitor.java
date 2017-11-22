@@ -732,7 +732,7 @@ public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ThisExpression node) {
-       addNodeToNodes(new ASTHashObject(node.getQualifier().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), node.hashCode()));
+//       addNodeToNodes(new ASTHashObject(node.getQualifier().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), node.hashCode()));
         return false;
     }
 

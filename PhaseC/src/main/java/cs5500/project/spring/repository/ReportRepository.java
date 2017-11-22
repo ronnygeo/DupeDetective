@@ -1,4 +1,4 @@
-package cs5500.project.spring;
+package cs5500.project.spring.repository;
 
 
 import java.util.List;
@@ -19,5 +19,5 @@ public interface ReportRepository extends MongoRepository<Report, String>{
 	 * @param submissionId submission id
 	 * @return a list of reports
 	 */
-	List<Report> findBySubmissionId(@Param("submissionId") int submissionId);
+	List<Report> findReportsBySubmissionId(@Param("submissionId") int submissionId);
 }

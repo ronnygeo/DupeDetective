@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 /**
  * An item is part of the report
  */
-public class ReportItem {
+public class ReportLine {
 
     /**
      * @param refOffset the reference file offset
@@ -18,7 +18,7 @@ public class ReportItem {
      * @param model the model used in computation
      * @param score the computed score
      */
-    public ReportItem(Integer refOffset, Integer refLength, Integer similarOffset, Integer similarLength, Integer model, Float score) {
+    public ReportLine(Integer refOffset, Integer refLength, Integer similarOffset, Integer similarLength, Integer model, Float score) {
         this.refOffset = refOffset;
         this.refLength = refLength;
         this.similarOffset = similarOffset;
@@ -30,7 +30,7 @@ public class ReportItem {
     /**
      * Default constructor
      */
-    public ReportItem() {}
+    public ReportLine() {}
 
     /**
      * @return the reference file offset
