@@ -1,4 +1,4 @@
-package cs5500.project.spring;
+package cs5500.project.spring.repository;
 
 
 import java.util.List;
@@ -26,6 +26,6 @@ public interface AssignmentRepository extends MongoRepository<Assignment, String
      * @param course a course
      * @return list of Assignments
      */
-    List<Assignment> findByCourse(@Param("course") String course);
+    List<Assignment> findAssignmentsByCourse(@Param("course") String course);
 
 }

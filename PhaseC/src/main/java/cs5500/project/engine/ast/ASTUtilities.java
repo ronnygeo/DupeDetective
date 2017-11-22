@@ -1,7 +1,7 @@
 package cs5500.project.engine.ast;
 
+import cs5500.project.db.ReportLine;
 import cs5500.project.engine.Model;
-import cs5500.project.db.ReportItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,19 +30,19 @@ public class ASTUtilities {
     }
 
     /**
-     * Creates ReportItem objects from the two provided lists
+     * Creates ReportLine objects from the two provided lists
      * @param l1 the first list
      * @param l2 the second list
      * @param score the score of comparison
      * @return a list of ReportItems from the given list
      */
-    public static List<ReportItem> createReportItems(List<ASTHashObject> l1, List<ASTHashObject> l2, Float score) {
-        List<ReportItem> items = new ArrayList<>();
+    public static List<ReportLine> createReportItems(List<ASTHashObject> l1, List<ASTHashObject> l2, Float score) {
+        List<ReportLine> items = new ArrayList<>();
         for (int i=0; i < l1.size(); i++) {
             ASTHashObject tmp1 = l1.get(i);
             ASTHashObject tmp2 = l2.get(i);
 
-            ReportItem ri = new ReportItem(tmp1.getoffset(), tmp1.getLength(), tmp2.getoffset(), tmp2.getLength(), Model.ASTStructure.getValue(), score);
+            ReportLine ri = new ReportLine(tmp1.getoffset(), tmp1.getLength(), tmp2.getoffset(), tmp2.getLength(), Model.ASTStructure.getValue(), score);
             items.add(ri);
         }
         return items;

@@ -72,7 +72,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(SimpleType node) {
-        System.out.println("Type: " + node);
         typeCheck = true;
         return true;
     }
@@ -173,9 +172,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(MethodDeclaration node) {
-        System.out.println("Start method");
         currentNode = new ASTHashObject(node.getName().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength());
-        System.out.println(node.getReturnType2());
         return true;
     }
 
@@ -187,7 +184,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
     @Override
     public void endVisit(MethodDeclaration node) {
         nodes.add(currentNode);
-        System.out.println("End method invocation");
         resetCurrentNode();
     }
 
@@ -572,7 +568,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(Assignment node) {
-        System.out.println("Assignment");
         addHashToCurrentNode(node.getRightHandSide().hashCode());
         addHashToCurrentNode(node.getOperator().hashCode());
         addHashToCurrentNode(2 * node.getLeftHandSide().hashCode());
@@ -742,7 +737,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
 
     /**
      * Visit the given component using this visitor
-     *
      * @param node A this Expression
      * @return a boolean whether to traverse subtrees or not
      */

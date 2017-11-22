@@ -741,7 +741,7 @@ public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ThisExpression node) {
-        nodes.add(new ASTHashObject(node.getQualifier().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+//        nodes.add(new ASTHashObject(node.getQualifier().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 

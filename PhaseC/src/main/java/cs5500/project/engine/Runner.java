@@ -21,6 +21,7 @@ public class Runner {
         // Iterate through all the files and compare each one side by side for the given assignment
         for (int i = 0; i < submissions.size(); i++) {
             for (int j = i + 1; j < submissions.size(); j++) {
+                System.out.println("Comparing submission " + i + " with " + j);
                 String code1 = submissions.get(i).getFilecontent();
                 String code2 = submissions.get(j).getFilecontent();
 
@@ -32,19 +33,20 @@ public class Runner {
                 PDContext methodStructure = new PDContext(new ASTMethodStrategy());
                 PDContext loopStructure = new PDContext(new ASTLoopStrategy());
 
-                report1.addItems(contextStructure.executeStrategy(code1, code2));
-                report1.addItems(methodStructure.executeStrategy(code1, code2));
-                report1.addItems(loopStructure.executeStrategy(code1, code2));
-                report1.addItems(md5.executeStrategy(code1, code2));
+                report1.addLines(contextStructure.executeStrategy(code1, code2));
+                report1.addLines(methodStructure.executeStrategy(code1, code2));
+                report1.addLines(loopStructure.executeStrategy(code1, code2));
+                report1.addLines(md5.executeStrategy(code1, code2));
 
-                report2.addItems(contextStructure.executeStrategy(code1, code2));
-                report2.addItems(methodStructure.executeStrategy(code1, code2));
-                report2.addItems(loopStructure.executeStrategy(code1, code2));
-                report2.addItems(md5.executeStrategy(code1, code2));
+                report2.addLines(contextStructure.executeStrategy(code1, code2));
+                report2.addLines(methodStructure.executeStrategy(code1, code2));
+                report2.addLines(loopStructure.executeStrategy(code1, code2));
+                report2.addLines(md5.executeStrategy(code1, code2));
 
                 mongo.saveReport(report1);
                 mongo.saveReport(report2);
             }
         }
+        //TODO: Once completed set analyzed flag to true for assignment id
     }
 }

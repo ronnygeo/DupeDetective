@@ -1,10 +1,12 @@
 package cs5500.project.db;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * User object in the system; namely, Student, Grader
  */
+@Document(collection = "user")
 public class User {
 
     @Id
