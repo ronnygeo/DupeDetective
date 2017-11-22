@@ -1,7 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
+import {FormsModule} from '@angular/forms';
+import {AppComponent} from './app.component';
 import {AssignmentListComponent} from './components/assignmentlist/assignmentlist.component';
 import {UploadSubmissionComponent} from './components/uploadsubmission/uploadsubmission.component';
 import {SubmissionListComponent} from './components/submissionlist/submissionlist.component';
@@ -17,8 +17,9 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {AlertService} from "./services/alert.service";
-import { ComparedocumentsComponent } from './components/comparedocuments/comparedocuments.component';
+import {ComparedocumentsComponent} from "./components/comparedocuments/comparedocuments.component";
 import {AssignmentNewComponent} from "./components/assignmentnew/assignmentnew.component";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {AssignmentNewComponent} from "./components/assignmentnew/assignmentnew.c
     , AssignmentNewComponent
     , SubmissionListComponent
     , UploadSubmissionComponent
-    , ReportComponent, NavbarComponent, LoginComponent, RegisterComponent, ComparedocumentsComponent
+    , ReportComponent, NavbarComponent, LoginComponent, RegisterComponent
+    , ComparedocumentsComponent
   ],
   imports: [
     BrowserModule,

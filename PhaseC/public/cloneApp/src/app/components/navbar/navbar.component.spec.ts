@@ -2,10 +2,14 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {NavbarComponent} from './navbar.component';
 import {Router} from "@angular/router";
+import {DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser";
 
 // describe('NavbarComponent', () => {
 //   let component: NavbarComponent;
 //   let fixture: ComponentFixture<NavbarComponent>;
+//   let de: DebugElement;
+//   let el: HTMLElement;
 //
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
@@ -25,8 +29,11 @@ import {Router} from "@angular/router";
 //     fixture.detectChanges();
 //   });
 //
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
+//   it('should have link to homepage', () => {
+//     de = fixture.debugElement.query(By.css('a'));
+//     el = de.nativeElement;
+//     expect(el.textContent).toContain('Dupe Detective');
 //   });
-//   // it('true is true', () => expect(true).toBe(true));
+//
+//
 // });
