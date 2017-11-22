@@ -1,6 +1,6 @@
 package cs5500.project.engine;
 
-import cs5500.project.db.ReportItem;
+import cs5500.project.db.ReportLine;
 
 import java.util.List;
 
@@ -15,5 +15,5 @@ public interface PDStrategy {
      * @param testCode2 second code to compare
      * @return a list of ReportItems
      */
-    public List<ReportItem> checkPlagiarism(String testCode1, String testCode2);
+    public List<ReportLine> checkPlagiarism(String testCode1, String testCode2);
 }

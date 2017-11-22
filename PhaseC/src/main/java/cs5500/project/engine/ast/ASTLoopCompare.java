@@ -1,7 +1,7 @@
 package cs5500.project.engine.ast;
 
 import cs5500.project.engine.CustomComparator;
-import cs5500.project.db.ReportItem;
+import cs5500.project.db.ReportLine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +21,8 @@ public class ASTLoopCompare implements CustomComparator<List<ASTHashObject>> {
      * @return a value that represents how similar the two documents are
      */
     @Override
-    public List<ReportItem> compare(List<ASTHashObject> l1, List<ASTHashObject> l2) {
-        List<ReportItem> items = new ArrayList<>();
+    public List<ReportLine> compare(List<ASTHashObject> l1, List<ASTHashObject> l2) {
+        List<ReportLine> items = new ArrayList<>();
 
         for (int i = 0; i < l1.size(); i++) {
             for (int j=0; j < l2.size(); j++) {
@@ -44,7 +44,7 @@ public class ASTLoopCompare implements CustomComparator<List<ASTHashObject>> {
      * @param l2 the list of ndoes
      * @return the lcs of given lists
      */
-    private List<ReportItem> compareNodes(List<ASTHashObject> l1, List<ASTHashObject> l2) {
+    private List<ReportLine> compareNodes(List<ASTHashObject> l1, List<ASTHashObject> l2) {
         LCSCompare lcsc = new LCSCompare();
         List<ASTHashObject>lcsList = lcsc.compare(l1, l2);
 

@@ -1,7 +1,7 @@
 package cs5500.project.engine;
 
+import cs5500.project.db.ReportLine;
 import cs5500.project.engine.md5.MD5Generator;
-import cs5500.project.db.ReportItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +23,9 @@ public class MD5Strategy implements PDStrategy {
 	 * Method to invoke the plagiarism detection inside the given assignment
 	 */
 	@Override
-	public List<ReportItem> checkPlagiarism(String code1, String code2) {
-		List<ReportItem> l = new ArrayList<>();
-		ReportItem ri = new ReportItem();
+	public List<ReportLine> checkPlagiarism(String code1, String code2) {
+		List<ReportLine> l = new ArrayList<>();
+		ReportLine ri = new ReportLine();
 		ri.setModel(Model.MD5.getValue());
 		ri.setScore(checkMD5(code1, code2)? 1f:0f);
 		l.add(ri);

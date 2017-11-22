@@ -1,7 +1,7 @@
 package cs5500.project.engine.ast;
 
+import cs5500.project.db.ReportLine;
 import cs5500.project.engine.CustomComparator;
-import cs5500.project.db.ReportItem;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,7 +21,7 @@ public class ASTMethodCompare implements CustomComparator<List<ASTHashObject>> {
      * @return a value that represents how similar the two documents are
      */
     @Override
-    public List<ReportItem> compare(List<ASTHashObject> l1, List<ASTHashObject> l2) {
+    public List<ReportLine> compare(List<ASTHashObject> l1, List<ASTHashObject> l2) {
         LCSCompare lcsc = new LCSCompare(LCSCompareMode.HASH);
         List<ASTHashObject>lcsList = lcsc.compare(l1, l2);
 

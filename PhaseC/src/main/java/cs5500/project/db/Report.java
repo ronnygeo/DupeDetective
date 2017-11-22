@@ -1,7 +1,6 @@
 package cs5500.project.db;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,14 +20,14 @@ public class Report{
 		this.submissionId = submissionId;
 		this.refFileId = refFileId;
 		this.similarFileId = similarFileId;
-		items = new ArrayList<>();
+		lines = new ArrayList<>();
 	}
 
 	/**
 	 * Default constructor
 	 */
 	public Report() {
-		items = new ArrayList<>();
+		lines = new ArrayList<>();
 	}
 
 	/**
@@ -48,22 +47,22 @@ public class Report{
 	/**
 	 * @return items the lines in the report
 	 */
-	public List<ReportItem> getItems() {
-		return items;
+	public List<ReportLine> getLines() {
+		return lines;
 	}
 
 	/**
-	 * @param items the lines in the report
+	 * @param lines the lines in the report
 	 */
-	public void setItems(List<ReportItem> items) {
-		this.items = items;
+	public void setLines(List<ReportLine> lines) {
+		this.lines = lines;
 	}
 
 	/**
-	 * @param items add these items to the report items
+	 * @param lines add these items to the report items
 	 */
-	public void addItems(List<ReportItem> items) {
-		this.items.addAll(items);
+	public void addLines(List<ReportLine> lines) {
+		this.lines.addAll(lines);
 	}
 
 	/**
@@ -108,11 +107,65 @@ public class Report{
 		this.submissionId = submissionId;
 	}
 
+
+	public float getOverallScore() {
+		return overallScore;
+	}
+
+	public void setOverallScore(float overallScore) {
+		this.overallScore = overallScore;
+	}
+
+	public float getStructureScore() {
+		return structureScore;
+	}
+
+	public void setStructureScore(float structureScore) {
+		this.structureScore = structureScore;
+	}
+
+	public float getLoopScore() {
+		return loopScore;
+	}
+
+	public void setLoopScore(float loopScore) {
+		this.loopScore = loopScore;
+	}
+
+	public float getMethodScore() {
+		return methodScore;
+	}
+
+	public void setMethodScore(float methodScore) {
+		this.methodScore = methodScore;
+	}
+
+	public float getWinnowingScore() {
+		return winnowingScore;
+	}
+
+	public void setWinnowingScore(float winnowingScore) {
+		this.winnowingScore = winnowingScore;
+	}
+
+	public boolean isMd5Result() {
+		return md5Result;
+	}
+
+	public void setMd5Result(boolean md5Result) {
+		this.md5Result = md5Result;
+	}
+
 	@Id
 	private String id;
 	private String submissionId;
 	private String refFileId;
 	private String similarFileId;
-	private List<ReportItem> items;
-
+	private float overallScore;
+	private float structureScore;
+	private float loopScore;
+	private float methodScore;
+	private float winnowingScore;
+	private boolean md5Result;
+	private List<ReportLine> lines;
 }

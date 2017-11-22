@@ -1,6 +1,6 @@
 package cs5500.project.engine;
 
-import cs5500.project.db.ReportItem;
+import cs5500.project.db.ReportLine;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public interface CustomComparator<T> {
      * @param obj2: the second object to compare
      * @return a list of report items
      */
-    public List<ReportItem> compare(T obj1, T obj2);
+    public List<ReportLine> compare(T obj1, T obj2);
 
     /**
      * Compare the first object with the other

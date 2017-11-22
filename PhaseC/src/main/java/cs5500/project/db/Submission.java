@@ -31,16 +31,14 @@ public class Submission {
      * @param submittedOn date submitted on
      * @param filename filename
      * @param filecontent content of the file
-     * @param checksum checksum of the content
      */
-    public Submission(String name, String studentId, String assignmentId, String submittedOn, String filename, String filecontent, String checksum) {
+    public Submission(String name, String studentId, String assignmentId, String submittedOn, String filename, String filecontent) {
         this.name = name;
         this.studentId = studentId;
         this.assignmentId = assignmentId;
         this.submittedOn = submittedOn;
         this.filename = filename;
         this.filecontent = filecontent;
-        this.checksum = checksum;
     }
 
     /**
@@ -141,32 +139,19 @@ public class Submission {
         this.filecontent = filecontent;
     }
 
-    /**
-     * @return the checksum
-     */
-    public String getChecksum() {
-        return checksum;
-    }
-
-    /**
-     * @param checksum the checksum
-     */
-    public void setChecksum(String checksum) {
-        this.checksum = checksum;
-    }
 
     /**
      * Create a Submission Object from the given mongo Object
      * @param obj A mongo DB Object
      */
     public void createFromMongoObj(DBObject obj) {
+        Id = checkNull(obj.get("_id"));
         name = checkNull(obj.get("name"));
         studentId = checkNull(obj.get("studentId"));
         assignmentId = checkNull(obj.get("assignmentId"));
         submittedOn = checkNull(obj.get("submittedOn"));
         filename = checkNull(obj.get("filename"));
         filecontent = checkNull(obj.get("filecontent"));
-        checksum = checkNull(obj.get("checksum"));
     }
 
     /**
@@ -174,7 +159,6 @@ public class Submission {
      * @return
      */
     private String checkNull(Object val) {
-        System.out.println(val);
         return val != null? val.toString(): "";
     }
 
@@ -186,5 +170,4 @@ public class Submission {
     private String submittedOn;
     private String filename;
     private String filecontent;
-    private String checksum;
 }
