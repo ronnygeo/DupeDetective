@@ -15,7 +15,8 @@ const httpOptions = {
 @Injectable()
 export class AssignmentService {
 
-  private assignmentUrl = 'api/assignments';  // URL to web api
+  private assignmentUrl = 'http://localhost:8080/assignments';  // URL to web api
+  private analyzeUrl = 'http://localhost:8080/assignment';  // URL to web api
 
   /**
    * Default Constructor
@@ -30,6 +31,7 @@ export class AssignmentService {
   getAssignments(): Observable<Assignment[]> {
     return this.http.get<Assignment[]>(this.assignmentUrl)
       .pipe(
+        map(r => r["_embedded"]["assignments"]),
         catchError(this.handleError('getAssignments', []))
       );
   }
@@ -39,22 +41,29 @@ export class AssignmentService {
    * @param {number} id the id of the assignment to retrieve
    * @returns {Observable<Assignment>} an Observable for the Assignments
    */
-  getAssignment(id: number): Observable<Assignment> {
+  getAssignment(id: string): Observable<Assignment> {
     const url = `${this.assignmentUrl}/${id}`;
     return this.http.get<Assignment>(url).pipe(
       tap(console.log),
+      map(r => r["_embedded"]["assignments"]),
       catchError(this.handleError<Assignment>(`getAssignment id=${id}`))
     );
   }
 
   /**
-   * Update an assignment
-   * @param {Assignment} assignment
+   * Create an assignment
+   * @param Data object
    * @returns {Observable<any>}
    */
-  updateAssignment (assignment: Assignment): Observable<any> {
-    return this.http.put(this.assignmentUrl, assignment, httpOptions).pipe(
-      catchError(this.handleError<any>('updateAssignment'))
+  createAssignment (data): Observable<Assignment> {
+    return this.http.post(this.assignmentUrl, data, httpOptions).pipe(
+      catchError(this.handleError<any>('createAssignment'))
+    );
+  }
+
+  analyze(id: string): Observable<String> {
+    return this.http.get(`${this.analyzeUrl}/${id}/analyze`, httpOptions).pipe(
+      catchError(this.handleError<any>('analyze'))
     );
   }
 

@@ -1,12 +1,21 @@
-<div class="card mb-3">
-  <div class="card-header">
-    <i class="fa fa-table"></i> Comparison</div>
-  <div class="card-body">
-    <div class="container-fluid">
-    <div class="row ">
-      <div class="col doc-compare-content">{{doc1}}</div>
-      <div class="col doc-compare-content">{{doc2}}</div>
+<div class="modal-header">
+  <h4 style="text-transform: capitalize;">{{model}} Model</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="container-fluid">
+  <div class="row ">
+    <div class="col doc-compare-content">
+      <h4>Student 1</h4>
+      <span *ngFor="let line of doc1">{{line}}<br></span>
+    </div>
+    <div class="col doc-compare-content">
+      <h4>Student 2</h4>
+      <span *ngFor="let line of doc1">{{line}}<br></span>
     </div>
   </div>
-  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
 </div>

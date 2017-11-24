@@ -9,15 +9,20 @@
           <th>Id</th>
           <th>Name</th>
           <th>Course</th>
+          <th>Is Analyzed</th>
+          <th>Analyze</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let assignment of assignments">
             <td>{{assignment.id}}</td>
-          <td><a routerLink="/submission/{{assignment.id}}">{{assignment.name}}</a></td>
+          <td><a routerLink="/assignment/{{assignment.id}}/submissions">{{assignment.name}}</a></td>
             <td>{{assignment.course}}</td>
+            <td>{{assignment.analyzed}}</td>
+            <td><a class="btn btn-danger white-text" *ngIf="!assignment.analyzed" (click)="analyze(assignment.id)">Analyze!</a></td>
         </tr>
         </tbody>
+        <tfoot><a class="btn btn-primary white-text align-items-center" style="margin: 0.5em" routerLink="/assignments/new">Add New</a></tfoot>
       </table>
     </div>
   </div>

@@ -21,7 +21,7 @@
           <a class="nav-link js-scroll-trigger" routerLink="/submissions">Submissions</a>
         </li>
         <li (click)="isCollapsed = true"  class="nav-item" *ngIf="isLoggedIn() && isGrader()">
-          <a class="nav-link js-scroll-trigger" routerLink="/report">Report</a>
+          <a class="nav-link js-scroll-trigger" routerLink="/reports">Report</a>
         </li>
         <li (click)="isCollapsed = true"  class="nav-item dropdown"  ngbDropdown  *ngIf="!isLoggedIn()">
         <a class="nav-link dropdown-toggle" routerLink="" id="dropdown01" data-toggle="dropdown"
@@ -33,7 +33,7 @@
         </div>
         </li>
         <li (click)="isCollapsed = true"  class="nav-item" *ngIf="isLoggedIn() && !isGrader()">
-          <a class="nav-link js-scroll-trigger" routerLink="/submission/upload">Upload Assignment</a>
+          <a class="nav-link js-scroll-trigger" routerLink="/submissions/new">Upload Assignment</a>
         </li>
         <li (click)="isCollapsed = true" *ngIf="isLoggedIn()" class="nav-item">
           <a class="nav-link js-scroll-trigger"  href="" (click)="logout()">Logout</a>
