@@ -3,6 +3,7 @@ package cs5500.project.engine.winnow;
 import cs5500.project.engine.winnow.normalise.NormalisedFile;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author Joyal
@@ -44,6 +45,9 @@ public class Winnow {
       normalisedSrcFile = normaliseFile(srcFilePath);
       normalisedDestFile = normaliseFile(dstFilePath);
 
+      if(!StringUtils.isEmpty(normalisedSrcFile) && !StringUtils.isEmpty(normalisedDestFile)){
+        
+      }
     }
     catch(IOException ex){
       // Todo Implement Logging
@@ -75,6 +79,5 @@ public class Winnow {
     String normalisedFile = new NormalisedFile(filePath).getNormalisedFile();
     return normalisedFile;
   }
-
 
 }
