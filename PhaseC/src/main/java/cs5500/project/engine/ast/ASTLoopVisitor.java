@@ -25,7 +25,7 @@ public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(PackageDeclaration node) {
-        return false;
+        return true;
     }
 
     /**
@@ -36,7 +36,7 @@ public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ImportDeclaration node) {
-        return false;
+        return true;
     }
 
     /**
