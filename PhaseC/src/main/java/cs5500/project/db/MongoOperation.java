@@ -52,6 +52,7 @@ public class MongoOperation {
             db = mongoClient.getDB(database);
             collection = db.getCollection(colReport);
             collection.insert(getReportDocument(report));
+            System.out.println("report saved to mongo.");
         }
      }
 

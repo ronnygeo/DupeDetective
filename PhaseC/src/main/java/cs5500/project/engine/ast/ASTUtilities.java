@@ -29,6 +29,7 @@ public class ASTUtilities {
                 }
             }
         }
+        while (l.size() > lcsList.size()) l.remove(lcsList.size());
     }
 
     /**

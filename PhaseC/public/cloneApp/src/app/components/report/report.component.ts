@@ -55,9 +55,10 @@ export class ReportComponent implements OnInit {
 
   // Get student from submission
   getStudentsFromSubmission() {
-    this.submissionService.getSubmissions(this.selectedReport["refFileId"])
+    this.selectedReport;
+    this.submissionService.getSubmissions(this.selectedReport.refFileId)
       .subscribe(submissions => {
-        submissions.filter(s => s["id"] === this.selectedReport["refFileId"])
+        submissions.filter(s => s["id"] === this.selectedReport.refFileId)
           .map(submission => {
             this.student1 = submission["studentId"];
             this.selectedAssignment = submission.assignmentId;
@@ -75,9 +76,11 @@ export class ReportComponent implements OnInit {
     if (this.route.snapshot.paramMap.get('submissionId') != null && this.route.snapshot.paramMap.get('assignmentId') !== "") {
       const submissionId = this.route.snapshot.paramMap.get('submissionId');
       const assignmentId = this.route.snapshot.paramMap.get('assignmentId');
+      console.log(submissionId, " ", assignmentId);
       this.reportService.getAllReports()
         .subscribe(reports => {
           this.reports = reports;
+          console.log(reports);
           this.selectedReport = reports.filter(r => r.submissionId === submissionId)[0];
           this.getStudentsFromSubmission();
         });
