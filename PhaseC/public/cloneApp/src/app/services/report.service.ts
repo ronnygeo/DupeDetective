@@ -5,6 +5,7 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import {Report} from "../models/report";
+import {assign} from "rxjs/util/assign";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -47,6 +48,22 @@ export class ReportService {
       map(r => r["_embedded"]["reports"]),
       tap(console.log),
       catchError(this.handleError<Report[]>(`getReport id=${id}`))
+    );
+  }
+
+  /**
+   * GET report by assignment, ref file, similar file id. Will 404 if id not found
+   * @param {string} assignmentId
+   * @param {string} refFileId
+   * @param {string} similarFileId
+   * @returns {Observable<Report[]>}
+   */
+  getReportByIds(assignmentId: string, refFileId: string, similarFileId: string): Observable<Report[]> {
+    const url = `${this.reportUrl}?assignmentId=${assignmentId}&refFileId=${refFileId}&similarFileId=${similarFileId}`;
+    return this.http.get<Report[]>(url).pipe(
+      map(r => r["_embedded"]["reports"]),
+      tap(console.log),
+      catchError(this.handleError<Report[]>(`getReport assignmentId=${assignmentId} refFileId=${refFileId} similarFileId=${similarFileId}`))
     );
   }
 

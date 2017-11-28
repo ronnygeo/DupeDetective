@@ -28,7 +28,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(PackageDeclaration node) {
-        return false;
+        return true;
     }
 
     /**
@@ -313,7 +313,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ContinueStatement node) {
-        addNodeToCurrentNode(node.getLabel());
         return false;
     }
 

@@ -43,6 +43,7 @@ public class Runner {
                 report2.addLines(loopStructure.executeStrategy(code1, code2));
                 report2.addLines(md5.executeStrategy(code1, code2));
 
+                System.out.println("Saving to mongo.");
                 mongo.saveReport(report1);
                 mongo.saveReport(report2);
             }

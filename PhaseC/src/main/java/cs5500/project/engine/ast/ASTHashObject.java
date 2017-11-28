@@ -32,12 +32,12 @@ public class ASTHashObject {
      * @param length length of node
      * @param hash hash of node
      */
-    public ASTHashObject(String name, Integer type, Integer offset, Integer length, long hash) {
+    public ASTHashObject(String name, Integer type, Integer offset, Integer length, Long hash) {
         this.name = name;
         this.type = type;
-        this.offset = offset;
-        this.length = length;
-        this.hash = hash;
+        this.offset = offset != null? offset: 0;
+        this.length = length != null? length: 0;
+        this.hash = hash != null? hash: 0;
         this.nodes = new ArrayList<>();
     }
 
