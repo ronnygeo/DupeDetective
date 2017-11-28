@@ -12,7 +12,7 @@ import {SubmissionService} from "../../services/submission.service";
 import {Report} from "../../models/report";
 
 /**
- * The Component that creates the Report page
+ * The Component that creates the ModelReport page
  */
 @Component({
   selector: 'app-submission-list',
@@ -108,7 +108,7 @@ export class ReportComponent implements OnInit {
       }
   }
 
-  // update Report on change
+  // update ModelReport on change
   updateReport() {
     this.submissionService.getAllSubmissions().subscribe(submissions => {
       const refFileId = submissions.filter(s => s["studentId"] === this.student1).map(s => s["id"])[0];

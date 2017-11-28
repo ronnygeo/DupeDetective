@@ -12,7 +12,7 @@ const httpOptions = {
 };
 
 /**
- * Report Service that performs all communication related to reports with the server
+ * ModelReport Service that performs all communication related to reports with the server
  */
 @Injectable()
 export class ReportService {

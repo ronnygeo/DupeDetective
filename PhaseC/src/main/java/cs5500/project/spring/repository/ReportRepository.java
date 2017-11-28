@@ -3,6 +3,7 @@ package cs5500.project.spring.repository;
 
 import java.util.List;
 
+import cs5500.project.db.ModelReport;
 import cs5500.project.db.Report;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
@@ -19,5 +20,5 @@ public interface ReportRepository extends MongoRepository<Report, String>{
 	 * @param submissionId submission id
 	 * @return a list of reports
 	 */
-	List<Report> findReportsBySubmissionId(@Param("submissionId") int submissionId);
+	List<ModelReport> findReportsBySubmissionId(@Param("submissionId") int submissionId);
 }
