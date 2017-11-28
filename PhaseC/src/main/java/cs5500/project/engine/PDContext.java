@@ -29,7 +29,7 @@ public class PDContext {
 	 * Execute the operation with the strategy
 	 * @param code1 first code to compare
 	 * @param code2 second code to compare
-	 * @return a list of Report items
+	 * @return a list of ModelReport items
 	 */
 	public List<ReportLine> executeStrategy(String code1, String code2){
 			return pdStrategy.checkPlagiarism(code1, code2);

@@ -1,6 +1,8 @@
 package cs5500.project.db;
 
+import com.google.gson.Gson;
 import com.mongodb.*;
+import com.mongodb.util.JSON;
 import cs5500.project.ReadProperties;
 import cs5500.project.engine.Model;
 
@@ -42,16 +44,17 @@ public class MongoOperation {
     }
 
     /**
-     * @param report the Report object to insert
+     * @param report the ModelReport object to insert
      */
     public void saveReport(Report report) {
-
         DB db;
         DBCollection collection;
+        Gson gson = new Gson();
         try (MongoClient mongoClient = new MongoClient(host, port)) {
             db = mongoClient.getDB(database);
             collection = db.getCollection(colReport);
-            collection.insert(getReportDocument(report));
+            BasicDBObject obj = (BasicDBObject) JSON.parse(gson.toJson(report));
+            collection.insert(obj);
             System.out.println("report saved to mongo.");
         }
      }
@@ -86,49 +89,4 @@ public class MongoOperation {
          return l;
      }
 
-    /**
-     * Convert Report object to mongo object
-     * @param report the Report object
-     * @return the mongoDB object
-     */
-    private BasicDBObject getReportDocument(Report report) {
-        BasicDBObject document = new BasicDBObject();
-        Map<Integer, Float> scores = new HashMap<>();
-        Map<Integer, Integer> count = new HashMap<>();
-        document.put("refFileId", report.getRefFileId());
-        document.put("similarFileId", report.getSimilarFileId());
-        document.put("submissionId", report.getSubmissionId());
-
-        List<BasicDBObject> dbItems = new ArrayList<>();
-
-        //TODO: Refactor this whole method
-        for (ReportLine ri: report.getLines()) {
-            BasicDBObject documentDetail = new BasicDBObject();
-            documentDetail.put("refFileOffset", ri.getRefOffset());
-            documentDetail.put("similarFileOffset", ri.getSimilarOffset());
-            documentDetail.put("refFileLength", ri.getRefLength());
-            documentDetail.put("similarFileLength", ri.getSimilarLength());
-            documentDetail.put("model", ri.getModel());
-            documentDetail.put("score", ri.getScore());
-            dbItems.add(documentDetail);
-            scores.put(ri.getModel(), scores.getOrDefault(ri.getModel(), 0.0f) + ri.getScore());
-            count.put(ri.getModel(), count.getOrDefault(ri.getModel(), 0) + 1);
-        }
-
-        document.put("md5Result", scores.get(Model.MD5.getValue()) == 1);
-        document.put("structureScore", scores.getOrDefault(Model.ASTStructure.getValue(), 0f)/count.getOrDefault(Model.ASTStructure.getValue(), 1));
-        document.put("loopScore", scores.getOrDefault(Model.ASTLoop.getValue(), 0f)/count.getOrDefault(Model.ASTLoop.getValue(), 1));
-        document.put("methodScore", scores.getOrDefault(Model.ASTMethod.getValue(), 0f)/count.getOrDefault(Model.ASTMethod.getValue(), 1));
-        document.put("winnowingScore", scores.getOrDefault(Model.WINNOWING.getValue(), 0f)/count.getOrDefault(Model.WINNOWING.getValue(), 1));
-
-        float overallScore = 0;
-        for (Integer key: scores.keySet()) {
-            if (key != Model.MD5.getValue()) {
-                overallScore += weights.get(key) * (scores.getOrDefault(key, 0f)/count.getOrDefault(key, 1));
-            }
-        }
-        document.put("overallScore", overallScore);
-        document.put("lines", dbItems);
-        return document;
-    }
 }
