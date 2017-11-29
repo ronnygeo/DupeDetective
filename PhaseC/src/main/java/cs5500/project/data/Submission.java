@@ -1,5 +1,6 @@
-package cs5500.project.db;
+package cs5500.project.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mongodb.DBObject;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -8,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * Submission Object that stores information about submission
  */
 @Document(collection="submission")
+@JsonIgnoreProperties(value = {"createdAt"}, allowGetters = true)
 public class Submission {
 
     /**
@@ -16,7 +18,7 @@ public class Submission {
      * @param studentId student id
      */
     public Submission(String id, String assignmentId, String studentId) {
-        this.Id = id;
+        this.id = id;
         this.assignmentId = assignmentId;
         this.studentId = studentId;
     }
@@ -47,14 +49,14 @@ public class Submission {
      * @return the id of the submission
      */
     public String getId() {
-        return Id;
+        return id;
     }
 
     /**
      * @param id the id of the submission
      */
     public void setId(String id) {
-        this.Id = id;
+        this.id = id;
     }
 
     /**
@@ -147,7 +149,7 @@ public class Submission {
      * @param obj A mongo DB Object
      */
     public void createFromMongoObj(DBObject obj) {
-        Id = checkNull(obj.get("_id"));
+        id = checkNull(obj.get("_id"));
         name = checkNull(obj.get("name"));
         studentId = checkNull(obj.get("studentId"));
         assignmentId = checkNull(obj.get("assignmentId"));
@@ -165,7 +167,7 @@ public class Submission {
     }
 
     @Id
-    private String Id;
+    private String id;
     private String name;
     private String studentId;
     private String assignmentId;

@@ -1,7 +1,4 @@
-package cs5500.project.db;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+package cs5500.project.data;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,7 +3,7 @@ package cs5500.project.engine;
 import cs5500.project.engine.ast.ASTStructureCompare;
 import cs5500.project.engine.ast.ASTStructureVisitor;
 import cs5500.project.engine.ast.CustomASTParser;
-import cs5500.project.db.ReportLine;
+import cs5500.project.data.ReportLine;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 

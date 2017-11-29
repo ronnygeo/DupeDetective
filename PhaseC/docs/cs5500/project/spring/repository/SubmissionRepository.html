@@ -100,12 +100,12 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Superinterfaces:</dt>
-<dd>org.springframework.data.repository.CrudRepository&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.db">Submission</a>,java.lang.String&gt;, org.springframework.data.mongodb.repository.MongoRepository&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.db">Submission</a>,java.lang.String&gt;, org.springframework.data.repository.PagingAndSortingRepository&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.db">Submission</a>,java.lang.String&gt;, org.springframework.data.repository.query.QueryByExampleExecutor&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.db">Submission</a>&gt;, org.springframework.data.repository.Repository&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.db">Submission</a>,java.lang.String&gt;</dd>
+<dd>org.springframework.data.repository.CrudRepository&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.data">Submission</a>,java.lang.String&gt;, org.springframework.data.mongodb.repository.MongoRepository&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.data">Submission</a>,java.lang.String&gt;, org.springframework.data.repository.PagingAndSortingRepository&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.data">Submission</a>,java.lang.String&gt;, org.springframework.data.repository.query.QueryByExampleExecutor&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.data">Submission</a>&gt;, org.springframework.data.repository.Repository&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.data">Submission</a>,java.lang.String&gt;</dd>
 </dl>
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">SubmissionRepository</span>
-extends org.springframework.data.mongodb.repository.MongoRepository&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.db">Submission</a>,java.lang.String&gt;</pre>
+extends org.springframework.data.mongodb.repository.MongoRepository&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.data">Submission</a>,java.lang.String&gt;</pre>
 <div class="block">SubmissionRepository class which extends the MongoRepository and queries the Submission
  table in the database</div>
 </li>
@@ -127,13 +127,13 @@ extends org.springframework.data.mongodb.repository.MongoRepository&lt;<a href="
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.db">Submission</a>&gt;</code></td>
+<td class="colFirst"><code>java.util.List&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.data">Submission</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../cs5500/project/spring/repository/SubmissionRepository.html#findSubmissionsByAssignmentId-java.lang.String-">findSubmissionsByAssignmentId</a></span>(java.lang.String&nbsp;assignmentId)</code>
 <div class="block">method to return a list of submissions with the given assignment Id</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.db">Submission</a>&gt;</code></td>
+<td class="colFirst"><code>java.util.List&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.data">Submission</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../cs5500/project/spring/repository/SubmissionRepository.html#findSubmissionsByStudentId-java.lang.String-">findSubmissionsByStudentId</a></span>(java.lang.String&nbsp;studentId)</code>
 <div class="block">method that returns a list of submissions with the given studentId</div>
 </td>
@@ -188,7 +188,7 @@ extends org.springframework.data.mongodb.repository.MongoRepository&lt;<a href="
 <li class="blockList">
 <h4>findSubmissionsByAssignmentId</h4>
 <pre>@Query(value="{ \'assignmentId\' : ?0 }")
-java.util.List&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.db">Submission</a>&gt;&nbsp;findSubmissionsByAssignmentId(@Param(value="assignmentId")
+java.util.List&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.data">Submission</a>&gt;&nbsp;findSubmissionsByAssignmentId(@Param(value="assignmentId")
                                                                                                    java.lang.String&nbsp;assignmentId)</pre>
 <div class="block">method to return a list of submissions with the given assignment Id</div>
 <dl>
@@ -205,7 +205,7 @@ java.util.List&lt;<a href="../../../../cs5500/project/db/Submission.html" title=
 <ul class="blockListLast">
 <li class="blockList">
 <h4>findSubmissionsByStudentId</h4>
-<pre>java.util.List&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.db">Submission</a>&gt;&nbsp;findSubmissionsByStudentId(@Param(value="studentId")
+<pre>java.util.List&lt;<a href="../../../../cs5500/project/db/Submission.html" title="class in cs5500.project.data">Submission</a>&gt;&nbsp;findSubmissionsByStudentId(@Param(value="studentId")
                                                       java.lang.String&nbsp;studentId)</pre>
 <div class="block">method that returns a list of submissions with the given studentId</div>
 <dl>

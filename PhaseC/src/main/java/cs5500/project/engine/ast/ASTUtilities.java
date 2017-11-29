@@ -1,12 +1,10 @@
 package cs5500.project.engine.ast;
 
-import cs5500.project.db.ReportLine;
+import cs5500.project.data.ReportLine;
 import cs5500.project.engine.Model;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class ASTUtilities {
     /**

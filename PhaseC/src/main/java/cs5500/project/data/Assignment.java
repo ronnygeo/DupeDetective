@@ -1,7 +1,9 @@
-package cs5500.project.db;
+package cs5500.project.data;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * year, date it was analyzed,due date etc
  */
 @Document(collection = "assignment")
+@JsonIgnoreProperties(value = {"createdAt"}, allowGetters = true)
 public class Assignment {
 
 	/**
@@ -26,7 +29,7 @@ public class Assignment {
 			boolean isAnalyzed, Date dueDate, Date creationDate,
 			Date analyzedDate) {
 		
-		this.Id = id;
+		this.id = id;
 		this.name = name;
 		this.course = course;
 		this.year = year;
@@ -45,14 +48,14 @@ public class Assignment {
 	 * @return id
 	 */
 	public String getId() {
-		return Id;
+		return id;
 	}
 
 	/**
 	 * @param id id
 	 */
 	public void setId(String id) {
-		this.Id = id;
+		this.id = id;
 	}
 
 
@@ -154,8 +157,8 @@ public class Assignment {
 		this.analyzedDate = analyzedDate;
 	}
 
-	@Id private String Id;
-	private String name;
+	@Id private String id;
+	@NotBlank private String name;
 	private String course;
 	private boolean isAnalyzed;
 	private int year;
