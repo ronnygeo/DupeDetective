@@ -1,6 +1,6 @@
 package cs5500.project.engine;
 
-import cs5500.project.db.*;
+import cs5500.project.data.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -59,7 +59,7 @@ public class Runner {
                 mongo.saveReport(report2);
             }
         }
-        //TODO: Once completed set analyzed flag to true for assignment id
+        mongo.updateAnalyzedAssignment(assignmentId);
     }
 
     /**

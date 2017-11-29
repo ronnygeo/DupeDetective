@@ -1,18 +1,23 @@
-package cs5500.project.db;
+package cs5500.project.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * User object in the system; namely, Student, Grader
  */
 @Document(collection = "user")
+@JsonIgnoreProperties(value = {"createdAt"}, allowGetters = true)
 public class User {
 
     @Id
-    private String Id;
+    private String id;
     private String name;
     private String email;
+//    @Indexed(unique=true)
     private String username;
     private String password;
     private boolean grader;
@@ -26,7 +31,7 @@ public class User {
      * @param grader is the user a grader
      */
     public User(String id, String name, String email, String username, String password, boolean grader) {
-        this.Id = id;
+        this.id = id;
         this.name = name;
         this.email = email;
         this.username = username;
@@ -59,14 +64,14 @@ public class User {
      * @return the id
      */
     public String getId() {
-        return Id;
+        return id;
     }
 
     /**
      * @param id the id
      */
     public void setId(String id) {
-        this.Id = id;
+        this.id = id;
     }
 
     /**

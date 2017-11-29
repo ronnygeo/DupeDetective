@@ -1,10 +1,8 @@
-package cs5500.project.spring;
+package cs5500.project.web;
 
-
-import cs5500.project.db.Submission;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @SpringBootApplication
 public class Application {
@@ -12,5 +10,4 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-
 }

@@ -1,7 +1,9 @@
-package cs5500.project.db;
+package cs5500.project.data;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * year, date it was analyzed,due date etc
  */
 @Document(collection = "assignment")
+@JsonIgnoreProperties(value = {"createdAt"}, allowGetters = true)
 public class Assignment {
 
 	/**
@@ -23,10 +26,10 @@ public class Assignment {
 	 * @param analyzedDate date analyzed
 	 */
 	public Assignment(String id, String name, String course, int year,
-			boolean isAnalyzed, Date dueDate, Date creationDate,
-			Date analyzedDate) {
+			boolean isAnalyzed, String dueDate, String creationDate,
+			String analyzedDate) {
 		
-		this.Id = id;
+		this.id = id;
 		this.name = name;
 		this.course = course;
 		this.year = year;
@@ -45,14 +48,14 @@ public class Assignment {
 	 * @return id
 	 */
 	public String getId() {
-		return Id;
+		return id;
 	}
 
 	/**
 	 * @param id id
 	 */
 	public void setId(String id) {
-		this.Id = id;
+		this.id = id;
 	}
 
 
@@ -115,51 +118,51 @@ public class Assignment {
 	/**
 	 * @return the due date
 	 */
-	public Date getDueDate() {
+	public String getDueDate() {
 		return dueDate;
 	}
 
 	/**
 	 * @param dueDate the due date
 	 */
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
 	}
 
 	/**
 	 * @return the creation date
 	 */
-	public Date getCreationDate() {
+	public String getCreationDate() {
 		return creationDate;
 	}
 
 	/**
 	 * @param creationDate the creation date
 	 */
-	public void setCreationDate(Date creationDate) {
+	public void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
 	}
 
 	/**
 	 * @return analyzed date attribute
 	 */
-	public Date getAnalyzedDate() {
+	public String getAnalyzedDate() {
 		return analyzedDate;
 	}
 
 	/**
 	 * @param analyzedDate analyzed date attribute
 	 */
-	public void setAnalyzedDate(Date analyzedDate) {
+	public void setAnalyzedDate(String analyzedDate) {
 		this.analyzedDate = analyzedDate;
 	}
 
-	@Id private String Id;
-	private String name;
+	@Id private String id;
+	@NotBlank private String name;
 	private String course;
 	private boolean isAnalyzed;
 	private int year;
-	private Date dueDate;
-	private Date creationDate;
-	private Date analyzedDate;
+	private String dueDate;
+	private String creationDate;
+	private String analyzedDate;
 }

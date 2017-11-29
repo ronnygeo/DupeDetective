@@ -1,9 +1,4 @@
-package cs5500.project.db;
-
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+package cs5500.project.data;
 
 /**
  * An item is part of the report

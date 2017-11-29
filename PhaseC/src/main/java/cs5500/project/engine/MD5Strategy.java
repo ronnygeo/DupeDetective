@@ -1,6 +1,6 @@
 package cs5500.project.engine;
 
-import cs5500.project.db.ReportLine;
+import cs5500.project.data.ReportLine;
 import cs5500.project.engine.md5.MD5Generator;
 
 import java.util.ArrayList;

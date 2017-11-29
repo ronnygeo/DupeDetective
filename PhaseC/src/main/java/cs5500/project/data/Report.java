@@ -1,11 +1,11 @@
-package cs5500.project.db;
+package cs5500.project.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import cs5500.project.engine.Model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +13,7 @@ import java.util.Map;
  * The ModelReport object
  */
 @Document(collection="report")
+@JsonIgnoreProperties(value = {"createdAt"}, allowGetters = true)
 public class Report {
 
 

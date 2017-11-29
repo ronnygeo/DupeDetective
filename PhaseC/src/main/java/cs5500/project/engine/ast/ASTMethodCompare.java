@@ -1,6 +1,6 @@
 package cs5500.project.engine.ast;
 
-import cs5500.project.db.ReportLine;
+import cs5500.project.data.ReportLine;
 import cs5500.project.engine.CustomComparator;
 
 import java.util.List;
