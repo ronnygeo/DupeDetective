@@ -43,22 +43,32 @@ export class ReportComponent implements OnInit {
               private userService: UserService,
               private submissionService: SubmissionService) {}
 
+  /**
+   * On page load
+   */
   ngOnInit() {
     this.getReport();
     this.getAllAssignments();
     this.getAllUsers();
   }
 
-  // Gets all the users
+  /**
+   * Gets all the users
+   */
   getAllUsers() {
     this.userService.getUsers().subscribe(users => this.students = users.filter(u => u.grader === false));
   }
-  // Gets all the assignments
+
+  /**
+   * Gets all the assignments
+   */
   getAllAssignments() {
     this.assignmentService.getAssignments().subscribe(assignments => this.assignments = assignments);
   }
 
-  // Get student from submission
+  /**
+   * Get student from submission
+   */
   getStudentsFromSubmission() {
     this.submissionService.getSubmission(this.selectedReport.refFileId)
       .subscribe(submission => {
@@ -71,7 +81,9 @@ export class ReportComponent implements OnInit {
       });
   }
 
-  // Get the assignment
+  /**
+   * Get the assignment
+   */
   getReport(): void {
     if (this.route.snapshot.paramMap.get('submissionId') != null && this.route.snapshot.paramMap.get('assignmentId') !== "") {
       const submissionId = this.route.snapshot.paramMap.get('submissionId');
@@ -96,7 +108,9 @@ export class ReportComponent implements OnInit {
     }
   }
 
-  // Fetch scores from report obj
+  /**
+   * Fetch scores from report obj
+   */
   fetchScores() {
     for (const model of this.selectedReport.models) {
       // console.log(model.mothis.getStudentsFromSubmission();del)
@@ -109,7 +123,12 @@ export class ReportComponent implements OnInit {
     }
   }
 
-  // Get the assignment
+  /**
+   * Get the assignment
+   * @param {string} assignmentId
+   * @param {string} refFileId
+   * @param {string} similarFileId
+   */
   getReportByIds(assignmentId: string, refFileId: string, similarFileId: string): void {
       if (refFileId !== similarFileId) {
     console.log(`ref file id: ${refFileId}, similar file id: ${similarFileId}`);
@@ -122,7 +141,9 @@ export class ReportComponent implements OnInit {
       }
   }
 
-  // update ModelReport on change
+  /**
+   * update ModelReport on change
+   */
   updateReport() {
     this.submissionService.getSubmissionByStudentAssignment(this.selectedAssignment, this.student1).subscribe(submission => {
       const refFileId = submission.id;
@@ -133,12 +154,16 @@ export class ReportComponent implements OnInit {
     });
   }
 
-  // Go back to previous page
+  /**
+   * Go back to previous page
+   */
   goBack(): void {
     this.location.back();
   }
 
-  // Open the modal to display comparison
+  /**
+   * Open the modal to display comparison
+   */
   open(model) {
     const modalRef = this.modalService.open(ComparedocumentsComponent);
     modalRef.componentInstance.model = model;

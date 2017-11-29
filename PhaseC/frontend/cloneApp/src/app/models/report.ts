@@ -1,5 +1,8 @@
 import {ModelReport} from "./modelreport";
 
+/**
+ * Class that maintains Report structure
+ */
 export class Report {
   id: string;
   submissionId: string;

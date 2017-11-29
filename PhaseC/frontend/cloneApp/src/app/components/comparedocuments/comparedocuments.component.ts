@@ -25,6 +25,9 @@ export class ComparedocumentsComponent implements OnInit {
               private reportService: ReportService,
               private userService: UserService) { }
 
+  /**
+   * On page load
+   */
   ngOnInit() {
     // this.getStudentNames();
     this.getDocuments();
@@ -34,6 +37,9 @@ export class ComparedocumentsComponent implements OnInit {
   //   this.userService.getUser()
   // }
 
+  /**
+   * Get both the documents
+   */
   getDocuments() {
     this.submissionService.getSubmission(this.refFileId).subscribe(submission => {
       this.doc1 = submission.filecontent.split("\n");
@@ -42,7 +48,4 @@ export class ComparedocumentsComponent implements OnInit {
       this.doc2 = submission.filecontent.split("\n");
     });
   }
-
-
-
 }

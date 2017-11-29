@@ -1,3 +1,6 @@
+/**
+ * Class that maintains single line of report
+ */
 export class ReportLine {
   refOffset: number;
   refLength: number;
