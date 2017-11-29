@@ -14,6 +14,14 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class NormalisedFile {
 
+  public String getFileContents() {
+    return fileContents;
+  }
+
+  public StringBuilder getNormalisedFileContents() {
+    return normalisedFileContents;
+  }
+
   // Actual file content
   String fileContents;
   // Normalised file content
@@ -64,7 +72,10 @@ public class NormalisedFile {
     return normalisedFileContents.toString();
   }
 
-  private void replaceLineBreak() {
+  /**
+   * Replace all line breaks with $ symbol
+   */
+  public void replaceLineBreak() {
     String[] lines = getLineOfContents();
 
     for(String line : lines) {
@@ -80,7 +91,7 @@ public class NormalisedFile {
   /**
    * Remove all punctuations
    */
-  private void removePunctuations() {
+  public void removePunctuations() {
     String[] lines = getLineOfContents();
 
     for(String line : lines) {
@@ -104,7 +115,7 @@ public class NormalisedFile {
   /**
    * Removes keywords after identifiers
    */
-  private void removeKeywords() {
+  public void removeKeywords() {
     String[] lines = getLineOfContents();
     List<String> javaKeywords = GlobalConstants.JAVA_KEYWORDS;
     for (String line : lines) {
@@ -120,7 +131,7 @@ public class NormalisedFile {
   // 1. replace identifiers with v
   // 2. skip import lines
   // 3. skip function calls
-  private void replaceIdentifiers() {
+  public void replaceIdentifiers() {
     String[] lines = getLineOfContents();
     List<String> noIdentifier = GlobalConstants.NO_IDENTIFIER;
     List<String> javaKeywords = GlobalConstants.JAVA_KEYWORDS;
@@ -165,7 +176,7 @@ public class NormalisedFile {
   /**
    * Tokenises Keywords
    */
-  private void tokenizeKeywords() {
+  public void tokenizeKeywords() {
     String[] lines = getLineOfContents();
     List<String> javaKeywords = GlobalConstants.JAVA_KEYWORDS;
 
@@ -216,7 +227,7 @@ public class NormalisedFile {
   /**
    * This function removes both single line and multi line comments from file
    */
-  private void removeFileComments() {
+  public void removeFileComments() {
     List<String> singleLineComment = GlobalConstants.SINGLE_LINE_COMMENT;
     List<String> multiLineComment = GlobalConstants.MULTI_LINE_COMMENT;
 
@@ -288,14 +299,14 @@ public class NormalisedFile {
    * @param line line from where white spaces are to be removed
    * @return Line
    */
-  private String removeWhiteSpace(String line) {
+  public String removeWhiteSpace(String line) {
     return line.replaceAll(GlobalConstants.REGEX_WHITESPACE, " ").trim();
   }
 
   /**
    * @return contents of file in lines
    */
-  private String[] getLineOfContents() {
+  public String[] getLineOfContents() {
     String[] output = null;
     if (!StringUtils.isEmpty(fileContents)) {
       return fileContents.split("\n");
@@ -306,7 +317,7 @@ public class NormalisedFile {
   /**
    * This function reads file contents line by line and sets all its content to lower case
    */
-  private void changeToLowerCase() {
+  public void changeToLowerCase() {
     String[] lines = fileContents.split("\n");
     for (String line : lines) {
       normalisedFileContents.append(line.toLowerCase());
@@ -318,7 +329,7 @@ public class NormalisedFile {
   /**
    * Updates fileContents to normalisedFileContents for further use
    */
-  private void setContent() {
+  public void setContent() {
     fileContents = normalisedFileContents.toString();
     // clear normalised content
     normalisedFileContents = new StringBuilder();
