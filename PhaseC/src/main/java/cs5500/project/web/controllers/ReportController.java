@@ -27,6 +27,16 @@ public class ReportController {
         return reportRepository.findAll(sortByCreatedAtDesc);
     }
 
+    @GetMapping("/reports/single")
+    public Report getReportByIds(@RequestParam(value = "refFileId", required = false) String refFileId, @RequestParam(value = "similarFileId", required = false) String similarFileId) {
+        return reportRepository.findReportByRefFileIdAndSimilarFileId(refFileId, similarFileId);
+    }
+
+    @GetMapping("/submissions/{id}/reports")
+    public List<Report> getReportsBySubmissionId(@PathVariable("id") String submissionId) {
+        return reportRepository.findReportsBySubmissionId(submissionId);
+    }
+
     @GetMapping(value="/reports/{id}")
     public ResponseEntity<Report> getReportById(@PathVariable("id") String id) {
         Report report = reportRepository.findOne(id);
@@ -37,10 +47,6 @@ public class ReportController {
         }
     }
 
-    @GetMapping(value="/submissions/{refFileId}/{similarFileId}")
-    public Report getReportByFileIds(@PathVariable("refFileId") String refFileId, @PathVariable("similarFileId") String similarFileId) {
-        return reportRepository.findReportByRefFileIdAndSimilarFileId(refFileId, similarFileId);
-    }
 
     @DeleteMapping(value="/reports/{id}")
     public void deleteReport(@PathVariable("id") String id) {

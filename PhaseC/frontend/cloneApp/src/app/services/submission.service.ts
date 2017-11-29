@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import {Submission} from "../models/submission";
 import {filter} from "rxjs/operator/filter";
+import {Report} from "../models/report";
 
 const httpOptions = {
   headers: new HttpHeaders(
@@ -35,9 +36,21 @@ export class SubmissionService {
   getAllSubmissions(): Observable<Submission[]> {
     return this.http.get<Submission[]>(this.submissionUrl)
       .pipe(
-        // map(r => r["_embedded"]["submissions"]),
         catchError(this.handleError('getAllSubmissions', []))
       );
+  }
+
+  /**
+   * GET submissions for an assignment by id. Will 404 if id not found
+   * @param {number} id the id of the assignment to retrieve
+   * @returns {Observable<Assignment>} an Observable for the Assignments
+   */
+  getSubmission(id: string): Observable<Submission> {
+    const url = `${this.submissionUrl}/${id}`;
+    return this.http.get<Submission>(url).pipe(
+      tap(console.log),
+      catchError(this.handleError<Submission>(`getSubmission id=${id}`))
+    );
   }
 
   /**
@@ -48,9 +61,16 @@ export class SubmissionService {
   getSubmissions(id: string): Observable<Submission[]> {
     const url = `${this.submissionUrl}?assignmentId=${id}`;
     return this.http.get<Submission[]>(url).pipe(
-      // map(r => r["_embedded"]["submissions"]),
-      tap(console.log),
+      // tap(console.log),
       catchError(this.handleError<Submission[]>(`getSubmission id=${id}`))
+    );
+  }
+
+  getSubmissionByStudentAssignment(assignmentId: string, studentId: string): Observable<Submission> {
+    const url = `${this.submissionUrl}/student?assignmentId=${assignmentId}&studentId=${studentId}`;
+    return this.http.get<Submission>(url).pipe(
+      // tap(console.log),
+      catchError(this.handleError<Submission>(`getSubmission assignmentId=${assignmentId} studentId=${studentId}`))
     );
   }
 
@@ -68,7 +88,19 @@ export class SubmissionService {
       );
   }
 
-
+    /**
+     * GET report by assignment, ref file, similar file id. Will 404 if id not found
+     * @param {string} submissionId
+     * @returns {Observable<Report[]>}
+     */
+    getReportsBySubmissionId(submissionId: string): Observable<Report[]> {
+      const url = `${this.submissionUrl}/${submissionId}/reports`;
+      return this.http.get<Report[]>(url)
+        .pipe(
+        tap(console.log),
+        catchError(this.handleError<Report[]>(`getReport submissionId=${submissionId}`))
+      );
+  }
 
   /**
    * Handle Http operation that failed.

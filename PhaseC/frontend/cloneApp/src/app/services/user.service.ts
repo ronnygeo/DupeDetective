@@ -40,7 +40,7 @@ export class UserService {
    * @returns {Observable<User[]>}
    */
   getUser(username: string, password: string): Observable<User> {
-    const url = `${this.userUrl}/${username}/${password}`;
+    const url = `${this.userUrl}/login?username=${username}&password=${password}`;
     return this.http.get<User>(url).pipe(
       // map(r => r["_embedded"]["users"]),
       catchError(this.handleError<User>(`getUser user=${username}`))

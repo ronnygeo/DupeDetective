@@ -1,3 +1,5 @@
+import {ModelReport} from "./modelreport";
+
 export class Report {
   id: string;
   submissionId: string;
@@ -5,8 +7,5 @@ export class Report {
   similarFileId: string;
   overallScore: number;
   md5Result: boolean;
-  structureScore: number;
-  loopScore: number;
-  methodScore: number;
-  winnowingScore: number;
+  models: ModelReport[];
 }

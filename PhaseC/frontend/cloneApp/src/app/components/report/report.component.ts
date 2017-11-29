@@ -28,7 +28,12 @@ export class ReportComponent implements OnInit {
   private student2: string;
   private students: User[];
   private reports: Report[];
+  private plagiarised = false;
   private selectedReport: Report;
+  private winnowingScore: number;
+  private structureScore: number;
+  private loopScore: number;
+  private methodScore: number;
 
   constructor(private route: ActivatedRoute,
               private reportService: ReportService,
@@ -55,19 +60,14 @@ export class ReportComponent implements OnInit {
 
   // Get student from submission
   getStudentsFromSubmission() {
-    this.selectedReport;
-    this.submissionService.getSubmissions(this.selectedReport.refFileId)
-      .subscribe(submissions => {
-        submissions.filter(s => s["id"] === this.selectedReport.refFileId)
-          .map(submission => {
-            this.student1 = submission["studentId"];
-            this.selectedAssignment = submission.assignmentId;
-          });
+    this.submissionService.getSubmission(this.selectedReport.refFileId)
+      .subscribe(submission => {
+        this.student1 = submission.studentId;
+        this.selectedAssignment = submission.assignmentId;
       });
-    this.submissionService.getSubmissions(this.selectedReport["similarFileId"])
-      .subscribe(submissions => {
-        submissions.filter(s => s["id"] === this.selectedReport["refFileId"])
-          .map(submission => this.student2 = submission["studentId"]);
+    this.submissionService.getSubmission(this.selectedReport.similarFileId)
+      .subscribe(submission => {
+        this.student2 = submission["studentId"];
       });
   }
 
@@ -76,46 +76,61 @@ export class ReportComponent implements OnInit {
     if (this.route.snapshot.paramMap.get('submissionId') != null && this.route.snapshot.paramMap.get('assignmentId') !== "") {
       const submissionId = this.route.snapshot.paramMap.get('submissionId');
       const assignmentId = this.route.snapshot.paramMap.get('assignmentId');
-      console.log(submissionId, " ", assignmentId);
-      this.reportService.getAllReports()
+      this.submissionService.getReportsBySubmissionId(submissionId)
         .subscribe(reports => {
           this.reports = reports;
-          console.log(reports);
-          this.selectedReport = reports.filter(r => r.submissionId === submissionId)[0];
-          this.getStudentsFromSubmission();
+          if (reports.length > 0) {
+            this.selectedReport = reports[0];
+            this.getStudentsFromSubmission();
+            this.fetchScores();
+          }
         });
     } else {
       this.reportService.getAllReports()
         .subscribe(reports => {
           this.reports = reports;
           this.selectedReport = reports[0];
-          console.log(this.selectedReport);
           this.getStudentsFromSubmission();
+          this.fetchScores();
         });
+    }
+  }
+
+  // Fetch scores from report obj
+  fetchScores() {
+    for (const model of this.selectedReport.models) {
+      // console.log(model.mothis.getStudentsFromSubmission();del)
+      switch (model.model) {
+        case 1: this.structureScore = model.score; break;
+        case 2: this.loopScore = model.score; break;
+        case 3: this.methodScore = model.score; break;
+        case 5: this.winnowingScore = model.score; break;
+      }
     }
   }
 
   // Get the assignment
   getReportByIds(assignmentId: string, refFileId: string, similarFileId: string): void {
       if (refFileId !== similarFileId) {
-        this.reportService.getReportByIds(assignmentId, refFileId, similarFileId)
+    console.log(`ref file id: ${refFileId}, similar file id: ${similarFileId}`);
+        this.reportService.getReportByIds(refFileId, similarFileId)
           .subscribe(report => {
-            this.reports = report;
-            this.selectedReport = this.reports.filter(r => r["assignmentId"] === assignmentId &&
-              r["refFileId"] === refFileId && r["similarFileId"] === similarFileId)[0];
-            console.log(report, assignmentId, refFileId, similarFileId);
+            this.selectedReport = report;
+            console.log(report);
+            this.fetchScores();
           });
       }
   }
 
   // update ModelReport on change
   updateReport() {
-    this.submissionService.getAllSubmissions().subscribe(submissions => {
-      const refFileId = submissions.filter(s => s["studentId"] === this.student1).map(s => s["id"])[0];
-      const similarFileId = submissions.filter(s => s["studentId"] === this.student2).map(s => s["id"])[0];
-      this.getReportByIds(this.selectedAssignment, refFileId, similarFileId);
+    this.submissionService.getSubmissionByStudentAssignment(this.selectedAssignment, this.student1).subscribe(submission => {
+      const refFileId = submission.id;
+      this.submissionService.getSubmissionByStudentAssignment(this.selectedAssignment, this.student2).subscribe(submission2 => {
+        const similarFileId = submission2.id;
+        this.getReportByIds(this.selectedAssignment, refFileId, similarFileId);
+      });
     });
-
   }
 
   // Go back to previous page

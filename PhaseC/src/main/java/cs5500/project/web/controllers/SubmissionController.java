@@ -34,6 +34,10 @@ public class SubmissionController {
         return submissionRepository.findSubmissionByAssignmentId(id);
     }
 
+    @GetMapping("/submissions/student")
+    public Submission getAllSubmissionsByAssignmentId(@RequestParam(value="assignmentId") String assignmentId, @RequestParam(value="studentId") String studentId) {
+        return submissionRepository.findSubmissionByAssignmentIdAndStudentId(assignmentId, studentId);
+    }
 
     @PostMapping("/submissions")
     public Submission createSubmission(@Valid @RequestBody Submission submission) {
