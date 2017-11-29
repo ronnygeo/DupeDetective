@@ -1,4 +1,4 @@
-<div class="card mb-3">
+<div class="card mb-3" *ngIf="selectedReport">
   <div class="card-header">
     <i class="fa fa-table"></i> Report</div>
   <div class="card-body">
@@ -35,7 +35,7 @@
         <div class="card text-white o-hidden h-100" style="background-color: darkcyan">
           <div class="card-body">
             <div class="card-header" style="background-color: transparent;font-size: larger " *ngIf="selectedReport">
-              {{selectedReport.overallScore*100}}%
+              {{selectedReport.overallScore*100 | number : '1.2-2'}}%
             </div>
             <div class="card-body-icon">
               <i class="fa fa-fw fa-comments"></i>
@@ -61,7 +61,7 @@
             <div class="card-body-icon">
               Structure
             </div>
-            <div class="mr-5" *ngIf="selectedReport"> {{selectedReport.structureScore*100}}%</div>
+            <div class="mr-5" *ngIf="selectedReport"> {{structureScore*100 | number : '1.2-2'}}%</div>
           </div>
           <a class="card-footer text-white clearfix small z-1" (click)="open('structure')">
             <span class="float-left">View Details</span>
@@ -77,7 +77,7 @@
             <div class="card-body-icon">
               Methods
             </div>
-            <div class="mr-5" *ngIf="selectedReport">{{selectedReport.methodScore*100}}%</div>
+            <div class="mr-5" *ngIf="selectedReport">{{methodScore*100 | number : '1.2-2'}}%</div>
           </div>
           <a class="card-footer text-white clearfix small z-1" (click)="open('method')">
             <span class="float-left">View Details</span>
@@ -93,7 +93,7 @@
             <div class="card-body-icon">
               Loop/Cond
             </div>
-            <div class="mr-5" *ngIf="selectedReport">{{selectedReport.loopScore * 100}}%</div>
+            <div class="mr-5" *ngIf="selectedReport">{{loopScore * 100 | number : '1.2-2'}}%</div>
           </div>
           <a class="card-footer text-white clearfix small z-1" (click)="open('loop')">
             <span class="float-left">View Details</span>
@@ -109,7 +109,7 @@
             <div class="card-body-icon">
               Winnowing
             </div>
-            <div class="mr-5" *ngIf="selectedReport">{{selectedReport.winnowingScore * 100}}%</div>
+            <div class="mr-5" *ngIf="selectedReport">{{winnowingScore * 100 | number : '1.2-2'}}%</div>
           </div>
           <a class="card-footer text-white clearfix small z-1" (click)="open('winnowing')">
             <span class="float-left">View Details</span>
@@ -120,8 +120,28 @@
         </div>
       </div>
     </div>
+    <div class="row align-content-center">
+      <div class="col" style="text-align: center;">
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Help us help you.</h4>
+        <p>Is this Plagiarised?</p>
+        <select class="form-control" id="plagiarised" name="plagiarised" [(ngModel)]="plagiarised" (change)="updateModel()">
+          <option value=false>No</option>
+          <option value=true>Yes</option>
+        </select>
+      </div>
+    </div>
+    </div>
     <div class="row align-content-center"><div class="col" style="text-align: center;">
-    <a class="btn btn-primary white-text">Download Report</a>
+      <a class="btn btn-primary white-text">Download Report</a>
     </div></div>
+  </div>
+</div>
+
+<div class="card mb-3" *ngIf="!selectedReport">
+  <div class="card-header">
+    <i class="fa fa-table"></i> Report</div>
+  <div class="card-body">
+    <p>No Reports Available</p>
   </div>
 </div>

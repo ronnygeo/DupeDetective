@@ -5,6 +5,8 @@ import cs5500.project.data.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * UserRepository class which extends the MongoRepository and queries the User
  * table in the database

@@ -26,14 +26,14 @@ public class UserController {
         return userRepository.findAll(sortByCreatedAtDesc);
     }
 
-    @PostMapping("/users")
-    public User createUser(@Valid @RequestBody User user) {
-        return userRepository.save(user);
+    @GetMapping("/users/login")
+    public User getUserByUsername(@RequestParam(value = "username", required = false) String username, @RequestParam(value = "password", required = false) String password) {
+        return userRepository.findUserByUsernameAndPassword(username, password);
     }
 
-    @GetMapping("/users/{username}/{password}")
-    public User getUserByUsernamePassword(@PathVariable("username") String username, @PathVariable("password") String password) {
-        return userRepository.findUserByUsernameAndPassword(username, password);
+    @PostMapping("/users")
+    public User createUser(@Valid @RequestBody User user) {
+            return userRepository.save(user);
     }
 
     @GetMapping(value="/users/{id}")

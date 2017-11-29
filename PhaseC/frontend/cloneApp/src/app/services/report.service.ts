@@ -17,7 +17,7 @@ const httpOptions = {
 @Injectable()
 export class ReportService {
 
-  private reportUrl = 'http://localhost:8080/reports';  // URL to web api
+  private reportUrl = 'http://localhost:8080/api/reports';  // URL to web api
 
   /**
    * Default Constructor
@@ -27,12 +27,11 @@ export class ReportService {
 
   /**
    * Get all the reports
-   * @returns {Observable<Report[]>} an Observable for the array of Assignments
+   * @returns {Observable<Report[]>} an Observable for the array of Reports
    */
   getAllReports(): Observable<Report[]> {
     return this.http.get<Report[]>(this.reportUrl)
       .pipe(
-        map(r => r["_embedded"]["reports"]),
         catchError(this.handleError('getReport', []))
       );
   }
@@ -40,30 +39,26 @@ export class ReportService {
   /**
    * GET report by id. Will 404 if id not found
    * @param {number} id the id of the report to retrieve
-   * @returns {Observable<Report>} an Observable for the Assignments
+   * @returns {Observable<Report>} an Observable for the Report
    */
-  getReport(id: string): Observable<Report[]> {
-    const url = `${this.reportUrl}?submissionId=${id}`;
-    return this.http.get<Report[]>(url).pipe(
-      map(r => r["_embedded"]["reports"]),
-      tap(console.log),
-      catchError(this.handleError<Report[]>(`getReport id=${id}`))
+  getReport(id: string): Observable<Report> {
+    const url = `${this.reportUrl}/${id}`;
+    return this.http.get<Report>(url).pipe(
+      catchError(this.handleError<Report>(`getReport id=${id}`))
     );
   }
 
   /**
    * GET report by assignment, ref file, similar file id. Will 404 if id not found
-   * @param {string} assignmentId
    * @param {string} refFileId
    * @param {string} similarFileId
    * @returns {Observable<Report[]>}
    */
-  getReportByIds(assignmentId: string, refFileId: string, similarFileId: string): Observable<Report[]> {
-    const url = `${this.reportUrl}?assignmentId=${assignmentId}&refFileId=${refFileId}&similarFileId=${similarFileId}`;
-    return this.http.get<Report[]>(url).pipe(
-      map(r => r["_embedded"]["reports"]),
-      tap(console.log),
-      catchError(this.handleError<Report[]>(`getReport assignmentId=${assignmentId} refFileId=${refFileId} similarFileId=${similarFileId}`))
+  getReportByIds(refFileId: string, similarFileId: string): Observable<Report> {
+    const url = `${this.reportUrl}/single?refFileId=${refFileId}&similarFileId=${similarFileId}`;
+    return this.http.get<Report>(url).pipe(
+      // tap(console.log),
+      catchError(this.handleError<Report>(`getReport refFileId=${refFileId} similarFileId=${similarFileId}`))
     );
   }
 

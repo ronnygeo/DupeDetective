@@ -77,7 +77,7 @@ public class ModelReport {
 	 * calculate total score from all the report lines
 	 */
 	public void computeScore() {
-		this.score = (float) lines.stream().mapToDouble(ReportLine::getScore).average().getAsDouble();
+		this.score = (float) lines.stream().mapToDouble(ReportLine::getScore).average().orElse(0);
 	}
 
 	private Integer model;

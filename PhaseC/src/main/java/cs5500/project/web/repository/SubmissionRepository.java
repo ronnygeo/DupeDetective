@@ -12,4 +12,7 @@ import java.util.List;
  * table in the database
  */
 @Repository
-public interface SubmissionRepository extends MongoRepository<Submission, String> { }
+public interface SubmissionRepository extends MongoRepository<Submission, String> {
+    List<Submission> findSubmissionByAssignmentId(String assignmentId);
+    Submission findSubmissionByAssignmentIdAndStudentId(String assignmentId, String studentId);
+}

@@ -17,7 +17,7 @@ const httpOptions = {
 @Injectable()
 export class UserService {
 
-  private userUrl = 'http://localhost:8080/users';
+  private userUrl = 'http://localhost:8080/api/users';
 
   constructor(private http: HttpClient) { }
 
@@ -28,7 +28,7 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.userUrl)
       .pipe(
-        map(r => r["_embedded"]["users"]),
+        // map(r => r["_embedded"]["users"]),
         catchError(this.handleError('getAssignments', []))
       );
   }
@@ -39,11 +39,11 @@ export class UserService {
    * @param {string} password
    * @returns {Observable<User[]>}
    */
-  getUser(username: string, password: string): Observable<User[]> {
-    const url = `${this.userUrl}?username=${username}&password=${password}`;
-    return this.http.get<User[]>(url).pipe(
-      map(r => r["_embedded"]["users"]),
-      catchError(this.handleError<User[]>(`getUser user=${username}`))
+  getUser(username: string, password: string): Observable<User> {
+    const url = `${this.userUrl}/login?username=${username}&password=${password}`;
+    return this.http.get<User>(url).pipe(
+      // map(r => r["_embedded"]["users"]),
+      catchError(this.handleError<User>(`getUser user=${username}`))
     );
   }
 
