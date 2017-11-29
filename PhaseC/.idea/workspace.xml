@@ -2,17 +2,275 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e045cd3f-c1de-4798-a1f1-14d67f39382a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/engine/WinnowEngine.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_0.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/allclasses-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/allclasses-noframe.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/constant-values.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/ReadProperties.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/db/Assignment.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/db/MongoOperation.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/db/Report.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/db/ReportLine.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/db/Submission.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/db/User.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/db/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/db/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/db/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ASTLoopStrategy.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ASTMethodStrategy.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ASTStructureStrategy.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/CustomComparator.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/Iterator.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/MD5Strategy.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/Model.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/PDContext.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/PDStrategy.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ParseVisitor.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/Parser.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/Runner.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ast/ASTHashObject.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ast/ASTLoopCompare.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ast/ASTLoopVisitor.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ast/ASTMethodCompare.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ast/ASTMethodVisitor.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ast/ASTStructureCompare.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ast/ASTStructureVisitor.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ast/ASTUtilities.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ast/ASTVisitorAC.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ast/CustomASTParser.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ast/LCSCompare.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ast/LCSCompareMode.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ast/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ast/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/ast/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/md5/MD5Generator.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/md5/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/md5/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/md5/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/engine/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/spring/AnalyzeController.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/spring/Application.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/spring/RestConfig.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/spring/RestDataConfig.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/spring/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/spring/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/spring/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/spring/repository/AssignmentRepository.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/spring/repository/ReportRepository.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/spring/repository/SubmissionRepository.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/spring/repository/UserRepository.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/spring/repository/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/spring/repository/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/cs5500/project/spring/repository/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/deprecated-list.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/engine/ast/tests/ASTLoopCompareTests.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/engine/ast/tests/ASTLoopVisitorTests.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/engine/ast/tests/ASTMethodCompareTests.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/engine/ast/tests/ASTMethodVisitorTests.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/engine/ast/tests/ASTParserTests.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/engine/ast/tests/ASTStructureCompareTests.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/engine/ast/tests/ASTStructureVisitorTests.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/engine/ast/tests/LCSTests.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/engine/ast/tests/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/engine/ast/tests/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/engine/ast/tests/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/engine/md5/tests/Md5Tests.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/engine/md5/tests/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/engine/md5/tests/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/engine/md5/tests/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/help-doc.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-11.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-12.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-13.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-14.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-15.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-16.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index-files/index-9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/overview-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/overview-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/overview-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/package-list" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/script.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/stylesheet.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/comparedocuments/comparedocuments.component.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/report/report.component.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/models/modelreport.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/models/reportline.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/data/ModelReport.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/data/Report.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/web/controllers/AssignmentController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/web/controllers/ReportController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/web/controllers/SubmissionController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/web/controllers/UserController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/web/repository/AssignmentRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/web/repository/ReportRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/web/repository/SubmissionRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/web/repository/UserRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/engine/TestUtils.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/comparedocuments/comparedocuments.component.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/report/report.component.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/models/document1.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/models/document2.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/db/Report.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/spring/AnalyzeController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/spring/RestConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/spring/RestDataConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/spring/repository/AssignmentRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/spring/repository/ReportRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/spring/repository/SubmissionRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/spring/repository/UserRepository.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/GlobalConstants.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/GlobalConstants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/TestWinnow.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/TestWinnow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/Winnow.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/Winnow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/input/one.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/input/one.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/input/two.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/input/two.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/normalise/NormalisedFile.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/normalise/NormalisedFile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ASTLoopStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ASTLoopStrategy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ASTMethodStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ASTMethodStrategy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ASTStructureStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ASTStructureStrategy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/CustomComparator.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/CustomComparator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/MD5Strategy.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/MD5Strategy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/PDContext.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/PDContext.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/PDStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/PDStrategy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/Runner.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/Runner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTHashObject.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTHashObject.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTLoopCompare.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTLoopCompare.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTLoopVisitor.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTLoopVisitor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTMethodCompare.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTMethodCompare.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTMethodVisitor.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTMethodVisitor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTStructureCompare.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTStructureCompare.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTStructureVisitor.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTStructureVisitor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTUtilities.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/ASTUtilities.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/engine/ast/tests/ASTLoopCompareTests.java" afterPath="$PROJECT_DIR$/src/test/java/engine/ast/tests/ASTLoopCompareTests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/engine/ast/tests/ASTLoopVisitorTests.java" afterPath="$PROJECT_DIR$/src/test/java/engine/ast/tests/ASTLoopVisitorTests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/engine/ast/tests/ASTStructureCompareTests.java" afterPath="$PROJECT_DIR$/src/test/java/engine/ast/tests/ASTStructureCompareTests.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/.gitignore" afterPath="$PROJECT_DIR$/frontend/.gitignore" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/.angular-cli.json" afterPath="$PROJECT_DIR$/frontend/cloneApp/.angular-cli.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/.editorconfig" afterPath="$PROJECT_DIR$/frontend/cloneApp/.editorconfig" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/.gitignore" afterPath="$PROJECT_DIR$/frontend/cloneApp/.gitignore" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/README.md" afterPath="$PROJECT_DIR$/frontend/cloneApp/README.md" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/e2e/app.e2e-spec.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/e2e/app.e2e-spec.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/e2e/app.po.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/e2e/app.po.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/e2e/tsconfig.e2e.json" afterPath="$PROJECT_DIR$/frontend/cloneApp/e2e/tsconfig.e2e.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/karma.conf.js" afterPath="$PROJECT_DIR$/frontend/cloneApp/karma.conf.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/package-lock.json" afterPath="$PROJECT_DIR$/frontend/cloneApp/package-lock.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/package.json" afterPath="$PROJECT_DIR$/frontend/cloneApp/package.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/protractor.conf.js" afterPath="$PROJECT_DIR$/frontend/cloneApp/protractor.conf.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/app-routing.module.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/app-routing.module.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/app.component.css" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/app.component.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/app.component.html" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/app.component.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/app.component.spec.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/app.component.spec.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/app.component.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/app.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/app.module.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/app.module.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/auth.guard.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/auth.guard.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/assignmentlist/assignmentlist.component.css" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/assignmentlist/assignmentlist.component.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/assignmentlist/assignmentlist.component.css.map" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/assignmentlist/assignmentlist.component.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/assignmentlist/assignmentlist.component.html" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/assignmentlist/assignmentlist.component.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/assignmentlist/assignmentlist.component.sass" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/assignmentlist/assignmentlist.component.sass" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/assignmentlist/assignmentlist.component.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/assignmentlist/assignmentlist.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/assignmentnew/assignmentnew.component.css" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/assignmentnew/assignmentnew.component.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/assignmentnew/assignmentnew.component.css.map" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/assignmentnew/assignmentnew.component.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/assignmentnew/assignmentnew.component.html" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/assignmentnew/assignmentnew.component.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/assignmentnew/assignmentnew.component.sass" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/assignmentnew/assignmentnew.component.sass" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/assignmentnew/assignmentnew.component.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/assignmentnew/assignmentnew.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/comparedocuments/comparedocuments.component.css" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/comparedocuments/comparedocuments.component.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/comparedocuments/comparedocuments.component.css.map" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/comparedocuments/comparedocuments.component.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/comparedocuments/comparedocuments.component.html" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/comparedocuments/comparedocuments.component.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/comparedocuments/comparedocuments.component.sass" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/comparedocuments/comparedocuments.component.sass" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/comparedocuments/comparedocuments.component.spec.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/comparedocuments/comparedocuments.component.spec.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/home/grayscale.js" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/home/grayscale.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/home/greyscale.css" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/home/greyscale.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/home/greyscale.css.map" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/home/greyscale.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/home/greyscale.scss" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/home/greyscale.scss" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/home/home.component.css" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/home/home.component.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/home/home.component.css.map" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/home/home.component.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/home/home.component.html" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/home/home.component.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/home/home.component.scss" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/home/home.component.scss" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/home/home.component.spec.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/home/home.component.spec.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/home/home.component.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/home/home.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/login/login.component.css" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/login/login.component.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/login/login.component.html" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/login/login.component.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/login/login.component.spec.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/login/login.component.spec.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/login/login.component.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/login/login.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/navbar/navbar.component.css" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/navbar/navbar.component.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/navbar/navbar.component.css.map" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/navbar/navbar.component.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/navbar/navbar.component.html" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/navbar/navbar.component.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/navbar/navbar.component.scss" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/navbar/navbar.component.scss" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/navbar/navbar.component.spec.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/navbar/navbar.component.spec.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/navbar/navbar.component.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/navbar/navbar.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/register/register.component.css" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/register/register.component.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/register/register.component.html" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/register/register.component.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/register/register.component.spec.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/register/register.component.spec.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/register/register.component.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/register/register.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/report/report.component.css" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/report/report.component.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/report/report.component.css.map" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/report/report.component.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/report/report.component.html" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/report/report.component.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/report/report.component.sass" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/report/report.component.sass" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/report/report.component.spec.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/report/report.component.spec.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/submissionlist/submissionlist.component.css" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/submissionlist/submissionlist.component.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/submissionlist/submissionlist.component.css.map" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/submissionlist/submissionlist.component.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/submissionlist/submissionlist.component.html" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/submissionlist/submissionlist.component.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/submissionlist/submissionlist.component.sass" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/submissionlist/submissionlist.component.sass" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/submissionlist/submissionlist.component.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/submissionlist/submissionlist.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/uploadsubmission/uploadsubmission.component.css" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/uploadsubmission/uploadsubmission.component.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/uploadsubmission/uploadsubmission.component.css.map" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/uploadsubmission/uploadsubmission.component.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/uploadsubmission/uploadsubmission.component.html" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/uploadsubmission/uploadsubmission.component.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/uploadsubmission/uploadsubmission.component.sass" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/uploadsubmission/uploadsubmission.component.sass" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/components/uploadsubmission/uploadsubmission.component.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/components/uploadsubmission/uploadsubmission.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/models/assignment.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/models/assignment.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/models/report.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/models/report.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/models/submission.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/models/submission.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/models/user.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/models/user.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/services/alert.service.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/services/alert.service.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/services/assignment.service.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/services/assignment.service.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/services/report.service.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/services/report.service.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/services/submission.service.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/services/submission.service.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/app/services/user.service.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/app/services/user.service.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/assets/.gitkeep" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/assets/.gitkeep" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/assets/css/_bootswatch.scss" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/assets/css/_bootswatch.scss" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/assets/css/_variables.scss" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/assets/css/_variables.scss" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/assets/css/bootstrap.css" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/assets/css/bootstrap.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/assets/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/assets/css/bootstrap.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/assets/images/downloads-bg.jpg" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/assets/images/downloads-bg.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/assets/images/grader.jpg" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/assets/images/grader.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/assets/images/home-login-bg.jpg" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/assets/images/home-login-bg.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/assets/images/home-top-bg.jpg" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/assets/images/home-top-bg.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/assets/images/intro-bg.jpg" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/assets/images/intro-bg.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/assets/images/logo.gif" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/assets/images/logo.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/assets/images/student.png" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/assets/images/student.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/environments/environment.prod.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/environments/environment.prod.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/environments/environment.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/environments/environment.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/favicon.ico" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/favicon.ico" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/index.html" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/main.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/main.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/polyfills.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/polyfills.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/styles.css" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/styles.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/styles.css.map" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/styles.css.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/styles.sass" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/styles.sass" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/test.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/test.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/tsconfig.app.json" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/tsconfig.app.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/tsconfig.spec.json" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/tsconfig.spec.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/src/typings.d.ts" afterPath="$PROJECT_DIR$/frontend/cloneApp/src/typings.d.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/tsconfig.json" afterPath="$PROJECT_DIR$/frontend/cloneApp/tsconfig.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/cloneApp/tslint.json" afterPath="$PROJECT_DIR$/frontend/cloneApp/tslint.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/package-lock.json" afterPath="$PROJECT_DIR$/frontend/package-lock.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/db/Assignment.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/data/Assignment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/db/MongoOperation.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/data/MongoOperation.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/db/ReportLine.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/data/ReportLine.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/db/Submission.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/data/Submission.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/db/User.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/data/User.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/cs5500/project/spring/Application.java" afterPath="$PROJECT_DIR$/src/main/java/cs5500/project/web/Application.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,98 +289,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Winnow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/Winnow.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="53" column="41" lean-forward="false" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PDStrategy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cs5500/project/engine/PDStrategy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+            <state relative-caret-position="476">
+              <caret line="28" column="16" lean-forward="true" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PDContext.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cs5500/project/engine/PDContext.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ParseVisitor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cs5500/project/engine/ParseVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cs5500/project/engine/Parser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ASTLoopCompareTests.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/engine/ast/tests/ASTLoopCompareTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-423">
-              <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ASTLoopVisitorTests.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/engine/ast/tests/ASTLoopVisitorTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-595">
-              <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WinnowEngine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/engine/WinnowEngine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="57" column="38" lean-forward="true" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GlobalConstants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cs5500/project/engine/GlobalConstants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -166,7 +338,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/cs5500/project/engine/ast/CustomASTParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/normalise/TestWinnow.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/TestWinnow.java" />
         <option value="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/input/one.java" />
         <option value="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/normalise/NormalisedFile.java" />
@@ -174,6 +345,8 @@
         <option value="$PROJECT_DIR$/src/main/java/cs5500/project/engine/GlobalConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/Winnow.java" />
         <option value="$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/engine/WinnowEngine.java" />
+        <option value="$PROJECT_DIR$/src/test/java/engine/ast/tests/ASTLoopVisitorTests.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -304,7 +477,7 @@
   <component name="RunManager" selected="Application.TestWinnow">
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="cs5500.project.spring.Application" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cs5500.project.web.Application" />
       <module name="PhaseC" />
       <envs />
     </configuration>
@@ -439,15 +612,16 @@
       <workItem from="1510775802905" duration="690000" />
       <workItem from="1511037529459" duration="12588000" />
       <workItem from="1511494501993" duration="7909000" />
-      <workItem from="1511965774629" duration="4772000" />
+      <workItem from="1511965774629" duration="5272000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28472000" />
+    <option name="totallyTimeSpent" value="28972000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -470,7 +644,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31996974" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31996974" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -635,14 +809,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cs5500/project/engine/md5/MD5Parser.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="55" column="17" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="106" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cs5500/project/spring/AnalyzeController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -682,26 +848,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cs5500/project/engine/GlobalConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/engine/WinnowEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="57" column="38" lean-forward="true" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/Winnow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -716,15 +862,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding />
+          <folding>
+            <marker date="1511980711020" expanded="true" signature="96:205" ph="/**...*/" />
+            <marker date="1511980711020" expanded="true" signature="241:459" ph="/**...*/" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cs5500/project/engine/PDContext.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="153">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
+          <folding>
+            <marker date="1511980711020" expanded="true" signature="695:712" ph="/**...*/" />
+            <marker date="1511980711020" expanded="true" signature="781:838" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -746,8 +898,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/engine/ast/tests/ASTLoopCompareTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-423">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        <state relative-caret-position="-236">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -755,7 +907,38 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/engine/ast/tests/ASTLoopVisitorTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-595">
-          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding>
+            <element signature="e#593#594#0" expanded="true" />
+            <element signature="e#642#643#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cs5500/project/engine/winnow/engine/WinnowEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="57" column="38" lean-forward="false" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cs5500/project/engine/GlobalConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="16" lean-forward="true" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
           <folding />
         </state>
       </provider>

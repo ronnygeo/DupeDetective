@@ -1,10 +1,8 @@
 package engine.ast.tests;
 
 import cs5500.project.engine.Parser;
-import cs5500.project.engine.ast.ASTLoopVisitor;
-import cs5500.project.engine.ast.ASTStructureCompare;
-import cs5500.project.engine.ast.ASTStructureVisitor;
-import cs5500.project.engine.ast.CustomASTParser;
+import cs5500.project.engine.ast.*;
+import engine.TestUtils;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Before;
@@ -152,5 +150,19 @@ public class ASTStructureCompareTests {
         assertEquals(0.53, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
-    //TODO: Add tests for different modifiers private/public
+    @Test
+    public void testTwoFiles() {
+        TestUtils util = new TestUtils();
+        String testCode1 = util.readFile("Clone1.java");
+        String testCode2 = util.readFile("Clone2.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTStructureCompare astsc = new ASTStructureCompare();
+        assertEquals(52, astsc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()).size(), 0.01);
+    }
 }

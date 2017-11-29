@@ -1,6 +1,6 @@
 package cs5500.project.engine.ast;
 
-import cs5500.project.db.ReportLine;
+import cs5500.project.data.ReportLine;
 import cs5500.project.engine.Model;
 
 import java.util.ArrayList;
@@ -27,6 +27,7 @@ public class ASTUtilities {
                 }
             }
         }
+        while (l.size() > lcsList.size()) l.remove(lcsList.size());
     }
 
     /**
