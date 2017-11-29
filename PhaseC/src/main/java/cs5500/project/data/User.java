@@ -17,7 +17,7 @@ public class User {
     private String id;
     private String name;
     private String email;
-//    @Indexed(unique=true)
+    @Indexed(unique=true)
     private String username;
     private String password;
     private boolean grader;
