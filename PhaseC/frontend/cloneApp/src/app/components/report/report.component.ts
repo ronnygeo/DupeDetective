@@ -144,5 +144,7 @@ export class ReportComponent implements OnInit {
     modalRef.componentInstance.model = model;
     modalRef.componentInstance.refFileId = this.selectedReport["refFileId"];
     modalRef.componentInstance.similarFileId = this.selectedReport["similarFileId"];
+    modalRef.componentInstance.student1 = this.student1;
+    modalRef.componentInstance.student2 = this.student2;
   }
 }
