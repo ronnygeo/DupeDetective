@@ -46,8 +46,8 @@ public class NormalisedFile {
     // remove comments from file
     removeFileComments();
 
-    // identify keywords and tokenise
-    tokeniseKeywords();
+    // identify keywords and tokenize
+    tokenizeKeywords();
 
     // replace identifiers
     replaceIdentifiers();
@@ -55,8 +55,8 @@ public class NormalisedFile {
     // remove keywords
     removeKeywords();
 
-    // remove puntuations
-    removePuntuations();
+    // remove punctuations
+    removePunctuations();
 
     // replace new line
     replaceLineBreak();
@@ -80,7 +80,7 @@ public class NormalisedFile {
   /**
    * Remove all punctuations
    */
-  private void removePuntuations() {
+  private void removePunctuations() {
     String[] lines = getLineOfContents();
 
     for(String line : lines) {
@@ -109,7 +109,7 @@ public class NormalisedFile {
     List<String> javaKeywords = GlobalConstants.JAVA_KEYWORDS;
     for (String line : lines) {
       for (String keyword : javaKeywords) {
-        //Remove multiple occurences of keyword in line
+        //Remove multiple occurrences of keyword in line
         line = line.replaceAll(keyword, "");
       }
       normalisedFileContents.append(line).append("\n");
@@ -131,9 +131,7 @@ public class NormalisedFile {
         String new_line = "";
         boolean text_modified = false;
 
-        // If the first word of line does not begin with any of @no_identifier
-        // specified by confile,
-        // we can change all the words that are "identifier" by regex to 'v'
+        // change all the words that are "identifier" by regex to 'v'
         if (!noIdentifier.contains(line_split[0])) {
           text_modified = true;
           for (String word : line_split) {
@@ -167,7 +165,7 @@ public class NormalisedFile {
   /**
    * Tokenises Keywords
    */
-  private void tokeniseKeywords() {
+  private void tokenizeKeywords() {
     String[] lines = getLineOfContents();
     List<String> javaKeywords = GlobalConstants.JAVA_KEYWORDS;
 
@@ -184,7 +182,7 @@ public class NormalisedFile {
         }
         line += word;
       }
-      // Space'commas' and semicolon
+      // Space 'commas' and semicolon
       line = line.replaceAll(",", " , ");
       line = line.replaceAll(";", " ; ");
       line = line.replaceAll("\\{", " { ");
@@ -273,8 +271,9 @@ public class NormalisedFile {
 
       if (!hasSingleLineComment && !isMultiLine) {
         normalisedFileContents.append(line);
-        normalisedFileContents.append("\n");
       }
+
+      normalisedFileContents.append("\n");
 
       if (isMultiLine && line.contains(GlobalConstants.MULTI_LINE_END)) {
         isMultiLine = false;

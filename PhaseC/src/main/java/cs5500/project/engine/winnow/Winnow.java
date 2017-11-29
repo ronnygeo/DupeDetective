@@ -1,8 +1,10 @@
 package cs5500.project.engine.winnow;
 
+import cs5500.project.engine.winnow.engine.WinnowEngine;
 import cs5500.project.engine.winnow.normalise.NormalisedFile;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -46,7 +48,12 @@ public class Winnow {
       normalisedDestFile = normaliseFile(dstFilePath);
 
       if(!StringUtils.isEmpty(normalisedSrcFile) && !StringUtils.isEmpty(normalisedDestFile)){
-        
+        WinnowEngine srcEngine = new WinnowEngine(normalisedSrcFile);
+        WinnowEngine dstEngine = new WinnowEngine(normalisedDestFile);
+
+        LinkedHashMap sfp = srcEngine.getFingerPrint();
+        LinkedHashMap dfp = dstEngine.getFingerPrint();
+
       }
     }
     catch(IOException ex){

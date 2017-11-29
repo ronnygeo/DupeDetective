@@ -11,4 +11,7 @@ public class GlobalConstants {
   public static final List<String> NO_IDENTIFIER = new ArrayList<>(Arrays.asList("import","package"));
   public static final String REGEX_WHITESPACE = "\\s";
   public static final String MULTI_LINE_END = "*/";
+  public static final int K_GRAM = 5;
+  public static final int THRESHOLD = 8;
+  public static final int PRIME = 10001;
 }

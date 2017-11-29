@@ -1,5 +1,6 @@
 package cs5500.project.engine.winnow.input;
 
+
 public class one  {
 	private int[] numbers;
 	private int number;
@@ -57,4 +58,3 @@ public class one  {
 	}
 }
 
-    
