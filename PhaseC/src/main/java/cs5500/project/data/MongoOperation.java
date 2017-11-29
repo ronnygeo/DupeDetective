@@ -7,6 +7,7 @@ import cs5500.project.ReadProperties;
 import cs5500.project.engine.Model;
 import org.bson.types.ObjectId;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -95,6 +96,7 @@ public class MongoOperation {
              DB db = mongoClient.getDB(database);
              BasicDBObject newDocument = new BasicDBObject();
              newDocument.append("$set", new BasicDBObject().append("isAnalyzed", true));
+             newDocument.append("$set", new BasicDBObject().append("analyzedDate", LocalDateTime.now().toString()));
 
              BasicDBObject searchQuery = new BasicDBObject().append("_id", new ObjectId(assignmentId));
              DBCollection collection = db.getCollection(colAssignment);

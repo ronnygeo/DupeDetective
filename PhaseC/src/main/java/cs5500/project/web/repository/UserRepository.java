@@ -11,4 +11,13 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface UserRepository extends MongoRepository<User, String> { }
+public interface UserRepository extends MongoRepository<User, String> {
+
+    /**
+     * Find a user by username and password
+     * @param username username
+     * @param password password
+     * @return the associated User
+     */
+    User findUserByUsernameAndPassword(String username, String password);
+}

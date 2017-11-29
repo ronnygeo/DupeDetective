@@ -15,16 +15,11 @@ public class User {
 
     @Id
     private String id;
-    @NotBlank
     private String name;
-    @NotBlank
     private String email;
-    @NotBlank
-    @Indexed(unique=true)
+//    @Indexed(unique=true)
     private String username;
-    @NotBlank
     private String password;
-    @NotBlank
     private boolean grader;
 
     /**

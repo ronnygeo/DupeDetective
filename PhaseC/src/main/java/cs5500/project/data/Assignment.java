@@ -26,8 +26,8 @@ public class Assignment {
 	 * @param analyzedDate date analyzed
 	 */
 	public Assignment(String id, String name, String course, int year,
-			boolean isAnalyzed, Date dueDate, Date creationDate,
-			Date analyzedDate) {
+			boolean isAnalyzed, String dueDate, String creationDate,
+			String analyzedDate) {
 		
 		this.id = id;
 		this.name = name;
@@ -118,42 +118,42 @@ public class Assignment {
 	/**
 	 * @return the due date
 	 */
-	public Date getDueDate() {
+	public String getDueDate() {
 		return dueDate;
 	}
 
 	/**
 	 * @param dueDate the due date
 	 */
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
 	}
 
 	/**
 	 * @return the creation date
 	 */
-	public Date getCreationDate() {
+	public String getCreationDate() {
 		return creationDate;
 	}
 
 	/**
 	 * @param creationDate the creation date
 	 */
-	public void setCreationDate(Date creationDate) {
+	public void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
 	}
 
 	/**
 	 * @return analyzed date attribute
 	 */
-	public Date getAnalyzedDate() {
+	public String getAnalyzedDate() {
 		return analyzedDate;
 	}
 
 	/**
 	 * @param analyzedDate analyzed date attribute
 	 */
-	public void setAnalyzedDate(Date analyzedDate) {
+	public void setAnalyzedDate(String analyzedDate) {
 		this.analyzedDate = analyzedDate;
 	}
 
@@ -162,7 +162,7 @@ public class Assignment {
 	private String course;
 	private boolean isAnalyzed;
 	private int year;
-	private Date dueDate;
-	private Date creationDate;
-	private Date analyzedDate;
+	private String dueDate;
+	private String creationDate;
+	private String analyzedDate;
 }

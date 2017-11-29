@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.async.DeferredResult;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
  * Start analyze controller
  */
 @RestController
-@RequestMapping("/api")
 @CrossOrigin("*")
 public class AssignmentController {
     @Autowired
@@ -32,6 +32,7 @@ public class AssignmentController {
     @PostMapping("/assignments")
     public Assignment createAssignment(@Valid @RequestBody Assignment assignment) {
         assignment.setAnalyzed(false);
+        assignment.setCreationDate(LocalDateTime.now().toString());
         return assignmentRepository.save(assignment);
     }
 
@@ -61,19 +62,27 @@ public class AssignmentController {
         return new ResponseEntity<>(updatedAssignment, HttpStatus.OK);
     }
 
-    public ResponseEntity<Assignment> updateAnalyzedAssignment(String id) {
-        Assignment assignmentData = assignmentRepository.findOne(id);
-        if(assignmentData == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        assignmentData.setAnalyzed(!assignmentData.isAnalyzed());
-        Assignment updatedAssignment = assignmentRepository.save(assignmentData);
-        return new ResponseEntity<>(updatedAssignment, HttpStatus.OK);
-    }
-
     @DeleteMapping(value="/assignments/{id}")
     public void deleteAssignment(@PathVariable("id") String id) {
         assignmentRepository.delete(id);
+    }
+
+    /**
+     * Start the analyze process for given assignment id
+     * @param id assignment id to process
+     * @return a promise of string
+     */
+    @PostMapping(value = "/assignments/{id}/analyze")
+    public DeferredResult<String> analyze(@PathVariable("id") String id) {
+        DeferredResult<String> defResult = new DeferredResult<>();
+
+        new Thread(() -> {
+            Runner.analyze(id);
+            String apiResponse = "Analysis complete.";
+            defResult.setResult(apiResponse);
+        }).start();
+
+        return defResult;
     }
 }
 
