@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
   register(): void {
     const data = {"name": this.name, "email": this.email, "username": this.username, "password": this.password, "grader": this.grader}
     this.userService.createUser(data).subscribe(user => {
+      console.log(user);
       localStorage.setItem("currentUser", JSON.stringify(user));
       if (user && user.grader) {
         this.router.navigate(['/assignments']);

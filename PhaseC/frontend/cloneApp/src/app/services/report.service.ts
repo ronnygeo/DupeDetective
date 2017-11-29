@@ -17,7 +17,7 @@ const httpOptions = {
 @Injectable()
 export class ReportService {
 
-  private reportUrl = 'http://localhost:8080/reports';  // URL to web api
+  private reportUrl = 'http://localhost:8080/api/reports';  // URL to web api
 
   /**
    * Default Constructor

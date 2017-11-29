@@ -95,12 +95,14 @@ public class MongoOperation {
          try (MongoClient mongoClient = new MongoClient(host, port)) {
              DB db = mongoClient.getDB(database);
              BasicDBObject newDocument = new BasicDBObject();
-             newDocument.append("$set", new BasicDBObject().append("isAnalyzed", true));
              newDocument.append("$set", new BasicDBObject().append("analyzedDate", LocalDateTime.now().toString()));
-
              BasicDBObject searchQuery = new BasicDBObject().append("_id", new ObjectId(assignmentId));
              DBCollection collection = db.getCollection(colAssignment);
              collection.update(searchQuery, newDocument);
+
+             BasicDBObject newDocument2 = new BasicDBObject();
+             newDocument2.append("$set", new BasicDBObject().append("isAnalyzed", true));
+             collection.update(searchQuery, newDocument2);
          }
      }
 }

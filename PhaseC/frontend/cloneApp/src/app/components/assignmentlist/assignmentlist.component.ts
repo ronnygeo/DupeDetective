@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Assignment} from "../../models/assignment";
 import {AssignmentService} from "../../services/assignment.service";
+import { Location } from '@angular/common';
 
 /**
  * The Component that creates the Assignment List page
@@ -14,7 +15,8 @@ export class AssignmentListComponent implements OnInit {
 
   private assignments;
 
-  constructor(private assignmentService: AssignmentService) {}
+  constructor(private assignmentService: AssignmentService,
+              private location: Location) {}
 
   ngOnInit() {
     this.getAssignments();
@@ -28,6 +30,10 @@ export class AssignmentListComponent implements OnInit {
   }
 
   analyze(id: string): void {
-    this.assignmentService.analyze(id).subscribe(res => console.log(res));
+    console.log(id);
+    this.assignmentService.analyze(id).subscribe(res => {
+      console.log(res);
+      location.reload();
+    });
   }
 }

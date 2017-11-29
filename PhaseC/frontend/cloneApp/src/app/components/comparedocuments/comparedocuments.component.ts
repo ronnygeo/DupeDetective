@@ -1,6 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {DOC1} from "../../models/document1";
-import {DOC2} from "../../models/document2";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {SubmissionService} from "../../services/submission.service";
 

@@ -18,9 +18,8 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    this.userService.getUser(this.username, this.password).subscribe(users => {
-      if (users !== undefined && JSON.stringify(users) !== "undefined") {
-        const user = users.filter(u => u["username"] === this.username && u["password"] === this.password)[0];
+    this.userService.getUser(this.username, this.password).subscribe(user => {
+      if (user !== undefined && JSON.stringify(user) !== "undefined") {
         localStorage.setItem("currentUser", JSON.stringify(user));
         if (user && user["grader"]) {
           this.router.navigate(['/assignments']);

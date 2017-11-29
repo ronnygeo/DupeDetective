@@ -37,9 +37,9 @@ public class ReportController {
         }
     }
 
-    @GetMapping(value="/submissions/{submissionId}/reports")
-    public Report getReportBySubmissionId(@PathVariable("submissionId") String submissionId) {
-        return reportRepository.findReportBySubmissionId(submissionId);
+    @GetMapping(value="/submissions/{refFileId}/{similarFileId}")
+    public Report getReportByFileIds(@PathVariable("refFileId") String refFileId, @PathVariable("similarFileId") String similarFileId) {
+        return reportRepository.findReportByRefFileIdAndSimilarFileId(refFileId, similarFileId);
     }
 
     @DeleteMapping(value="/reports/{id}")

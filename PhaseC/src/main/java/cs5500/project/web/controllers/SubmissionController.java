@@ -29,6 +29,12 @@ public class SubmissionController {
         return submissionRepository.findAll(sortByCreatedAtDesc);
     }
 
+    @GetMapping("/assignments/{assignmentId}/submissions")
+    public List<Submission> getAllSubmissionsByAssignmentId(@PathVariable("assignmentId") String id) {
+        return submissionRepository.findSubmissionByAssignmentId(id);
+    }
+
+
     @PostMapping("/submissions")
     public Submission createSubmission(@Valid @RequestBody Submission submission) {
         submission.setSubmittedOn(LocalDateTime.now().toString());

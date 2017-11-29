@@ -20,7 +20,7 @@ const httpOptions = {
 @Injectable()
 export class SubmissionService {
 
-  private submissionUrl = 'http://localhost:8080/submissions';  // URL to web api
+  private submissionUrl = 'http://localhost:8080/api/submissions';  // URL to web api
 
   /**
    * Default Constructor
@@ -35,7 +35,7 @@ export class SubmissionService {
   getAllSubmissions(): Observable<Submission[]> {
     return this.http.get<Submission[]>(this.submissionUrl)
       .pipe(
-        map(r => r["_embedded"]["submissions"]),
+        // map(r => r["_embedded"]["submissions"]),
         catchError(this.handleError('getAllSubmissions', []))
       );
   }
@@ -48,7 +48,7 @@ export class SubmissionService {
   getSubmissions(id: string): Observable<Submission[]> {
     const url = `${this.submissionUrl}?assignmentId=${id}`;
     return this.http.get<Submission[]>(url).pipe(
-      map(r => r["_embedded"]["submissions"]),
+      // map(r => r["_embedded"]["submissions"]),
       tap(console.log),
       catchError(this.handleError<Submission[]>(`getSubmission id=${id}`))
     );
@@ -67,6 +67,8 @@ export class SubmissionService {
         catchError(this.handleError<any>('uploadSubmission'))
       );
   }
+
+
 
   /**
    * Handle Http operation that failed.

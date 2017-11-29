@@ -1,4 +1,4 @@
-<div class="card mb-3">
+<div class="card mb-3" *ngIf="selectedReport">
   <div class="card-header">
     <i class="fa fa-table"></i> Report</div>
   <div class="card-body">
@@ -123,5 +123,22 @@
     <div class="row align-content-center"><div class="col" style="text-align: center;">
     <a class="btn btn-primary white-text">Download Report</a>
     </div></div>
+    <div class="row align-content-center"><div class="col" style="text-align: center;">
+      <h5>Help us help you.</h5>
+      <p>Is this Plagiarised?</p>
+      <select class="form-control" id="plagiarised" name="plagiarised" [(ngModel)]="plagiarised" (change)="updateModel()">
+        <option value=false>No</option>
+        <option value=true>Yes</option>
+      </select>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-3" *ngIf="!selectedReport">
+  <div class="card-header">
+    <i class="fa fa-table"></i> Report</div>
+  <div class="card-body">
+    <p>No Reports Available</p>
   </div>
 </div>
