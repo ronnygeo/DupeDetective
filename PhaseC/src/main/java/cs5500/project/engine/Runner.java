@@ -43,22 +43,17 @@ public class Runner {
                 Report report1 = new Report(submissions.get(i).getId(), submissions.get(i).getId(), submissions.get(j).getId());
                 Report report2 = new Report(submissions.get(j).getId(), submissions.get(j).getId(), submissions.get(i).getId());
 
+                // Get results of MD5 comparison
                 PDContext md5 = new PDContext(new MD5Strategy());
                 Boolean md5Result = md5.executeStrategy(code1, code2).get(0).getScore() == 1;
-                report1.setMd5Result(md5Result);
-                report2.setMd5Result(md5Result);
-                report1.addModel(getModelReport(code1, code2, Model.ASTStructure.getValue()));
-                report1.addModel(getModelReport(code1, code2, Model.ASTMethod.getValue()));
-                report1.addModel(getModelReport(code1, code2, Model.ASTLoop.getValue()));
-                report1.computeScore(weights);
-                report2.addModel(getModelReport(code2, code1, Model.ASTStructure.getValue()));
-                report2.addModel(getModelReport(code2, code1, Model.ASTMethod.getValue()));
-                report2.addModel(getModelReport(code2, code1, Model.ASTLoop.getValue()));
-                report2.computeScore(weights);
+                // Update the report objects with the results from models
+                updateReport(report1, md5Result, code1, code2);
+                updateReport(report2, md5Result, code1, code2);
+
                 System.out.println("Saving to mongo.");
                 mongo.saveReport(report1);
                 mongo.saveReport(report2);
-            }
+             }
         }
         mongo.updateAnalyzedAssignment(assignmentId);
     }
@@ -78,6 +73,21 @@ public class Runner {
         return mr;
     }
 
+    /**
+     * Update the report object with results for various models
+     * @param report the report object
+     * @param md5Result result of md5 comparison
+     * @param code1 first code to compare
+     * @param code2 second code to compare
+     */
+    private static void updateReport(Report report, boolean md5Result, String code1, String code2) {
+        report.setMd5Result(md5Result);
+        report.setMd5Result(md5Result);
+        report.addModel(getModelReport(code1, code2, Model.ASTStructure.getValue()));
+        report.addModel(getModelReport(code1, code2, Model.ASTMethod.getValue()));
+        report.addModel(getModelReport(code1, code2, Model.ASTLoop.getValue()));
+        report.computeScore(weights);
+    }
 
     /**
      * @param model the model id

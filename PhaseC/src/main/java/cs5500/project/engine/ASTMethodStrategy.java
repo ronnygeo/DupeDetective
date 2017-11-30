@@ -24,6 +24,7 @@ public class ASTMethodStrategy implements PDStrategy {
 		ASTVisitor visitor2 = new ASTMethodVisitor();
 		cu1.accept(visitor1);
 		cu2.accept(visitor2);
-		return new ASTMethodCompare().compare(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList());
+		CustomComparator<List<ASTHashObject>> astmc = new ASTMethodCompare();
+		return astmc.compare(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList());
 	}
 }

@@ -25,6 +25,8 @@ public class ASTLoopStrategy implements PDStrategy {
 		ASTVisitor visitor2 = new ASTLoopVisitor();
 		cu1.accept(visitor1);
 		cu2.accept(visitor2);
-		return new ASTLoopCompare().compare(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList());
+
+		CustomComparator<List<ASTHashObject>> astlc = new ASTLoopCompare();
+		return astlc.compare(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList());
 	}
 }
