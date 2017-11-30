@@ -10,14 +10,11 @@ import java.util.List;
  * AST Strategy for MD5
  */
 public class MD5Strategy implements PDStrategy {
-	private MD5Generator md5;
 
 	/**
 	 * Default constructor
 	 */
-	public MD5Strategy() {
-		md5 = new MD5Generator();
-	}
+	public MD5Strategy() {}
 
 	/**
 	 * Method to invoke the plagiarism detection inside the given assignment
@@ -39,6 +36,6 @@ public class MD5Strategy implements PDStrategy {
 	 * @return if the MD5 checksum is same or not
 	 */
 	public boolean checkMD5(String testCode1, String testCode2) {
-		return md5.getMD5String(testCode1) == md5.getMD5String(testCode2);
+		return MD5Generator.getMD5String(testCode1).equals(MD5Generator.getMD5String(testCode2));
 	}
 }

@@ -9,6 +9,6 @@ export class Report {
   refFileId: string;
   similarFileId: string;
   overallScore: number;
-  md5Result: boolean;
+  md5Result: string;
   models: ModelReport[];
 }

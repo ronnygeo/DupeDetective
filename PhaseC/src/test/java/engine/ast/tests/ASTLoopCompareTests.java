@@ -85,4 +85,19 @@ public class ASTLoopCompareTests {
         ASTLoopCompare astlc = new ASTLoopCompare();
         assertEquals(0.66, astlc.getScore(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.01);
     }
+
+    @Test
+    public void testSameFiles() {
+        TestUtils util = new TestUtils();
+        String testCode1 = util.readFile("Clone1.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode1);
+        ASTVisitor visitor1 = new ASTLoopVisitor();
+        ASTVisitor visitor2 = new ASTLoopVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTLoopCompare astlc = new ASTLoopCompare();
+        assertEquals(1, astlc.getScore(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.01);
+    }
 }

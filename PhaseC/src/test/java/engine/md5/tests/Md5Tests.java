@@ -1,10 +1,12 @@
-package engine.md5.tests;
+package engine.MD5Generator.tests;
 
 import cs5500.project.engine.md5.MD5Generator;
+import engine.TestUtils;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Tests for the MD5 checksum class
@@ -13,47 +15,47 @@ public class Md5Tests {
     @Test
     public void testMd5Value() {
         String file = this.getClass().getResource("/test.txt").getFile();
-        MD5Generator md5 = new MD5Generator();
-        assertEquals("cba8589898ec23aab33e2eba90bad873", md5.getMD5File(file));
+        assertEquals("cba8589898ec23aab33e2eba90bad873", MD5Generator.getMD5File(file));
     }
 
     @Test
     public void testMd5SimilarFiles() {
         String file1 =  this.getClass().getResource("/test.txt").getFile();
         String file2 =  this.getClass().getResource("/sameTest.txt").getFile();
-        MD5Generator md5 = new MD5Generator();
-        assertEquals(md5.getMD5File(file1), md5.getMD5File(file2));
+        assertEquals(MD5Generator.getMD5File(file1), MD5Generator.getMD5File(file2));
     }
 
     @Test
     public void testMd5DifferentFiles() {
         String file1 =  this.getClass().getResource("/test.txt").getFile();
         String file2 =  this.getClass().getResource("/diffTest.txt").getFile();
-        MD5Generator md5 = new MD5Generator();
-        assertNotEquals(md5.getMD5File(file1), md5.getMD5File(file2));
+        assertNotEquals(MD5Generator.getMD5File(file1), MD5Generator.getMD5File(file2));
     }
 
     @Test
     public void testMd5ValueString() {
         String file = "Hi, Im the test file to check my MD5. I have a twin.";
-        MD5Generator md5 = new MD5Generator();
-        assertEquals("cba8589898ec23aab33e2eba90bad873", md5.getMD5String(file));
+        assertEquals("cba8589898ec23aab33e2eba90bad873", MD5Generator.getMD5String(file));
     }
 
     @Test
     public void testMd5SameString() {
         String file1 = "Hi, Im the test file to check my MD5. I have a twin.";
         String file2 = "Hi, Im the test file to check my MD5. I have a twin.";
-        MD5Generator md5 = new MD5Generator();
-        assertEquals(md5.getMD5String(file1), md5.getMD5String(file2));
+        assertEquals(MD5Generator.getMD5String(file1), MD5Generator.getMD5String(file2));
     }
 
     @Test
     public void testMd5DiffString() {
         String file1 = "Hi, Im the test file to check my MD5. I have a twin.";
         String file2 = "Hi, Im a different test file to check my MD5.";
-        MD5Generator md5 = new MD5Generator();
-        assertNotEquals(md5.getMD5String(file1), md5.getMD5String(file2));
+        assertNotEquals(MD5Generator.getMD5String(file1), MD5Generator.getMD5String(file2));
     }
 
+    @Test
+    public void testSameFiles() {
+        TestUtils util = new TestUtils();
+        String testCode = util.readFile("Clone1.java");
+        assertTrue(MD5Generator.getMD5String(testCode).equals(MD5Generator.getMD5String(testCode)));
+    }
 }

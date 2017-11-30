@@ -55,6 +55,7 @@ public class MongoOperation {
         try (MongoClient mongoClient = new MongoClient(host, port)) {
             db = mongoClient.getDB(database);
             collection = db.getCollection(colReport);
+            System.out.println(report);
             BasicDBObject obj = (BasicDBObject) JSON.parse(gson.toJson(report));
             collection.insert(obj);
             System.out.println("report saved to mongo.");

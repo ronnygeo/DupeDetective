@@ -35,6 +35,7 @@ export class ReportComponent implements OnInit {
   private structureScore: number;
   private loopScore: number;
   private methodScore: number;
+  private overallScore: number;
 
   constructor(private route: ActivatedRoute,
               private reportService: ReportService,
@@ -125,6 +126,7 @@ export class ReportComponent implements OnInit {
         case 5: this.winnowingScore = model.score; break;
       }
     }
+    this.overallScore = this.selectedReport.md5Result? 1: this.selectedReport.overallScore;
   }
 
   /**

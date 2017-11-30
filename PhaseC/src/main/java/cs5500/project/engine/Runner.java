@@ -32,6 +32,7 @@ public class Runner {
         readWeights();
         MongoOperation mongo = new MongoOperation();
         List<Submission> submissions = mongo.getSubmissions(assignmentId);
+
         // Iterate through all the files and compare each one side by side for the given assignment
         for (int i = 0; i < submissions.size(); i++) {
             for (int j = i + 1; j < submissions.size(); j++) {
@@ -99,7 +100,7 @@ public class Runner {
      * @param args args for main
      */
     public static void main(String[] args) {
-        analyze("5a148985c6bb701ff50f849e");
+        analyze("5a1e2218c6bb7010612fbd07");
     }
 
 }

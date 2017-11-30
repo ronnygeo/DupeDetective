@@ -28,11 +28,12 @@ public class ASTLoopCompare implements CustomComparator<List<ASTHashObject>> {
             for (int j=0; j < l2.size(); j++) {
                 if (i == j) {
                     items.addAll(compareNodes(l1.get(i).getNodes(), l2.get(j).getNodes()));
-                } else if (i == j + 1) {
-                    items.addAll(compareNodes(l1.get(i).getNodes(), l2.get(j).getNodes()));
-                } else if (i + 1 == j) {
-                    items.addAll(compareNodes(l1.get(i).getNodes(), l2.get(j).getNodes()));
                 }
+//                else if (i == j + 1) {
+//                    items.addAll(compareNodes(l1.get(i).getNodes(), l2.get(j+1).getNodes()));
+//                } else if (i + 1 == j) {
+//                    items.addAll(compareNodes(l1.get(i-1).getNodes(), l2.get(j).getNodes()));
+//                }
             }
         }
         return items;
@@ -75,15 +76,16 @@ public class ASTLoopCompare implements CustomComparator<List<ASTHashObject>> {
                     float val = getScoreNodes(l1.get(i).getNodes(), l2.get(j).getNodes());
                     sum += val;
                     count++;
-                } else if (i == j + 1) {
-                    float val = getScoreNodes(l1.get(i).getNodes(), l2.get(j).getNodes());
-                    sum_prev += val;
-                    count++;
-                } else if (i + 1 == j) {
-                    float val = getScoreNodes(l1.get(i).getNodes(), l2.get(j).getNodes());
-                    sum_next += val;
-                    count++;
                 }
+//                else if (i == j + 1) {
+//                    float val = getScoreNodes(l1.get(i).getNodes(), l2.get(j+1).getNodes());
+//                    sum_prev += val;
+//                    count++;
+//                } else if (i + 1 == j) {
+//                    float val = getScoreNodes(l1.get(i + 1).getNodes(), l2.get(j).getNodes());
+//                    sum_next += val;
+//                    count++;
+//                }
             }
         }
         return sum;

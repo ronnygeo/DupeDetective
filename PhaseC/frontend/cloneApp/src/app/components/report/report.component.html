@@ -30,12 +30,19 @@
         </div>
       </div>
     </form>
+    <div class="row" *ngIf="selectedReport && selectedReport.md5Result">
+      <div class="col">
+        <div class="alert alert-danger" role="alert">
+          <strong>This is a live one!</strong> The files are an exact copy!
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col">
         <div class="card text-white o-hidden h-100" style="background-color: darkcyan">
           <div class="card-body">
             <div class="card-header" style="background-color: transparent;font-size: larger " *ngIf="selectedReport">
-              {{selectedReport.overallScore*100 | number : '1.2-2'}}%
+              {{overallScore*100 | number : '1.2-2'}}%
             </div>
             <div class="card-body-icon">
               <i class="fa fa-fw fa-comments"></i>
@@ -46,13 +53,6 @@
       </div>
     </div>
     <br>
-    <div class="row" *ngIf="selectedReport && selectedReport.md5Result">
-      <div class="col">
-        <div class="alert alert-danger" role="alert">
-          <strong>This is a live one!</strong> The files are an exact copy!
-        </div>
-      </div>
-    </div>
     <!-- Icon Cards-->
     <div class="row">
       <div class="col-xl-3 col-sm-6 mb-3">
