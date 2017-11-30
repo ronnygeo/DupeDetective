@@ -41,18 +41,18 @@ public class Runner {
                 String code2 = submissions.get(j).getFilecontent();
 
                 Report report1 = new Report(submissions.get(i).getId(), submissions.get(i).getId(), submissions.get(j).getId());
-                Report report2 = new Report(submissions.get(j).getId(), submissions.get(j).getId(), submissions.get(i).getId());
+//                Report report2 = new Report(submissions.get(j).getId(), submissions.get(j).getId(), submissions.get(i).getId());
 
                 // Get results of MD5 comparison
                 PDContext md5 = new PDContext(new MD5Strategy());
                 Boolean md5Result = md5.executeStrategy(code1, code2).get(0).getScore() == 1;
                 // Update the report objects with the results from models
                 updateReport(report1, md5Result, code1, code2);
-                updateReport(report2, md5Result, code1, code2);
+//                updateReport(report2, md5Result, code1, code2);
 
                 System.out.println("Saving to mongo.");
                 mongo.saveReport(report1);
-                mongo.saveReport(report2);
+//                mongo.saveReport(report2);
              }
         }
         mongo.updateAnalyzedAssignment(assignmentId);

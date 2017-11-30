@@ -4,6 +4,7 @@ import cs5500.project.engine.Parser;
 import cs5500.project.engine.ast.ASTMethodCompare;
 import cs5500.project.engine.ast.ASTMethodVisitor;
 import cs5500.project.engine.ast.CustomASTParser;
+import engine.TestUtils;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Before;
@@ -72,6 +73,21 @@ public class ASTMethodCompareTests {
         cu2.accept(visitor2);
         ASTMethodCompare astmc = new ASTMethodCompare();
 
+        assertEquals(1, astmc.getScore(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.01);
+    }
+
+    @Test
+    public void testSameFiles() {
+        TestUtils util = new TestUtils();
+        String testCode1 = util.readFile("Clone1.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode1);
+        ASTVisitor visitor1 = new ASTMethodVisitor();
+        ASTVisitor visitor2 = new ASTMethodVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTMethodCompare astmc = new ASTMethodCompare();
         assertEquals(1, astmc.getScore(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.01);
     }
 }

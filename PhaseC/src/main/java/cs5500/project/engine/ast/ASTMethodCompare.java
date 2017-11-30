@@ -22,7 +22,7 @@ public class ASTMethodCompare implements CustomComparator<List<ASTHashObject>> {
      */
     @Override
     public List<ReportLine> compare(List<ASTHashObject> l1, List<ASTHashObject> l2) {
-        LCSCompare lcsc = new LCSCompare(LCSCompareMode.HASH);
+        LCSCompare lcsc = new LCSCompare(LCSCompareMode.TYPE);
         List<ASTHashObject>lcsList = lcsc.compare(l1, l2);
 
         float score = getScore(l1, l2);
@@ -41,7 +41,7 @@ public class ASTMethodCompare implements CustomComparator<List<ASTHashObject>> {
      * @return a value that represents how similar the two documents are
      */
     public float getScore(List<ASTHashObject> l1, List<ASTHashObject> l2) {
-        LCSCompare lcsc = new LCSCompare(LCSCompareMode.HASH);
+        LCSCompare lcsc = new LCSCompare(LCSCompareMode.TYPE);
         List<ASTHashObject>lcsList = lcsc.compare(l1, l2);
 
         float score = lcsList.size() / ((float) Math.max(l1.size(), l2.size()));

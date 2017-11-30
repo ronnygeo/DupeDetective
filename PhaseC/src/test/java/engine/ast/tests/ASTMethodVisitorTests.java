@@ -3,14 +3,12 @@ package engine.ast.tests;
 import cs5500.project.engine.Parser;
 import cs5500.project.engine.ast.ASTHashObject;
 import cs5500.project.engine.ast.ASTMethodVisitor;
-import cs5500.project.engine.ast.ASTMethodVisitor;
 import cs5500.project.engine.ast.CustomASTParser;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -128,7 +126,7 @@ public class ASTMethodVisitorTests {
         cu1.accept(visitor1);
         cu2.accept(visitor2);
 
-        assertEquals(((ASTMethodVisitor) visitor1).getList().get(0).getHash(), ((ASTMethodVisitor) visitor2).getList().get(0).getHash());
+        assertEquals(((ASTMethodVisitor) visitor1).getList().get(0).getNodes().size(), ((ASTMethodVisitor) visitor2).getList().get(0).getNodes().size());
     }
 
     @Test
@@ -145,7 +143,7 @@ public class ASTMethodVisitorTests {
         cu1.accept(visitor1);
         cu2.accept(visitor2);
 
-        assertEquals(((ASTMethodVisitor) visitor1).getList().get(0).getHash(), ((ASTMethodVisitor) visitor2).getList().get(0).getHash());
+        assertEquals(((ASTMethodVisitor) visitor1).getList().get(0).getNodes().size(), ((ASTMethodVisitor) visitor2).getList().get(0).getNodes().size());
     }
 
     @Test
@@ -162,7 +160,7 @@ public class ASTMethodVisitorTests {
         cu1.accept(visitor1);
         cu2.accept(visitor2);
 
-        assertEquals(((ASTMethodVisitor) visitor1).getList().get(0).getHash(), ((ASTMethodVisitor) visitor2).getList().get(0).getHash());
+        assertEquals(((ASTMethodVisitor) visitor1).getList().get(0).getNodes().size(), ((ASTMethodVisitor) visitor2).getList().get(0).getNodes().size());
     }
 
 }

@@ -41,18 +41,6 @@ public class LCSCompare {
         else return (ListUtils.longestCommonSubsequence(obj1, obj2, new LCSTypeEquator()));
     }
 
-//    /**
-//     * Compare the first object with the other
-//     *
-//     * @param obj1 : the first object to compare
-//     * @param obj2 : the second object to compare
-//     * @return a value that represents how similar the two documents are
-//     */
-//    public Integer numCommonNodes(List<ASTHashObject> obj1, List<ASTHashObject> obj2) {
-//        if (mode == LCSCompareMode.HASH) return (ListUtils.longestCommonSubsequence(obj1, obj2, new LCSHashEquator())).size();
-//        else return (ListUtils.longestCommonSubsequence(obj1, obj2, new LCSTypeEquator())).size();
-//    }
-
     /**
      * Run LCS with the type of the node
      */

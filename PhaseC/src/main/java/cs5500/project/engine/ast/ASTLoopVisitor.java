@@ -610,6 +610,17 @@ public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
      * @param node A ConditionExpression
      * @return a boolean whether to traverse subtrees or not
      */
+    @Override
+    public void endVisit(ConditionalExpression node) {
+
+    }
+
+    /**
+     * POST Visit the given component using this visitor
+     *
+     * @param node A ConditionExpression
+     * @return a boolean whether to traverse subtrees or not
+     */
     public boolean postVisit(ConditionalExpression node) {
        addNodeToNodes(new ASTHashObject("endcond", node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;

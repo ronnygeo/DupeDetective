@@ -1,7 +1,7 @@
 package engine.ast.tests;
 
 import cs5500.project.engine.Parser;
-import cs5500.project.engine.ast.ASTLoopCompare;
+import cs5500.project.engine.ast.ASTParentCompare;
 import cs5500.project.engine.ast.ASTLoopVisitor;
 import cs5500.project.engine.ast.ASTUtilities;
 import cs5500.project.engine.ast.CustomASTParser;
@@ -45,8 +45,8 @@ public class ASTLoopCompareTests {
         cu1.accept(visitor1);
         cu2.accept(visitor2);
 
-        ASTLoopCompare astc = new ASTLoopCompare();
-        assertEquals(0.71, astc.getScore(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.01);
+        ASTParentCompare astc = new ASTParentCompare();
+        assertEquals(0.71, astc.getScoreParent(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.01);
 
     }
 
@@ -82,8 +82,8 @@ public class ASTLoopCompareTests {
         cu1.accept(visitor1);
         cu2.accept(visitor2);
 
-        ASTLoopCompare astlc = new ASTLoopCompare();
-        assertEquals(0.66, astlc.getScore(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.01);
+        ASTParentCompare astlc = new ASTParentCompare();
+        assertEquals(0.66, astlc.getScoreParent(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -97,7 +97,7 @@ public class ASTLoopCompareTests {
         cu1.accept(visitor1);
         cu2.accept(visitor2);
 
-        ASTLoopCompare astlc = new ASTLoopCompare();
-        assertEquals(1, astlc.getScore(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.01);
+        ASTParentCompare astlc = new ASTParentCompare();
+        assertEquals(1, astlc.getScoreParent(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.01);
     }
 }

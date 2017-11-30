@@ -1,23 +1,21 @@
 package cs5500.project.engine.ast;
 
-import com.google.common.hash.HashCode;
 import cs5500.project.engine.ParseVisitor;
 import org.eclipse.jdt.core.dom.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
- * AST Visitor implementation that visits methods
+ * An AST Visitor that visits only loops and conditionals and creates a list
  */
 public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
 
-    /**
-     * Default constructor
-     */
+    private boolean typeCheck;
+
     public ASTMethodVisitor() {
         nodes = new ArrayList<>();
+        currentNode = new ASTHashObject();
     }
 
     /**
@@ -39,7 +37,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ImportDeclaration node) {
-        return false;
+        return true;
     }
 
     /**
@@ -50,7 +48,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ClassInstanceCreation node) {
-        return true;
+        return false;
     }
 
     /**
@@ -61,31 +59,9 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(TagElement node) {
+       addNodeToNodes(new ASTHashObject(node.getTagName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
-
-    /**
-     * Visit the given component using this visitor
-     *
-     * @param node A SimpleType
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(SimpleType node) {
-        typeCheck = true;
-        return true;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
-     * @param node A SimpleType
-     */
-    @Override
-    public void endVisit(SimpleType node) {
-        typeCheck = false;
-    }
-
 
     /**
      * Visit the given component using this visitor
@@ -95,6 +71,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(VariableDeclaration node) {
+       addNodeToNodes(new ASTHashObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -106,6 +83,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(Modifier node) {
+       addNodeToNodes(new ASTHashObject(node.getKeyword().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -117,6 +95,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(MemberRef node) {
+       addNodeToNodes(new ASTHashObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -139,6 +118,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(Comment node) {
+       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -172,7 +152,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(MethodDeclaration node) {
-        currentNode = new ASTHashObject(node.getName().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength());
+        resetCurrentNode(node);
         return true;
     }
 
@@ -183,8 +163,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public void endVisit(MethodDeclaration node) {
-        nodes.add(currentNode);
-        resetCurrentNode();
+        addCurrentNodeToNodes();
     }
 
 
@@ -207,8 +186,8 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ReturnStatement node) {
-        addHashToCurrentNode("return".hashCode());
-        return true;
+       addNodeToNodes(new ASTHashObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
+       return false;
     }
 
     /**
@@ -229,6 +208,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public void endVisit(ForStatement node) {
+
     }
 
     /**
@@ -249,6 +229,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public void endVisit(EnhancedForStatement node) {
+
     }
 
     /**
@@ -259,7 +240,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(WhileStatement node) {
-//        addHashToCurrentNode(node);
         return true;
     }
 
@@ -270,6 +250,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public void endVisit(WhileStatement node) {
+
     }
 
     /**
@@ -280,7 +261,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(DoStatement node) {
-//        addHashToCurrentNode(node);
         return true;
     }
 
@@ -291,6 +271,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public void endVisit(DoStatement node) {
+
     }
 
     /**
@@ -301,7 +282,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(BreakStatement node) {
-        addHashToCurrentNode(node.getLabel().hashCode());
+       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -313,6 +294,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ContinueStatement node) {
+       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -324,7 +306,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(IfStatement node) {
-//        addHashToCurrentNode(node);
         return true;
     }
 
@@ -335,6 +316,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public void endVisit(IfStatement node) {
+
     }
 
     /**
@@ -345,6 +327,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ExpressionStatement node) {
+       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 
@@ -356,6 +339,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(MethodInvocation node) {
+       addNodeToNodes(new ASTHashObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 
@@ -367,6 +351,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(AssertStatement node) {
+       addNodeToNodes(new ASTHashObject(node.getMessage().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -378,6 +363,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(EmptyStatement node) {
+       addNodeToNodes(new ASTHashObject("empty", node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -389,6 +375,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(LabeledStatement node) {
+       addNodeToNodes(new ASTHashObject(node.getLabel().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 
@@ -400,6 +387,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(SuperConstructorInvocation node) {
+       addNodeToNodes(new ASTHashObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -411,6 +399,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ConstructorInvocation node) {
+       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -422,6 +411,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(SwitchStatement node) {
+        addNodeToNodes(new ASTHashObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 
@@ -430,7 +420,9 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      *
      * @param node A Switch Statement
      */
+    @Override
     public void endVisit(SwitchStatement node) {
+
     }
 
     /**
@@ -452,6 +444,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(SynchronizedStatement node) {
+       addNodeToNodes(new ASTHashObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -463,6 +456,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(TypeDeclarationStatement node) {
+       addNodeToNodes(new ASTHashObject(node.getDeclaration().getName().getIdentifier(), node.getDeclaration().getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 
@@ -474,6 +468,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(TypeDeclaration node) {
+       addNodeToNodes(new ASTHashObject(node.getName().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 
@@ -485,6 +480,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(TryStatement node) {
+       addNodeToNodes(new ASTHashObject("try", node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 
@@ -496,6 +492,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(CatchClause node) {
+       addNodeToNodes(new ASTHashObject(node.getException().getName().getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 
@@ -507,6 +504,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ThrowStatement node) {
+       addNodeToNodes(new ASTHashObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -518,11 +516,34 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
     @Override
     public boolean visit(SimpleName node) {
         if (typeCheck) {
-            addHashToCurrentNode(node.getIdentifier().hashCode());
+                addNodeToNodes(new ASTHashObject(node.getIdentifier(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
             typeCheck = false;
         }
         return false;
     }
+
+    /**
+     * Visit the given component using this visitor
+     *
+     * @param node A SimpleType
+     * @return a boolean whether to traverse subtrees or not
+     */
+    @Override
+    public boolean visit(SimpleType node) {
+        typeCheck = true;
+        return true;
+    }
+
+    /**
+     * Visit the given component using this visitor
+     *
+     * @param node A SimpleType
+     */
+    @Override
+    public void endVisit(SimpleType node) {
+        typeCheck = false;
+    }
+
 
     /**
      * Visit the given component using this visitor
@@ -532,7 +553,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(VariableDeclarationStatement node) {
-        addHashToCurrentNode(node.getType().hashCode());
+       addNodeToNodes(new ASTHashObject(node.getType().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 
@@ -544,7 +565,6 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(VariableDeclarationFragment node) {
-        addHashToCurrentNode(node.hashCode());
         return true;
     }
 
@@ -556,6 +576,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(Annotation node) {
+       addNodeToNodes(new ASTHashObject(node.getTypeName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -567,9 +588,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(Assignment node) {
-        addHashToCurrentNode(node.getRightHandSide().hashCode());
-        addHashToCurrentNode(node.getOperator().hashCode());
-        addHashToCurrentNode(2 * node.getLeftHandSide().hashCode());
+       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 
@@ -581,7 +600,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(BooleanLiteral node) {
-        addHashToCurrentNode("bool".hashCode());
+       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -593,6 +612,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(CastExpression node) {
+       addNodeToNodes(new ASTHashObject(node.getType().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -604,7 +624,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(CharacterLiteral node) {
-        addHashToCurrentNode("char".hashCode());
+       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -625,9 +645,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      * @param node A ConditionExpression
      * @return a boolean whether to traverse subtrees or not
      */
-    public boolean postVisit(ConditionalExpression node) {
-        return false;
-    }
+    public void endVisit(ConditionalExpression node) { }
 
     /**
      * Visit the given component using this visitor
@@ -637,9 +655,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(InfixExpression node) {
-        addNodeToCurrentNode(node.getRightOperand());
-        addHashToCurrentNode(node.getOperator().hashCode());
-        addHashToCurrentNode(2 * node.getLeftOperand().hashCode());
+       addNodeToNodes(new ASTHashObject(node.getOperator().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 
@@ -651,6 +667,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(InstanceofExpression node) {
+       addNodeToNodes(new ASTHashObject("instanceOf", node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -662,6 +679,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(Name node) {
+       addNodeToNodes(new ASTHashObject(node.getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -673,7 +691,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(NullLiteral node) {
-        addHashToCurrentNode("null".hashCode());
+       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -685,7 +703,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(NumberLiteral node) {
-        addHashToCurrentNode("number".hashCode());
+       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -697,7 +715,8 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ParenthesizedExpression node) {
-        return true;
+       addNodeToNodes(new ASTHashObject("block", node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
+       return true;
     }
 
     /**
@@ -708,7 +727,8 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(PostfixExpression node) {
-        return false;
+       addNodeToNodes(new ASTHashObject(node.getOperator().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
+       return false;
     }
 
     /**
@@ -719,7 +739,8 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(PrefixExpression node) {
-        return false;
+       addNodeToNodes(new ASTHashObject(node.getOperator().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
+       return false;
     }
 
     /**
@@ -730,18 +751,19 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(StringLiteral node) {
-        addHashToCurrentNode("string".hashCode());
-        return false;
+       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
+       return false;
     }
 
     /**
      * Visit the given component using this visitor
+     *
      * @param node A this Expression
      * @return a boolean whether to traverse subtrees or not
      */
     @Override
     public boolean visit(ThisExpression node) {
-        addHashToCurrentNode("this".hashCode());
+//       addNodeToNodes(new ASTHashObject(node.getQualifier().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -753,6 +775,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(TypeLiteral node) {
+       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -764,6 +787,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(VariableDeclarationExpression node) {
+//       addNodeToNodes(new ASTHashObject(node.getType().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 
@@ -775,6 +799,7 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ArrayInitializer node) {
+       addNodeToNodes(new ASTHashObject(node.expressions().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 
@@ -786,30 +811,29 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(ArrayCreation node) {
+        addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
-
     /**
-     * Add the hash value of a node to the current node
-     * @param hash the hash value of a node
+     * @param node An ASTNode
      */
-    private void addHashToCurrentNode(Integer hash) {
-        if (currentNode != null) currentNode.addToHash(hash);
+    private void addNodeToNodes(ASTHashObject node) {
+        currentNode.addNode(node);
+    }
+    
+    /**
+     * Reset the nodes in the current list of nodes
+     */
+    private void resetCurrentNode(ASTNode node) {
+        currentNode = new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode());
     }
 
     /**
-     * Add the given node to list of nodes of current node
-     * @param node an AST node
+     * Adds the current nodes list to all node list
      */
-    private void addNodeToCurrentNode(ASTNode node) {
-        if (currentNode != null) currentNode.addToHash(node.hashCode());
-    }
-
-    /**
-     * Reset the current node
-     */
-    private void resetCurrentNode() {
-        currentNode = null;
+    private void addCurrentNodeToNodes() {
+        nodes.add(currentNode);
+        currentNode = new ASTHashObject();
     }
 
 
@@ -824,6 +848,5 @@ public class ASTMethodVisitor extends ASTVisitorAC implements ParseVisitor {
 
     private ASTHashObject currentNode;
     private List<ASTHashObject> nodes;
-    private boolean typeCheck = false;
 }
 
