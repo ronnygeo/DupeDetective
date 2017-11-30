@@ -26,7 +26,8 @@ export class ReportComponent implements OnInit {
   private assignments: Assignment[];
   private student1: string;
   private student2: string;
-  private students: User[];
+  private students1: User[];
+  private students2: User[];
   private reports: Report[];
   private plagiarised = false;
   private selectedReport: Report;
@@ -49,14 +50,17 @@ export class ReportComponent implements OnInit {
   ngOnInit() {
     this.getReport();
     this.getAllAssignments();
-    this.getAllUsers();
+    this.updateUsers();
   }
 
   /**
    * Gets all the users
    */
-  getAllUsers() {
-    this.userService.getUsers().subscribe(users => this.students = users.filter(u => u.grader === false));
+  updateUsers() {
+    this.userService.getUsers().subscribe(users => {
+      this.students1 = users.filter(u => u.grader === false && u.id != this.student2);
+      this.students2 = users.filter(u => u.grader === false && u.id != this.student1);
+    });
   }
 
   /**
@@ -150,8 +154,13 @@ export class ReportComponent implements OnInit {
       this.submissionService.getSubmissionByStudentAssignment(this.selectedAssignment, this.student2).subscribe(submission2 => {
         const similarFileId = submission2.id;
         this.getReportByIds(this.selectedAssignment, refFileId, similarFileId);
+        this.updateUsers();
       });
     });
+  }
+
+  updateModel() {
+
   }
 
   /**

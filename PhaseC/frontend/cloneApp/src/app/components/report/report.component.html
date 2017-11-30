@@ -13,18 +13,18 @@
       </div>
       <div class="row">
         <div class="col">
-      <div class="form-group" *ngIf="students">
+      <div class="form-group" *ngIf="students1">
         <label for="student1">Student 1</label>
         <select class="form-control" id="student1" name="student1" [(ngModel)]="student1" (change)="updateReport()">
-          <option *ngFor="let student of students" [ngValue]="student.id">{{student.name}}</option>
+          <option *ngFor="let student of students1" [ngValue]="student.id">{{student.name}}</option>
         </select>
       </div>
         </div>
         <div class="col">
-      <div class="form-group" *ngIf="students">
+      <div class="form-group" *ngIf="students2">
         <label for="student2">Student 2</label>
         <select class="form-control" id="student2" name="student2" [(ngModel)]="student2" (change)="updateReport()">
-          <option *ngFor="let student of students" [ngValue]="student.id">{{student.name}}</option>
+          <option *ngFor="let student of students2" [ngValue]="student.id">{{student.name}}</option>
         </select>
       </div>
         </div>

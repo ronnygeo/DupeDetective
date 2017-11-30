@@ -28,7 +28,6 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.userUrl)
       .pipe(
-        // map(r => r["_embedded"]["users"]),
         catchError(this.handleError('getAssignments', []))
       );
   }
@@ -42,8 +41,19 @@ export class UserService {
   getUser(username: string, password: string): Observable<User> {
     const url = `${this.userUrl}/login?username=${username}&password=${password}`;
     return this.http.get<User>(url).pipe(
-      // map(r => r["_embedded"]["users"]),
       catchError(this.handleError<User>(`getUser user=${username}`))
+    );
+  }
+
+  /**
+   * Fetch a user by Id
+   * @param {string} id
+   * @returns {Observable<User>}
+   */
+  getUserById(id: string): Observable<User> {
+    const url = `${this.userUrl}/${id}`;
+    return this.http.get<User>(url).pipe(
+      catchError(this.handleError<User>(`getUser userId=${id}`))
     );
   }
 
@@ -66,7 +76,6 @@ export class UserService {
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
       // Let the app keep running by returning an empty result.
