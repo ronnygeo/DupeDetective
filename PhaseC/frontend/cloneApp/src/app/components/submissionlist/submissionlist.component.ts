@@ -5,6 +5,9 @@ import {Submission} from "../../models/submission";
 import {SubmissionService} from "../../services/submission.service";
 import {AssignmentService} from "../../services/assignment.service";
 
+/**
+ * List all Submissions
+ */
 @Component({
   selector: 'app-submission-list',
   templateUrl: './submissionlist.component.html',
@@ -19,10 +22,16 @@ export class SubmissionListComponent implements OnInit {
               private assignmentService: AssignmentService,
               private location: Location) {}
 
+  /**
+   * On page load
+   */
   ngOnInit() {
     this.getSubmissions();
   }
 
+  /**
+   * Get all submissions
+   */
   getSubmissions(): void {
     if (this.route.snapshot.paramMap.get('assignmentId') != null && this.route.snapshot.paramMap.get('assignmentId') !== "") {
       const id: string = this.route.snapshot.paramMap.get('assignmentId');

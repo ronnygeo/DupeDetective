@@ -46,6 +46,10 @@ export class UploadSubmissionComponent implements OnInit {
     this.readThis($event.target);
   }
 
+  /**
+   * Read the file contents
+   * @param inputValue list of files
+   */
   readThis(inputValue: any): void {
     const file: File = inputValue.files[0];
     this.filename = inputValue.files[0].name;
@@ -58,6 +62,9 @@ export class UploadSubmissionComponent implements OnInit {
 
   }
 
+  /**
+   * Upload the submission
+   */
   upload() {
     if (this.fileContent != null || this.filename != null || this.assignmentId != null || this.userId != null) {
       this.submissionService.uploadSubmission({"filename": this.filename, "filecontent": this.fileContent,
