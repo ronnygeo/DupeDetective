@@ -18,6 +18,7 @@ import java.util.List;
  * Start analyze controller
  */
 @RestController
+@RequestMapping("/api")
 @CrossOrigin("*")
 public class AssignmentController {
     @Autowired

@@ -6,7 +6,6 @@
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
         <tr>
-          <th>Id</th>
           <th>Name</th>
           <th>Course</th>
           <th>Is Analyzed</th>
@@ -15,8 +14,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let assignment of assignments">
-            <td>{{assignment.id}}</td>
-          <td><a routerLink="/assignment/{{assignment.id}}/submissions">{{assignment.name}}</a></td>
+          <td><a routerLink="/assignment/{{assignment.id}}/submissions" style="color: dodgerblue">{{assignment.name}}</a></td>
             <td>{{assignment.course}}</td>
             <td>{{assignment.analyzed}}</td>
             <td><a class="btn btn-danger white-text" *ngIf="!assignment.analyzed" (click)="analyze(assignment.id)">Analyze!</a></td>
