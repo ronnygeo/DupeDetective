@@ -20,6 +20,9 @@ public class WinnowEngine {
     this.span_store = new ArrayList<>();
   }
 
+  /**
+   * @return
+   */
   public LinkedHashMap getFingerPrint() {
     LinkedHashMap hashStore = calculateHash();
     return fingerPrint;
@@ -45,8 +48,8 @@ public class WinnowEngine {
     int line_count = 1;
 
     for (String line : lines) {
-      // this was a blank line and is only usefull for the purpose of maintaining line number
-      // count, the text '$' has otherwise no oder significance.
+      // this was a blank line and is only useful for the purpose of maintaining line number
+      // count, the text '$' has otherwise no other significance.
       if (line.contains("$")) {
         line_count += 1;
         continue;
@@ -55,10 +58,7 @@ public class WinnowEngine {
       //calc length of line
       int line_length = line.length();
 
-      //index...index + line.length is
       HashRange index_range = new HashRange(index, index + line.length() - 1);
-
-      //Store in our DS
       span_store.add(new HashIndex(index_range, line_count));
       index = index + line_length;
       line_count += 1;
@@ -67,6 +67,9 @@ public class WinnowEngine {
     return fingerPrint;
   }
 
+  /**
+   * Custom class for keeping in check range and line_number
+   */
   private class HashIndex {
 
     HashRange index_range;
@@ -77,15 +80,22 @@ public class WinnowEngine {
       this.line_number = line_number;
     }
   }
-}
 
-class HashRange {
+  /**
+   * Custom Range class to keep track of starting
+   * and end index
+   */
+  private class HashRange {
 
-  int start;
-  int end;
+    int start;
+    int end;
 
-  public HashRange(int start, int end) {
-    this.start = start;
-    this.end = end;
+    public HashRange(int start, int end) {
+      this.start = start;
+      this.end = end;
+    }
   }
 }
+
+
+
