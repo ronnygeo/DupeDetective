@@ -10,9 +10,12 @@ import static cs5500.project.engine.ast.ASTUtilities.cleanLists;
 import static cs5500.project.engine.ast.ASTUtilities.createReportItems;
 
 /**
- * Compare two lists of ASTHashObjects
+ * Compare the child nodes of two lists of ASTHashObjects
  */
 public class ASTParentCompare implements CustomComparator<List<ASTHashObject>> {
+
+    private static final float SCORE_THRESHOLD = 0.3f;
+
     /**
      * Compare the first object with the other
      *
@@ -26,16 +29,12 @@ public class ASTParentCompare implements CustomComparator<List<ASTHashObject>> {
 
         for (int i = 0; i < l1.size(); i++) {
             for (int j=0; j < l2.size(); j++) {
-                if (i == j) {
-                    items.addAll(compareNodes(l1.get(i).getNodes(), l2.get(j).getNodes()));
+                    float score = getScore(l1.get(i).getNodes(), l2.get(j).getNodes());
+                    if (i == j || score > SCORE_THRESHOLD) {
+                        items.addAll(compareNodes(l1.get(i).getNodes(), l2.get(j).getNodes(), score));
+                    }
                 }
-//                else if (i == j + 1) {
-//                    items.addAll(compareNodes(l1.get(i).getNodes(), l2.get(j+1).getNodes()));
-//                } else if (i + 1 == j) {
-//                    items.addAll(compareNodes(l1.get(i-1).getNodes(), l2.get(j).getNodes()));
-//                }
             }
-        }
         return items;
     }
 
@@ -45,10 +44,9 @@ public class ASTParentCompare implements CustomComparator<List<ASTHashObject>> {
      * @param l2 the list of ndoes
      * @return the lcs of given lists
      */
-    private List<ReportLine> compareNodes(List<ASTHashObject> l1, List<ASTHashObject> l2) {
+    private List<ReportLine> compareNodes(List<ASTHashObject> l1, List<ASTHashObject> l2, float score) {
         LCSCompare lcsc = new LCSCompare();
         List<ASTHashObject> lcsList = lcsc.compare(l1, l2);
-        float score = getScore(l1, l2);
 
         cleanLists(l1, lcsList);
         cleanLists(l2, lcsList);
@@ -82,29 +80,18 @@ public class ASTParentCompare implements CustomComparator<List<ASTHashObject>> {
      * @return a value that represents how similar the two documents are
      */
     public float getScoreParent(List<ASTHashObject> l1, List<ASTHashObject> l2) {
-        float sum = 0;
-        float sum_prev = 0;
-        float sum_next = 0;
-        float count = 0;
+        float max = 0;
 
         for (int i = 0; i < l1.size(); i++) {
             for (int j=0; j < l2.size(); j++) {
+                float sum = 0;
                 if (i == j) {
                     float val = getScore(l1.get(i).getNodes(), l2.get(j).getNodes());
                     sum += val;
-                    count++;
                 }
-                else if (i == j + 1) {
-                    float val = getScore(l1.get(i).getNodes(), l2.get(j+1).getNodes());
-                    sum_prev += val;
-                    count++;
-                } else if (i + 1 == j) {
-                    float val = getScore(l1.get(i + 1).getNodes(), l2.get(j).getNodes());
-                    sum_next += val;
-                    count++;
-                }
+                max = Math.max(max, sum);
             }
         }
-        return sum;
+        return max;
     }
 }

@@ -1,7 +1,7 @@
 package cs5500.project.engine;
 
 import cs5500.project.engine.ast.ASTHashObject;
-import cs5500.project.engine.ast.ASTStructureCompare;
+import cs5500.project.engine.ast.ASTTypeCompare;
 import cs5500.project.engine.ast.ASTStructureVisitor;
 import cs5500.project.engine.ast.CustomASTParser;
 import cs5500.project.data.ReportLine;
@@ -27,7 +27,7 @@ public class ASTStructureStrategy implements PDStrategy {
 		ASTVisitor visitor2 = new ASTStructureVisitor();
 		cu1.accept(visitor1);
 		cu2.accept(visitor2);
-		CustomComparator<List<ASTHashObject>> astsc = new ASTStructureCompare();
+		CustomComparator<List<ASTHashObject>> astsc = new ASTTypeCompare();
 		return astsc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList());
 	}
 }
