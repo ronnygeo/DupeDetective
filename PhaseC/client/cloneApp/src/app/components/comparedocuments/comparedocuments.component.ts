@@ -3,7 +3,6 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {SubmissionService} from "../../services/submission.service";
 import {ReportService} from "../../services/report.service";
 import {UserService} from "../../services/user.service";
-import {Report} from "../../models/report";
 import {ReportLine} from "../../models/reportline";
 
 @Component({
@@ -50,6 +49,9 @@ export class ComparedocumentsComponent implements OnInit {
     this.highlightDocuments();
   }
 
+  /**
+   * Get both student names
+   */
   getStudentNames() {
     this.userService.getUserById(this.student1).subscribe(student => this.studentname1 = student.name);
     this.userService.getUserById(this.student2).subscribe(student => this.studentname2 = student.name);
@@ -67,36 +69,53 @@ export class ComparedocumentsComponent implements OnInit {
     });
   }
 
+  /**
+   * Highlight lines in the code
+   */
   highlightDocuments() {
     this.reportService.getReportByIds(this.refFileId, this.similarFileId).subscribe(report => {
       const lines = report.models.filter(m => m.model === this.modelId)[0].lines;
 
-      let doc1Offset = 0;
-      let doc2Offset = 0;
-
       // TODO: Refactor span check for already existing
-      console.log(lines.sort(this.compareRefOffset));
-      for (const line of lines.sort(this.compareRefOffset)) {
-        const substring = this.doc1.substr(doc1Offset + line.refOffset, line.refLength);
-        if (substring.indexOf(this.closingTag) === -1 && substring.indexOf(this.closingTag) === -1 && substring.indexOf("</") === -1 &&
-          substring.indexOf("</s") === -1
-        ) {
-          console.log(this.doc1.substr(doc1Offset + line.refOffset, line.refLength));
-        this.doc1 = this.addTag(this.doc1, doc1Offset, line.refOffset, line.refLength);
-        doc1Offset += this.tagLength;
-        }
-      }
-
-      for (const line of lines.sort(this.compareSimilarOffset)) {
-        this.doc2 = this.addTag(this.doc2, doc2Offset, line.similarOffset, line.similarLength);
-        doc2Offset += this.tagLength;
-      }
+      [this.doc1, this.doc2] = this.createSpanElements(lines, "ref", [this.doc1, this.doc2]);
 
       this.doc1 = this.doc1.replace(/\n/g, "<br>");
       this.doc2 = this.doc2.replace(/\n/g, "<br>");
     });
   }
 
+  /**
+   * Create span elements in the doc
+   * @param lines
+   * @param field
+   * @param docArray
+   * @returns {string[]}
+   */
+  createSpanElements(lines: ReportLine[], field: string, docArray: string[]) {
+    let docs: string[] = [];
+    for (let doc of docArray) {
+      let docOffset = 0;
+      for (const line of lines.sort( docArray.indexOf(doc) == 0? this.compareRefOffset: this.compareSimilarOffset)) {
+        const substring = doc.substr(docOffset + line[field + "Offset"], line[field + "Length"]);
+        if (substring.indexOf(this.openingTag) === -1 && substring.indexOf(this.closingTag) === -1) {
+          doc = this.addTag(doc, docOffset, line[field + "Offset"], line[field + "Length"]);
+          docOffset += this.tagLength;
+        }
+      }
+      docs.push(doc);
+    }
+    return docs;
+  }
+
+
+  /**
+   * Add tag
+   * @param doc
+   * @param docOffset
+   * @param offset
+   * @param length
+   * @returns {any}
+   */
   addTag(doc, docOffset, offset, length) {
     doc = this.insertTag(doc, this.openingTag, docOffset + offset);
     docOffset += this.openingTag.length;
@@ -105,6 +124,13 @@ export class ComparedocumentsComponent implements OnInit {
     return doc;
   }
 
+  /**
+   * Insert tag
+   * @param main_string
+   * @param ins_string
+   * @param pos
+   * @returns {any}
+   */
   insertTag(main_string, ins_string, pos) {
     if (typeof(pos) === "undefined") {
       pos = 0;
@@ -115,6 +141,12 @@ export class ComparedocumentsComponent implements OnInit {
     return main_string.slice(0, pos) + ins_string + main_string.slice(pos);
   }
 
+  /**
+   * Comparator for ref offset
+   * @param {ReportLine} a
+   * @param {ReportLine} b
+   * @returns {number}
+   */
   compareRefOffset(a: ReportLine, b: ReportLine): number {
       if (a.refOffset < b.refOffset) {
         return -1;
@@ -125,6 +157,12 @@ export class ComparedocumentsComponent implements OnInit {
       return 0;
   }
 
+  /**
+   * Comparator for similar offset
+   * @param {ReportLine} a
+   * @param {ReportLine} b
+   * @returns {number}
+   */
   compareSimilarOffset(a: ReportLine, b: ReportLine): number {
     if (a.similarOffset < b.similarOffset) {
       return -1;
