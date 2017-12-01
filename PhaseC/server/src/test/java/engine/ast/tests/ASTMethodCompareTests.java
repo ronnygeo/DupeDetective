@@ -1,7 +1,6 @@
 package engine.ast.tests;
 
 import cs5500.project.engine.Parser;
-import cs5500.project.engine.ast.ASTMethodCompare;
 import cs5500.project.engine.ast.ASTMethodVisitor;
 import cs5500.project.engine.ast.ASTParentCompare;
 import cs5500.project.engine.ast.CustomASTParser;

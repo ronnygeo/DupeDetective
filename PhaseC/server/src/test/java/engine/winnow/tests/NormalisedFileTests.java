@@ -11,7 +11,7 @@ import org.junit.Test;
  */
 public class NormalisedFileTests {
 
-  private String prjPath = "/Study/CS5500/Project/team-27/PhaseC/src/test/java/engine/winnow/tests/testfiles/";
+  private String prjPath = "/Study/CS5500/Project/team-27/PhaseC/server/src/test/java/engine/winnow/tests/testfiles/";
 
   @Test
   public void testLowerCase() {

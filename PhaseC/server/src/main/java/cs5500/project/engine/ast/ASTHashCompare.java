@@ -1,7 +1,7 @@
 package cs5500.project.engine.ast;
 
-import cs5500.project.engine.CustomComparator;
 import cs5500.project.data.ReportLine;
+import cs5500.project.engine.CustomComparator;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,9 +10,9 @@ import static cs5500.project.engine.ast.ASTUtilities.cleanLists;
 import static cs5500.project.engine.ast.ASTUtilities.createReportItems;
 
 /**
- * AST comparator that compares the structure of the code
+ * Class that compares the hashes inside the AST
  */
-public class ASTStructureCompare implements CustomComparator<List<ASTHashObject>> {
+public class ASTHashCompare implements CustomComparator<List<ASTHashObject>> {
     /**
      * Compare the first object with the other
      *
@@ -22,8 +22,9 @@ public class ASTStructureCompare implements CustomComparator<List<ASTHashObject>
      */
     @Override
     public List<ReportLine> compare(List<ASTHashObject> l1, List<ASTHashObject> l2) {
-        LCSCompare lcsc = new LCSCompare();
+        LCSCompare lcsc = new LCSCompare(LCSCompareMode.TYPE);
         List<ASTHashObject>lcsList = lcsc.compare(l1, l2);
+
         float score = getScore(l1, l2);
 
         cleanLists(l1, lcsList);
@@ -40,16 +41,17 @@ public class ASTStructureCompare implements CustomComparator<List<ASTHashObject>
      * @return a value that represents how similar the two documents are
      */
     public float getScore(List<ASTHashObject> l1, List<ASTHashObject> l2) {
-        LCSCompare lcsc = new LCSCompare();
+        LCSCompare lcsc = new LCSCompare(LCSCompareMode.TYPE);
         List<ASTHashObject>lcsList = lcsc.compare(l1, l2);
 
-        float score = lcsList.size() / (float) Math.max(l1.size(), l2.size());
+        float score = lcsList.size() / ((float) Math.max(l1.size(), l2.size()));
         if (Float.isNaN(score)) score = 0;
         cleanLists(l1, lcsList);
         cleanLists(l2, lcsList);
-        System.out.println("Structure comparison");
-        System.out.println("After: " + l1.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
-        System.out.println("After: " + l2.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
+
+        System.out.println("Method comparison");
+        System.out.println("After: " + l1.stream().map(ASTHashObject::getHash).collect(Collectors.toList()));
+        System.out.println("After: " + l2.stream().map(ASTHashObject::getHash).collect(Collectors.toList()));
 
         return score;
     }
