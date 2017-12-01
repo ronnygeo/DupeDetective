@@ -615,7 +615,6 @@ public class ASTStructureVisitor extends ASTVisitorAC implements ParseVisitor {
      * POST Visit the given component using this visitor
      *
      * @param node A ConditionExpression
-     * @return a boolean whether to traverse subtrees or not
      */
     @Override
     public void endVisit(ConditionalExpression node) {

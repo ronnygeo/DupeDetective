@@ -21,7 +21,7 @@ public class WinnowEngine {
   }
 
   /**
-   * @return
+   * @return Linked map
    */
   public LinkedHashMap getFingerPrint() {
     LinkedHashMap hashStore = calculateHash();
