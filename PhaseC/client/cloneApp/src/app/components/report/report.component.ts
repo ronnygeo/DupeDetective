@@ -10,6 +10,7 @@ import {UserService} from "../../services/user.service";
 import {User} from "../../models/user";
 import {SubmissionService} from "../../services/submission.service";
 import {Report} from "../../models/report";
+import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 
 /**
  * The Component that creates the ModelReport page
@@ -36,6 +37,7 @@ export class ReportComponent implements OnInit {
   private loopScore: number;
   private methodScore: number;
   private overallScore: number;
+  private downloadLink: SafeUrl;
 
   constructor(private route: ActivatedRoute,
               private reportService: ReportService,
@@ -43,7 +45,8 @@ export class ReportComponent implements OnInit {
               private modalService: NgbModal,
               private assignmentService: AssignmentService,
               private userService: UserService,
-              private submissionService: SubmissionService) {}
+              private submissionService: SubmissionService,
+              private sanitizer: DomSanitizer) {}
 
   /**
    * On page load
@@ -98,6 +101,7 @@ export class ReportComponent implements OnInit {
           this.reports = reports;
           if (reports.length > 0) {
             this.selectedReport = reports[0];
+            this.generateDownloadUrl();
             this.getStudentsFromSubmission();
             this.fetchScores();
           }
@@ -107,6 +111,7 @@ export class ReportComponent implements OnInit {
         .subscribe(reports => {
           this.reports = reports;
           this.selectedReport = reports[0];
+          this.generateDownloadUrl();
           this.getStudentsFromSubmission();
           this.fetchScores();
         });
@@ -126,7 +131,14 @@ export class ReportComponent implements OnInit {
         case 5: this.winnowingScore = model.score; break;
       }
     }
-    this.overallScore = this.selectedReport.md5Result? 1: this.selectedReport.overallScore;
+    this.getOverallScore();
+  }
+
+  /**
+   * Get overall score from the model
+   */
+  getOverallScore() {
+    this.overallScore = this.selectedReport.overallScore;
   }
 
   /**
@@ -141,7 +153,7 @@ export class ReportComponent implements OnInit {
         this.reportService.getReportByIds(refFileId, similarFileId)
           .subscribe(report => {
             this.selectedReport = report;
-            console.log(report);
+            this.generateDownloadUrl();
             this.fetchScores();
           });
       }
@@ -161,8 +173,19 @@ export class ReportComponent implements OnInit {
     });
   }
 
+  /**
+   * Update the model when user clicks on an option
+   */
   updateModel() {
 
+  }
+
+  /**
+   * Generate a json file for the selected report
+   */
+  generateDownloadUrl() {
+    const theJSON = JSON.stringify(this.selectedReport);
+    this.downloadLink = this.sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(theJSON));
   }
 
   /**

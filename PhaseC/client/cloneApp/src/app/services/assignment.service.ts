@@ -31,7 +31,6 @@ export class AssignmentService {
   getAssignments(): Observable<Assignment[]> {
     return this.http.get<Assignment[]>(this.assignmentUrl)
       .pipe(
-        // map(r => r["_embedded"]["assignments"]),
         catchError(this.handleError('getAssignments', []))
       );
   }
@@ -44,8 +43,6 @@ export class AssignmentService {
   getAssignment(id: string): Observable<Assignment> {
     const url = `${this.assignmentUrl}/${id}`;
     return this.http.get<Assignment>(url).pipe(
-      tap(console.log),
-      // map(r => r["_embedded"]["assignments"]),
       catchError(this.handleError<Assignment>(`getAssignment id=${id}`))
     );
   }
@@ -75,8 +72,6 @@ export class AssignmentService {
   getSubmissionsByAssignmentId(id: string): Observable<Submission[]> {
     const url = `${this.assignmentUrl}/${id}/submissions`;
     return this.http.get<Submission[]>(url).pipe(
-      // map(r => r["_embedded"]["submissions"]),
-      tap(console.log),
       catchError(this.handleError<Submission[]>(`getSubmission id=${id}`))
     );
   }
