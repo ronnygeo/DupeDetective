@@ -57,7 +57,6 @@ export class ReportService {
   getReportByIds(refFileId: string, similarFileId: string): Observable<Report> {
     const url = `${this.reportUrl}/single?refFileId=${refFileId}&similarFileId=${similarFileId}`;
     return this.http.get<Report>(url).pipe(
-      tap(console.log),
       catchError(this.handleError<Report>(`getReport refFileId=${refFileId} similarFileId=${similarFileId}`))
     );
   }

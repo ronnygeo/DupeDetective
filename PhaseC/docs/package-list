@@ -1,0 +1,16 @@
+cs5500.project.data
+cs5500.project.engine
+cs5500.project.engine.ast
+cs5500.project.engine.md5
+cs5500.project.engine.winnow
+cs5500.project.engine.winnow.engine
+cs5500.project.engine.winnow.input
+cs5500.project.engine.winnow.normalise
+cs5500.project.web
+cs5500.project.web.controllers
+cs5500.project.web.repository
+engine
+engine.ast.tests
+engine.md5.tests
+engine.winnow.tests
+engine.winnow.tests.testfiles
