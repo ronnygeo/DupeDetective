@@ -3,6 +3,7 @@ package engine.ast.tests;
 import cs5500.project.engine.Parser;
 import cs5500.project.engine.ast.ASTMethodCompare;
 import cs5500.project.engine.ast.ASTMethodVisitor;
+import cs5500.project.engine.ast.ASTParentCompare;
 import cs5500.project.engine.ast.CustomASTParser;
 import engine.TestUtils;
 import org.eclipse.jdt.core.dom.ASTVisitor;
@@ -35,9 +36,9 @@ public class ASTMethodCompareTests {
         cu1.accept(visitor1);
         cu2.accept(visitor2);
 
-        ASTMethodCompare astmc = new ASTMethodCompare();
+        ASTParentCompare astmc = new ASTParentCompare();
 
-        assertEquals(1.0, astmc.getScore(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.01);
+        assertEquals(1, astmc.getScoreParent(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -53,9 +54,9 @@ public class ASTMethodCompareTests {
         ASTVisitor visitor2 = new ASTMethodVisitor();
         cu1.accept(visitor1);
         cu2.accept(visitor2);
-        ASTMethodCompare astmc = new ASTMethodCompare();
+        ASTParentCompare astmc = new ASTParentCompare();
 
-        assertEquals(1, astmc.compare(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()).size());
+        assertEquals(1, astmc.getScoreParent(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -71,9 +72,9 @@ public class ASTMethodCompareTests {
         ASTVisitor visitor2 = new ASTMethodVisitor();
         cu1.accept(visitor1);
         cu2.accept(visitor2);
-        ASTMethodCompare astmc = new ASTMethodCompare();
+        ASTParentCompare astmc = new ASTParentCompare();
 
-        assertEquals(1, astmc.getScore(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.01);
+        assertEquals(1, astmc.getScoreParent(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -87,7 +88,7 @@ public class ASTMethodCompareTests {
         cu1.accept(visitor1);
         cu2.accept(visitor2);
 
-        ASTMethodCompare astmc = new ASTMethodCompare();
-        assertEquals(1, astmc.getScore(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.01);
+        ASTParentCompare astmc = new ASTParentCompare();
+        assertEquals(1, astmc.getScoreParent(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.01);
     }
 }

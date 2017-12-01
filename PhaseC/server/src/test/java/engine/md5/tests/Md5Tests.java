@@ -1,4 +1,4 @@
-package engine.MD5Generator.tests;
+package engine.md5.tests;
 
 import cs5500.project.engine.md5.MD5Generator;
 import engine.TestUtils;

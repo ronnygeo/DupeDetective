@@ -3,7 +3,7 @@ package cs5500.project.data;
 import com.google.gson.Gson;
 import com.mongodb.*;
 import com.mongodb.util.JSON;
-import cs5500.project.ReadProperties;
+import cs5500.project.engine.ReadProperties;
 import cs5500.project.engine.Model;
 import org.bson.types.ObjectId;
 
