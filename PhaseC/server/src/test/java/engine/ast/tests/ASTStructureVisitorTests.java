@@ -1,8 +1,8 @@
 package engine.ast.tests;
 
-import cs5500.project.engine.Parser;
-import cs5500.project.engine.ast.visitor.ASTStructureVisitor;
-import cs5500.project.engine.ast.CustomASTParser;
+import com.dupedetective.engine.Parser;
+import com.dupedetective.engine.ast.visitor.ASTStructureVisitor;
+import com.dupedetective.engine.ast.CustomASTParser;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Before;

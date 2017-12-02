@@ -1,6 +1,6 @@
 package engine.ast.tests;
 
-import cs5500.project.engine.ast.compare.LCSCompare;
+import com.dupedetective.engine.ast.compare.LCSCompare;
 import org.junit.Test;
 
 import java.util.Arrays;

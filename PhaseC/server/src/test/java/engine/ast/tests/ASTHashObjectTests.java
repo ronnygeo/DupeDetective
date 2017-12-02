@@ -1,8 +1,11 @@
 package engine.ast.tests;
 
-import cs5500.project.engine.ast.ASTHashObject;
+import com.dupedetective.engine.ast.ASTHashObject;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -63,5 +66,13 @@ public class ASTHashObjectTests {
         aho.setHash(1L);
         aho.addToHash("1".hashCode());
         assertEquals(50, aho.getHash(), 0.01);
+    }
+
+    @Test
+    public void setNodesTests() {
+        List<ASTHashObject> l = new ArrayList<>();
+        l.add(new ASTHashObject());
+        aho.setNodes(l);
+        assertEquals(l, aho.getNodes());
     }
 }

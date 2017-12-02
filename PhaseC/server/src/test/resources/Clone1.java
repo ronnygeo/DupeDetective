@@ -1,4 +1,4 @@
-package org.neu;
+package com.example;
 
 import java.util.HashSet;
 import java.util.Set;

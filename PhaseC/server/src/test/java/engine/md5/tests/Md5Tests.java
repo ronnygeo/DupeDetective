@@ -1,6 +1,6 @@
 package engine.md5.tests;
 
-import cs5500.project.engine.md5.MD5Generator;
+import com.dupedetective.engine.md5.MD5Generator;
 import engine.TestUtils;
 import org.junit.Test;
 

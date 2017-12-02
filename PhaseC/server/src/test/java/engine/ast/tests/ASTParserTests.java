@@ -1,8 +1,7 @@
 package engine.ast.tests;
 
-import cs5500.project.engine.Parser;
-import cs5500.project.engine.ast.CustomASTParser;
-import org.eclipse.jdt.core.dom.AST;
+import com.dupedetective.engine.Parser;
+import com.dupedetective.engine.ast.CustomASTParser;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Test;
 
