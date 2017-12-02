@@ -54,18 +54,6 @@ public class ASTMethodVisitor extends ASTVisitorAC {
     /**
      * Visit the given component using this visitor
      *
-     * @param node An Tag Element
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(TagElement node) {
-       addNodeToNodes(new ASTHashObject(node.getTagName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
      * @param node A Variable Declaration
      * @return a boolean whether to traverse subtrees or not
      */
@@ -118,8 +106,7 @@ public class ASTMethodVisitor extends ASTVisitorAC {
      */
     @Override
     public boolean visit(Comment node) {
-       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
+       return false;
     }
 
     /**
@@ -434,18 +421,6 @@ public class ASTMethodVisitor extends ASTVisitorAC {
     @Override
     public boolean visit(SwitchCase node) {
         return true;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
-     * @param node A Synchronized Statement
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(SynchronizedStatement node) {
-       addNodeToNodes(new ASTHashObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
     }
 
     /**
@@ -770,24 +745,11 @@ public class ASTMethodVisitor extends ASTVisitorAC {
     /**
      * Visit the given component using this visitor
      *
-     * @param node A Type Literal
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(TypeLiteral node) {
-       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
      * @param node A Variable Declaration Expression
      * @return a boolean whether to traverse subtrees or not
      */
     @Override
     public boolean visit(VariableDeclarationExpression node) {
-//       addNodeToNodes(new ASTHashObject(node.getType().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 

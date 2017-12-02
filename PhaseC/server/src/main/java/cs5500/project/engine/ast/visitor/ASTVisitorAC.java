@@ -24,13 +24,6 @@ public abstract class ASTVisitorAC extends ASTVisitor implements MyVisitor {
 
     /**
      * Visit the given component using this visitor
-     * @param node An Tag Element
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public abstract boolean visit(TagElement node);
-
-    /**
-     * Visit the given component using this visitor
      * @param node A Package Declaration
      * @return a boolean whether to traverse subtrees or not
      */
@@ -259,14 +252,6 @@ public abstract class ASTVisitorAC extends ASTVisitor implements MyVisitor {
      */
     public abstract boolean visit(ConstructorInvocation node);
 
-
-    /**
-     * Visit the given component using this visitor
-     * @param node A Synchronized Statement
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public abstract boolean visit(SynchronizedStatement node);
-
     /**
      * Visit the given component using this visitor
      * @param node A Type Declaration Statement
@@ -460,14 +445,6 @@ public abstract class ASTVisitorAC extends ASTVisitor implements MyVisitor {
      */
     @Override
     public abstract boolean visit(ThisExpression node);
-
-    /**
-     * Visit the given component using this visitor
-     * @param node A Type Literal
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public abstract boolean visit(TypeLiteral node);
 
     /**
      * Visit the given component using this visitor

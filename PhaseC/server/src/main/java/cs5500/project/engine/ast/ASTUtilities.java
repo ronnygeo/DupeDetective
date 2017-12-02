@@ -6,7 +6,11 @@ import cs5500.project.engine.Model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * AST Utilities to help AST operations
+ */
 public class ASTUtilities {
+
     /**
      * Remove the nodes not in LCS from the given list
      * @param l the list to clean
@@ -43,7 +47,7 @@ public class ASTUtilities {
             ASTHashObject tmp1 = l1.get(i);
             ASTHashObject tmp2 = l2.get(i);
 
-            ReportLine ri = new ReportLine(tmp1.getoffset(), tmp1.getLength(), tmp2.getoffset(), tmp2.getLength(), Model.ASTStructure.getValue(), score);
+            ReportLine ri = new ReportLine(tmp1.getOffset(), tmp1.getLength(), tmp2.getOffset(), tmp2.getLength(), Model.ASTStructure.getValue(), score);
             items.add(ri);
         }
         return items;

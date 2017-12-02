@@ -56,18 +56,6 @@ public class ASTStructureVisitor extends ASTVisitorAC {
     /**
      * Visit the given component using this visitor
      *
-     * @param node An Tag Element
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(TagElement node) {
-        nodes.add(new ASTHashObject(node.getTagName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
      * @param node A Variable Declaration
      * @return a boolean whether to traverse subtrees or not
      */
@@ -435,18 +423,6 @@ public class ASTStructureVisitor extends ASTVisitorAC {
     /**
      * Visit the given component using this visitor
      *
-     * @param node A Synchronized Statement
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(SynchronizedStatement node) {
-        nodes.add(new ASTHashObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
      * @param node A Type Declaration Statement
      * @return a boolean whether to traverse subtrees or not
      */
@@ -753,18 +729,6 @@ public class ASTStructureVisitor extends ASTVisitorAC {
     @Override
     public boolean visit(ThisExpression node) {
 //        nodes.add(new ASTHashObject(node.getQualifier().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
-     * @param node A Type Literal
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(TypeLiteral node) {
-        nodes.add(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 

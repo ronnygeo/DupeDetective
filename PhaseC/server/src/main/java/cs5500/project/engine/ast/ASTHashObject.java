@@ -77,14 +77,14 @@ public class ASTHashObject {
     /**
      * @return the starting position of the node in the file
      */
-    public Integer getoffset() {
+    public Integer getOffset() {
         return offset;
     }
 
     /**
      * @param offset the starting position of the node in the file
      */
-    public void setoffset(Integer offset) {
+    public void setOffset(Integer offset) {
         this.offset = offset;
     }
 
@@ -115,13 +115,6 @@ public class ASTHashObject {
      */
     public void setHash(Long hash) {
         this.hash = hash;
-    }
-
-    /**
-     * @param hash add this hash to node hash
-     */
-    public void addToHash(HashCode hash) {
-        this.hash += hash.asLong();
     }
 
     /**

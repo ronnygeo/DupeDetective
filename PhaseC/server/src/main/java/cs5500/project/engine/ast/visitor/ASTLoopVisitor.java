@@ -52,18 +52,6 @@ public class ASTLoopVisitor extends ASTVisitorAC {
     /**
      * Visit the given component using this visitor
      *
-     * @param node An Tag Element
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(TagElement node) {
-       addNodeToNodes(new ASTHashObject(node.getTagName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
      * @param node A Variable Declaration
      * @return a boolean whether to traverse subtrees or not
      */
@@ -116,8 +104,7 @@ public class ASTLoopVisitor extends ASTVisitorAC {
      */
     @Override
     public boolean visit(Comment node) {
-       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
+       return false;
     }
 
     /**
@@ -429,18 +416,6 @@ public class ASTLoopVisitor extends ASTVisitorAC {
     /**
      * Visit the given component using this visitor
      *
-     * @param node A Synchronized Statement
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(SynchronizedStatement node) {
-       addNodeToNodes(new ASTHashObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
      * @param node A Type Declaration Statement
      * @return a boolean whether to traverse subtrees or not
      */
@@ -610,20 +585,7 @@ public class ASTLoopVisitor extends ASTVisitorAC {
      * @return a boolean whether to traverse subtrees or not
      */
     @Override
-    public void endVisit(ConditionalExpression node) {
-
-    }
-
-    /**
-     * POST Visit the given component using this visitor
-     *
-     * @param node A ConditionExpression
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public boolean postVisit(ConditionalExpression node) {
-       addNodeToNodes(new ASTHashObject("endcond", node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
-    }
+    public void endVisit(ConditionalExpression node) { }
 
     /**
      * Visit the given component using this visitor
@@ -694,7 +656,6 @@ public class ASTLoopVisitor extends ASTVisitorAC {
     @Override
     public boolean visit(ParenthesizedExpression node) {
        addNodeToNodes(new ASTHashObject("block", node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-
         return true;
     }
 
@@ -742,19 +703,6 @@ public class ASTLoopVisitor extends ASTVisitorAC {
      */
     @Override
     public boolean visit(ThisExpression node) {
-//       addNodeToNodes(new ASTHashObject(node.getQualifier().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
-     * @param node A Type Literal
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(TypeLiteral node) {
-       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 

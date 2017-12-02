@@ -30,7 +30,7 @@ public class ASTStructureVisitorTests {
         ASTVisitor visitor = new ASTStructureVisitor();
         cu.accept(visitor);
 
-        assertEquals(16, ((ASTStructureVisitor) visitor).getList().size());
+        assertEquals(19, ((ASTStructureVisitor) visitor).getList().size());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class ASTStructureVisitorTests {
         ASTVisitor visitor = new ASTStructureVisitor();
         cu.accept(visitor);
 
-        assertEquals(7, ((ASTStructureVisitor) visitor).getList().size());
+        assertEquals(8, ((ASTStructureVisitor) visitor).getList().size());
     }
 
     @Test

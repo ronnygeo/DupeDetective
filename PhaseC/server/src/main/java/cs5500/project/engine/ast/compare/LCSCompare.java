@@ -42,6 +42,19 @@ public class LCSCompare {
     }
 
     /**
+     * Get the hash value of the object
+     * @param a An AST Hash Object
+     * @return the hash value of the object
+     */
+    public Integer getHash(ASTHashObject a) {
+        LCSTypeEquator typeEquator = new LCSTypeEquator();
+        LCSHashEquator hashEquator = new LCSHashEquator();
+        if (mode == LCSCompareMode.HASH) return hashEquator.hash(a);
+        else return typeEquator.hash(a);
+    }
+
+
+    /**
      * Run LCS with the type of the node
      */
     class LCSTypeEquator implements Equator<ASTHashObject> {
