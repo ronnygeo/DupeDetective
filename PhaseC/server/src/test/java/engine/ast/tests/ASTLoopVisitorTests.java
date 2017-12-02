@@ -2,7 +2,7 @@ package engine.ast.tests;
 
 import cs5500.project.engine.Parser;
 import cs5500.project.engine.ast.ASTHashObject;
-import cs5500.project.engine.ast.ASTLoopVisitor;
+import cs5500.project.engine.ast.visitor.ASTLoopVisitor;
 import cs5500.project.engine.ast.CustomASTParser;
 import engine.TestUtils;
 import org.eclipse.jdt.core.dom.ASTVisitor;

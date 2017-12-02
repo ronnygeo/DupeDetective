@@ -1,14 +1,11 @@
-package cs5500.project.engine.ast;
+package cs5500.project.engine.ast.visitor;
 
-import cs5500.project.engine.ParseVisitor;
 import org.eclipse.jdt.core.dom.*;
-
-import java.util.Iterator;
 
 /**
  * A Copy of the Builtin ASTVisitor class with only the required methods defined as abstract
  */
-public abstract class ASTVisitorAC extends ASTVisitor implements ParseVisitor {
+public abstract class ASTVisitorAC extends ASTVisitor implements MyVisitor {
 
     /**
      * Visit the given component using this visitor
@@ -479,4 +476,12 @@ public abstract class ASTVisitorAC extends ASTVisitor implements ParseVisitor {
      */
     @Override
     public abstract boolean visit(VariableDeclarationExpression node);
+
+    /**
+     * Visit the given component using this visitor
+     * @param node A Field Declaration
+     * @return a boolean whether to traverse subtrees or not
+     */
+    @Override
+    public abstract boolean visit(FieldDeclaration node);
 }

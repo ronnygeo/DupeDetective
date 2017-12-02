@@ -2,6 +2,8 @@ package engine.ast.tests;
 
 import cs5500.project.engine.Parser;
 import cs5500.project.engine.ast.*;
+import cs5500.project.engine.ast.compare.ASTTypeCompare;
+import cs5500.project.engine.ast.visitor.ASTStructureVisitor;
 import engine.TestUtils;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;

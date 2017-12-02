@@ -1,17 +1,14 @@
 package engine.ast.tests;
 
 import cs5500.project.engine.Parser;
-import cs5500.project.engine.ast.ASTParentCompare;
-import cs5500.project.engine.ast.ASTLoopVisitor;
-import cs5500.project.engine.ast.ASTUtilities;
+import cs5500.project.engine.ast.compare.ASTParentCompare;
+import cs5500.project.engine.ast.visitor.ASTLoopVisitor;
 import cs5500.project.engine.ast.CustomASTParser;
 import engine.TestUtils;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

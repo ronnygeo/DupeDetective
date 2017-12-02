@@ -1,8 +1,8 @@
 package cs5500.project.engine;
 
 import cs5500.project.engine.ast.ASTHashObject;
-import cs5500.project.engine.ast.ASTTypeCompare;
-import cs5500.project.engine.ast.ASTStructureVisitor;
+import cs5500.project.engine.ast.compare.ASTTypeCompare;
+import cs5500.project.engine.ast.visitor.ASTStructureVisitor;
 import cs5500.project.engine.ast.CustomASTParser;
 import cs5500.project.data.ReportLine;
 import org.eclipse.jdt.core.dom.ASTVisitor;

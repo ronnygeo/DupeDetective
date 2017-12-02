@@ -2,6 +2,8 @@ package cs5500.project.engine;
 
 import cs5500.project.engine.ast.*;
 import cs5500.project.data.ReportLine;
+import cs5500.project.engine.ast.compare.ASTParentCompare;
+import cs5500.project.engine.ast.visitor.ASTMethodVisitor;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 

@@ -1,14 +1,12 @@
 package engine.ast.tests;
 
 import cs5500.project.engine.Parser;
-import cs5500.project.engine.ast.ASTStructureVisitor;
+import cs5500.project.engine.ast.visitor.ASTStructureVisitor;
 import cs5500.project.engine.ast.CustomASTParser;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;

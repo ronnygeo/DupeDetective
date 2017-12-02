@@ -1,7 +1,6 @@
-package cs5500.project.engine.ast;
+package cs5500.project.engine.ast.visitor;
 
-import com.google.common.hash.HashCode;
-import cs5500.project.engine.ParseVisitor;
+import cs5500.project.engine.ast.ASTHashObject;
 import org.eclipse.jdt.core.dom.*;
 
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ import java.util.List;
 /**
  * An AST Visitor that visits only loops and conditionals and creates a list
  */
-public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
+public class ASTLoopVisitor extends ASTVisitorAC {
 
     public ASTLoopVisitor() {
         nodes = new ArrayList<>();
@@ -767,7 +766,18 @@ public class ASTLoopVisitor extends ASTVisitorAC implements ParseVisitor {
      */
     @Override
     public boolean visit(VariableDeclarationExpression node) {
-//       addNodeToNodes(new ASTHashObject(node.getType().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
+        return true;
+    }
+
+    /**
+     * Visit the given component using this visitor
+     *
+     * @param node A Field Declaration
+     * @return a boolean whether to traverse subtrees or not
+     */
+    @Override
+    public boolean visit(FieldDeclaration node) {
+        addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 

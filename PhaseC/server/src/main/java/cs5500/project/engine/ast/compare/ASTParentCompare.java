@@ -1,7 +1,9 @@
-package cs5500.project.engine.ast;
+package cs5500.project.engine.ast.compare;
 
 import cs5500.project.engine.CustomComparator;
 import cs5500.project.data.ReportLine;
+import cs5500.project.engine.ast.ASTHashObject;
+import cs5500.project.engine.ast.compare.LCSCompare;
 
 import java.util.ArrayList;
 import java.util.List;

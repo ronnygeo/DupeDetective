@@ -1,6 +1,6 @@
-package cs5500.project.engine.ast;
+package cs5500.project.engine.ast.compare;
 
-import cs5500.project.engine.CustomComparator;
+import cs5500.project.engine.ast.ASTHashObject;
 import org.apache.commons.collections4.Equator;
 import org.apache.commons.collections4.ListUtils;
 
