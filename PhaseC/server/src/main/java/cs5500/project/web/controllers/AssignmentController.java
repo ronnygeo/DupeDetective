@@ -24,12 +24,18 @@ public class AssignmentController {
     @Autowired
     AssignmentRepository assignmentRepository;
 
+    /**
+	 * Method which returns a list of all the assignments
+	 */
     @GetMapping("/assignments")
     public List<Assignment> getAllAssignments() {
         Sort sortByCreatedAtDesc = new Sort(Sort.Direction.DESC, "createdAt");
         return assignmentRepository.findAll(sortByCreatedAtDesc);
     }
 
+    /**
+	 * Method which takes as input an assignment object and adds it to the database in the assignment collection
+	 */
     @PostMapping("/assignments")
     public Assignment createAssignment(@Valid @RequestBody Assignment assignment) {
         assignment.setAnalyzed(false);
@@ -37,6 +43,9 @@ public class AssignmentController {
         return assignmentRepository.save(assignment);
     }
 
+    /**
+	 * Method which takes as input an assignment id and returns the assignment object with the particular id
+	 */
     @GetMapping(value="/assignments/{id}")
     public ResponseEntity<Assignment> getAssignmentById(@PathVariable("id") String id) {
         Assignment assignment = assignmentRepository.findOne(id);
@@ -47,6 +56,9 @@ public class AssignmentController {
         }
     }
 
+    /**
+	 * Method which takes as input an assignment id and returns the assignment object with the particular id
+	 */
     @PutMapping(value="/assignments/{id}")
     public ResponseEntity<Assignment> updateAssignment(@PathVariable("id") String id,
                                            @Valid @RequestBody Assignment assignment) {
@@ -63,6 +75,9 @@ public class AssignmentController {
         return new ResponseEntity<>(updatedAssignment, HttpStatus.OK);
     }
 
+    /**
+	 * Method which takes as input an assignment id and deletes the particular assignment from the assignment table
+	 */
     @DeleteMapping(value="/assignments/{id}")
     public void deleteAssignment(@PathVariable("id") String id) {
         assignmentRepository.delete(id);
