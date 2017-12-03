@@ -54,6 +54,26 @@ public class ASTLoopCompareTests {
 
     }
 
+    @Test
+    public void testForForIn() {
+        String testCode1 = "\n public class A {" +
+                "\npublic void forLoop(int[] arr) { \n " +
+                "for(int j = 0; j < arr.length; j++) {i = arr[j];}} \n} ";
+        String testCode2 = "\n public class A {" +
+                "\npublic void forLoop(int[] arr) { \n " +
+                "for(int num : arr) {i = num;}} \n} ";
+
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTLoopVisitor();
+        ASTVisitor visitor2 = new ASTLoopVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTParentCompare astc = new ASTParentCompare();
+        assertEquals(0.4, astc.getScoreParent(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.05);
+    }
 
     @Test
     public void testIfSwitch() {

@@ -34,7 +34,7 @@ public class LCSCompare {
      *
      * @param obj1 : the first object to compare
      * @param obj2 : the second object to compare
-     * @return a value that represents how similar the two documents are
+     * @return list of similar AST nodes
      */
     public List<ASTHashObject> compare(List<ASTHashObject> obj1, List<ASTHashObject> obj2) {
         if (mode == LCSCompareMode.HASH) return (ListUtils.longestCommonSubsequence(obj1, obj2, new LCSHashEquator()));

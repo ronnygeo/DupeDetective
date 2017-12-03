@@ -310,4 +310,73 @@ public class ASTStructureCompareTests {
         ASTTypeCompare astmc = new ASTTypeCompare();
         assertEquals(0.75, astmc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
     }
+
+    @Test
+    public void testTernary() {
+        String testCode1 = "public class A {\n" +
+                "  public static int findLargerOneWithIf(int a, int b) { \n" +
+                "    if (a > b) {\n" +
+                "      return a;\n" +
+                "    } else {\n" +
+                "      return b;\n" +
+                "    }\n" +
+                "  }\n" +
+                "}";
+        String testCode2 = "public class B {\n" +
+                "   public static int findLargerOneWithoutIf(int a, int b) { \n" +
+                "    return a > b ? a : b;\n" +
+                "  }\n" +
+                "}";
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTTypeCompare astsc = new ASTTypeCompare();
+        System.out.println(((ASTStructureVisitor) visitor1).getList().size());
+        System.out.println(((ASTStructureVisitor) visitor2).getList().size());
+        assertEquals(0.625, astsc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
+    }
+
+    @Test
+    public void testJuukeiTest() {
+        String testCode1 = "  public class A {\n" +
+                "    public static void forLoopWithIf(int[] arr) { \n" +
+                "      for(int i = 0; i < arr.length; i++) {\n" +
+                "        if (arr[i] % 2 != 0) {\n" +
+                "          System.out.println(arr[i]);\n" +
+                "        } else {\n" +
+                "          System.out.println(\"Even\");\n" +
+                "        }\n" +
+                "      }\n" +
+                "    }\n" +
+                "  }";
+        String testCode2 = "  public class B {\n" +
+                "    public static void forLoopWithSwitch(int[] arr) { \n" +
+                "      for(int i = 0; i < arr.length; i++) {\n" +
+                "        switch(arr[i] % 2) {\n" +
+                "          case 1:\n" +
+                "            System.out.println(arr[i]);\n" +
+                "            break;\n" +
+                "          default:\n" +
+                "            System.out.println(\"Even\");\n" +
+                "            break;\n" +
+                "        }\n" +
+                "      }\n" +
+                "    }\n" +
+                "  }";
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTTypeCompare astsc = new ASTTypeCompare();
+        System.out.println(((ASTStructureVisitor) visitor1).getList().size());
+        System.out.println(((ASTStructureVisitor) visitor2).getList().size());
+        assertEquals(0.86, astsc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
+    }
 }

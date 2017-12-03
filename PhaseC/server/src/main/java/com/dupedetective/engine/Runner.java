@@ -19,7 +19,6 @@ public class Runner {
      * Read the weights from file into a hashmap
      */
     private static void readWeights() {
-        //TODO: Read weights from file
         weights = new HashMap<>();
         weights.put(Model.ASTLoop.getValue(), 0.25f);
         weights.put(Model.ASTMethod.getValue(), 0.25f);

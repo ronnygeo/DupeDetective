@@ -19,7 +19,7 @@ public class ASTTypeCompare implements CustomComparator<List<ASTHashObject>> {
      *
      * @param l1 : the first list to compare
      * @param l2 : the second list to compare
-     * @return a value that represents how similar the two documents are
+     * @return list of report line objects
      */
     @Override
     public List<ReportLine> compare(List<ASTHashObject> l1, List<ASTHashObject> l2) {
