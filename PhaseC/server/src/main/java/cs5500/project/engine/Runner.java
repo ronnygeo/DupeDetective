@@ -1,6 +1,7 @@
 package cs5500.project.engine;
 
 import cs5500.project.data.*;
+import org.apache.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +11,10 @@ import java.util.Map;
  * Main driver for the PDetection
  */
 public class Runner {
+    /*
+    Logger for error or info messages
+     */
+    final static Logger logger = Logger.getLogger(Runner.class);
     private static Map<Integer, Float> weights;
 
     /**
@@ -26,6 +31,7 @@ public class Runner {
 
     /**
      * Start analysis of documents
+     *
      * @param assignmentId assignment id to analyze
      */
     public static void analyze(String assignmentId) {
@@ -36,7 +42,7 @@ public class Runner {
         // Iterate through all the files and compare each one side by side for the given assignment
         for (int i = 0; i < submissions.size(); i++) {
             for (int j = i + 1; j < submissions.size(); j++) {
-                System.out.println("Comparing submission " + i + " with " + j);
+                logger.info("Comparing submission " + i + " with " + j);
                 String code1 = submissions.get(i).getFilecontent();
                 String code2 = submissions.get(j).getFilecontent();
 
@@ -51,16 +57,17 @@ public class Runner {
                 updateReport(report1, md5Result, code1, code2);
                 updateReport(report2, md5Result, code1, code2);
 
-                System.out.println("Saving to mongo.");
+                logger.info("Saving to mongo.");
                 mongo.saveReport(report1);
                 mongo.saveReport(report2);
-             }
+            }
         }
         mongo.updateAnalyzedAssignment(assignmentId);
     }
 
     /**
      * Get the Report for the Structure
+     *
      * @param code1 first code to compare
      * @param code2 second code to compare
      * @param model model Id
@@ -70,16 +77,17 @@ public class Runner {
         PDContext context = getContext(model);
         mr.setLines(context.executeStrategy(code1, code2));
         mr.computeScore();
-        System.out.println(model + " score: " + mr.getScore());
+        logger.info(model + " score: " + mr.getScore());
         return mr;
     }
 
     /**
      * Update the report object with results for various models
-     * @param report the report object
+     *
+     * @param report    the report object
      * @param md5Result result of md5 comparison
-     * @param code1 first code to compare
-     * @param code2 second code to compare
+     * @param code1     first code to compare
+     * @param code2     second code to compare
      */
     private static void updateReport(Report report, boolean md5Result, String code1, String code2) {
         report.setMd5Result(md5Result);
@@ -108,6 +116,7 @@ public class Runner {
 
     /**
      * Main method to test run
+     *
      * @param args args for main
      */
     public static void main(String[] args) {

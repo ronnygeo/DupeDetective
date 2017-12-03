@@ -2,6 +2,7 @@ package cs5500.project.engine.ast;
 
 import cs5500.project.engine.CustomComparator;
 import cs5500.project.data.ReportLine;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,6 +14,11 @@ import static cs5500.project.engine.ast.ASTUtilities.createReportItems;
  * AST comparator that compares the structure of the code
  */
 public class ASTTypeCompare implements CustomComparator<List<ASTHashObject>> {
+    /*
+    Logger for error or info messages
+     */
+    final static Logger logger = Logger.getLogger(ASTTypeCompare.class);
+
     /**
      * Compare the first object with the other
      *
@@ -23,7 +29,7 @@ public class ASTTypeCompare implements CustomComparator<List<ASTHashObject>> {
     @Override
     public List<ReportLine> compare(List<ASTHashObject> l1, List<ASTHashObject> l2) {
         LCSCompare lcsc = new LCSCompare();
-        List<ASTHashObject>lcsList = lcsc.compare(l1, l2);
+        List<ASTHashObject> lcsList = lcsc.compare(l1, l2);
         float score = getScore(l1, l2);
 
         cleanLists(l1, lcsList);
@@ -41,15 +47,15 @@ public class ASTTypeCompare implements CustomComparator<List<ASTHashObject>> {
      */
     public float getScore(List<ASTHashObject> l1, List<ASTHashObject> l2) {
         LCSCompare lcsc = new LCSCompare();
-        List<ASTHashObject>lcsList = lcsc.compare(l1, l2);
+        List<ASTHashObject> lcsList = lcsc.compare(l1, l2);
 
         float score = lcsList.size() / (float) Math.max(l1.size(), l2.size());
         if (Float.isNaN(score)) score = 0;
         cleanLists(l1, lcsList);
         cleanLists(l2, lcsList);
-        System.out.println("Structure comparison");
-        System.out.println("After: " + l1.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
-        System.out.println("After: " + l2.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
+        logger.info("Structure comparison");
+        logger.info("After: " + l1.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
+        logger.info("After: " + l2.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
 
         return score;
     }

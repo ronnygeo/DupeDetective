@@ -5,6 +5,7 @@ import com.mongodb.*;
 import com.mongodb.util.JSON;
 import cs5500.project.engine.ReadProperties;
 import cs5500.project.engine.Model;
+import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 
 import java.time.LocalDateTime;
@@ -18,6 +19,10 @@ import java.util.Map;
  */
 public class MongoOperation {
 
+    /*
+    Logger for error or info messages
+     */
+    final static Logger logger = Logger.getLogger(MongoOperation.class);
     private String database;
     private String host;
     private Integer port;
@@ -55,10 +60,10 @@ public class MongoOperation {
         try (MongoClient mongoClient = new MongoClient(host, port)) {
             db = mongoClient.getDB(database);
             collection = db.getCollection(colReport);
-            System.out.println(report);
+            logger.info(report);
             BasicDBObject obj = (BasicDBObject) JSON.parse(gson.toJson(report));
             collection.insert(obj);
-            System.out.println("report saved to mongo.");
+            logger.info("report saved to mongo.");
         }
      }
 
