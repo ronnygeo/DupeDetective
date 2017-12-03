@@ -8,6 +8,7 @@ public class Main {
             int i[] = {0, 1, 1};
             System.out.println(i[2] + " some numbr!");
             t++;
+            break;
         } while(t < 10);
     }
 

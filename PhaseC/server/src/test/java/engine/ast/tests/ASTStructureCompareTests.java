@@ -152,7 +152,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTTypeCompare astc = new ASTTypeCompare();
-        assertEquals(0.5, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+        assertEquals(0.58, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -167,7 +167,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTTypeCompare astsc = new ASTTypeCompare();
-        assertEquals(52, astsc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()).size(), 0.01);
+        assertEquals(53, astsc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()).size(), 0.01);
     }
 
     @Test
@@ -196,7 +196,23 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTTypeCompare astsc = new ASTTypeCompare();
-        assertEquals(0.63, astsc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);    }
+        assertEquals(0.77, astsc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
+    }
+
+    @Test
+    public void testFilesWithTry() {
+        String testCode1 = utils.readFile("Clone6.java");
+        String testCode2 = utils.readFile("Clone5.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTTypeCompare astsc = new ASTTypeCompare();
+        assertEquals(0.83, astsc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
+    }
 
     @Test
     public void testAditya(){
@@ -240,6 +256,42 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTTypeCompare astlc = new ASTTypeCompare();
-        assertEquals(64, astlc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()).size(), 0.01);
+        assertEquals(73, astlc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()).size(), 0.01);
+    }
+
+    @Test
+    public void testSameForWhile() {
+        String testCode1 = "\n public class A {" +
+                "\npublic String parse(String txt) { \n " +
+                "for(int i=0; i<7;i++) {i = j; new System(); }} \n} ";
+        String testCode2 = "\n public class A {" +
+                "\npublic String parse(String txt) { \n " +
+                "int i=0; while(i<7) {i = j; new System(); i++;}} \n} ";
+
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTTypeCompare astc = new ASTTypeCompare();
+        assertEquals(0.81, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+    }
+
+    @Test
+    public void testNewLoop(){
+        String testCode1 = utils.readFile("Clone1.java");
+        String testCode2 = utils.readFile("Clone7.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+        ASTTypeCompare astmc = new ASTTypeCompare();
+        assertEquals(0.81, astmc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
     }
 }

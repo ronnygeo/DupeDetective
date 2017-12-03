@@ -48,19 +48,8 @@ public class ASTMethodVisitor extends ASTVisitorAC {
      */
     @Override
     public boolean visit(ClassInstanceCreation node) {
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
-     * @param node A Variable Declaration
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(VariableDeclaration node) {
-       addNodeToNodes(new ASTHashObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
+        addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
+        return true;
     }
 
     /**
@@ -101,39 +90,6 @@ public class ASTMethodVisitor extends ASTVisitorAC {
     /**
      * Visit the given component using this visitor
      *
-     * @param node A Comment
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(Comment node) {
-       return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
-     * @param node A Body Declaration
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(BodyDeclaration node) {
-        return true;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
-     * @param node An Anonymous Class Declaration
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(AnonymousClassDeclaration node) {
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
      * @param node A Method Declaration
      * @return a boolean whether to traverse subtrees or not
      */
@@ -152,7 +108,6 @@ public class ASTMethodVisitor extends ASTVisitorAC {
     public void endVisit(MethodDeclaration node) {
         addCurrentNodeToNodes();
     }
-
 
     /**
      * Visit the given component using this visitor
@@ -194,9 +149,7 @@ public class ASTMethodVisitor extends ASTVisitorAC {
      * @param node A For loop Statement
      */
     @Override
-    public void endVisit(ForStatement node) {
-
-    }
+    public void endVisit(ForStatement node) { }
 
     /**
      * Visit the given component using this visitor
@@ -269,7 +222,7 @@ public class ASTMethodVisitor extends ASTVisitorAC {
      */
     @Override
     public boolean visit(BreakStatement node) {
-       addNodeToNodes(new ASTHashObject(node.toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
+       addNodeToNodes(new ASTHashObject("break", node.getStartPosition(), node.getLength(), node.hashCode()));
         return false;
     }
 
@@ -333,18 +286,6 @@ public class ASTMethodVisitor extends ASTVisitorAC {
     /**
      * Visit the given component using this visitor
      *
-     * @param node An Assert Statement
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(AssertStatement node) {
-       addNodeToNodes(new ASTHashObject(node.getMessage().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
      * @param node A Super Constructor Invocation
      * @return a boolean whether to traverse subtrees or not
      */
@@ -396,18 +337,6 @@ public class ASTMethodVisitor extends ASTVisitorAC {
      */
     @Override
     public boolean visit(SwitchCase node) {
-        return true;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
-     * @param node A Type Declaration Statement
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(TypeDeclarationStatement node) {
-       addNodeToNodes(new ASTHashObject(node.getDeclaration().getName().getIdentifier(), node.getDeclaration().getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return true;
     }
 
@@ -714,7 +643,7 @@ public class ASTMethodVisitor extends ASTVisitorAC {
      */
     @Override
     public boolean visit(ThisExpression node) {
-//       addNodeToNodes(new ASTHashObject(node.getQualifier().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
+       addNodeToNodes(new ASTHashObject("this", node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
@@ -726,6 +655,7 @@ public class ASTMethodVisitor extends ASTVisitorAC {
      */
     @Override
     public boolean visit(VariableDeclarationExpression node) {
+        System.out.println(node.toString());
         return true;
     }
 

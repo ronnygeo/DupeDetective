@@ -31,13 +31,6 @@ public abstract class ASTVisitorAC extends ASTVisitor implements MyVisitor {
 
     /**
      * Visit the given component using this visitor
-     * @param node A Variable Declaration
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public abstract boolean visit(VariableDeclaration node);
-
-    /**
-     * Visit the given component using this visitor
      * @param node A Modifier
      * @return a boolean whether to traverse subtrees or not
      */
@@ -56,27 +49,6 @@ public abstract class ASTVisitorAC extends ASTVisitor implements MyVisitor {
      * @return a boolean whether to traverse subtrees or not
      */
     public abstract boolean visit(CompilationUnit node);
-
-    /**
-     * Visit the given component using this visitor
-     * @param node A Comment
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public abstract boolean visit(Comment node);
-
-    /**
-     * Visit the given component using this visitor
-     * @param node A Body Declaration
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public abstract boolean visit(BodyDeclaration node);
-
-    /**
-     * Visit the given component using this visitor
-     * @param node An Anonymous Class Declaration
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public abstract boolean visit(AnonymousClassDeclaration node);
 
     /**
      * Visit the given component using this visitor
@@ -116,16 +88,12 @@ public abstract class ASTVisitorAC extends ASTVisitor implements MyVisitor {
 
     /**
      * Visit the given component using this visitor
+     *
      * @param node A Enhanced For loop Statement
      * @return a boolean whether to traverse subtrees or not
      */
+    @Override
     public abstract boolean visit(EnhancedForStatement node);
-
-    /**
-     * Method called once the visit is complete on the given component
-     * @param node A Enhanced For loop Statement
-     */
-    public abstract void endVisit(EnhancedForStatement node);
 
     /**
      * Visit the given component using this visitor
@@ -219,13 +187,6 @@ public abstract class ASTVisitorAC extends ASTVisitor implements MyVisitor {
 
     /**
      * Visit the given component using this visitor
-     * @param node An Assert Statement
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public abstract boolean visit(AssertStatement node);
-
-    /**
-     * Visit the given component using this visitor
      * @param node A Super Constructor Invocation
      * @return a boolean whether to traverse subtrees or not
      */
@@ -237,13 +198,6 @@ public abstract class ASTVisitorAC extends ASTVisitor implements MyVisitor {
      * @return a boolean whether to traverse subtrees or not
      */
     public abstract boolean visit(ConstructorInvocation node);
-
-    /**
-     * Visit the given component using this visitor
-     * @param node A Type Declaration Statement
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public abstract boolean visit(TypeDeclarationStatement node);
 
     /**
      * Visit the given component using this visitor

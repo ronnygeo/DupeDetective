@@ -2,6 +2,8 @@ package com.example;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTParser;
@@ -15,12 +17,13 @@ public class Main {
     public static void main(String[] args) {
         int i;
         i = 0;
-        int k;
-        k = 10;
+        Boolean status = false;
+        ++i;
+        int k = 10;
+        k += 10;
         int p = i + k;
         System.out.println("Hellooo World!");
-        
-        t = 0;
+        int t = 0;
         while(t < 10) {
             System.out.println(t);
             t++;

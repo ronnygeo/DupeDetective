@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class ASTMethodCompareTests {
 
@@ -104,7 +105,7 @@ public class ASTMethodCompareTests {
         cu2.accept(visitor2);
 
         ASTParentCompare astmc = new ASTParentCompare();
-        assertEquals(0.73, astmc.getScoreParent(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.05);
+        assertEquals(1, astmc.getScoreParent(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.05);
     }
 
     @Test
@@ -134,7 +135,7 @@ public class ASTMethodCompareTests {
         cu2.accept(visitor2);
 
         ASTParentCompare astlc = new ASTParentCompare();
-        assertEquals(25, astlc.compare(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()).size(), 0.01);
+        assertEquals(30, astlc.compare(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()).size(), 0.01);
     }
 
     @Test
@@ -150,5 +151,56 @@ public class ASTMethodCompareTests {
         cu2.accept(visitor2);
         ASTParentCompare astmc = new ASTParentCompare();
         assertEquals(0.51, astmc.getScoreParent(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.05);
+    }
+
+    @Test
+    public void testSameForWhile() {
+        String testCode1 = "\n public class A {" +
+                "\npublic String parse(String txt) { \n " +
+                "for(int i=0; i<7;i++) {i = j; new System(); }} \n} ";
+        String testCode2 = "\n public class A {" +
+                "\npublic String parse(String txt) { \n " +
+                "int i=0; while(i<7) {i = j; new System(); i++;}} \n} ";
+
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTMethodVisitor();
+        ASTVisitor visitor2 = new ASTMethodVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTParentCompare astc = new ASTParentCompare();
+        assertEquals(0.78, astc.getScoreParent(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.01);
+    }
+
+    @Test
+    public void testFilesWithTry() {
+        String testCode1 = utils.readFile("Clone6.java");
+        String testCode2 = utils.readFile("Clone5.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+        ASTVisitor visitor1 = new ASTMethodVisitor();
+        ASTVisitor visitor2 = new ASTMethodVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTParentCompare astsc = new ASTParentCompare();
+        assertEquals(0.75, astsc.getScoreParent(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.05);
+    }
+
+    @Test
+    public void testNewForLoop() {
+        String testCode1 = utils.readFile("Clone1.java");
+        String testCode2 = utils.readFile("Clone7.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+        ASTVisitor visitor1 = new ASTMethodVisitor();
+        ASTVisitor visitor2 = new ASTMethodVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTParentCompare astsc = new ASTParentCompare();
+        assertEquals(0.81, astsc.getScoreParent(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.05);
     }
 }

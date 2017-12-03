@@ -29,8 +29,8 @@ public class Clone4 extends Clone1{
     public static void main(String[] args) {
         StringBuilder str = new StringBuilder();
         str.append("Ronny");
-        assert str.toString().equals("Ronny");
-        String newStr = UpdateHash.update(str.toString());
+//        assert str.toString().equals("Ronny");
+        String newStr = this.UpdateHash.update(str.toString());
         System.out.println("Updated string: " + newStr);
     }
 }

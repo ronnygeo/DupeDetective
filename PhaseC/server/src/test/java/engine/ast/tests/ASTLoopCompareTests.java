@@ -50,7 +50,7 @@ public class ASTLoopCompareTests {
         cu2.accept(visitor2);
 
         ASTParentCompare astc = new ASTParentCompare();
-        assertEquals(0.71, astc.getScoreParent(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.01);
+        assertEquals(0.75, astc.getScoreParent(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.01);
 
     }
 
@@ -86,7 +86,7 @@ public class ASTLoopCompareTests {
         cu2.accept(visitor2);
 
         ASTParentCompare astlc = new ASTParentCompare();
-        assertEquals(0.66, astlc.getScoreParent(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.01);
+        assertEquals(0.57, astlc.getScoreParent(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -161,5 +161,39 @@ public class ASTLoopCompareTests {
         System.out.println(((ASTLoopVisitor) visitor1).getList().get(0).getNodes().stream().map(ASTHashObject::getType).collect(Collectors.toList()));
         System.out.println(((ASTLoopVisitor) visitor2).getList().get(0).getNodes().stream().map(ASTHashObject::getType).collect(Collectors.toList()));
         assertEquals(0.42, astmc.getScoreParent(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.05);
+    }
+
+    @Test
+    public void testFilesWithTry() {
+        String testCode1 = utils.readFile("Clone6.java");
+        String testCode2 = utils.readFile("Clone5.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+        ASTVisitor visitor1 = new ASTLoopVisitor();
+        ASTVisitor visitor2 = new ASTLoopVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTParentCompare astsc = new ASTParentCompare();
+        System.out.println(((ASTLoopVisitor) visitor1).getList().size());
+        System.out.println(((ASTLoopVisitor) visitor2).getList().size());
+        assertEquals(0.74, astsc.getScoreParent(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.05);
+    }
+
+    @Test
+    public void testFilesNewLoop() {
+        String testCode1 = utils.readFile("Clone1.java");
+        String testCode2 = utils.readFile("Clone7.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+        ASTVisitor visitor1 = new ASTLoopVisitor();
+        ASTVisitor visitor2 = new ASTLoopVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTParentCompare astsc = new ASTParentCompare();
+        System.out.println(((ASTLoopVisitor) visitor1).getList().size());
+        System.out.println(((ASTLoopVisitor) visitor2).getList().size());
+        assertEquals(0.33, astsc.getScoreParent(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.05);
     }
 }

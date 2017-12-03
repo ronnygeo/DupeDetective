@@ -11,6 +11,7 @@ public class Main {
             i[2] = i[0] + i[1];
             System.out.println(i[2] + " some numbr!");
             t++;
+            break;
         }
     }
 
