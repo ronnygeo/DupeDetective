@@ -1,21 +1,27 @@
 package cs5500.project.engine.winnow;
 
+import org.apache.log4j.Logger;
+
 import java.io.File;
 
 public class TestWinnow {
-  public static void main(String[] args){
-    File one = new File("/Study/CS5500/Project/team-27/PhaseC/src/main/java/cs5500/project/engine/winnow/input/one.java");
-    File two = new File("/Study/CS5500/Project/team-27/PhaseC/src/main/java/cs5500/project/engine/winnow/input/two.java");
+    /*
+      Logger for error or info messages
+    */
+    final static Logger logger = Logger.getLogger(TestWinnow.class);
 
-    if(one.isFile() && two.isFile()) {
+    public static void main(String[] args) {
+        File one = new File("/Study/CS5500/Project/team-27/PhaseC/src/main/java/cs5500/project/engine/winnow/input/one.java");
+        File two = new File("/Study/CS5500/Project/team-27/PhaseC/src/main/java/cs5500/project/engine/winnow/input/two.java");
 
-      Winnow nGram = new Winnow(one.getAbsolutePath(),two.getAbsolutePath());
+        if (one.isFile() && two.isFile()) {
 
-      float similarity = nGram.getSimilarity();
+            Winnow nGram = new Winnow(one.getAbsolutePath(), two.getAbsolutePath());
+
+            float similarity = nGram.getSimilarity();
+        } else {
+            logger.error("File not found");
+        }
+
     }
-    else {
-      System.out.println("File not found");
-    }
-
-  }
 }

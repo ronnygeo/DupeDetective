@@ -2,6 +2,7 @@ package cs5500.project.engine.ast;
 
 import cs5500.project.data.ReportLine;
 import cs5500.project.engine.CustomComparator;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,6 +14,10 @@ import static cs5500.project.engine.ast.ASTUtilities.createReportItems;
  * Class that compares the hashes inside the AST
  */
 public class ASTHashCompare implements CustomComparator<List<ASTHashObject>> {
+    /*
+    Logger for error or info messages
+     */
+    final static Logger logger = Logger.getLogger(ASTHashCompare.class);
     /**
      * Compare the first object with the other
      *
@@ -49,9 +54,9 @@ public class ASTHashCompare implements CustomComparator<List<ASTHashObject>> {
         cleanLists(l1, lcsList);
         cleanLists(l2, lcsList);
 
-        System.out.println("Method comparison");
-        System.out.println("After: " + l1.stream().map(ASTHashObject::getHash).collect(Collectors.toList()));
-        System.out.println("After: " + l2.stream().map(ASTHashObject::getHash).collect(Collectors.toList()));
+        logger.info("Method comparison");
+        logger.info("After: " + l1.stream().map(ASTHashObject::getHash).collect(Collectors.toList()));
+        logger.info("After: " + l2.stream().map(ASTHashObject::getHash).collect(Collectors.toList()));
 
         return score;
     }
