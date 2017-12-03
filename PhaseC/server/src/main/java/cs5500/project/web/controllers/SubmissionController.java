@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * Start analyze controller
+ * Controller class which handles the get, post, put and delete requests for the Submission object
  */
 @RestController
 @RequestMapping("/api")
