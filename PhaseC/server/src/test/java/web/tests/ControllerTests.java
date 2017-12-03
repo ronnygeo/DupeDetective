@@ -1,4 +1,4 @@
-package engine.controllers.tests;
+package web.tests;
 
 import static org.junit.Assert.*;
 
