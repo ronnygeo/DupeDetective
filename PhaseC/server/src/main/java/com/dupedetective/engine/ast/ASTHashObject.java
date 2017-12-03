@@ -42,7 +42,9 @@ public class ASTHashObject {
     /**
      * Default Constructor
      */
-    public ASTHashObject() {}
+    public ASTHashObject() {
+        this.nodes = new ArrayList<>();
+    }
 
     /**
      * @return the name of the Node
