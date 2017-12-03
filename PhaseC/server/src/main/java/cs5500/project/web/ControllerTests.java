@@ -1,4 +1,4 @@
-package web.tests;
+package cs5500.project.web;
 
 import static org.junit.Assert.*;
 
@@ -49,13 +49,13 @@ public class ControllerTests {
 				assignRepo.findOne(Mockito.anyString())).thenReturn(assign);
 
 		RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
-				"/assignments/1").accept(
+				"/api/assignments/1").accept(
 				MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
 		System.out.println(result.getResponse());
-		String expected = "{id:1,name:ProblemSet1,course:CS5500}";
+		String expected = "{name:ProblemSet1,course:CS5500}";
 
 		JSONAssert.assertEquals(expected, result.getResponse()
 				.getContentAsString(), false);
