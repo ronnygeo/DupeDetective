@@ -38,13 +38,6 @@ public abstract class ASTVisitorAC extends ASTVisitor implements MyVisitor {
 
     /**
      * Visit the given component using this visitor
-     * @param node A Member Reference
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public abstract boolean visit(MemberRef node);
-
-    /**
-     * Visit the given component using this visitor
      * @param node A Compilation Unit
      * @return a boolean whether to traverse subtrees or not
      */
@@ -254,13 +247,6 @@ public abstract class ASTVisitorAC extends ASTVisitor implements MyVisitor {
 
     /**
      * Visit the given component using this visitor
-     * @param node An Annotation
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public abstract boolean visit(Annotation node);
-
-    /**
-     * Visit the given component using this visitor
      * @param node An Assignment
      * @return a boolean whether to traverse subtrees or not
      */
@@ -322,13 +308,6 @@ public abstract class ASTVisitorAC extends ASTVisitor implements MyVisitor {
      */
     @Override
     public abstract boolean visit(InstanceofExpression node);
-
-    /**
-     * Visit the given component using this visitor
-     * @param node A Name
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public abstract boolean visit(Name node);
 
     /**
      * Visit the given component using this visitor

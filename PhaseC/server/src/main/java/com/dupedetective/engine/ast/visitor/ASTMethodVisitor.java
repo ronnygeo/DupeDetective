@@ -67,18 +67,6 @@ public class ASTMethodVisitor extends ASTVisitorAC {
     /**
      * Visit the given component using this visitor
      *
-     * @param node A Member Reference
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(MemberRef node) {
-       addNodeToNodes(new ASTHashObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
      * @param node A Compilation Unit
      * @return a boolean whether to traverse subtrees or not
      */
@@ -168,9 +156,7 @@ public class ASTMethodVisitor extends ASTVisitorAC {
      * @param node A Enhanced For loop Statement
      */
     @Override
-    public void endVisit(EnhancedForStatement node) {
-
-    }
+    public void endVisit(EnhancedForStatement node) { }
 
     /**
      * Visit the given component using this visitor
@@ -189,9 +175,7 @@ public class ASTMethodVisitor extends ASTVisitorAC {
      * @param node A While loop Statement
      */
     @Override
-    public void endVisit(WhileStatement node) {
-
-    }
+    public void endVisit(WhileStatement node) { }
 
     /**
      * Visit the given component using this visitor
@@ -210,9 +194,7 @@ public class ASTMethodVisitor extends ASTVisitorAC {
      * @param node A Do while loop Statement
      */
     @Override
-    public void endVisit(DoStatement node) {
-
-    }
+    public void endVisit(DoStatement node) { }
 
     /**
      * Visit the given component using this visitor
@@ -451,18 +433,6 @@ public class ASTMethodVisitor extends ASTVisitorAC {
     /**
      * Visit the given component using this visitor
      *
-     * @param node An Annotation
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(Annotation node) {
-       addNodeToNodes(new ASTHashObject(node.getTypeName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
      * @param node An Assignment
      * @return a boolean whether to traverse subtrees or not
      */
@@ -548,18 +518,6 @@ public class ASTMethodVisitor extends ASTVisitorAC {
     @Override
     public boolean visit(InstanceofExpression node) {
        addNodeToNodes(new ASTHashObject("instanceOf", node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
-     * @param node A Name
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(Name node) {
-       addNodeToNodes(new ASTHashObject(node.getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 

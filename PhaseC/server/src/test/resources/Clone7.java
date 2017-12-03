@@ -19,6 +19,7 @@ public class Main {
         i = 0;
         int[] items = {1,2,3};
         Boolean status = false;
+        System.out.println(status instanceof Boolean);
         ++i;
         int k = 10;
         k += 10;

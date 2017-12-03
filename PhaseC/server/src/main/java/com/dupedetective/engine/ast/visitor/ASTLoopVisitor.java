@@ -65,18 +65,6 @@ public class ASTLoopVisitor extends ASTVisitorAC {
     /**
      * Visit the given component using this visitor
      *
-     * @param node A Member Reference
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(MemberRef node) {
-       addNodeToNodes(new ASTHashObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
      * @param node A Compilation Unit
      * @return a boolean whether to traverse subtrees or not
      */
@@ -417,18 +405,6 @@ public class ASTLoopVisitor extends ASTVisitorAC {
     /**
      * Visit the given component using this visitor
      *
-     * @param node An Annotation
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(Annotation node) {
-       addNodeToNodes(new ASTHashObject(node.getTypeName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
      * @param node An Assignment
      * @return a boolean whether to traverse subtrees or not
      */
@@ -519,17 +495,6 @@ public class ASTLoopVisitor extends ASTVisitorAC {
         return false;
     }
 
-    /**
-     * Visit the given component using this visitor
-     *
-     * @param node A Name
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(Name node) {
-       addNodeToNodes(new ASTHashObject(node.getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
-        return false;
-    }
 
     /**
      * Visit the given component using this visitor

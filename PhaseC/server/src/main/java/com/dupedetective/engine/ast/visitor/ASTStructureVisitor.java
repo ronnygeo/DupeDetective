@@ -70,18 +70,6 @@ public class ASTStructureVisitor extends ASTVisitorAC {
     /**
      * Visit the given component using this visitor
      *
-     * @param node A Member Reference
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(MemberRef node) {
-        nodes.add(new ASTHashObject(node.getName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
      * @param node A Compilation Unit
      * @return a boolean whether to traverse subtrees or not
      */
@@ -426,18 +414,6 @@ public class ASTStructureVisitor extends ASTVisitorAC {
     /**
      * Visit the given component using this visitor
      *
-     * @param node An Annotation
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(Annotation node) {
-        nodes.add(new ASTHashObject(node.getTypeName().getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
      * @param node An Assignment
      * @return a boolean whether to traverse subtrees or not
      */
@@ -507,17 +483,6 @@ public class ASTStructureVisitor extends ASTVisitorAC {
     }
 
     /**
-     * POST Visit the given component using this visitor
-     *
-     * @param node A ConditionExpression
-     * @return a boolean whether to traverse subtrees or not
-     */
-    public boolean postVisit(ConditionalExpression node) {
-        nodes.add(new ASTHashObject("endcond", node.getNodeType(), node.getStartPosition(), node.getLength()));
-        return false;
-    }
-
-    /**
      * Visit the given component using this visitor
      *
      * @param node An Infix Expression
@@ -538,18 +503,6 @@ public class ASTStructureVisitor extends ASTVisitorAC {
     @Override
     public boolean visit(InstanceofExpression node) {
         nodes.add(new ASTHashObject("instanceOf", node.getNodeType(), node.getStartPosition(), node.getLength()));
-        return false;
-    }
-
-    /**
-     * Visit the given component using this visitor
-     *
-     * @param node A Name
-     * @return a boolean whether to traverse subtrees or not
-     */
-    @Override
-    public boolean visit(Name node) {
-        nodes.add(new ASTHashObject(node.getFullyQualifiedName(), node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 

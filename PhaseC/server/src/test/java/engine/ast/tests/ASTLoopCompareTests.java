@@ -196,4 +196,22 @@ public class ASTLoopCompareTests {
         System.out.println(((ASTLoopVisitor) visitor2).getList().size());
         assertEquals(0.33, astsc.getScoreParent(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.05);
     }
+
+
+    @Test
+    public void testClass() {
+        String testCode1 = utils.readFile("TestClass1.java");
+        String testCode2 = utils.readFile("TestClass2.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+        ASTVisitor visitor1 = new ASTLoopVisitor();
+        ASTVisitor visitor2 = new ASTLoopVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTParentCompare astsc = new ASTParentCompare();
+        System.out.println(((ASTLoopVisitor) visitor1).getList().size());
+        System.out.println(((ASTLoopVisitor) visitor2).getList().size());
+        assertEquals(0.33, astsc.getScoreParent(((ASTLoopVisitor) visitor1).getList(), ((ASTLoopVisitor) visitor2).getList()), 0.05);
+    }
 }

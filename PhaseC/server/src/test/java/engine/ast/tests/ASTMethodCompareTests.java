@@ -201,6 +201,21 @@ public class ASTMethodCompareTests {
         cu2.accept(visitor2);
 
         ASTParentCompare astsc = new ASTParentCompare();
-        assertEquals(0.81, astsc.getScoreParent(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.05);
+        assertEquals(0.72, astsc.getScoreParent(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.05);
+    }
+
+    @Test
+    public void testClass() {
+        String testCode1 = utils.readFile("TestClass1.java");
+        String testCode2 = utils.readFile("TestClass2.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+        ASTVisitor visitor1 = new ASTMethodVisitor();
+        ASTVisitor visitor2 = new ASTMethodVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTParentCompare astsc = new ASTParentCompare();
+        assertEquals(1, astsc.getScoreParent(((ASTMethodVisitor) visitor1).getList(), ((ASTMethodVisitor) visitor2).getList()), 0.05);
     }
 }

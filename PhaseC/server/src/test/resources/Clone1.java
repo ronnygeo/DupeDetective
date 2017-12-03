@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         int i;
-        i = 0;
+        i = 'a';
         Boolean status = false;
         ++i;
         int k = 10;
