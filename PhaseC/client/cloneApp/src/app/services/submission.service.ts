@@ -48,7 +48,6 @@ export class SubmissionService {
   getSubmission(id: string): Observable<Submission> {
     const url = `${this.submissionUrl}/${id}`;
     return this.http.get<Submission>(url).pipe(
-      tap(console.log),
       catchError(this.handleError<Submission>(`getSubmission id=${id}`))
     );
   }
@@ -61,15 +60,19 @@ export class SubmissionService {
   getSubmissions(id: string): Observable<Submission[]> {
     const url = `${this.submissionUrl}?assignmentId=${id}`;
     return this.http.get<Submission[]>(url).pipe(
-      // tap(console.log),
       catchError(this.handleError<Submission[]>(`getSubmission id=${id}`))
     );
   }
 
+  /**
+   *
+   * @param {string} assignmentId
+   * @param {string} studentId
+   * @returns {Observable<Submission>}
+   */
   getSubmissionByStudentAssignment(assignmentId: string, studentId: string): Observable<Submission> {
     const url = `${this.submissionUrl}/student?assignmentId=${assignmentId}&studentId=${studentId}`;
     return this.http.get<Submission>(url).pipe(
-      // tap(console.log),
       catchError(this.handleError<Submission>(`getSubmission assignmentId=${assignmentId} studentId=${studentId}`))
     );
   }
@@ -97,7 +100,6 @@ export class SubmissionService {
       const url = `${this.submissionUrl}/${submissionId}/reports`;
       return this.http.get<Report[]>(url)
         .pipe(
-        tap(console.log),
         catchError(this.handleError<Report[]>(`getReport submissionId=${submissionId}`))
       );
   }

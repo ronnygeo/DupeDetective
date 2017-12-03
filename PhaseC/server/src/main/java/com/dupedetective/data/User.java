@@ -1,7 +1,7 @@
 package com.dupedetective.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.validator.constraints.NotBlank;
+import org.apache.log4j.Logger;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,6 +12,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "user")
 @JsonIgnoreProperties(value = {"createdAt"}, allowGetters = true)
 public class User {
+    /*
+    Logger for error or info messages
+     */
+    final static Logger logger = Logger.getLogger(User.class);
 
     @Id
     private String id;
@@ -47,7 +51,7 @@ public class User {
      * @param grader is the user a grader
      */
     public User(String name, String email, String username, String password, boolean grader) {
-        System.out.println("User created");
+        logger.info("User created");
         this.name = name;
         this.email = email;
         this.username = username;

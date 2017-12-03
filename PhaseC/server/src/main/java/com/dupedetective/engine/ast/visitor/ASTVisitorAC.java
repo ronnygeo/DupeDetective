@@ -289,7 +289,6 @@ public abstract class ASTVisitorAC extends ASTVisitor implements MyVisitor {
      * POST Visit the given component using this visitor
      *
      * @param node A ConditionExpression
-     * @return a boolean whether to traverse subtrees or not
      */
     public abstract void endVisit(ConditionalExpression node);
 
