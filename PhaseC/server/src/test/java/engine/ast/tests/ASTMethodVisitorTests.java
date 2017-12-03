@@ -1,9 +1,9 @@
 package engine.ast.tests;
 
-import cs5500.project.engine.Parser;
-import cs5500.project.engine.ast.ASTHashObject;
-import cs5500.project.engine.ast.ASTMethodVisitor;
-import cs5500.project.engine.ast.CustomASTParser;
+import com.dupedetective.engine.Parser;
+import com.dupedetective.engine.ast.ASTHashObject;
+import com.dupedetective.engine.ast.visitor.ASTMethodVisitor;
+import com.dupedetective.engine.ast.CustomASTParser;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Before;
@@ -161,6 +161,25 @@ public class ASTMethodVisitorTests {
         cu2.accept(visitor2);
 
         assertEquals(((ASTMethodVisitor) visitor1).getList().get(0).getNodes().size(), ((ASTMethodVisitor) visitor2).getList().get(0).getNodes().size());
+    }
+
+    @Test
+    public void testIfSwitch() {
+        String testCode1 = "\n public class A {" +
+                "@Override\npublic String parse(String txt) {int i = 9;  \n int j; \n " +
+                "if (i == 10) j = 0; else j=1;} \n} ";
+        String testCode2 = "\n public class A {" +
+                "@Override\npublic String parse(String txt) {int i = 9;  \n int j; \n " +
+                "switch(i) {case 10: j = 0; break; default: j=1; break;}} \n} ";
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTMethodVisitor();
+        ASTVisitor visitor2 = new ASTMethodVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        assertNotEquals(((ASTMethodVisitor) visitor1).getList().get(0), ((ASTMethodVisitor) visitor2).getList().get(0));
     }
 
 }

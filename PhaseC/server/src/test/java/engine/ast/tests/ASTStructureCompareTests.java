@@ -1,7 +1,9 @@
 package engine.ast.tests;
 
-import cs5500.project.engine.Parser;
-import cs5500.project.engine.ast.*;
+import com.dupedetective.engine.Parser;
+import com.dupedetective.engine.ast.CustomASTParser;
+import com.dupedetective.engine.ast.compare.ASTTypeCompare;
+import com.dupedetective.engine.ast.visitor.ASTStructureVisitor;
 import engine.TestUtils;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -15,10 +17,13 @@ import static org.junit.Assert.assertEquals;
  */
 public class ASTStructureCompareTests {
     private Parser<CompilationUnit> astParser;
+    private TestUtils utils;
+
 
     @Before
     public void setup() {
         astParser = new CustomASTParser();
+        utils = new TestUtils();
     }
 
     @Test
@@ -34,7 +39,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTTypeCompare astc = new ASTTypeCompare();
-        assertEquals(0.875, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+        assertEquals(0.899, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
     }
 
     @Test
@@ -82,7 +87,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTTypeCompare astc = new ASTTypeCompare();
-        assertEquals(0.76, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+        assertEquals(0.78, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
@@ -131,7 +136,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTTypeCompare astc = new ASTTypeCompare();
-        assertEquals(0.86, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+        assertEquals(0.87, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
     }
 
     @Test
@@ -147,14 +152,13 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTTypeCompare astc = new ASTTypeCompare();
-        assertEquals(0.53, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+        assertEquals(0.58, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
     }
 
     @Test
     public void testTwoFiles() {
-        TestUtils util = new TestUtils();
-        String testCode1 = util.readFile("Clone1.java");
-        String testCode2 = util.readFile("Clone2.java");
+        String testCode1 = utils.readFile("Clone1.java");
+        String testCode2 = utils.readFile("Clone2.java");
         CompilationUnit cu1 = astParser.parse(testCode1);
         CompilationUnit cu2 = astParser.parse(testCode2);
         ASTVisitor visitor1 = new ASTStructureVisitor();
@@ -164,5 +168,215 @@ public class ASTStructureCompareTests {
 
         ASTTypeCompare astsc = new ASTTypeCompare();
         assertEquals(52, astsc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()).size(), 0.01);
+    }
+
+    @Test
+    public void testSameFiles() {
+        String testCode1 = utils.readFile("Clone1.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode1);
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTTypeCompare astsc = new ASTTypeCompare();
+        assertEquals(1, astsc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+    }
+
+    @Test
+    public void testDiffFiles() {
+        String testCode1 = utils.readFile("Clone3.java");
+        String testCode2 = utils.readFile("Clone4.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTTypeCompare astsc = new ASTTypeCompare();
+        assertEquals(0.77, astsc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
+    }
+
+    @Test
+    public void testFilesWithTry() {
+        String testCode1 = utils.readFile("Clone6.java");
+        String testCode2 = utils.readFile("Clone5.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTTypeCompare astsc = new ASTTypeCompare();
+        assertEquals(0.83, astsc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
+    }
+
+    @Test
+    public void testAditya(){
+        String testCode1 = utils.readFile("test11O.java");
+        String testCode2 = utils.readFile("test11S.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+        ASTTypeCompare astmc = new ASTTypeCompare();
+        assertEquals(0.86, astmc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
+    }
+
+    @Test
+    public void testArraysLists(){
+        String testCode1 = utils.readFile("CloneArray1.java");
+        String testCode2 = utils.readFile("CloneArray2.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+        ASTTypeCompare astmc = new ASTTypeCompare();
+        assertEquals(0.59, astmc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
+    }
+
+    @Test
+    public void testSameFilesCompareLCS() {
+        TestUtils util = new TestUtils();
+        String testCode1 = util.readFile("Clone1.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode1);
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTTypeCompare astlc = new ASTTypeCompare();
+        assertEquals(73, astlc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()).size(), 0.01);
+    }
+
+    @Test
+    public void testSameForWhile() {
+        String testCode1 = "\n public class A {" +
+                "\npublic String parse(String txt) { \n " +
+                "for(int i=0; i<7;i++) {i = j; new System(); }} \n} ";
+        String testCode2 = "\n public class A {" +
+                "\npublic String parse(String txt) { \n " +
+                "int i=0; while(i<7) {i = j; new System(); i++;}} \n} ";
+
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTTypeCompare astc = new ASTTypeCompare();
+        assertEquals(0.81, astc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.01);
+    }
+
+    @Test
+    public void testNewLoop(){
+        String testCode1 = utils.readFile("Clone1.java");
+        String testCode2 = utils.readFile("Clone7.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+        ASTTypeCompare astmc = new ASTTypeCompare();
+        assertEquals(0.75, astmc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
+    }
+
+
+    @Test
+    public void testClass(){
+        String testCode1 = utils.readFile("TestClass1.java");
+        String testCode2 = utils.readFile("TestClass2.java");
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+        ASTTypeCompare astmc = new ASTTypeCompare();
+        assertEquals(0.75, astmc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
+    }
+
+    @Test
+    public void testTernary() {
+        String testCode1 = "public class A {\n" +
+                "  public static int findLargerOneWithIf(int a, int b) { \n" +
+                "    if (a > b) {\n" +
+                "      return a;\n" +
+                "    } else {\n" +
+                "      return b;\n" +
+                "    }\n" +
+                "  }\n" +
+                "}";
+        String testCode2 = "public class B {\n" +
+                "   public static int findLargerOneWithoutIf(int a, int b) { \n" +
+                "    return a > b ? a : b;\n" +
+                "  }\n" +
+                "}";
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTTypeCompare astsc = new ASTTypeCompare();
+        System.out.println(((ASTStructureVisitor) visitor1).getList().size());
+        System.out.println(((ASTStructureVisitor) visitor2).getList().size());
+        assertEquals(0.625, astsc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
+    }
+
+    @Test
+    public void testJuukeiTest() {
+        String testCode1 = "  public class A {\n" +
+                "    public static void forLoopWithIf(int[] arr) { \n" +
+                "      for(int i = 0; i < arr.length; i++) {\n" +
+                "        if (arr[i] % 2 != 0) {\n" +
+                "          System.out.println(arr[i]);\n" +
+                "        } else {\n" +
+                "          System.out.println(\"Even\");\n" +
+                "        }\n" +
+                "      }\n" +
+                "    }\n" +
+                "  }";
+        String testCode2 = "  public class B {\n" +
+                "    public static void forLoopWithSwitch(int[] arr) { \n" +
+                "      for(int i = 0; i < arr.length; i++) {\n" +
+                "        switch(arr[i] % 2) {\n" +
+                "          case 1:\n" +
+                "            System.out.println(arr[i]);\n" +
+                "            break;\n" +
+                "          default:\n" +
+                "            System.out.println(\"Even\");\n" +
+                "            break;\n" +
+                "        }\n" +
+                "      }\n" +
+                "    }\n" +
+                "  }";
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        ASTTypeCompare astsc = new ASTTypeCompare();
+        System.out.println(((ASTStructureVisitor) visitor1).getList().size());
+        System.out.println(((ASTStructureVisitor) visitor2).getList().size());
+        assertEquals(0.86, astsc.getScore(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()), 0.05);
     }
 }

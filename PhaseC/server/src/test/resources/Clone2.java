@@ -20,6 +20,7 @@ public class Clone {
         
         for (int ind=0; ind < 10; ind++) {
             System.out.println(ind);
+            continue;
         }
     }
 
