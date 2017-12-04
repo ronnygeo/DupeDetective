@@ -17,14 +17,13 @@ public class WinnowEngine {
 
   public WinnowEngine(String content) {
     this.content = content;
-
     this.fingerPrint = new ArrayList<>();
     this.kGramHash = new ArrayList<>();
     this.lineIndex = new ArrayList<>();
   }
 
   /**
-   * @return Linked map
+   * @return code fingerprint
    */
   public List<LineIndex> getFingerPrint() {
 
@@ -111,6 +110,9 @@ public class WinnowEngine {
 
   }
 
+  /**
+   * Remove new line and dollar character
+   */
   private void filterContent() {
     content = content.replaceAll("\n", "");
     content = content.replace("$", "");
@@ -132,6 +134,9 @@ public class WinnowEngine {
     }
   }
 
+  /**
+   * @return
+   */
   private int getHighOrder() {
     return (int) (Math.pow(GlobalConstants.RADIX, GlobalConstants.N_GRAM - 1)
         % GlobalConstants.PRIME);
