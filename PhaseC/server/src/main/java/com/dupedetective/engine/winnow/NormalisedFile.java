@@ -1,4 +1,4 @@
-package com.dupedetective.engine.winnow.normalise;
+package com.dupedetective.engine.winnow;
 
 import com.dupedetective.engine.GlobalConstants;
 

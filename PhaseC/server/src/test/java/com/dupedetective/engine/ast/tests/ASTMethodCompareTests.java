@@ -59,6 +59,13 @@ public class ASTMethodCompareTests {
 
     @Test
     public void testDiffFiles() {
+        String testCode1 = utils.readFile("Clone1.java");
+        String testCode2 = utils.readFile("Clone2.java");
+        assertEquals(0.53, getScore(testCode1, testCode2), 0.05);
+    }
+
+    @Test
+    public void  testDiffCloneFiles() {
         String testCode1 = utils.readFile("Clone3.java");
         String testCode2 = utils.readFile("Clone4.java");
         assertEquals(1, getScore(testCode1, testCode2), 0.05);

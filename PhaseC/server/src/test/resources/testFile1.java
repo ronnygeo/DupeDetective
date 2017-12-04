@@ -1,3 +1,5 @@
+package com.dupedetective.engine.winnow.tests.testfiles;
+
 /**
  * @author Joyal
  * File comments is a class with comments
