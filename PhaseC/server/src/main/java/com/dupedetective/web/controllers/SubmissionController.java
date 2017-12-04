@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * Submission controller
+ * Controller class which handles the get, post, put and delete requests for the Submission object
  */
 @RestController
 @RequestMapping("/api")
@@ -43,7 +43,7 @@ public class SubmissionController {
     }
 
     /**
-     * Get Submissions by Student Id
+     * Method which returns a list of all the submissions for a particular assignment id and student id
      * @param assignmentId assignment id
      * @param studentId student id
      * @return a Submission Object
@@ -103,7 +103,7 @@ public class SubmissionController {
     }
 
     /**
-     * Delete a submission
+     * Delete submission with given id
      * @param id submission id
      */
     @DeleteMapping(value="/submissions/{id}")

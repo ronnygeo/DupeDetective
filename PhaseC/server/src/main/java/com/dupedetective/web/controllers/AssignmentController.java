@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * Assignment controller
+ * Controller class which handles the get, post, put and delete requests for the Assignment object
  */
 @RestController
 @RequestMapping("/api")
@@ -35,7 +35,7 @@ public class AssignmentController {
     }
 
     /**
-     * Create an assignment
+     * Method which takes as input an assignment object and adds it to the database in the assignment collection
      * @param assignment an Assignment object
      * @return new Assignment object
      */
@@ -47,7 +47,7 @@ public class AssignmentController {
     }
 
     /**
-     * Get an assignment by id
+     * Method which takes as input an assignment id and returns the assignment object with the particular id
      * @param id assignment id
      * @return a Response Entity with Assignment
      */
@@ -62,7 +62,7 @@ public class AssignmentController {
     }
 
     /**
-     * Update an assignment
+     * Method which takes as input an assignment id and returns the assignment object with the particular id
      * @param id assignment id
      * @param assignment Assignment object
      * @return new Assignment object
@@ -84,7 +84,7 @@ public class AssignmentController {
     }
 
     /**
-     * Delete an Assignment
+     * Method which takes as input an assignment id and deletes the particular assignment from the assignment table
      * @param id assignment id
      */
     @DeleteMapping(value="/assignments/{id}")
