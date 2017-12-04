@@ -21,6 +21,7 @@ import {ComparedocumentsComponent} from "./components/comparedocuments/comparedo
 import {AssignmentNewComponent} from "./components/assignmentnew/assignmentnew.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {AuthGuardGrader, AuthGuardStudent} from "./auth.guard";
+import {AnalyticsService} from "./services/analytics.service";
 
 /**
  * Main angular module
@@ -45,7 +46,8 @@ import {AuthGuardGrader, AuthGuardStudent} from "./auth.guard";
     HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [AssignmentService, ReportService, UserService, SubmissionService, AlertService, AuthGuardGrader, AuthGuardStudent],
+  providers: [AssignmentService, ReportService, UserService, SubmissionService, AlertService, AnalyticsService,
+    AuthGuardGrader, AuthGuardStudent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

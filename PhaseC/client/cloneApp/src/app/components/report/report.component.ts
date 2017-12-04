@@ -11,6 +11,7 @@ import {User} from "../../models/user";
 import {SubmissionService} from "../../services/submission.service";
 import {Report} from "../../models/report";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import {AnalyticsService} from "../../services/analytics.service";
 
 /**
  * The Component that creates the ModelReport page
@@ -32,12 +33,14 @@ export class ReportComponent implements OnInit {
   private reports: Report[];
   private plagiarised = false;
   private selectedReport: Report;
-  private winnowingScore: number;
-  private structureScore: number;
-  private loopScore: number;
-  private methodScore: number;
-  private overallScore: number;
+  private winnowingScore: number = 0;
+  private structureScore: number = 0;
+  private loopScore: number = 0;
+  private methodScore: number = 0;
+  private overallScore: number = 0;
   private downloadLink: SafeUrl;
+  private analyzed = false;
+  private smartScore = 0;
 
   constructor(private route: ActivatedRoute,
               private reportService: ReportService,
@@ -46,6 +49,7 @@ export class ReportComponent implements OnInit {
               private assignmentService: AssignmentService,
               private userService: UserService,
               private submissionService: SubmissionService,
+              private analyticsService: AnalyticsService,
               private sanitizer: DomSanitizer) {}
 
   /**
@@ -132,6 +136,9 @@ export class ReportComponent implements OnInit {
       }
     }
     this.getOverallScore();
+    const scores = [this.selectedReport.md5Result? 1:0, this.structureScore, this.loopScore,
+      this.methodScore, this.winnowingScore];
+    this.analyticsService.getPrediction(scores).subscribe(pred => this.smartScore = pred.prediction);
   }
 
   /**
@@ -177,7 +184,10 @@ export class ReportComponent implements OnInit {
    * Update the model when user clicks on an option
    */
   updateModel() {
-
+    console.log("Updating model.");
+    const scores = [this.selectedReport.md5Result? 1:0, this.structureScore, this.loopScore,
+      this.methodScore, this.winnowingScore];
+    this.analyticsService.fitPredict(scores, this.plagiarised? 1: 0).subscribe(pred => this.smartScore = pred.prediction);
   }
 
   /**
