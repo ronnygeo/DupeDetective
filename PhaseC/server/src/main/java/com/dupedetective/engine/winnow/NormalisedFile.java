@@ -59,7 +59,7 @@ public class NormalisedFile {
     // replace new line
     replaceLineBreak();
 
-    return normalisedFileContents.toString();
+    return getNormalisedFileContents().toString();
   }
 
   /**
@@ -299,7 +299,7 @@ public class NormalisedFile {
   public String[] getLineOfContents() {
     String[] output = null;
     if (!StringUtils.isEmpty(fileContents)) {
-      return fileContents.split("\n");
+      output = fileContents.split("\n");
     }
     return output;
   }

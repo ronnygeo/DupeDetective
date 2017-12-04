@@ -167,7 +167,7 @@ public class WinnowEngine {
   private int getLineNumber(int index) {
     int start = 0;
     int end = this.lineIndex.size() - 1;
-
+    int lineNumber = -1;
     // Use Binary search to find line number from lineIndex
     while (start <= end) {
 
@@ -175,16 +175,17 @@ public class WinnowEngine {
 
       LineIndex li = lineIndex.get(mid);
 
-      if (li.range.start <= index && index <= li.range.end) {
-        return li.value;
-      } else if (index < li.range.start) {
+      if (li.getRange().getStart() <= index && index <= li.getRange().getEnd()) {
+        lineNumber = li.value;
+        break;
+      } else if (index < li.getRange().getStart()) {
         end = mid - 1;
       } else {
         start = mid + 1;
       }
     }
 
-    return -1;
+    return lineNumber;
   }
 
   /**

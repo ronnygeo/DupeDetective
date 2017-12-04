@@ -35,6 +35,7 @@ public class TestWinnow {
 
   private float getSimilarity(String data1, String data2) {
     Winnow nGram = new Winnow(data1, data2);
+    nGram.calcSimilarityRate();
     return nGram.getSimilarity();
   }
 }
