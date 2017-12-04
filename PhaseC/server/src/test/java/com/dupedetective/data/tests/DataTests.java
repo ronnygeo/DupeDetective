@@ -3,8 +3,11 @@ package com.dupedetective.data.tests;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.dupedetective.engine.Model;
 import org.junit.Test;
 
 import com.dupedetective.data.Assignment;
@@ -169,7 +172,26 @@ public class DataTests {
 
     @Test
 	public void testComputeScore() {
-
+		ModelReport mr1 = new ModelReport(Model.ASTStructure.getValue());
+		ModelReport mr2 = new ModelReport(Model.ASTLoop.getValue());
+		ModelReport mr3 = new ModelReport(Model.ASTMethod.getValue());
+		ModelReport mr4 = new ModelReport(Model.WINNOWING.getValue());
+		mr1.setScore(0.5f);
+		mr2.setScore(0.5f);
+		mr3.setScore(0.5f);
+		mr4.setScore(0.5f);
+		Report r = new Report();
+		r.addModel(mr1);
+		r.addModel(mr2);
+		r.addModel(mr3);
+		r.addModel(mr4);
+		Map<Integer, Float> weights = new HashMap<>();
+		weights.put(Model.ASTLoop.getValue(), 0.25f);
+		weights.put(Model.ASTMethod.getValue(), 0.25f);
+		weights.put(Model.ASTStructure.getValue(), 0.5f);
+		weights.put(Model.WINNOWING.getValue(), 0.00f);
+		r.computeScore(weights);
+		assertEquals(0.5, r.getOverallScore(), 0.01);
 	}
     
     @Test

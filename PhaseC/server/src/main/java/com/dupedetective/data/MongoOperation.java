@@ -77,8 +77,6 @@ public class MongoOperation {
             BasicDBObject obj = (BasicDBObject) JSON.parse(gson.toJson(report));
             collection.insert(obj);
             logger.info("report saved to mongo.");
-        } catch (MongoSocketException mso) {
-            logger.error(mso.getMessage());
         }
      }
 
@@ -108,8 +106,6 @@ public class MongoOperation {
                      l.add(submission);
                  }
              }
-         } catch (MongoSocketException mso) {
-             logger.error(mso.getMessage());
          }
          return l;
      }
