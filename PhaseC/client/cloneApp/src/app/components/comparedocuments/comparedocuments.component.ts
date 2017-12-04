@@ -5,6 +5,9 @@ import {ReportService} from "../../services/report.service";
 import {UserService} from "../../services/user.service";
 import {ReportLine} from "../../models/reportline";
 
+/**
+ * Compponent that creates the compare documents
+ */
 @Component({
   selector: 'app-comparedocuments',
   templateUrl: './comparedocuments.component.html',

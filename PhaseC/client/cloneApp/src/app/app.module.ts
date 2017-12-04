@@ -20,7 +20,11 @@ import {AlertService} from "./services/alert.service";
 import {ComparedocumentsComponent} from "./components/comparedocuments/comparedocuments.component";
 import {AssignmentNewComponent} from "./components/assignmentnew/assignmentnew.component";
 import {AppRoutingModule} from "./app-routing.module";
+import {AuthGuardGrader, AuthGuardStudent} from "./auth.guard";
 
+/**
+ * Main angular module
+ */
 @NgModule({
   declarations: [
     AppComponent
@@ -41,7 +45,7 @@ import {AppRoutingModule} from "./app-routing.module";
     HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [AssignmentService, ReportService, UserService, SubmissionService, AlertService],
+  providers: [AssignmentService, ReportService, UserService, SubmissionService, AlertService, AuthGuardGrader, AuthGuardStudent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

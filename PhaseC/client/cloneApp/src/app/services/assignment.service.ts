@@ -58,6 +58,11 @@ export class AssignmentService {
     );
   }
 
+  /**
+   * Analyze assignment with given id
+   * @param {string} id
+   * @returns {Observable<String>}
+   */
   analyze(id: string): Observable<String> {
     return this.http.post(`${this.assignmentUrl}/${id}/analyze`, {}, httpOptions).pipe(
       catchError(this.handleError<any>('analyze'))

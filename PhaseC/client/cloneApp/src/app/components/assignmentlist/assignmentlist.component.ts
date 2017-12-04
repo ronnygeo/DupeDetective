@@ -18,10 +18,16 @@ export class AssignmentListComponent implements OnInit {
   constructor(private assignmentService: AssignmentService,
               private location: Location) {}
 
+  /**
+   * On page load
+   */
   ngOnInit() {
     this.getAssignments();
   }
 
+  /**
+   * Get assignments
+   */
   getAssignments(): void {
     this.assignmentService.getAssignments().subscribe(assignments => {
       console.log(assignments);
@@ -29,6 +35,10 @@ export class AssignmentListComponent implements OnInit {
     });
   }
 
+  /**
+   * Analyze assignment with given id
+   * @param {string} id assignment id
+   */
   analyze(id: string): void {
     console.log(id);
     this.assignmentService.analyze(id).subscribe(res => {
