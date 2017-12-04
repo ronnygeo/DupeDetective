@@ -47,6 +47,23 @@ public class MongoOperation {
     }
 
     /**
+     * Default constructor
+     */
+    public MongoOperation(String host, String port, String database, String colReport, String colSubmission, String colAssignment) {
+        this.host = host;
+        this.port = Integer.parseInt(port);
+        this.database = database;
+        this.colReport = colReport;
+        this.colSubmission = colSubmission;
+        this.colAssignment = colAssignment;
+        weights = new HashMap<>();
+        weights.put(Model.ASTLoop.getValue(), 0.25f);
+        weights.put(Model.ASTMethod.getValue(), 0.25f);
+        weights.put(Model.ASTStructure.getValue(), 0.5f);
+        weights.put(Model.WINNOWING.getValue(), 0.00f);
+    }
+
+    /**
      * @param report the ModelReport object to insert
      */
     public void saveReport(Report report) {
