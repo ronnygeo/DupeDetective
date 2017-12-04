@@ -9,6 +9,6 @@
 For more information, click on any link below:
 * [Wiki Home](https://github.ccs.neu.edu/cs5500/team-27/wiki)
 * [Installation Guide](https://github.ccs.neu.edu/cs5500/team-27/wiki/Installation-Guide)
-* Core Modules
+* [Core Modules](https://github.ccs.neu.edu/cs5500/team-27/wiki/Core-Modules)
 * [Running Tests](https://github.ccs.neu.edu/cs5500/team-27/wiki/Running-Tests)
-* UI
+* [UI](https://github.ccs.neu.edu/cs5500/team-27/wiki/UI)
