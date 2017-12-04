@@ -2,7 +2,7 @@ package com.dupedetective.engine.winnow.tests;
 
 import static org.junit.Assert.assertEquals;
 
-import com.dupedetective.engine.winnow.normalise.NormalisedFile;
+import com.dupedetective.engine.winnow.NormalisedFile;
 import java.io.IOException;
 import org.junit.Test;
 

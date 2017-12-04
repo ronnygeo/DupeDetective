@@ -1,9 +1,8 @@
 package com.dupedetective.engine.winnow;
 
-import com.dupedetective.engine.winnow.engine.WinnowEngine.LineIndex;
-import com.dupedetective.engine.winnow.engine.WinnowEngine.Range;
-import com.dupedetective.engine.winnow.engine.WinnowEngine;
-import com.dupedetective.engine.winnow.normalise.NormalisedFile;
+import com.dupedetective.engine.winnow.WinnowEngine.LineIndex;
+import com.dupedetective.engine.winnow.WinnowEngine.Range;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
