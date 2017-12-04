@@ -109,7 +109,7 @@ public class ASTStructureVisitor extends ASTVisitorAC {
      */
     @Override
     public boolean visit(ReturnStatement node) {
-        nodes.add(new ASTHashObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength()));
+        nodes.add(new ASTHashObject("return", node.getNodeType(), node.getStartPosition(), node.getLength()));
         return false;
     }
 

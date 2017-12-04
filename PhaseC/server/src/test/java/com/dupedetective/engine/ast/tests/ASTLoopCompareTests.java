@@ -1,17 +1,16 @@
-package engine.ast.tests;
+package com.dupedetective.engine.ast.tests;
 
 import com.dupedetective.engine.Parser;
 import com.dupedetective.engine.ast.ASTHashObject;
 import com.dupedetective.engine.ast.compare.ASTParentCompare;
 import com.dupedetective.engine.ast.visitor.ASTLoopVisitor;
 import com.dupedetective.engine.ast.CustomASTParser;
-import engine.TestUtils;
+import com.dupedetective.engine.TestUtils;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;

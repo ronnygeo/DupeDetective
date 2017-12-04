@@ -1,4 +1,4 @@
-package engine;
+package com.dupedetective.engine;
 
 import org.apache.commons.io.IOUtils;
 import java.io.IOException;

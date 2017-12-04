@@ -1,4 +1,4 @@
-package engine.winnow.tests.testfiles;
+package com.dupedetective.engine.winnow.tests.testfiles;
 
 /**
  * @author Joyal

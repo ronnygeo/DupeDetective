@@ -21,7 +21,7 @@ const httpOptions = {
 @Injectable()
 export class SubmissionService {
 
-  private submissionUrl = 'http://localhost:8080/api/submissions';  // URL to web api
+  private submissionUrl = 'http://localhost:8080/api/submissions';  // URL to com.dupedetective.web api
 
   /**
    * Default Constructor
