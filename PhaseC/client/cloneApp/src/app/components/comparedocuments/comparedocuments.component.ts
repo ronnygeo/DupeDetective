@@ -4,7 +4,6 @@ import {SubmissionService} from "../../services/submission.service";
 import {ReportService} from "../../services/report.service";
 import {UserService} from "../../services/user.service";
 import {ReportLine} from "../../models/reportline";
-import {fn} from "@angular/compiler/src/output/output_ast";
 
 /**
  * Compponent that creates the compare documents
@@ -93,9 +92,8 @@ export class ComparedocumentsComponent implements OnInit {
   /**
    *  Filter the lines in report, so that they don't overlap
    * @param {ReportLine[]} lines
-   * @param {string} field
-   * @param {(_) => any} fnOffset
-   * @param {(_) => any} fnLength
+   * @param {(_) => any} fnOffset function to access the offset field
+   * @param {(_) => any} fnLength function to access the length field
    */
   filterLines(lines: ReportLine[], fnOffset = _ => _, fnLength = _ => _) {
     let sortLines = lines.sort((a, b) => {
@@ -113,10 +111,10 @@ export class ComparedocumentsComponent implements OnInit {
 
   /**
    * Remove any duplicate offsets
-   * @param {ReportLine[]} arr
-   * @param {(_) => any} fnOffset
-   * @param {(_) => any} fnLength
-   * @returns {ReportLine[] | undefined}
+   * @param {ReportLine[]} arr Report Lines
+   * @param {(_) => any} fnOffset function to access the offset field
+   * @param {(_) => any} fnLength function to access the length field
+   * @returns {ReportLine[] | undefined} Report Lines with duplicates removed
    */
   removeDuplicateLines(arr: ReportLine[] = [], fnOffset = _ => _, fnLength = _ => _) {
     const set = new Set();
@@ -146,11 +144,11 @@ export class ComparedocumentsComponent implements OnInit {
 
   /**
    * Create span element
-   * @param {ReportLine[]} lines
-   * @param {string} doc
-   * @param {(_) => any} fnOffset
-   * @param {(_) => any} fnLength
-   * @returns {string}
+   * @param {ReportLine[]} lines Report Lines
+   * @param {string} doc document
+   * @param {(_) => any} fnOffset function to access the offset field
+   * @param {(_) => any} fnLength function to access the length field
+   * @returns {string} new document
    */
   createSpanElements(lines: ReportLine[], doc: string, fnOffset = _ => _, fnLength = _ => _) {
       let docOffset = 0;

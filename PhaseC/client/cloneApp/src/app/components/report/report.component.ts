@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {Assignment} from "../../models/assignment";
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {ReportService} from "../../services/report.service";
-import {NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ComparedocumentsComponent} from "../comparedocuments/comparedocuments.component";
 import {AssignmentService} from "../../services/assignment.service";
 import {UserService} from "../../services/user.service";

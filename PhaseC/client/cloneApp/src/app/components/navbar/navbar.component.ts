@@ -45,11 +45,7 @@ export class NavbarComponent implements OnInit {
    */
   isGrader(): boolean {
     const tmp = localStorage.getItem("currentUser");
-    if (tmp && !isUndefined(tmp) && JSON.parse(tmp)["grader"] === true) {
-      return true;
-    } else {
-      return false;
-    }
+    return !!(tmp && !isUndefined(tmp) && JSON.parse(tmp)["grader"] === true);
   }
 
   /**

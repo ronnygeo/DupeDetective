@@ -3,9 +3,8 @@ import {Assignment} from "../models/assignment";
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError} from 'rxjs/operators';
 import {Submission} from "../models/submission";
-import {filter} from "rxjs/operator/filter";
 import {Report} from "../models/report";
 
 const httpOptions = {
@@ -43,7 +42,7 @@ export class SubmissionService {
   /**
    * GET submissions for an assignment by id. Will 404 if id not found
    * @param {number} id the id of the assignment to retrieve
-   * @returns {Observable<Assignment>} an Observable for the Assignments
+   * @returns {Observable<Submission[]>} an Observable for the Assignments
    */
   getSubmission(id: string): Observable<Submission> {
     const url = `${this.submissionUrl}/${id}`;
@@ -55,7 +54,7 @@ export class SubmissionService {
   /**
    * GET submissions for an assignment by id. Will 404 if id not found
    * @param {number} id the id of the assignment to retrieve
-   * @returns {Observable<Assignment>} an Observable for the Assignments
+   * @returns {Observable<Submission[]>} an Observable for the Assignments
    */
   getSubmissions(id: string): Observable<Submission[]> {
     const url = `${this.submissionUrl}?assignmentId=${id}`;
@@ -65,10 +64,10 @@ export class SubmissionService {
   }
 
   /**
-   *
+   * Get Submission by student Id and Assignment ID
    * @param {string} assignmentId
    * @param {string} studentId
-   * @returns {Observable<Submission>}
+   * @returns {Observable<Submission>} A Submission
    */
   getSubmissionByStudentAssignment(assignmentId: string, studentId: string): Observable<Submission> {
     const url = `${this.submissionUrl}/student?assignmentId=${assignmentId}&studentId=${studentId}`;

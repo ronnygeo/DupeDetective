@@ -1,11 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
-import {User} from "../models/user";
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Prediction} from "../models/prediction";
 
+// HTTP POST Options
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };

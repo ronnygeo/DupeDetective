@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Assignment} from "../../models/assignment";
 import {AssignmentService} from "../../services/assignment.service";
 import { Location } from '@angular/common';
 
