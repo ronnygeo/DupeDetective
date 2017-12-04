@@ -41,6 +41,7 @@ export class ReportComponent implements OnInit {
   private downloadLink: SafeUrl;
   private analyzed = false;
   private smartScore = 0;
+  private enableAnalytics = false;
 
   constructor(private route: ActivatedRoute,
               private reportService: ReportService,
@@ -138,7 +139,10 @@ export class ReportComponent implements OnInit {
     this.getOverallScore();
     const scores = [this.selectedReport.md5Result? 1:0, this.structureScore, this.loopScore,
       this.methodScore, this.winnowingScore];
-    this.analyticsService.getPrediction(scores).subscribe(pred => this.smartScore = pred.prediction);
+    this.analyticsService.getPrediction(scores).subscribe(pred => {
+      this.smartScore = pred.prediction;
+      this.enableAnalytics = true;
+    });
   }
 
   /**
