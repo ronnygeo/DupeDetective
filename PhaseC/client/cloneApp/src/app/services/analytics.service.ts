@@ -14,8 +14,8 @@ const httpOptions = {
 @Injectable()
 export class AnalyticsService {
 
-  private predictUrl = 'http://localhost:3000/predict';
-  private fitUrl = 'http://localhost:3000/fit';
+  private predictUrl = 'http://localhost:5000/predict';
+  private fitUrl = 'http://localhost:5000/fit';
 
   constructor(private http: HttpClient) { }
 
@@ -33,7 +33,7 @@ export class AnalyticsService {
    * @returns {Observable<Prediction>}
    */
   fitPredict(scores: number[], label: number): Observable<Prediction> {
-    const data = {"train": scores, "label": label};
+    const data = {"train": scores, "label": +label};
     return this.http.post<Prediction>(this.fitUrl, data);
   }
 }

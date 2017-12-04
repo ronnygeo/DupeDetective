@@ -126,8 +126,8 @@
         <h4 class="alert-heading">Help us help you.</h4>
         <p>Is this Plagiarised?</p>
         <select class="form-control" id="plagiarised" name="plagiarised" [(ngModel)]="plagiarised" (change)="updateModel()">
-          <option value=false>No</option>
-          <option value=true>Yes</option>
+          <option value=0.0>No</option>
+          <option value=1.0>Yes</option>
         </select>
         <br>
         <p>SmartScore&trade;: {{smartScore | number : '1.2-2'}} (experimental)<p>

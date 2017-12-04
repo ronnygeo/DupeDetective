@@ -23,6 +23,7 @@ def predict():
     get the score predictions from the neural network
     :return: the score from the network
     """
+    clf = joblib.load(os.path.join(os.getcwd(), MODEL_NAME))
     json_ = request.get_json()
     if json_:
         train = [json_["train"]]
@@ -38,6 +39,7 @@ def fit():
     update the model with the new data
     :return: the new score from the network
     """
+    clf = joblib.load(os.path.join(os.getcwd(), MODEL_NAME))
     json_ = request.get_json()
     if json_:
         train = [json_["train"]]
@@ -50,5 +52,4 @@ def fit():
     return "0"
 
 if __name__ == '__main__':
-    clf = joblib.load(os.path.join(os.getcwd(), MODEL_NAME))
-    app.run(port=3000)
+    app.run(port=5000)

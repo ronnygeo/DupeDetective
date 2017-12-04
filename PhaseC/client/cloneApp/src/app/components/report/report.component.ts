@@ -31,7 +31,7 @@ export class ReportComponent implements OnInit {
   private students1: User[];
   private students2: User[];
   private reports: Report[];
-  private plagiarised = false;
+  private plagiarised: number;
   private selectedReport: Report;
   private winnowingScore: number = 0;
   private structureScore: number = 0;
@@ -128,7 +128,6 @@ export class ReportComponent implements OnInit {
    */
   fetchScores() {
     for (const model of this.selectedReport.models) {
-      // console.log(model.mothis.getStudentsFromSubmission();del)
       switch (model.model) {
         case 1: this.structureScore = model.score; break;
         case 2: this.loopScore = model.score; break;
@@ -166,6 +165,7 @@ export class ReportComponent implements OnInit {
             this.selectedReport = report;
             this.generateDownloadUrl();
             this.fetchScores();
+            this.plagiarised = null;
           });
       }
   }
@@ -191,7 +191,9 @@ export class ReportComponent implements OnInit {
     console.log("Updating model.");
     const scores = [this.selectedReport.md5Result? 1:0, this.structureScore, this.loopScore,
       this.methodScore, this.winnowingScore];
-    this.analyticsService.fitPredict(scores, this.plagiarised? 1: 0).subscribe(pred => this.smartScore = pred.prediction);
+    this.analyticsService.fitPredict(scores, this.plagiarised).subscribe(pred => {
+      this.smartScore = pred.prediction;
+    });
   }
 
   /**
