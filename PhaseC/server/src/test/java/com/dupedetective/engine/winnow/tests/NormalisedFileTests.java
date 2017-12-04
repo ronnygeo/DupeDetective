@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import com.dupedetective.engine.winnow.NormalisedFile;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -11,15 +14,34 @@ import org.junit.Test;
  */
 public class NormalisedFileTests {
 
+  private String file1Path;
+  private String file2Path;
+
+  @Before
+  public void setup() throws URISyntaxException {
+    file1Path = getFilePath("testFile1.java");
+    file2Path = getFilePath("testFile2.java");
+  }
+  private String getFilePath(String fileName) throws URISyntaxException {
+    return Paths.get(getClass().getClassLoader().getResource(fileName).toURI()).toString();
+
+  }
+
   @Test
   public void testLowerCase() {
-    String filePath = getClass().getClassLoader().getResource("testFile2.java").getPath();
+
     try {
-      NormalisedFile nf = new NormalisedFile(filePath);
+      NormalisedFile nf = new NormalisedFile(file2Path);
       nf.changeToLowerCase();
 
-      String expectedOutput = String.format(
-          "package com.dupedetective.engine.winnow.tests.testfiles;\r\npublic class tolowercase {\r\n  public static void main(string[] args){\r\n    system.out.println(\"this text should be converted to lowercase\");\r\n  }\r\n}\n");
+      String expectedOutput = "package com.dupedetective.engine.winnow.tests.testfiles;\r\n"
+          + "public class testfile2 {\r\n"
+          + "    public static void main(string[] args){\r\n"
+          + "        int i;\r\n"
+          + "        string j;\r\n"
+          + "        system.out.println(\"this text should be converted to lowercase\");\r\n"
+          + "    }\r\n"
+          + "}\n";
 
       String actualOutput = nf.getFileContents();
       assertEquals(expectedOutput, actualOutput);
@@ -29,10 +51,10 @@ public class NormalisedFileTests {
   }
 
   @Test
-  public void testFileComments() {
-    String filePath = getClass().getClassLoader().getResource("testFile1.java").getPath();
+  public void testFileComments(){
+
     try {
-      NormalisedFile nf = new NormalisedFile(filePath);
+      NormalisedFile nf = new NormalisedFile(file1Path);
       nf.removeFileComments();
 
       String expectedOutput = "package com.dupedetective.engine.winnow.tests.testfiles;\n"
@@ -57,11 +79,11 @@ public class NormalisedFileTests {
 
   @Test
   public void testTokeniseKeyword() {
-    String filePath = getClass().getClassLoader().getResource("testFile2.java").getPath();
+
     try {
-      NormalisedFile nf = new NormalisedFile(filePath);
+      NormalisedFile nf = new NormalisedFile(file2Path);
       nf.tokenizeKeywords();
-      String expectedOutput = " package com.dupedetective.engine. winnow. tests. testfiles ; \r\n"
+      String expectedOutput = " package com. dupedetective. engine. winnow. tests. testfiles ; \r\n"
           + " public  class testFile2 { \r\n"
           + " public  static  void main(  String  [  ] args )  { \r\n"
           + " int i ; \r\n"
@@ -78,9 +100,9 @@ public class NormalisedFileTests {
 
   @Test
   public void testReplaceIdentifiers() {
-    String filePath = getClass().getClassLoader().getResource("testFile1.java").getPath();
+
     try {
-      NormalisedFile nf = new NormalisedFile(filePath);
+      NormalisedFile nf = new NormalisedFile(file1Path);
       nf.replaceIdentifiers();
 
       String expectedOutput = "package com.dupedetective.engine.winnow.tests.testfiles;\n"
@@ -107,9 +129,9 @@ public class NormalisedFileTests {
 
   @Test
   public void testRemoveKeywords() {
-    String filePath = getClass().getClassLoader().getResource("testFile1.java").getPath();
+
     try {
-      NormalisedFile nf = new NormalisedFile(filePath);
+      NormalisedFile nf = new NormalisedFile(file1Path);
       nf.removeKeywords();
       String expectedOutput = " com.dupedetective.engine.winnow.tests.testfiles;\r\n"
           + "\r\n"
@@ -118,13 +140,13 @@ public class NormalisedFileTests {
           + " * File comments is a  with comments\r\n"
           + " */\r\n"
           + "  testFile1 {\r\n"
-          + "  //Initializing main\r\n"
-          + "     main([] args){\r\n"
-          + "    // variable declaration\r\n"
-          + "     i;\r\n"
-          + "    //Pr Statement\r\n"
-          + "    .out.prln(\"When run  test, the output should not contain any comments\");\r\n"
-          + "  }\r\n"
+          + "    //Initializing main\r\n"
+          + "       main([] args){\r\n"
+          + "        // variable declaration\r\n"
+          + "         i;\r\n"
+          + "        //Pr Statement\r\n"
+          + "        .out.prln(\"When run  test, the output should not contain any comments\");\r\n"
+          + "    }\r\n"
           + "}\r\n";
       String actualOutput = nf.getFileContents();
       assertEquals(expectedOutput, actualOutput);
@@ -135,24 +157,24 @@ public class NormalisedFileTests {
 
   @Test
   public void testRemovePunctuations() {
-    String filePath = getClass().getClassLoader().getResource("testFile1.java").getPath();
+
     try {
-      NormalisedFile nf = new NormalisedFile(filePath);
+      NormalisedFile nf = new NormalisedFile(file1Path);
       nf.removePunctuations();
-      String expectedOutput = "package enginewinnowteststestfiles\r\n"
+      String expectedOutput = "package comdupedetectiveenginewinnowteststestfiles\r\n"
           + "\r\n"
           + "/**\r\n"
           + " * @author Joyal\r\n"
           + " * File comments is a class with comments\r\n"
           + " */\r\n"
           + "public class testFile1 \r\n"
-          + "  //Initializing main\r\n"
-          + "  public static void mainString args\r\n"
-          + "    // variable declaration\r\n"
-          + "    int i\r\n"
-          + "    //Print Statement\r\n"
-          + "    SystemoutprintlnWhen run for test the output should not contain any comments\r\n"
-          + "  \r\n"
+          + "    //Initializing main\r\n"
+          + "    public static void mainString args\r\n"
+          + "        // variable declaration\r\n"
+          + "        int i\r\n"
+          + "        //Print Statement\r\n"
+          + "        SystemoutprintlnWhen run for test the output should not contain any comments\r\n"
+          + "    \r\n"
           + "\r\n";
       String actualOutput = nf.getFileContents();
       assertEquals(expectedOutput, actualOutput);
@@ -162,12 +184,12 @@ public class NormalisedFileTests {
   }
 
   @Test
-  public void testGetNormalisedFile(){
-    String filePath = getClass().getClassLoader().getResource("testFile2.java").getPath();
-    try {
-      NormalisedFile nf = new NormalisedFile(filePath);
+  public void testGetNormalisedFile() {
 
-      String expectedOutput = "enginewinnowteststestfiles\n"
+    try {
+      NormalisedFile nf = new NormalisedFile(file2Path);
+
+      String expectedOutput = "comdupedetectiveenginewinnowteststestfiles\n"
           + "v\n"
           + "mainvv\n"
           + "v\n"

@@ -16,7 +16,7 @@ public class TestWinnow {
 
     @Test
     public void testWinnow() {
-        assertEquals(0.25, getSimilarity("one.java", "two.java"), 0.01);
+        assertEquals(0.18, getSimilarity("one.java", "two.java"), 0.01);
     }
 
     @Test
