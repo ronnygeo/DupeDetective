@@ -1,15 +1,9 @@
 package com.dupedetective.engine.winnow;
 
-<<<<<<< HEAD:PhaseC/src/main/java/cs5500/project/engine/winnow/Winnow.java
-import cs5500.project.engine.winnow.engine.WinnowEngine;
-import cs5500.project.engine.winnow.engine.WinnowEngine.LineIndex;
-import cs5500.project.engine.winnow.engine.WinnowEngine.Range;
-import cs5500.project.engine.winnow.normalise.NormalisedFile;
-=======
+import com.dupedetective.engine.winnow.engine.WinnowEngine.LineIndex;
+import com.dupedetective.engine.winnow.engine.WinnowEngine.Range;
 import com.dupedetective.engine.winnow.engine.WinnowEngine;
 import com.dupedetective.engine.winnow.normalise.NormalisedFile;
-import java.io.FileNotFoundException;
->>>>>>> 29d6ab18561b310a62fa78f02f905761b763db43:PhaseC/server/src/main/java/com/dupedetective/engine/winnow/Winnow.java
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;

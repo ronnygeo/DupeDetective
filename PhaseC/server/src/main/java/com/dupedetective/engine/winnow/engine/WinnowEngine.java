@@ -1,5 +1,7 @@
 package com.dupedetective.engine.winnow.engine;
 
+import com.dupedetective.engine.GlobalConstants;
+
 import java.util.ArrayList;
 import java.util.List;
 

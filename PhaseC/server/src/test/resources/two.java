@@ -1,4 +1,4 @@
-package com.dupedetective.engine.winnow.input;
+package com.dupedetective.engine.winnow.tests;
 
 
 import org.apache.log4j.Logger;
