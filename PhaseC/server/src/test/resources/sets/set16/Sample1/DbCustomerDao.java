@@ -1,5 +1,8 @@
 package File1;
 
+import org.apache.log4j.Logger;
+
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,10 +13,6 @@ import java.util.Spliterators;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-
-import javax.sql.DataSource;
-
-import org.apache.log4j.Logger;
 
 /**
  * An implementation of {@link CustomerDao} that persists customers in RDBMS.

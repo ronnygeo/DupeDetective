@@ -1,12 +1,10 @@
 package com.dupedetective.engine.md5.tests;
 
-import com.dupedetective.engine.md5.MD5Generator;
 import com.dupedetective.engine.TestUtils;
+import com.dupedetective.engine.md5.MD5Generator;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Tests for the MD5 checksum class

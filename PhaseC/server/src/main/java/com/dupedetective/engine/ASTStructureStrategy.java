@@ -1,10 +1,10 @@
 package com.dupedetective.engine;
 
-import com.dupedetective.engine.ast.visitor.ASTStructureVisitor;
-import com.dupedetective.engine.ast.ASTHashObject;
-import com.dupedetective.engine.ast.compare.ASTTypeCompare;
-import com.dupedetective.engine.ast.CustomASTParser;
 import com.dupedetective.data.ReportLine;
+import com.dupedetective.engine.ast.ASTHashObject;
+import com.dupedetective.engine.ast.CustomASTParser;
+import com.dupedetective.engine.ast.compare.ASTTypeCompare;
+import com.dupedetective.engine.ast.visitor.ASTStructureVisitor;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 

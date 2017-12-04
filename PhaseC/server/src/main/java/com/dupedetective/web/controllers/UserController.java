@@ -1,7 +1,7 @@
 package com.dupedetective.web.controllers;
 
-import com.dupedetective.web.repository.UserRepository;
 import com.dupedetective.data.User;
+import com.dupedetective.web.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;

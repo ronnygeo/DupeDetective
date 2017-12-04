@@ -2,8 +2,8 @@ package com.dupedetective.engine.ast.tests;
 
 import com.dupedetective.engine.Parser;
 import com.dupedetective.engine.ast.ASTHashObject;
-import com.dupedetective.engine.ast.visitor.ASTMethodVisitor;
 import com.dupedetective.engine.ast.CustomASTParser;
+import com.dupedetective.engine.ast.visitor.ASTMethodVisitor;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Before;
@@ -11,9 +11,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * AST method visitor tests

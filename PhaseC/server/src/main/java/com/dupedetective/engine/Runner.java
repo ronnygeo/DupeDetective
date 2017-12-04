@@ -4,10 +4,11 @@ import com.dupedetective.data.ModelReport;
 import com.dupedetective.data.MongoOperation;
 import com.dupedetective.data.Report;
 import com.dupedetective.data.Submission;
+import org.apache.log4j.Logger;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.log4j.Logger;
 
 /**
  * Main driver for the PDetection
@@ -129,7 +130,7 @@ public class Runner {
    * @param args args for main
    */
   public static void main(String[] args) {
-    analyze("5a1e2218c6bb7010612fbd07");
+    analyze("5a24f2b6c6bb70590f6cb3ac");
   }
 
 }

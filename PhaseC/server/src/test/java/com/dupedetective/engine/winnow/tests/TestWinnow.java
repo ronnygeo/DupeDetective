@@ -1,14 +1,14 @@
 package com.dupedetective.engine.winnow.tests;
 
-import static org.junit.Assert.assertEquals;
-
 import com.dupedetective.engine.TestUtils;
 import com.dupedetective.engine.winnow.Winnow;
-import java.io.File;
-import java.net.URISyntaxException;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.net.URISyntaxException;
+
+import static org.junit.Assert.assertEquals;
 
 public class TestWinnow {
 
