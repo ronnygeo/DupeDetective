@@ -18,10 +18,6 @@ import java.util.Map;
  * Class that performs operations on mongo for the backend
  */
 public class MongoOperation {
-
-    /*
-    Logger for error or info messages
-     */
     final static Logger logger = Logger.getLogger(MongoOperation.class);
     private String database;
     private String host;
@@ -97,6 +93,10 @@ public class MongoOperation {
          return l;
      }
 
+    /**
+     * Update the Analyzed flag of Analyzed Assignments
+     * @param assignmentId assignment Id
+     */
      public void updateAnalyzedAssignment(String assignmentId) {
          try (MongoClient mongoClient = new MongoClient(host, port)) {
              DB db = mongoClient.getDB(database);

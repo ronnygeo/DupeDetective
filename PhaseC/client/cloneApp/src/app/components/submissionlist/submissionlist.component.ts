@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import {Submission} from "../../models/submission";
 import {SubmissionService} from "../../services/submission.service";
 import {AssignmentService} from "../../services/assignment.service";
+import {UserService} from "../../services/user.service";
 
 /**
  * List all Submissions
@@ -16,11 +16,14 @@ import {AssignmentService} from "../../services/assignment.service";
 export class SubmissionListComponent implements OnInit {
 
   private submissions: Submission[];
+  private users = {};
+  private assignments = {};
 
   constructor(private route: ActivatedRoute,
               private submissionService: SubmissionService,
               private assignmentService: AssignmentService,
-              private location: Location) {}
+              private userService: UserService) {
+  }
 
   /**
    * On page load
@@ -37,10 +40,40 @@ export class SubmissionListComponent implements OnInit {
       const id: string = this.route.snapshot.paramMap.get('assignmentId');
       console.log(id);
       this.assignmentService.getSubmissionsByAssignmentId(id)
-        .subscribe(submissions => this.submissions = submissions);
-      } else {
+        .subscribe(submissions => {
+          this.submissions = submissions;
+          this.getUsers();
+          this.getAssignments();
+        });
+    } else {
       this.submissionService.getAllSubmissions()
-      .subscribe(submissions => this.submissions = submissions);
-      }
+        .subscribe(submissions => {
+          this.submissions = submissions;
+          this.getUsers();
+          this.getAssignments();
+        });
     }
+  }
+
+  /**
+   * Get users of submissions
+   */
+  getUsers(): void {
+    for (let submission of this.submissions) {
+      this.userService.getUserById(submission.studentId).subscribe(u => {
+        this.users[submission.id] = u.name;
+      });
+    }
+  }
+
+  /**
+   * Get assignment of submissions
+   */
+  getAssignments(): void {
+    for (let submission of this.submissions) {
+      this.assignmentService.getAssignment(submission.assignmentId).subscribe(a => {
+        this.assignments[submission.id] = a.name;
+      });
+    }
+  }
 }

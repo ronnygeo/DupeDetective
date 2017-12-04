@@ -8,7 +8,6 @@ import java.util.List;
  */
 public class ModelReport {
 
-
 	/**
 	 * @param model model id
 	 */

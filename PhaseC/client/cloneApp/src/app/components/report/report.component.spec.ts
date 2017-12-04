@@ -1,8 +1,7 @@
 import {ReportComponent} from "./report.component";
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {DebugElement} from "@angular/core";
 import {FormsModule} from "@angular/forms";
-import {By} from "@angular/platform-browser";
+
 describe('ReportComponent', () => {
   let component: ReportComponent;
   let fixture: ComponentFixture<ReportComponent>;

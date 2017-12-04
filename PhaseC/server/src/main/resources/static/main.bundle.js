@@ -33,6 +33,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_report_report_component__ = __webpack_require__("../../../../../src/app/components/report/report.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_assignmentnew_assignmentnew_component__ = __webpack_require__("../../../../../src/app/components/assignmentnew/assignmentnew.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_comparedocuments_comparedocuments_component__ = __webpack_require__("../../../../../src/app/components/comparedocuments/comparedocuments.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__auth_guard__ = __webpack_require__("../../../../../src/app/auth.guard.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -50,16 +51,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+// Defining routes
 var routes = [
-    { path: 'assignments', component: __WEBPACK_IMPORTED_MODULE_2__components_assignmentlist_assignmentlist_component__["a" /* AssignmentListComponent */] },
-    { path: 'assignments/new', component: __WEBPACK_IMPORTED_MODULE_9__components_assignmentnew_assignmentnew_component__["a" /* AssignmentNewComponent */] },
-    { path: 'assignment/:assignmentId/submissions', component: __WEBPACK_IMPORTED_MODULE_4__components_submissionlist_submissionlist_component__["a" /* SubmissionListComponent */] },
-    { path: 'submissions', component: __WEBPACK_IMPORTED_MODULE_4__components_submissionlist_submissionlist_component__["a" /* SubmissionListComponent */] },
-    { path: 'compare', component: __WEBPACK_IMPORTED_MODULE_10__components_comparedocuments_comparedocuments_component__["a" /* ComparedocumentsComponent */] },
-    { path: 'reports', component: __WEBPACK_IMPORTED_MODULE_8__components_report_report_component__["a" /* ReportComponent */] },
-    { path: 'assignment/:assignmentId/submission/:submissionId/reports', component: __WEBPACK_IMPORTED_MODULE_8__components_report_report_component__["a" /* ReportComponent */] },
-    { path: 'submission/:assignmentId', component: __WEBPACK_IMPORTED_MODULE_4__components_submissionlist_submissionlist_component__["a" /* SubmissionListComponent */] },
-    { path: 'submissions/new', component: __WEBPACK_IMPORTED_MODULE_5__components_uploadsubmission_uploadsubmission_component__["a" /* UploadSubmissionComponent */] },
+    { path: 'assignments', component: __WEBPACK_IMPORTED_MODULE_2__components_assignmentlist_assignmentlist_component__["a" /* AssignmentListComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_11__auth_guard__["a" /* AuthGuardGrader */]] },
+    { path: 'assignments/new', component: __WEBPACK_IMPORTED_MODULE_9__components_assignmentnew_assignmentnew_component__["a" /* AssignmentNewComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_11__auth_guard__["a" /* AuthGuardGrader */]] },
+    { path: 'assignment/:assignmentId/submissions', component: __WEBPACK_IMPORTED_MODULE_4__components_submissionlist_submissionlist_component__["a" /* SubmissionListComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_11__auth_guard__["a" /* AuthGuardGrader */]] },
+    { path: 'submissions', component: __WEBPACK_IMPORTED_MODULE_4__components_submissionlist_submissionlist_component__["a" /* SubmissionListComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_11__auth_guard__["a" /* AuthGuardGrader */]] },
+    { path: 'compare', component: __WEBPACK_IMPORTED_MODULE_10__components_comparedocuments_comparedocuments_component__["a" /* ComparedocumentsComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_11__auth_guard__["a" /* AuthGuardGrader */]] },
+    { path: 'reports', component: __WEBPACK_IMPORTED_MODULE_8__components_report_report_component__["a" /* ReportComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_11__auth_guard__["a" /* AuthGuardGrader */]] },
+    { path: 'assignment/:assignmentId/submission/:submissionId/reports', component: __WEBPACK_IMPORTED_MODULE_8__components_report_report_component__["a" /* ReportComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_11__auth_guard__["a" /* AuthGuardGrader */]] },
+    { path: 'submission/:assignmentId', component: __WEBPACK_IMPORTED_MODULE_4__components_submissionlist_submissionlist_component__["a" /* SubmissionListComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_11__auth_guard__["a" /* AuthGuardGrader */]] },
+    { path: 'submissions/new', component: __WEBPACK_IMPORTED_MODULE_5__components_uploadsubmission_uploadsubmission_component__["a" /* UploadSubmissionComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_11__auth_guard__["b" /* AuthGuardStudent */]] },
     { path: '', component: __WEBPACK_IMPORTED_MODULE_3__components_home_home_component__["a" /* HomeComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_6__components_login_login_component__["a" /* LoginComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_7__components_register_register_component__["a" /* RegisterComponent */] },
@@ -193,6 +196,8 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_comparedocuments_comparedocuments_component__ = __webpack_require__("../../../../../src/app/components/comparedocuments/comparedocuments.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_assignmentnew_assignmentnew_component__ = __webpack_require__("../../../../../src/app/components/assignmentnew/assignmentnew.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__auth_guard__ = __webpack_require__("../../../../../src/app/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_analytics_service__ = __webpack_require__("../../../../../src/app/services/analytics.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -221,6 +226,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+/**
+ * Main angular module
+ */
 var AppModule = (function () {
     function AppModule() {
     }
@@ -245,11 +255,78 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_9__angular_common_http__["b" /* HttpClientModule */]
             ],
             schemas: [__WEBPACK_IMPORTED_MODULE_1__angular_core__["j" /* CUSTOM_ELEMENTS_SCHEMA */]],
-            providers: [__WEBPACK_IMPORTED_MODULE_7__services_assignment_service__["a" /* AssignmentService */], __WEBPACK_IMPORTED_MODULE_12__services_report_service__["a" /* ReportService */], __WEBPACK_IMPORTED_MODULE_13__services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_14__services_submission_service__["a" /* SubmissionService */], __WEBPACK_IMPORTED_MODULE_18__services_alert_service__["a" /* AlertService */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_7__services_assignment_service__["a" /* AssignmentService */], __WEBPACK_IMPORTED_MODULE_12__services_report_service__["a" /* ReportService */], __WEBPACK_IMPORTED_MODULE_13__services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_14__services_submission_service__["a" /* SubmissionService */], __WEBPACK_IMPORTED_MODULE_18__services_alert_service__["a" /* AlertService */], __WEBPACK_IMPORTED_MODULE_23__services_analytics_service__["a" /* AnalyticsService */],
+                __WEBPACK_IMPORTED_MODULE_22__auth_guard__["a" /* AuthGuardGrader */], __WEBPACK_IMPORTED_MODULE_22__auth_guard__["b" /* AuthGuardStudent */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/auth.guard.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthGuardGrader; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return AuthGuardStudent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AuthGuardGrader = (function () {
+    function AuthGuardGrader(router, userService) {
+        this.router = router;
+        this.userService = userService;
+    }
+    AuthGuardGrader.prototype.canActivate = function (route, state) {
+        if (JSON.parse(localStorage.getItem('currentUser'))["grader"]) {
+            // logged in so return true
+            return true;
+        }
+        // not logged in so redirect to login page with the return url
+        this.router.navigate(['login'], { queryParams: { returnUrl: state.url } });
+        return false;
+    };
+    AuthGuardGrader = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */], __WEBPACK_IMPORTED_MODULE_2__services_user_service__["a" /* UserService */]])
+    ], AuthGuardGrader);
+    return AuthGuardGrader;
+}());
+
+var AuthGuardStudent = (function () {
+    function AuthGuardStudent(router) {
+        this.router = router;
+    }
+    AuthGuardStudent.prototype.canActivate = function (route, state) {
+        if (localStorage.getItem('currentUser')) {
+            // logged in so return true
+            return true;
+        }
+        // not logged in so redirect to login page with the return url
+        this.router.navigate(['login'], { queryParams: { returnUrl: state.url } });
+        return false;
+    };
+    AuthGuardStudent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]])
+    ], AuthGuardStudent);
+    return AuthGuardStudent;
 }());
 
 
@@ -309,9 +386,15 @@ var AssignmentListComponent = (function () {
         this.assignmentService = assignmentService;
         this.location = location;
     }
+    /**
+     * On page load
+     */
     AssignmentListComponent.prototype.ngOnInit = function () {
         this.getAssignments();
     };
+    /**
+     * Get assignments
+     */
     AssignmentListComponent.prototype.getAssignments = function () {
         var _this = this;
         this.assignmentService.getAssignments().subscribe(function (assignments) {
@@ -319,6 +402,10 @@ var AssignmentListComponent = (function () {
             _this.assignments = assignments;
         });
     };
+    /**
+     * Analyze assignment with given id
+     * @param {string} id assignment id
+     */
     AssignmentListComponent.prototype.analyze = function (id) {
         console.log(id);
         this.assignmentService.analyze(id).subscribe(function (res) {
@@ -390,7 +477,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * The Component that creates the Assignment Detail page
+ * The Component that creates the new Assignment page
  */
 var AssignmentNewComponent = (function () {
     function AssignmentNewComponent(router, assignmentService, location) {
@@ -398,22 +485,28 @@ var AssignmentNewComponent = (function () {
         this.assignmentService = assignmentService;
         this.location = location;
     }
-    AssignmentNewComponent.prototype.ngOnInit = function () {
-    };
+    /**
+     * On page load
+     */
+    AssignmentNewComponent.prototype.ngOnInit = function () { };
+    /**
+     * Save the form
+     */
     AssignmentNewComponent.prototype.save = function () {
         var _this = this;
         var data = { "name": this.name, "course": this.course, "isAnalyzed": false };
         this.assignmentService.createAssignment(data)
             .subscribe(function () { return _this.goBack(); });
     };
-    // Go back to previous page
+    /**
+     *   Go back to previous page
+     */
     AssignmentNewComponent.prototype.goBack = function () {
         this.location.back();
-        // this.router.navigate(['/assignments']);
     };
     AssignmentNewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-            selector: 'app-asignment-new',
+            selector: 'app-assignment-new',
             template: __webpack_require__("../../../../../src/app/components/assignmentnew/assignmentnew.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/assignmentnew/assignmentnew.component.css")]
         }),
@@ -477,6 +570,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+/**
+ * Compponent that creates the compare documents
+ */
 var ComparedocumentsComponent = (function () {
     function ComparedocumentsComponent(activeModal, submissionService, reportService, userService) {
         this.activeModal = activeModal;
@@ -507,7 +603,6 @@ var ComparedocumentsComponent = (function () {
                 this.modelId = 5;
                 break;
         }
-        this.highlightDocuments();
     };
     /**
      * Get both student names
@@ -524,9 +619,10 @@ var ComparedocumentsComponent = (function () {
         var _this = this;
         this.submissionService.getSubmission(this.refFileId).subscribe(function (submission) {
             _this.doc1 = submission.filecontent;
-        });
-        this.submissionService.getSubmission(this.similarFileId).subscribe(function (submission) {
-            _this.doc2 = submission.filecontent;
+            _this.submissionService.getSubmission(_this.similarFileId).subscribe(function (submission) {
+                _this.doc2 = submission.filecontent;
+                _this.highlightDocuments();
+            });
         });
     };
     /**
@@ -536,36 +632,95 @@ var ComparedocumentsComponent = (function () {
         var _this = this;
         this.reportService.getReportByIds(this.refFileId, this.similarFileId).subscribe(function (report) {
             var lines = report.models.filter(function (m) { return m.model === _this.modelId; })[0].lines;
-            // TODO: Refactor span check for already existing
-            _a = _this.createSpanElements(lines, "ref", [_this.doc1, _this.doc2]), _this.doc1 = _a[0], _this.doc2 = _a[1];
+            _this.filterLines(lines, function (l) { return l.refOffset; }, function (l) { return l.refLength; });
+            _this.filterLines(lines, function (l) { return l.similarOffset; }, function (l) { return l.similarLength; });
+            _this.doc1 = _this.createSpanElements(lines, _this.doc1, function (l) { return l.refOffset; }, function (l) { return l.refLength; });
+            _this.doc2 = _this.createSpanElements(lines, _this.doc2, function (l) { return l.similarOffset; }, function (l) { return l.similarLength; });
             _this.doc1 = _this.doc1.replace(/\n/g, "<br>");
             _this.doc2 = _this.doc2.replace(/\n/g, "<br>");
-            var _a;
         });
     };
     /**
-     * Create span elements in the doc
-     * @param lines
-     * @param field
-     * @param docArray
-     * @returns {string[]}
+     *  Filter the lines in report, so that they don't overlap
+     * @param {ReportLine[]} lines
+     * @param {(_) => any} fnOffset function to access the offset field
+     * @param {(_) => any} fnLength function to access the length field
      */
-    ComparedocumentsComponent.prototype.createSpanElements = function (lines, field, docArray) {
-        var docs = [];
-        for (var _i = 0, docArray_1 = docArray; _i < docArray_1.length; _i++) {
-            var doc = docArray_1[_i];
-            var docOffset = 0;
-            for (var _a = 0, _b = lines.sort(docArray.indexOf(doc) == 0 ? this.compareRefOffset : this.compareSimilarOffset); _a < _b.length; _a++) {
-                var line = _b[_a];
-                var substring = doc.substr(docOffset + line[field + "Offset"], line[field + "Length"]);
-                if (substring.indexOf(this.openingTag) === -1 && substring.indexOf(this.closingTag) === -1) {
-                    doc = this.addTag(doc, docOffset, line[field + "Offset"], line[field + "Length"]);
-                    docOffset += this.tagLength;
-                }
+    ComparedocumentsComponent.prototype.filterLines = function (lines, fnOffset, fnLength) {
+        if (fnOffset === void 0) { fnOffset = function (_) { return _; }; }
+        if (fnLength === void 0) { fnLength = function (_) { return _; }; }
+        var sortLines = lines.sort(function (a, b) {
+            var offseta = fnOffset(a);
+            var offsetb = fnOffset(b);
+            if (offseta == offsetb && fnLength(a) == fnLength(b))
+                return 0;
+            if (offseta == offsetb && fnLength(a) < fnLength(b))
+                return 1;
+            if (offseta == offsetb && fnLength(a) > fnLength(b))
+                return -1;
+            if (offseta < offsetb)
+                return -1;
+            if (offseta > offsetb)
+                return 1;
+        });
+        this.removeDuplicateLines(sortLines, fnOffset, fnLength);
+    };
+    /**
+     * Remove any duplicate offsets
+     * @param {ReportLine[]} arr Report Lines
+     * @param {(_) => any} fnOffset function to access the offset field
+     * @param {(_) => any} fnLength function to access the length field
+     * @returns {ReportLine[] | undefined} Report Lines with duplicates removed
+     */
+    ComparedocumentsComponent.prototype.removeDuplicateLines = function (arr, fnOffset, fnLength) {
+        if (arr === void 0) { arr = []; }
+        if (fnOffset === void 0) { fnOffset = function (_) { return _; }; }
+        if (fnLength === void 0) { fnLength = function (_) { return _; }; }
+        var set = new Set();
+        var len = arr.length;
+        for (var i = 0; i < len; i++) {
+            var offset = fnOffset(arr[i]);
+            var length_1 = fnLength(arr[i]);
+            if (set.has(offset)) {
+                arr.splice(i, 1);
+                i--;
+                len--;
             }
-            docs.push(doc);
+            else {
+                set.add(offset);
+            }
         }
-        return docs;
+        var offsets = arr.map(function (l) { return fnOffset(l) + fnLength(l); });
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].refOffset in offsets) {
+                arr.splice(i, 1);
+                i--;
+                len--;
+            }
+        }
+    };
+    /**
+     * Create span element
+     * @param {ReportLine[]} lines Report Lines
+     * @param {string} doc document
+     * @param {(_) => any} fnOffset function to access the offset field
+     * @param {(_) => any} fnLength function to access the length field
+     * @returns {string} new document
+     */
+    ComparedocumentsComponent.prototype.createSpanElements = function (lines, doc, fnOffset, fnLength) {
+        if (fnOffset === void 0) { fnOffset = function (_) { return _; }; }
+        if (fnLength === void 0) { fnLength = function (_) { return _; }; }
+        var docOffset = 0;
+        for (var _i = 0, lines_1 = lines; _i < lines_1.length; _i++) {
+            var line = lines_1[_i];
+            var substring = doc.substr(docOffset + fnOffset(line), fnLength(line));
+            console.log(substring.search("s?pan?"));
+            if (substring.indexOf(this.openingTag) === -1 && substring.indexOf(this.closingTag) === -1 && substring.search("s?pan?>?") === -1) {
+                doc = this.addTag(doc, docOffset, fnOffset(line), fnLength(line));
+                docOffset += this.tagLength;
+            }
+        }
+        return doc;
     };
     /**
      * Add tag
@@ -596,36 +751,6 @@ var ComparedocumentsComponent = (function () {
             ins_string = '';
         }
         return main_string.slice(0, pos) + ins_string + main_string.slice(pos);
-    };
-    /**
-     * Comparator for ref offset
-     * @param {ReportLine} a
-     * @param {ReportLine} b
-     * @returns {number}
-     */
-    ComparedocumentsComponent.prototype.compareRefOffset = function (a, b) {
-        if (a.refOffset < b.refOffset) {
-            return -1;
-        }
-        if (a.refOffset > b.refOffset) {
-            return 1;
-        }
-        return 0;
-    };
-    /**
-     * Comparator for similar offset
-     * @param {ReportLine} a
-     * @param {ReportLine} b
-     * @returns {number}
-     */
-    ComparedocumentsComponent.prototype.compareSimilarOffset = function (a, b) {
-        if (a.similarOffset < b.similarOffset) {
-            return -1;
-        }
-        if (a.similarOffset > b.similarOffset) {
-            return 1;
-        }
-        return 0;
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
@@ -703,6 +828,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 
+/**
+ * Home component
+ */
 var HomeComponent = (function () {
     function HomeComponent() {
         this.title = 'Dupe Detective';
@@ -765,13 +893,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+/**
+ * Handle user login
+ */
 var LoginComponent = (function () {
     function LoginComponent(userService, router) {
         this.userService = userService;
         this.router = router;
     }
-    LoginComponent.prototype.ngOnInit = function () {
-    };
+    /**
+     * On page load
+     */
+    LoginComponent.prototype.ngOnInit = function () { };
+    /**
+     * Login the user
+     */
     LoginComponent.prototype.login = function () {
         var _this = this;
         this.userService.getUser(this.username, this.password).subscribe(function (user) {
@@ -877,12 +1013,7 @@ var NavbarComponent = (function () {
      */
     NavbarComponent.prototype.isGrader = function () {
         var tmp = localStorage.getItem("currentUser");
-        if (tmp && !Object(__WEBPACK_IMPORTED_MODULE_2_util__["isUndefined"])(tmp) && JSON.parse(tmp)["grader"] === true) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return !!(tmp && !Object(__WEBPACK_IMPORTED_MODULE_2_util__["isUndefined"])(tmp) && JSON.parse(tmp)["grader"] === true);
     };
     /**
      * Logout from the site
@@ -890,7 +1021,7 @@ var NavbarComponent = (function () {
     NavbarComponent.prototype.logout = function () {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
     };
     NavbarComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
@@ -956,14 +1087,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+/**
+ * Register the user
+ */
 var RegisterComponent = (function () {
     function RegisterComponent(userService, router) {
         this.userService = userService;
         this.router = router;
         this.grader = false;
     }
-    RegisterComponent.prototype.ngOnInit = function () {
-    };
+    /**
+     * On page load
+     */
+    RegisterComponent.prototype.ngOnInit = function () { };
+    /**
+     * Register the user
+     */
     RegisterComponent.prototype.register = function () {
         var _this = this;
         var data = { "name": this.name, "email": this.email, "username": this.username, "password": this.password, "grader": this.grader };
@@ -1014,7 +1153,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/report/report.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card mb-3\" *ngIf=\"selectedReport\">\n  <div class=\"card-header\">\n    <i class=\"fa fa-table\"></i> Report</div>\n  <div class=\"card-body\">\n    <form>\n      <div class=\"form-group\">\n        <div class=\"form-row\">\n          <label for=\"assignment\">Assignment</label>\n          <select class=\"form-control\" id=\"assignment\" name=\"assignment\" [(ngModel)]=\"selectedAssignment\" (change)=\"updateReport()\">\n            <option *ngFor=\"let assignment of assignments\" [ngValue]=\"assignment.id\">{{assignment.name}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col\">\n      <div class=\"form-group\" *ngIf=\"students1\">\n        <label for=\"student1\">Student 1</label>\n        <select class=\"form-control\" id=\"student1\" name=\"student1\" [(ngModel)]=\"student1\" (change)=\"updateReport()\">\n          <option *ngFor=\"let student of students1\" [ngValue]=\"student.id\">{{student.name}}</option>\n        </select>\n      </div>\n        </div>\n        <div class=\"col\">\n      <div class=\"form-group\" *ngIf=\"students2\">\n        <label for=\"student2\">Student 2</label>\n        <select class=\"form-control\" id=\"student2\" name=\"student2\" [(ngModel)]=\"student2\" (change)=\"updateReport()\">\n          <option *ngFor=\"let student of students2\" [ngValue]=\"student.id\">{{student.name}}</option>\n        </select>\n      </div>\n        </div>\n      </div>\n    </form>\n    <div class=\"row\" *ngIf=\"selectedReport && selectedReport.md5Result\">\n      <div class=\"col\">\n        <div class=\"alert alert-danger\" role=\"alert\">\n          <strong>This is a live one!</strong> The files are an exact copy!\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col\">\n        <div class=\"card text-white o-hidden h-100\" style=\"background-color: darkcyan\">\n          <div class=\"card-body\">\n            <div class=\"card-header\" style=\"background-color: transparent;font-size: larger \" *ngIf=\"selectedReport\">\n              {{overallScore*100 | number : '1.2-2'}}%\n            </div>\n            <div class=\"card-body-icon\">\n              <i class=\"fa fa-fw fa-comments\"></i>\n            </div>\n            <div class=\"mr-5\">Overall Score</div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <br>\n    <!-- Icon Cards-->\n    <div class=\"row\">\n      <div class=\"col-xl-3 col-sm-6 mb-3\">\n        <div class=\"card text-white bg-primary o-hidden h-100\">\n          <div class=\"card-body\">\n            <div class=\"card-body-icon\">\n              Structure\n            </div>\n            <div class=\"mr-5\" *ngIf=\"selectedReport\"> {{structureScore*100 | number : '1.2-2'}}%</div>\n          </div>\n          <a class=\"card-footer text-white clearfix small z-1\" (click)=\"open('structure')\">\n            <span class=\"float-left\">View Details</span>\n            <span class=\"float-right\">\n                <i class=\"fa fa-angle-right\"></i>\n              </span>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xl-3 col-sm-6 mb-3\">\n        <div class=\"card text-white bg-warning o-hidden h-100\">\n          <div class=\"card-body\">\n            <div class=\"card-body-icon\">\n              Methods\n            </div>\n            <div class=\"mr-5\" *ngIf=\"selectedReport\">{{methodScore*100 | number : '1.2-2'}}%</div>\n          </div>\n          <a class=\"card-footer text-white clearfix small z-1\" (click)=\"open('method')\">\n            <span class=\"float-left\">View Details</span>\n            <span class=\"float-right\">\n                <i class=\"fa fa-angle-right\"></i>\n              </span>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xl-3 col-sm-6 mb-3\">\n        <div class=\"card text-white bg-success o-hidden h-100\">\n          <div class=\"card-body\">\n            <div class=\"card-body-icon\">\n              Loop/Cond\n            </div>\n            <div class=\"mr-5\" *ngIf=\"selectedReport\">{{loopScore * 100 | number : '1.2-2'}}%</div>\n          </div>\n          <a class=\"card-footer text-white clearfix small z-1\" (click)=\"open('loop')\">\n            <span class=\"float-left\">View Details</span>\n            <span class=\"float-right\">\n                <i class=\"fa fa-angle-right\"></i>\n              </span>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xl-3 col-sm-6 mb-3\">\n        <div class=\"card text-white bg-danger o-hidden h-100\">\n          <div class=\"card-body\">\n            <div class=\"card-body-icon\">\n              Winnowing\n            </div>\n            <div class=\"mr-5\" *ngIf=\"selectedReport\">{{winnowingScore * 100 | number : '1.2-2'}}%</div>\n          </div>\n          <a class=\"card-footer text-white clearfix small z-1\" (click)=\"open('winnowing')\">\n            <span class=\"float-left\">View Details</span>\n            <span class=\"float-right\">\n                <i class=\"fa fa-angle-right\"></i>\n              </span>\n          </a>\n        </div>\n      </div>\n    </div>\n    <div class=\"row align-content-center\">\n      <div class=\"col\" style=\"text-align: center;\">\n      <div class=\"alert alert-success\" role=\"alert\">\n        <h4 class=\"alert-heading\">Help us help you.</h4>\n        <p>Is this Plagiarised?</p>\n        <select class=\"form-control\" id=\"plagiarised\" name=\"plagiarised\" [(ngModel)]=\"plagiarised\" (change)=\"updateModel()\">\n          <option value=false>No</option>\n          <option value=true>Yes</option>\n        </select>\n      </div>\n    </div>\n    </div>\n    <div class=\"row align-content-center\"><div class=\"col\" style=\"text-align: center;\">\n      <a class=\"btn btn-primary white-text\" [href]=\"downloadLink\" download=\"{{selectedReport.submissionId}}_report.json\">Download Report</a>\n    </div></div>\n  </div>\n</div>\n\n<div class=\"card mb-3\" *ngIf=\"!selectedReport\">\n  <div class=\"card-header\">\n    <i class=\"fa fa-table\"></i> Report</div>\n  <div class=\"card-body\">\n    <p>No Reports Available</p>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card mb-3\" *ngIf=\"selectedReport\">\n  <div class=\"card-header\">\n    <i class=\"fa fa-table\"></i> Report</div>\n  <div class=\"card-body\">\n    <form>\n      <div class=\"form-group\">\n        <div class=\"form-row\">\n          <label for=\"assignment\">Assignment</label>\n          <select class=\"form-control\" id=\"assignment\" name=\"assignment\" [(ngModel)]=\"selectedAssignment\" (change)=\"updateReport()\">\n            <option *ngFor=\"let assignment of assignments\" [ngValue]=\"assignment.id\">{{assignment.name}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col\">\n      <div class=\"form-group\" *ngIf=\"students1\">\n        <label for=\"student1\">Student 1</label>\n        <select class=\"form-control\" id=\"student1\" name=\"student1\" [(ngModel)]=\"student1\" (change)=\"updateReport()\">\n          <option *ngFor=\"let student of students1\" [ngValue]=\"student.id\">{{student.name}}</option>\n        </select>\n      </div>\n        </div>\n        <div class=\"col\">\n      <div class=\"form-group\" *ngIf=\"students2\">\n        <label for=\"student2\">Student 2</label>\n        <select class=\"form-control\" id=\"student2\" name=\"student2\" [(ngModel)]=\"student2\" (change)=\"updateReport()\">\n          <option *ngFor=\"let student of students2\" [ngValue]=\"student.id\">{{student.name}}</option>\n        </select>\n      </div>\n        </div>\n      </div>\n    </form>\n    <div class=\"row\" *ngIf=\"selectedReport && selectedReport.md5Result\">\n      <div class=\"col\">\n        <div class=\"alert alert-danger\" role=\"alert\">\n          <strong>This is a live one!</strong> The files are an exact copy!\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col\">\n        <div class=\"card text-white o-hidden h-100\" style=\"background-color: darkcyan\">\n          <div class=\"card-body\">\n            <div class=\"card-header\" style=\"background-color: transparent;font-size: larger \" *ngIf=\"selectedReport\">\n              {{overallScore*100 | number : '1.2-2'}}%\n            </div>\n            <div class=\"card-body-icon\" style=\"margin-top: 7px\">\n              <i class=\"fa fa-fw fa-comments\"></i> &nbsp; Overall Score\n            </div>\n            <div class=\"mr-5\"></div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <br>\n    <!-- Icon Cards-->\n    <div class=\"row\">\n      <div class=\"col-xl-3 col-sm-6 mb-3\">\n        <div class=\"card text-white bg-primary o-hidden h-100\">\n          <div class=\"card-body\">\n            <div class=\"card-body-icon\">\n              Structure\n            </div>\n            <div class=\"mr-5\" *ngIf=\"selectedReport\"> {{structureScore*100 | number : '1.2-2'}}%</div>\n          </div>\n          <a class=\"card-footer text-white clearfix small z-1\" (click)=\"open('structure')\">\n            <span class=\"float-left\">View Details</span>\n            <span class=\"float-right\">\n                <i class=\"fa fa-angle-right\"></i>\n              </span>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xl-3 col-sm-6 mb-3\">\n        <div class=\"card text-white bg-warning o-hidden h-100\">\n          <div class=\"card-body\">\n            <div class=\"card-body-icon\">\n              Methods\n            </div>\n            <div class=\"mr-5\" *ngIf=\"selectedReport\">{{methodScore*100 | number : '1.2-2'}}%</div>\n          </div>\n          <a class=\"card-footer text-white clearfix small z-1\" (click)=\"open('method')\">\n            <span class=\"float-left\">View Details</span>\n            <span class=\"float-right\">\n                <i class=\"fa fa-angle-right\"></i>\n              </span>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xl-3 col-sm-6 mb-3\">\n        <div class=\"card text-white bg-success o-hidden h-100\">\n          <div class=\"card-body\">\n            <div class=\"card-body-icon\">\n              Loop/Cond\n            </div>\n            <div class=\"mr-5\" *ngIf=\"selectedReport\">{{loopScore * 100 | number : '1.2-2'}}%</div>\n          </div>\n          <a class=\"card-footer text-white clearfix small z-1\" (click)=\"open('loop')\">\n            <span class=\"float-left\">View Details</span>\n            <span class=\"float-right\">\n                <i class=\"fa fa-angle-right\"></i>\n              </span>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xl-3 col-sm-6 mb-3\">\n        <div class=\"card text-white bg-danger o-hidden h-100\">\n          <div class=\"card-body\">\n            <div class=\"card-body-icon\">\n              Winnowing\n            </div>\n            <div class=\"mr-5\" *ngIf=\"selectedReport\">{{winnowingScore * 100 | number : '1.2-2'}}%</div>\n          </div>\n          <a class=\"card-footer text-white clearfix small z-1\" (click)=\"open('winnowing')\">\n            <span class=\"float-left\">View Details</span>\n            <span class=\"float-right\">\n                <i class=\"fa fa-angle-right\"></i>\n              </span>\n          </a>\n        </div>\n      </div>\n    </div>\n    <div class=\"row align-content-center\" *ngIf=\"enableAnalytics\">\n      <div class=\"col\" style=\"text-align: center;\">\n      <div class=\"alert alert-success\" role=\"alert\">\n        <h4 class=\"alert-heading\">Help us help you.</h4>\n        <p>Is this Plagiarised?</p>\n        <select class=\"form-control\" id=\"plagiarised\" name=\"plagiarised\" [(ngModel)]=\"plagiarised\" (change)=\"updateModel()\">\n          <option value=0.0>No</option>\n          <option value=1.0>Yes</option>\n        </select>\n        <br>\n        <p>SmartScore&trade;: {{smartScore | number : '1.2-2'}} (experimental)<p>\n      </div>\n    </div>\n    </div>\n    <div class=\"row align-content-center\"><div class=\"col\" style=\"text-align: center;\">\n      <a class=\"btn btn-primary white-text\" [href]=\"downloadLink\" download=\"{{selectedReport.submissionId}}_report.json\">Download Report</a>\n    </div></div>\n  </div>\n</div>\n\n<div class=\"card mb-3\" *ngIf=\"!selectedReport\">\n  <div class=\"card-header\">\n    <i class=\"fa fa-table\"></i> Report</div>\n  <div class=\"card-body\">\n    <p>No Reports Available</p>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1033,6 +1172,7 @@ module.exports = "<div class=\"card mb-3\" *ngIf=\"selectedReport\">\n  <div cla
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_submission_service__ = __webpack_require__("../../../../../src/app/services/submission.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_platform_browser__ = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_analytics_service__ = __webpack_require__("../../../../../src/app/services/analytics.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1052,11 +1192,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * The Component that creates the ModelReport page
  */
 var ReportComponent = (function () {
-    function ReportComponent(route, reportService, location, modalService, assignmentService, userService, submissionService, sanitizer) {
+    function ReportComponent(route, reportService, location, modalService, assignmentService, userService, submissionService, analyticsService, sanitizer) {
         this.route = route;
         this.reportService = reportService;
         this.location = location;
@@ -1064,8 +1205,16 @@ var ReportComponent = (function () {
         this.assignmentService = assignmentService;
         this.userService = userService;
         this.submissionService = submissionService;
+        this.analyticsService = analyticsService;
         this.sanitizer = sanitizer;
-        this.plagiarised = false;
+        this.winnowingScore = 0;
+        this.structureScore = 0;
+        this.loopScore = 0;
+        this.methodScore = 0;
+        this.overallScore = 0;
+        this.analyzed = false;
+        this.smartScore = 0;
+        this.enableAnalytics = false;
     }
     /**
      * On page load
@@ -1141,9 +1290,9 @@ var ReportComponent = (function () {
      * Fetch scores from report obj
      */
     ReportComponent.prototype.fetchScores = function () {
+        var _this = this;
         for (var _i = 0, _a = this.selectedReport.models; _i < _a.length; _i++) {
             var model = _a[_i];
-            // console.log(model.mothis.getStudentsFromSubmission();del)
             switch (model.model) {
                 case 1:
                     this.structureScore = model.score;
@@ -1160,6 +1309,12 @@ var ReportComponent = (function () {
             }
         }
         this.getOverallScore();
+        var scores = [this.selectedReport.md5Result ? 1 : 0, this.structureScore, this.loopScore,
+            this.methodScore, this.winnowingScore];
+        this.analyticsService.getPrediction(scores).subscribe(function (pred) {
+            _this.smartScore = pred.prediction;
+            _this.enableAnalytics = true;
+        });
     };
     /**
      * Get overall score from the model
@@ -1182,6 +1337,7 @@ var ReportComponent = (function () {
                 _this.selectedReport = report;
                 _this.generateDownloadUrl();
                 _this.fetchScores();
+                _this.plagiarised = null;
             });
         }
     };
@@ -1203,6 +1359,13 @@ var ReportComponent = (function () {
      * Update the model when user clicks on an option
      */
     ReportComponent.prototype.updateModel = function () {
+        var _this = this;
+        console.log("Updating model.");
+        var scores = [this.selectedReport.md5Result ? 1 : 0, this.structureScore, this.loopScore,
+            this.methodScore, this.winnowingScore];
+        this.analyticsService.fitPredict(scores, this.plagiarised).subscribe(function (pred) {
+            _this.smartScore = pred.prediction;
+        });
     };
     /**
      * Generate a json file for the selected report
@@ -1242,6 +1405,7 @@ var ReportComponent = (function () {
             __WEBPACK_IMPORTED_MODULE_6__services_assignment_service__["a" /* AssignmentService */],
             __WEBPACK_IMPORTED_MODULE_7__services_user_service__["a" /* UserService */],
             __WEBPACK_IMPORTED_MODULE_8__services_submission_service__["a" /* SubmissionService */],
+            __WEBPACK_IMPORTED_MODULE_10__services_analytics_service__["a" /* AnalyticsService */],
             __WEBPACK_IMPORTED_MODULE_9__angular_platform_browser__["b" /* DomSanitizer */]])
     ], ReportComponent);
     return ReportComponent;
@@ -1272,7 +1436,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/submissionlist/submissionlist.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card mb-3\">\n  <div class=\"card-header\">\n    <i class=\"fa fa-table\"></i> My Submissions</div>\n  <div class=\"card-body\">\n    <div class=\"table-responsive\">\n      <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\">\n        <thead>\n        <tr>\n          <th>Id</th>\n          <!--<th>Name</th>-->\n          <th>User</th>\n          <th>Assignment</th>\n          <th>Submitted On</th>\n        </tr>\n        </thead>\n        <tbody>\n        <tr *ngFor=\"let submission of submissions\">\n\n          <td><a routerLink=\"/assignment/{{submission.assignmentId}}/submission/{{submission.id}}/reports\">{{submission.id}}</a></td>\n          <!--<td>{{submission.name | uppercase}}</td>-->\n          <td>{{submission.studentId}}</td>\n          <td>{{submission.assignmentId}}</td>\n          <td>{{submission.submittedOn}}</td>\n          <td>{{submission.filename}}</td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card mb-3\">\n  <div class=\"card-header\">\n    <i class=\"fa fa-table\"></i> My Submissions</div>\n  <div class=\"card-body\">\n    <div class=\"table-responsive\">\n      <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\">\n        <thead>\n        <tr>\n          <th>Id</th>\n          <!--<th>Name</th>-->\n          <th>User</th>\n          <th>Assignment</th>\n          <th>Submitted On</th>\n        </tr>\n        </thead>\n        <tbody>\n        <tr *ngFor=\"let submission of submissions\">\n\n          <td><a routerLink=\"/assignment/{{submission.assignmentId}}/submission/{{submission.id}}/reports\">{{submission.id}}</a></td>\n          <!--<td>{{submission.name | uppercase}}</td>-->\n          <td>{{users[submission.id]}}</td>\n          <td>{{assignments[submission.id]}}</td>\n          <td>{{submission.submittedOn}}</td>\n          <td>{{submission.filename}}</td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1283,9 +1447,9 @@ module.exports = "<div class=\"card mb-3\">\n  <div class=\"card-header\">\n    
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SubmissionListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("../../../common/esm5/common.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_submission_service__ = __webpack_require__("../../../../../src/app/services/submission.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_assignment_service__ = __webpack_require__("../../../../../src/app/services/assignment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_submission_service__ = __webpack_require__("../../../../../src/app/services/submission.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_assignment_service__ = __webpack_require__("../../../../../src/app/services/assignment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1304,11 +1468,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * List all Submissions
  */
 var SubmissionListComponent = (function () {
-    function SubmissionListComponent(route, submissionService, assignmentService, location) {
+    function SubmissionListComponent(route, submissionService, assignmentService, userService) {
         this.route = route;
         this.submissionService = submissionService;
         this.assignmentService = assignmentService;
-        this.location = location;
+        this.userService = userService;
+        this.users = {};
+        this.assignments = {};
     }
     /**
      * On page load
@@ -1325,11 +1491,51 @@ var SubmissionListComponent = (function () {
             var id = this.route.snapshot.paramMap.get('assignmentId');
             console.log(id);
             this.assignmentService.getSubmissionsByAssignmentId(id)
-                .subscribe(function (submissions) { return _this.submissions = submissions; });
+                .subscribe(function (submissions) {
+                _this.submissions = submissions;
+                _this.getUsers();
+                _this.getAssignments();
+            });
         }
         else {
             this.submissionService.getAllSubmissions()
-                .subscribe(function (submissions) { return _this.submissions = submissions; });
+                .subscribe(function (submissions) {
+                _this.submissions = submissions;
+                _this.getUsers();
+                _this.getAssignments();
+            });
+        }
+    };
+    /**
+     * Get users of submissions
+     */
+    SubmissionListComponent.prototype.getUsers = function () {
+        var _this = this;
+        var _loop_1 = function (submission) {
+            this_1.userService.getUserById(submission.studentId).subscribe(function (u) {
+                _this.users[submission.id] = u.name;
+            });
+        };
+        var this_1 = this;
+        for (var _i = 0, _a = this.submissions; _i < _a.length; _i++) {
+            var submission = _a[_i];
+            _loop_1(submission);
+        }
+    };
+    /**
+     * Get assignment of submissions
+     */
+    SubmissionListComponent.prototype.getAssignments = function () {
+        var _this = this;
+        var _loop_2 = function (submission) {
+            this_2.assignmentService.getAssignment(submission.assignmentId).subscribe(function (a) {
+                _this.assignments[submission.id] = a.name;
+            });
+        };
+        var this_2 = this;
+        for (var _i = 0, _a = this.submissions; _i < _a.length; _i++) {
+            var submission = _a[_i];
+            _loop_2(submission);
         }
     };
     SubmissionListComponent = __decorate([
@@ -1339,9 +1545,9 @@ var SubmissionListComponent = (function () {
             styles: [__webpack_require__("../../../../../src/app/components/submissionlist/submissionlist.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
-            __WEBPACK_IMPORTED_MODULE_3__services_submission_service__["a" /* SubmissionService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_assignment_service__["a" /* AssignmentService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common__["f" /* Location */]])
+            __WEBPACK_IMPORTED_MODULE_2__services_submission_service__["a" /* SubmissionService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_assignment_service__["a" /* AssignmentService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_user_service__["a" /* UserService */]])
     ], SubmissionListComponent);
     return SubmissionListComponent;
 }());
@@ -1371,7 +1577,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/uploadsubmission/uploadsubmission.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card mx-auto mt-5\">\n  <div class=\"card-header\">Upload Submission</div>\n  <div class=\"card-body\">\n    <form>\n      <div class=\"form-group\">\n        <label for=\"InputAssignment\">Assignment</label>\n        <select [(ngModel)]=\"assignmentId\" class=\"form-control\" name=\"assignment\" id=\"InputAssignment\"aria-describedby=\"assignmentHelp\">\n          <option *ngFor=\"let assignment of assignments\" value={{assignment.id}}>{{assignment.name}}</option>\n        </select>\n      </div>\n      <div class=\"form-group\">\n        <label for=\"InputFile\">File</label>\n        <input type=\"file\" class=\"form-control\" id=\"InputFile\" (change)=\"fileChange($event)\" name=\"file\" />\n      </div>\n<a class=\"btn btn-primary btn-block white-text\" (click)=\"upload()\">Upload!</a>\n    </form>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card mx-auto mt-5\">\n  <div class=\"card-header\">Upload Submission</div>\n  <div class=\"card-body\">\n    <form>\n      <div class=\"form-group\">\n        <label for=\"InputAssignment\">Assignment</label>\n        <select [(ngModel)]=\"assignmentId\" class=\"form-control\" name=\"assignment\" id=\"InputAssignment\" aria-describedby=\"assignmentHelp\">\n          <option *ngFor=\"let assignment of assignments\" value={{assignment.id}}>{{assignment.name}}</option>\n        </select>\n      </div>\n      <div class=\"form-group\">\n        <label for=\"InputFile\">File</label>\n        <input type=\"file\" class=\"form-control\" id=\"InputFile\" (change)=\"fileChange($event)\" name=\"file\" />\n      </div>\n<a class=\"btn btn-primary btn-block white-text\" (click)=\"upload()\">Upload!</a>\n    </form>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1487,7 +1693,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+/**
+ * Handle Alerts
+ */
 var AlertService = (function () {
+    /**
+     * On load
+     * @param {Router} router
+     */
     function AlertService(router) {
         var _this = this;
         this.router = router;
@@ -1507,16 +1720,30 @@ var AlertService = (function () {
             }
         });
     }
+    /**
+     * If success
+     * @param {string} message
+     * @param {boolean} keepAfterNavigationChange
+     */
     AlertService.prototype.success = function (message, keepAfterNavigationChange) {
         if (keepAfterNavigationChange === void 0) { keepAfterNavigationChange = false; }
         this.keepAfterNavigationChange = keepAfterNavigationChange;
         this.subject.next({ type: 'success', text: message });
     };
+    /**
+     * If error
+     * @param {string} message
+     * @param {boolean} keepAfterNavigationChange
+     */
     AlertService.prototype.error = function (message, keepAfterNavigationChange) {
         if (keepAfterNavigationChange === void 0) { keepAfterNavigationChange = false; }
         this.keepAfterNavigationChange = keepAfterNavigationChange;
         this.subject.next({ type: 'error', text: message });
     };
+    /**
+     * Get the message
+     * @returns {Observable<any>}
+     */
     AlertService.prototype.getMessage = function () {
         return this.subject.asObservable();
     };
@@ -1525,6 +1752,64 @@ var AlertService = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]])
     ], AlertService);
     return AlertService;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/analytics.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AnalyticsService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+// HTTP POST Options
+var httpOptions = {
+    headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ 'Content-Type': 'application/json' })
+};
+/**
+ * Analytics Service that performs all communication related to Analytics server
+ */
+var AnalyticsService = (function () {
+    function AnalyticsService(http) {
+        this.http = http;
+        this.predictUrl = 'http://localhost:5000/predict';
+        this.fitUrl = 'http://localhost:5000/fit';
+    }
+    /**
+     * Get the prediction from server
+     * @returns {Observable<Prediction>}
+     */
+    AnalyticsService.prototype.getPrediction = function (scores) {
+        var data = { "train": scores };
+        return this.http.post(this.predictUrl, data);
+    };
+    /**
+     * Train with the new data and get the prediction from server
+     * @returns {Observable<Prediction>}
+     */
+    AnalyticsService.prototype.fitPredict = function (scores, label) {
+        var data = { "train": scores, "label": +label };
+        return this.http.post(this.fitUrl, data);
+    };
+    AnalyticsService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+    ], AnalyticsService);
+    return AnalyticsService;
 }());
 
 
@@ -1587,19 +1872,24 @@ var AssignmentService = (function () {
     };
     /**
      * Create an assignment
-     * @param Data object
-     * @returns {Observable<any>}
+     * @param data object
+     * @returns {Observable<Assignment>}
      */
     AssignmentService.prototype.createAssignment = function (data) {
         return this.http.post(this.assignmentUrl, data, httpOptions).pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["a" /* catchError */])(this.handleError('createAssignment')));
     };
+    /**
+     * Analyze assignment with given id
+     * @param {string} id
+     * @returns {Observable<String>}
+     */
     AssignmentService.prototype.analyze = function (id) {
         return this.http.post(this.assignmentUrl + "/" + id + "/analyze", {}, httpOptions).pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["a" /* catchError */])(this.handleError('analyze')));
     };
     /**
      * GET submissions for an assignment by id. Will 404 if id not found
      * @param {number} id the id of the assignment to retrieve
-     * @returns {Observable<Assignment>} an Observable for the Assignments
+     * @returns {Observable<Submission[]>} an Observable for the Assignments
      */
     AssignmentService.prototype.getSubmissionsByAssignmentId = function (id) {
         var url = this.assignmentUrl + "/" + id + "/submissions";
@@ -1768,7 +2058,7 @@ var SubmissionService = (function () {
     /**
      * GET submissions for an assignment by id. Will 404 if id not found
      * @param {number} id the id of the assignment to retrieve
-     * @returns {Observable<Assignment>} an Observable for the Assignments
+     * @returns {Observable<Submission[]>} an Observable for the Assignments
      */
     SubmissionService.prototype.getSubmission = function (id) {
         var url = this.submissionUrl + "/" + id;
@@ -1777,17 +2067,17 @@ var SubmissionService = (function () {
     /**
      * GET submissions for an assignment by id. Will 404 if id not found
      * @param {number} id the id of the assignment to retrieve
-     * @returns {Observable<Assignment>} an Observable for the Assignments
+     * @returns {Observable<Submission[]>} an Observable for the Assignments
      */
     SubmissionService.prototype.getSubmissions = function (id) {
         var url = this.submissionUrl + "?assignmentId=" + id;
         return this.http.get(url).pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["a" /* catchError */])(this.handleError("getSubmission id=" + id)));
     };
     /**
-     *
+     * Get Submission by student Id and Assignment ID
      * @param {string} assignmentId
      * @param {string} studentId
-     * @returns {Observable<Submission>}
+     * @returns {Observable<Submission>} A Submission
      */
     SubmissionService.prototype.getSubmissionByStudentAssignment = function (assignmentId, studentId) {
         var url = this.submissionUrl + "/student?assignmentId=" + assignmentId + "&studentId=" + studentId;
@@ -1873,18 +2163,18 @@ var UserService = (function () {
         this.userUrl = 'http://localhost:8080/api/users';
     }
     /**
-     *
-     * @returns {Observable<User[]>}
+     * Get all the users
+     * @returns {Observable<User[]>} List of Users
      */
     UserService.prototype.getUsers = function () {
         return this.http.get(this.userUrl)
-            .pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["a" /* catchError */])(this.handleError('getAssignments', [])));
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["a" /* catchError */])(this.handleError('getUsers', [])));
     };
     /**
-     *
+     * Get a user by username and password
      * @param {string} username
      * @param {string} password
-     * @returns {Observable<User[]>}
+     * @returns {Observable<User>}
      */
     UserService.prototype.getUser = function (username, password) {
         var url = this.userUrl + "/login?username=" + username + "&password=" + password;

@@ -1,14 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {Assignment} from "../../models/assignment";
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import { Location } from '@angular/common';
 import {AssignmentService} from "../../services/assignment.service";
 
 /**
- * The Component that creates the Assignment Detail page
+ * The Component that creates the new Assignment page
  */
 @Component({
-  selector: 'app-asignment-new',
+  selector: 'app-assignment-new',
   templateUrl: './assignmentnew.component.html',
   styleUrls: ['./assignmentnew.component.css']
 })
@@ -21,18 +20,24 @@ export class AssignmentNewComponent implements OnInit {
               private assignmentService: AssignmentService,
               private location: Location) {}
 
-  ngOnInit() {
-  }
+  /**
+   * On page load
+   */
+  ngOnInit() {}
 
+  /**
+   * Save the form
+   */
   save(): void {
     const data = {"name": this.name, "course": this.course, "isAnalyzed": false};
     this.assignmentService.createAssignment(data)
       .subscribe(() => this.goBack());
   }
 
-  // Go back to previous page
+  /**
+   *   Go back to previous page
+   */
   goBack(): void {
     this.location.back();
-    // this.router.navigate(['/assignments']);
   }
 }

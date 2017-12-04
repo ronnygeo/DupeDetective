@@ -11,6 +11,6 @@ public interface Parser<T> {
      * @param txt the file content as a String to be parsed
      * @return the parsed object T
      */
-    public T parse(String txt);
+    T parse(String txt);
 
 }

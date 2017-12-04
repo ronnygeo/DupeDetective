@@ -4,7 +4,7 @@
     <form>
       <div class="form-group">
         <label for="InputAssignment">Assignment</label>
-        <select [(ngModel)]="assignmentId" class="form-control" name="assignment" id="InputAssignment"aria-describedby="assignmentHelp">
+        <select [(ngModel)]="assignmentId" class="form-control" name="assignment" id="InputAssignment" aria-describedby="assignmentHelp">
           <option *ngFor="let assignment of assignments" value={{assignment.id}}>{{assignment.name}}</option>
         </select>
       </div>

@@ -23,8 +23,9 @@ public class SubmissionController {
     SubmissionRepository submissionRepository;
 
     /**
-	 * Method which returns a list of all the submissions
-	 */
+     * Get all submissions
+     * @return a list of Submissions
+     */
     @GetMapping("/submissions")
     public List<Submission> getAllSubmissions() {
         Sort sortByCreatedAtDesc = new Sort(Sort.Direction.DESC, "createdAt");
@@ -32,24 +33,31 @@ public class SubmissionController {
     }
 
     /**
-	 * Method which returns a list of all the submissions for a particular assignment id
-	 */
+     * Get Submissions by Assignment id
+     * @param id assignment id
+     * @return a List of Submissions
+     */
     @GetMapping("/assignments/{assignmentId}/submissions")
     public List<Submission> getAllSubmissionsByAssignmentId(@PathVariable("assignmentId") String id) {
         return submissionRepository.findSubmissionByAssignmentId(id);
     }
 
     /**
-	 * Method which returns a list of all the submissions for a particular assignment id and student id
-	 */
+     * Method which returns a list of all the submissions for a particular assignment id and student id
+     * @param assignmentId assignment id
+     * @param studentId student id
+     * @return a Submission Object
+     */
     @GetMapping("/submissions/student")
     public Submission getAllSubmissionsByAssignmentId(@RequestParam(value="assignmentId") String assignmentId, @RequestParam(value="studentId") String studentId) {
         return submissionRepository.findSubmissionByAssignmentIdAndStudentId(assignmentId, studentId);
     }
 
     /**
-   	 * Method which takes as input an submission object and adds it to the database in the submission collection
-   	 */
+     * Create a new Submission
+     * @param submission Submission object
+     * @return the new Submission
+     */
     @PostMapping("/submissions")
     public Submission createSubmission(@Valid @RequestBody Submission submission) {
         submission.setSubmittedOn(LocalDateTime.now().toString());
@@ -57,8 +65,10 @@ public class SubmissionController {
     }
 
     /**
-	 * Method which takes as input an submission id and returns the submission object with the particular id
-	 */
+     * Get Submission by id
+     * @param id submission id
+     * @return Submission with given id
+     */
     @GetMapping(value="/submissions/{id}")
     public ResponseEntity<Submission> getSubmissionById(@PathVariable("id") String id) {
         Submission submission = submissionRepository.findOne(id);
@@ -70,8 +80,11 @@ public class SubmissionController {
     }
 
     /**
-	 * Method which takes as input an submission id and updates the submission object with the particular id
-	 */
+     * Update the submission with given id
+     * @param id submission id
+     * @param submission Submission object
+     * @return a Submission
+     */
     @PutMapping(value="/submissions/{id}")
     public ResponseEntity<Submission> updateSubmission(@PathVariable("id") String id,
                                            @Valid @RequestBody Submission submission) {
@@ -90,8 +103,9 @@ public class SubmissionController {
     }
 
     /**
-	 * Method which takes as input an submission id and deletes the particular submission from the submission table
-	 */
+     * Delete submission with given id
+     * @param id submission id
+     */
     @DeleteMapping(value="/submissions/{id}")
     public void deleteSubmission(@PathVariable("id") String id) {
         submissionRepository.delete(id);

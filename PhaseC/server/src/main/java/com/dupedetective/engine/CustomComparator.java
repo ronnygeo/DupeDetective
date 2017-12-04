@@ -17,7 +17,7 @@ public interface CustomComparator<T> {
      * @param obj2: the second object to compare
      * @return a list of report items
      */
-    public List<ReportLine> compare(T obj1, T obj2);
+    List<ReportLine> compare(T obj1, T obj2);
 
     /**
      * Compare the first object with the other
@@ -25,5 +25,5 @@ public interface CustomComparator<T> {
      * @param obj2: the second object to compare
      * @return a value that represents how similar the two documents are
      */
-    public float getScore(T obj1, T obj2);
+    float getScore(T obj1, T obj2);
 }

@@ -3,9 +3,26 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import {UserService} from "./services/user.service";
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthGuardGrader implements CanActivate {
 
   constructor(private router: Router, private userService: UserService) { }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    if (JSON.parse(localStorage.getItem('currentUser'))["grader"]) {
+      // logged in so return true
+      return true;
+    }
+
+    // not logged in so redirect to login page with the return url
+    this.router.navigate(['login'], { queryParams: { returnUrl: state.url }});
+    return false;
+  }
+}
+
+@Injectable()
+export class AuthGuardStudent implements CanActivate {
+
+  constructor(private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (localStorage.getItem('currentUser')) {
@@ -14,7 +31,7 @@ export class AuthGuard implements CanActivate {
     }
 
     // not logged in so redirect to login page with the return url
-    this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
+    this.router.navigate(['login'], { queryParams: { returnUrl: state.url }});
     return false;
   }
 }

@@ -5,6 +5,7 @@ import com.dupedetective.data.ReportLine;
 import com.dupedetective.engine.ast.ASTHashObject;
 import org.apache.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,6 +30,7 @@ public class ASTTypeCompare implements CustomComparator<List<ASTHashObject>> {
      */
     @Override
     public List<ReportLine> compare(List<ASTHashObject> l1, List<ASTHashObject> l2) {
+        if (l1.isEmpty() || l2.isEmpty()) return new ArrayList<>();
         LCSCompare lcsc = new LCSCompare();
         List<ASTHashObject> lcsList = lcsc.compare(l1, l2);
         float score = getScore(l1, l2);
@@ -47,13 +49,11 @@ public class ASTTypeCompare implements CustomComparator<List<ASTHashObject>> {
      * @return a value that represents how similar the two documents are
      */
     public float getScore(List<ASTHashObject> l1, List<ASTHashObject> l2) {
+        if (l1.isEmpty() || l2.isEmpty()) return 0;
         LCSCompare lcsc = new LCSCompare();
         List<ASTHashObject> lcsList = lcsc.compare(l1, l2);
 
         float score = lcsList.size() / (float) Math.max(l1.size(), l2.size());
-        if (Float.isNaN(score)) score = 0;
-        cleanLists(l1, lcsList);
-        cleanLists(l2, lcsList);
         logger.info("Structure comparison");
         logger.info("After: " + l1.stream().map(ASTHashObject::getType).collect(Collectors.toList()));
         logger.info("After: " + l2.stream().map(ASTHashObject::getType).collect(Collectors.toList()));

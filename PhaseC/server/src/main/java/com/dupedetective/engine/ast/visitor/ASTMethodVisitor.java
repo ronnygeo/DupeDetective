@@ -13,6 +13,9 @@ public class ASTMethodVisitor extends ASTVisitorAC {
 
     private boolean typeCheck;
 
+    /**
+     * Default constructor
+     */
     public ASTMethodVisitor() {
         nodes = new ArrayList<>();
         currentNode = new ASTHashObject();

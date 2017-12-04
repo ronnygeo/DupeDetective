@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {Assignment} from "../../models/assignment";
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {ReportService} from "../../services/report.service";
-import {NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ComparedocumentsComponent} from "../comparedocuments/comparedocuments.component";
 import {AssignmentService} from "../../services/assignment.service";
 import {UserService} from "../../services/user.service";
@@ -11,6 +11,7 @@ import {User} from "../../models/user";
 import {SubmissionService} from "../../services/submission.service";
 import {Report} from "../../models/report";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import {AnalyticsService} from "../../services/analytics.service";
 
 /**
  * The Component that creates the ModelReport page
@@ -30,14 +31,17 @@ export class ReportComponent implements OnInit {
   private students1: User[];
   private students2: User[];
   private reports: Report[];
-  private plagiarised = false;
+  private plagiarised: number;
   private selectedReport: Report;
-  private winnowingScore: number;
-  private structureScore: number;
-  private loopScore: number;
-  private methodScore: number;
-  private overallScore: number;
+  private winnowingScore: number = 0;
+  private structureScore: number = 0;
+  private loopScore: number = 0;
+  private methodScore: number = 0;
+  private overallScore: number = 0;
   private downloadLink: SafeUrl;
+  private analyzed = false;
+  private smartScore = 0;
+  private enableAnalytics = false;
 
   constructor(private route: ActivatedRoute,
               private reportService: ReportService,
@@ -46,6 +50,7 @@ export class ReportComponent implements OnInit {
               private assignmentService: AssignmentService,
               private userService: UserService,
               private submissionService: SubmissionService,
+              private analyticsService: AnalyticsService,
               private sanitizer: DomSanitizer) {}
 
   /**
@@ -123,7 +128,6 @@ export class ReportComponent implements OnInit {
    */
   fetchScores() {
     for (const model of this.selectedReport.models) {
-      // console.log(model.mothis.getStudentsFromSubmission();del)
       switch (model.model) {
         case 1: this.structureScore = model.score; break;
         case 2: this.loopScore = model.score; break;
@@ -132,6 +136,12 @@ export class ReportComponent implements OnInit {
       }
     }
     this.getOverallScore();
+    const scores = [this.selectedReport.md5Result? 1:0, this.structureScore, this.loopScore,
+      this.methodScore, this.winnowingScore];
+    this.analyticsService.getPrediction(scores).subscribe(pred => {
+      this.smartScore = pred.prediction;
+      this.enableAnalytics = true;
+    });
   }
 
   /**
@@ -155,6 +165,7 @@ export class ReportComponent implements OnInit {
             this.selectedReport = report;
             this.generateDownloadUrl();
             this.fetchScores();
+            this.plagiarised = null;
           });
       }
   }
@@ -177,7 +188,12 @@ export class ReportComponent implements OnInit {
    * Update the model when user clicks on an option
    */
   updateModel() {
-
+    console.log("Updating model.");
+    const scores = [this.selectedReport.md5Result? 1:0, this.structureScore, this.loopScore,
+      this.methodScore, this.winnowingScore];
+    this.analyticsService.fitPredict(scores, this.plagiarised).subscribe(pred => {
+      this.smartScore = pred.prediction;
+    });
   }
 
   /**

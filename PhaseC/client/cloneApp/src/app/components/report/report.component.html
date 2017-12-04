@@ -44,10 +44,10 @@
             <div class="card-header" style="background-color: transparent;font-size: larger " *ngIf="selectedReport">
               {{overallScore*100 | number : '1.2-2'}}%
             </div>
-            <div class="card-body-icon">
-              <i class="fa fa-fw fa-comments"></i>
+            <div class="card-body-icon" style="margin-top: 7px">
+              <i class="fa fa-fw fa-comments"></i> &nbsp; Overall Score
             </div>
-            <div class="mr-5">Overall Score</div>
+            <div class="mr-5"></div>
           </div>
         </div>
       </div>
@@ -120,15 +120,17 @@
         </div>
       </div>
     </div>
-    <div class="row align-content-center">
+    <div class="row align-content-center" *ngIf="enableAnalytics">
       <div class="col" style="text-align: center;">
       <div class="alert alert-success" role="alert">
         <h4 class="alert-heading">Help us help you.</h4>
         <p>Is this Plagiarised?</p>
         <select class="form-control" id="plagiarised" name="plagiarised" [(ngModel)]="plagiarised" (change)="updateModel()">
-          <option value=false>No</option>
-          <option value=true>Yes</option>
+          <option value=0.0>No</option>
+          <option value=1.0>Yes</option>
         </select>
+        <br>
+        <p>SmartScore&trade;: {{smartScore | number : '1.2-2'}} (experimental)<p>
       </div>
     </div>
     </div>

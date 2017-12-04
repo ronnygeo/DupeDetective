@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Assignment} from "../models/assignment";
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError} from 'rxjs/operators';
 import {User} from "../models/user";
-import {filter} from "rxjs/operator/filter";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,21 +20,21 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   /**
-   *
-   * @returns {Observable<User[]>}
+   * Get all the users
+   * @returns {Observable<User[]>} List of Users
    */
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.userUrl)
       .pipe(
-        catchError(this.handleError('getAssignments', []))
+        catchError(this.handleError('getUsers', []))
       );
   }
 
   /**
-   *
+   * Get a user by username and password
    * @param {string} username
    * @param {string} password
-   * @returns {Observable<User[]>}
+   * @returns {Observable<User>}
    */
   getUser(username: string, password: string): Observable<User> {
     const url = `${this.userUrl}/login?username=${username}&password=${password}`;

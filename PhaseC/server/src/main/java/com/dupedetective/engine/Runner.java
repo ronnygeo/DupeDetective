@@ -36,6 +36,7 @@ public class Runner {
      * @param assignmentId assignment id to analyze
      */
     public static void analyze(String assignmentId) {
+        if (assignmentId == null) return;
         readWeights();
         MongoOperation mongo = new MongoOperation();
         List<Submission> submissions = mongo.getSubmissions(assignmentId);
@@ -84,7 +85,6 @@ public class Runner {
 
     /**
      * Update the report object with results for various models
-     *
      * @param report    the report object
      * @param md5Result result of md5 comparison
      * @param code1     first code to compare

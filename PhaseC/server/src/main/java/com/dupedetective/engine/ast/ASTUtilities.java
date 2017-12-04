@@ -46,9 +46,10 @@ public class ASTUtilities {
         for (int i=0; i < l1.size(); i++) {
             ASTHashObject tmp1 = l1.get(i);
             ASTHashObject tmp2 = l2.get(i);
-
-            ReportLine ri = new ReportLine(tmp1.getOffset(), tmp1.getLength(), tmp2.getOffset(), tmp2.getLength(), Model.ASTStructure.getValue(), score);
-            items.add(ri);
+            if (tmp1.getOffset() != null || tmp1.getLength() != null || tmp2.getOffset() != null|| tmp2.getLength() != null) {
+                ReportLine ri = new ReportLine(tmp1.getOffset(), tmp1.getLength(), tmp2.getOffset(), tmp2.getLength(), Model.ASTStructure.getValue(), score);
+                items.add(ri);
+            }
         }
         return items;
     }

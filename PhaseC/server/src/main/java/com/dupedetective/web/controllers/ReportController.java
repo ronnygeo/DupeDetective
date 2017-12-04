@@ -21,8 +21,9 @@ public class ReportController {
     ReportRepository reportRepository;
 
     /**
-	 * Method which returns a list of all the reports
-	 */
+     * Method which returns a list of all the reports
+     * @return List of Reports
+     */
     @GetMapping("/reports")
     public List<Report> getAllReports() {
         Sort sortByCreatedAtDesc = new Sort(Sort.Direction.DESC, "createdAt");
@@ -30,24 +31,31 @@ public class ReportController {
     }
 
     /**
-	 * Method which returns a list of all the reports with the specified file id
-	 */
+     * Get Report by reference and similar file Id
+     * @param refFileId reference file id
+     * @param similarFileId similar file id
+     * @return Report object
+     */
     @GetMapping("/reports/single")
     public Report getReportByIds(@RequestParam(value = "refFileId", required = false) String refFileId, @RequestParam(value = "similarFileId", required = false) String similarFileId) {
         return reportRepository.findReportByRefFileIdAndSimilarFileId(refFileId, similarFileId);
     }
 
     /**
-	 * Method which returns a list of all the reports
-	 */
+     * Get a report by Submission id
+     * @param submissionId submission id
+     * @return a List of Reports
+     */
     @GetMapping("/submissions/{id}/reports")
     public List<Report> getReportsBySubmissionId(@PathVariable("id") String submissionId) {
         return reportRepository.findReportsBySubmissionId(submissionId);
     }
 
     /**
-	 * Method which takes as input a report id and returns the report object with the particular id
-	 */
+     * Get a report by given id
+     * @param id report id
+     * @return a Report
+     */
     @GetMapping(value="/reports/{id}")
     public ResponseEntity<Report> getReportById(@PathVariable("id") String id) {
         Report report = reportRepository.findOne(id);
@@ -59,8 +67,9 @@ public class ReportController {
     }
 
     /**
-	 * Method which takes as input an report id and deletes the particular report from the report table
-	 */
+     * Delete a report with given id
+     * @param id report id
+     */
     @DeleteMapping(value="/reports/{id}")
     public void deleteReport(@PathVariable("id") String id) {
         reportRepository.delete(id);

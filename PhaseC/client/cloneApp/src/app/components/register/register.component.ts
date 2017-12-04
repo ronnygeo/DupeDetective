@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
-import {User} from "../../models/user";
 
+/**
+ * Register the user
+ */
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,11 +20,16 @@ export class RegisterComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) { }
 
-  ngOnInit() {
-  }
+  /**
+   * On page load
+   */
+  ngOnInit() {}
 
+  /**
+   * Register the user
+   */
   register(): void {
-    const data = {"name": this.name, "email": this.email, "username": this.username, "password": this.password, "grader": this.grader}
+    const data = {"name": this.name, "email": this.email, "username": this.username, "password": this.password, "grader": this.grader};
     this.userService.createUser(data).subscribe(user => {
       console.log(user);
       localStorage.setItem("currentUser", JSON.stringify(user));

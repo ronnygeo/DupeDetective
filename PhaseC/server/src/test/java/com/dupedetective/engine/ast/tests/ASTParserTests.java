@@ -21,4 +21,12 @@ public class ASTParserTests {
         assertNotNull(parsedData instanceof org.eclipse.jdt.core.dom.CompilationUnit);
     }
 
+    @Test
+    public void testCodeASTNull() {
+        String testCode = null;
+        Parser<CompilationUnit> astParser = new CustomASTParser();
+        CompilationUnit parsedData = astParser.parse(testCode);
+        assertNotNull(parsedData instanceof org.eclipse.jdt.core.dom.CompilationUnit);
+    }
+
 }

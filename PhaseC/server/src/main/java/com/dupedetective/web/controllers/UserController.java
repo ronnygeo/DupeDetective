@@ -22,8 +22,9 @@ public class UserController {
     UserRepository userRepository;
 
     /**
-	 * Method which returns a list of all the assignments
-	 */
+     * Get all users
+     * @return list of users
+     */
     @GetMapping("/users")
     public List<User> getAllUsers() {
         Sort sortByCreatedAtDesc = new Sort(Sort.Direction.DESC, "createdAt");
@@ -31,24 +32,31 @@ public class UserController {
     }
 
     /**
-	 * Method which returns a user with username same as the input username
-	 */
+     * Method which returns a user with username same as the input username
+     * @param username username
+     * @param password password
+     * @return User object
+     */
     @GetMapping("/users/login")
     public User getUserByUsername(@RequestParam(value = "username", required = false) String username, @RequestParam(value = "password", required = false) String password) {
         return userRepository.findUserByUsernameAndPassword(username, password);
     }
 
     /**
-   	 * Method which takes as input an user object and adds it to the database in the user collection
-   	 */
+     * Create the given user
+     * @param user a User
+     * @return new User object
+     */
     @PostMapping("/users")
     public User createUser(@Valid @RequestBody User user) {
             return userRepository.save(user);
     }
 
     /**
-	 * Method which takes as input a user id and returns the user object with the particular id
-	 */
+     * Get a user by Id
+     * @param id user id
+     * @return a User object
+     */
     @GetMapping(value="/users/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") String id) {
         User user = userRepository.findOne(id);
@@ -60,8 +68,11 @@ public class UserController {
     }
 
     /**
-	 * Method which takes as input an user id and updates the user object with the particular id
-	 */
+     * Update the user
+     * @param id user id
+     * @param user a User object
+     * @return a ReponseEntity with User
+     */
     @PutMapping(value="/users/{id}")
     public ResponseEntity<User> updateUser(@PathVariable("id") String id,
                                            @Valid @RequestBody User user) {
@@ -79,8 +90,9 @@ public class UserController {
     }
 
     /**
-	 * Method which takes as input an user id and deletes the particular user from the user table
-	 */
+     * Delete a user with given id
+     * @param id user id
+     */
     @DeleteMapping(value="/users/{id}")
     public void deleteUser(@PathVariable("id") String id) {
         userRepository.delete(id);

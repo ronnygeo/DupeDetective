@@ -25,8 +25,9 @@ public class AssignmentController {
     AssignmentRepository assignmentRepository;
 
     /**
-	 * Method which returns a list of all the assignments
-	 */
+     * Get all assignments
+     * @return a list of Assignments
+     */
     @GetMapping("/assignments")
     public List<Assignment> getAllAssignments() {
         Sort sortByCreatedAtDesc = new Sort(Sort.Direction.DESC, "createdAt");
@@ -34,8 +35,10 @@ public class AssignmentController {
     }
 
     /**
-	 * Method which takes as input an assignment object and adds it to the database in the assignment collection
-	 */
+     * Method which takes as input an assignment object and adds it to the database in the assignment collection
+     * @param assignment an Assignment object
+     * @return new Assignment object
+     */
     @PostMapping("/assignments")
     public Assignment createAssignment(@Valid @RequestBody Assignment assignment) {
         assignment.setAnalyzed(false);
@@ -44,8 +47,10 @@ public class AssignmentController {
     }
 
     /**
-	 * Method which takes as input an assignment id and returns the assignment object with the particular id
-	 */
+     * Method which takes as input an assignment id and returns the assignment object with the particular id
+     * @param id assignment id
+     * @return a Response Entity with Assignment
+     */
     @GetMapping(value="/assignments/{id}")
     public ResponseEntity<Assignment> getAssignmentById(@PathVariable("id") String id) {
         Assignment assignment = assignmentRepository.findOne(id);
@@ -57,8 +62,11 @@ public class AssignmentController {
     }
 
     /**
-	 * Method which takes as input an assignment id and returns the assignment object with the particular id
-	 */
+     * Method which takes as input an assignment id and returns the assignment object with the particular id
+     * @param id assignment id
+     * @param assignment Assignment object
+     * @return new Assignment object
+     */
     @PutMapping(value="/assignments/{id}")
     public ResponseEntity<Assignment> updateAssignment(@PathVariable("id") String id,
                                            @Valid @RequestBody Assignment assignment) {
@@ -76,8 +84,9 @@ public class AssignmentController {
     }
 
     /**
-	 * Method which takes as input an assignment id and deletes the particular assignment from the assignment table
-	 */
+     * Method which takes as input an assignment id and deletes the particular assignment from the assignment table
+     * @param id assignment id
+     */
     @DeleteMapping(value="/assignments/{id}")
     public void deleteAssignment(@PathVariable("id") String id) {
         assignmentRepository.delete(id);

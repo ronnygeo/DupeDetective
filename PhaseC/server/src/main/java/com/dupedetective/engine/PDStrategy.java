@@ -15,5 +15,5 @@ public interface PDStrategy {
      * @param testCode2 second code to compare
      * @return a list of ReportItems
      */
-    public List<ReportLine> checkPlagiarism(String testCode1, String testCode2);
+    List<ReportLine> checkPlagiarism(String testCode1, String testCode2);
 }

@@ -3,7 +3,7 @@ import {Assignment} from "../models/assignment";
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError} from 'rxjs/operators';
 import {Submission} from "../models/submission";
 
 const httpOptions = {
@@ -49,8 +49,8 @@ export class AssignmentService {
 
   /**
    * Create an assignment
-   * @param Data object
-   * @returns {Observable<any>}
+   * @param data object
+   * @returns {Observable<Assignment>}
    */
   createAssignment (data): Observable<Assignment> {
     return this.http.post(this.assignmentUrl, data, httpOptions).pipe(
@@ -58,6 +58,11 @@ export class AssignmentService {
     );
   }
 
+  /**
+   * Analyze assignment with given id
+   * @param {string} id
+   * @returns {Observable<String>}
+   */
   analyze(id: string): Observable<String> {
     return this.http.post(`${this.assignmentUrl}/${id}/analyze`, {}, httpOptions).pipe(
       catchError(this.handleError<any>('analyze'))
@@ -67,7 +72,7 @@ export class AssignmentService {
   /**
    * GET submissions for an assignment by id. Will 404 if id not found
    * @param {number} id the id of the assignment to retrieve
-   * @returns {Observable<Assignment>} an Observable for the Assignments
+   * @returns {Observable<Submission[]>} an Observable for the Assignments
    */
   getSubmissionsByAssignmentId(id: string): Observable<Submission[]> {
     const url = `${this.assignmentUrl}/${id}/submissions`;

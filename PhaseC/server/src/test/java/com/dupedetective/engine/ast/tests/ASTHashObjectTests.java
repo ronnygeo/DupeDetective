@@ -37,7 +37,7 @@ public class ASTHashObjectTests {
 
     @Test
     public void setOffsetTests() {
-        aho.setOffset((int) 1);
+        aho.setOffset(1);
         assertEquals(1, aho.getOffset(), 0.01);
     }
 
