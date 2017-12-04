@@ -1,10 +1,10 @@
 package com.dupedetective.engine.ast.tests;
 
 import com.dupedetective.engine.Parser;
+import com.dupedetective.engine.TestUtils;
 import com.dupedetective.engine.ast.CustomASTParser;
 import com.dupedetective.engine.ast.compare.ASTTypeCompare;
 import com.dupedetective.engine.ast.visitor.ASTStructureVisitor;
-import com.dupedetective.engine.TestUtils;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Before;
@@ -95,7 +95,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTTypeCompare astlc = new ASTTypeCompare();
-        assertEquals(52, astlc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()).size(), 0.01);
+        assertEquals(43, astlc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()).size(), 0.01);
     }
 
     @Test
@@ -144,7 +144,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTTypeCompare astlc = new ASTTypeCompare();
-        assertEquals(73, astlc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()).size(), 0.01);
+        assertEquals(63, astlc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()).size(), 0.01);
     }
 
     @Test

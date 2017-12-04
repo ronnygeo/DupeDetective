@@ -3,6 +3,7 @@ package com.dupedetective.engine.winnow;
 import com.dupedetective.data.ReportLine;
 import com.dupedetective.engine.Model;
 import com.dupedetective.engine.winnow.WinnowEngine.LineIndex;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashSet;

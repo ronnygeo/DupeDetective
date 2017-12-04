@@ -1,13 +1,14 @@
 package com.dupedetective.engine.winnow.tests;
 
-import static org.junit.Assert.assertEquals;
-
 import com.dupedetective.engine.TestUtils;
 import com.dupedetective.engine.winnow.NormalisedFile;
-import java.net.URISyntaxException;
-import java.nio.file.Paths;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Joyal Tests for checking whether a file has been normalised or not

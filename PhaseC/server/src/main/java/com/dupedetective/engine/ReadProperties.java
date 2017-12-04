@@ -23,7 +23,7 @@ public class ReadProperties {
      * @param key key to read
      * @return value of the key
      */
-    public String readKey(String propertiesFilename, String key){
+    public String readKey(String propertiesFilename, String key) throws NullPointerException {
         if (propertiesFilename != null && !propertiesFilename.trim().isEmpty()
                 && key != null && !key.trim().isEmpty()) {
             try(
@@ -37,7 +37,7 @@ public class ReadProperties {
                 ex.printStackTrace();
             }
         }
-        return null;
+        throw new NullPointerException();
     }
 
     ClassLoader objClassLoader = null;

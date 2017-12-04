@@ -1,14 +1,14 @@
 package com.dupedetective.engine.winnow.tests;
 
-import static org.junit.Assert.assertEquals;
-
 import com.dupedetective.engine.TestUtils;
 import com.dupedetective.engine.winnow.Winnow;
-import java.io.File;
-import java.net.URISyntaxException;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.net.URISyntaxException;
+
+import static org.junit.Assert.assertEquals;
 
 public class TestWinnow {
 
@@ -30,7 +30,7 @@ public class TestWinnow {
 
   @Test
   public void testWinnowClones() {
-    assertEquals(0.69, getSimilarity(t.readFile("Clone1.java"), t.readFile("Clone2.java")), 0.01);
+    assertEquals(0.54, getSimilarity(t.readFile("Clone1.java"), t.readFile("Clone2.java")), 0.01);
   }
 
   private float getSimilarity(String data1, String data2) {
