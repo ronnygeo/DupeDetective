@@ -156,26 +156,26 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="../../../../com/dupedetective/data/Report.html" title="class in com.dupedetective.data">Report</a>&gt;</code></td>
+<td class="colFirst"><code>java.util.List&lt;<a href="../../../../com/dupedetective/com.dupedetective.data/Report.html" title="class in com.dupedetective.com.dupedetective.data">Report</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/dupedetective/web/controllers/ReportController.html#getAllReports--">getAllReports</a></span>()</code>
 <div class="block">Get all reports</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>org.springframework.http.ResponseEntity&lt;<a href="../../../../com/dupedetective/data/Report.html" title="class in com.dupedetective.data">Report</a>&gt;</code></td>
+<td class="colFirst"><code>org.springframework.http.ResponseEntity&lt;<a href="../../../../com/dupedetective/com.dupedetective.data/Report.html" title="class in com.dupedetective.com.dupedetective.data">Report</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/dupedetective/web/controllers/ReportController.html#getReportById-java.lang.String-">getReportById</a></span>(java.lang.String&nbsp;id)</code>
 <div class="block">Get a report by given id</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="../../../../com/dupedetective/data/Report.html" title="class in com.dupedetective.data">Report</a></code></td>
+<td class="colFirst"><code><a href="../../../../com/dupedetective/com.dupedetective.data/Report.html" title="class in com.dupedetective.com.dupedetective.data">Report</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/dupedetective/web/controllers/ReportController.html#getReportByIds-java.lang.String-java.lang.String-">getReportByIds</a></span>(java.lang.String&nbsp;refFileId,
               java.lang.String&nbsp;similarFileId)</code>
 <div class="block">Get Report by reference and similar file Id</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="../../../../com/dupedetective/data/Report.html" title="class in com.dupedetective.data">Report</a>&gt;</code></td>
+<td class="colFirst"><code>java.util.List&lt;<a href="../../../../com/dupedetective/com.dupedetective.data/Report.html" title="class in com.dupedetective.com.dupedetective.data">Report</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/dupedetective/web/controllers/ReportController.html#getReportsBySubmissionId-java.lang.String-">getReportsBySubmissionId</a></span>(java.lang.String&nbsp;submissionId)</code>
 <div class="block">Get a report by Submission id</div>
 </td>
@@ -226,7 +226,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getAllReports</h4>
 <pre>@GetMapping(value="/reports")
-public&nbsp;java.util.List&lt;<a href="../../../../com/dupedetective/data/Report.html" title="class in com.dupedetective.data">Report</a>&gt;&nbsp;getAllReports()</pre>
+public&nbsp;java.util.List&lt;<a href="../../../../com/dupedetective/com.dupedetective.data/Report.html" title="class in com.dupedetective.com.dupedetective.data">Report</a>&gt;&nbsp;getAllReports()</pre>
 <div class="block">Get all reports</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -241,7 +241,7 @@ public&nbsp;java.util.List&lt;<a href="../../../../com/dupedetective/data/Report
 <li class="blockList">
 <h4>getReportByIds</h4>
 <pre>@GetMapping(value="/reports/single")
-public&nbsp;<a href="../../../../com/dupedetective/data/Report.html" title="class in com.dupedetective.data">Report</a>&nbsp;getReportByIds(@RequestParam(value="refFileId",required=false)
+public&nbsp;<a href="../../../../com/dupedetective/com.dupedetective.data/Report.html" title="class in com.dupedetective.com.dupedetective.data">Report</a>&nbsp;getReportByIds(@RequestParam(value="refFileId",required=false)
                                                                   java.lang.String&nbsp;refFileId,
                                                                   @RequestParam(value="similarFileId",required=false)
                                                                   java.lang.String&nbsp;similarFileId)</pre>
@@ -262,7 +262,7 @@ public&nbsp;<a href="../../../../com/dupedetective/data/Report.html" title="clas
 <li class="blockList">
 <h4>getReportsBySubmissionId</h4>
 <pre>@GetMapping(value="/submissions/{id}/reports")
-public&nbsp;java.util.List&lt;<a href="../../../../com/dupedetective/data/Report.html" title="class in com.dupedetective.data">Report</a>&gt;&nbsp;getReportsBySubmissionId(@PathVariable(value="id")
+public&nbsp;java.util.List&lt;<a href="../../../../com/dupedetective/com.dupedetective.data/Report.html" title="class in com.dupedetective.com.dupedetective.data">Report</a>&gt;&nbsp;getReportsBySubmissionId(@PathVariable(value="id")
                                                                                                       java.lang.String&nbsp;submissionId)</pre>
 <div class="block">Get a report by Submission id</div>
 <dl>
@@ -280,7 +280,7 @@ public&nbsp;java.util.List&lt;<a href="../../../../com/dupedetective/data/Report
 <li class="blockList">
 <h4>getReportById</h4>
 <pre>@GetMapping(value="/reports/{id}")
-public&nbsp;org.springframework.http.ResponseEntity&lt;<a href="../../../../com/dupedetective/data/Report.html" title="class in com.dupedetective.data">Report</a>&gt;&nbsp;getReportById(@PathVariable(value="id")
+public&nbsp;org.springframework.http.ResponseEntity&lt;<a href="../../../../com/dupedetective/com.dupedetective.data/Report.html" title="class in com.dupedetective.com.dupedetective.data">Report</a>&gt;&nbsp;getReportById(@PathVariable(value="id")
                                                                                                         java.lang.String&nbsp;id)</pre>
 <div class="block">Get a report by given id</div>
 <dl>

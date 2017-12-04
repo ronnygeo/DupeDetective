@@ -6,13 +6,13 @@ import java.util.stream.Stream;
 /**
  * In an application the Data Access Object (DAO) is a part of Data access layer. It is an object
  * that provides an interface to some type of persistence mechanism. By mapping application calls
- * to the persistence layer, DAO provides some specific data operations without exposing details 
+ * to the persistence layer, DAO provides some specific com.dupedetective.data operations without exposing details
  * of the database. This isolation supports the Single responsibility principle. It separates what
- * data accesses the application needs, in terms of domain-specific objects and data types 
+ * com.dupedetective.data accesses the application needs, in terms of domain-specific objects and com.dupedetective.data types
  * (the public interface of the DAO), from how these needs can be satisfied with a specific DBMS,
  * database schema, etc.
  * 
- * <p>Any change in the way data is stored and retrieved will not change the client code as the 
+ * <p>Any change in the way com.dupedetective.data is stored and retrieved will not change the client code as the
  * client will be using interface and need not worry about exact source.
  * 
  * @see InMemoryCustomerDao

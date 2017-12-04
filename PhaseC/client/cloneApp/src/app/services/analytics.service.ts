@@ -29,7 +29,7 @@ export class AnalyticsService {
   }
 
   /**
-   * Train with the new data and get the prediction from server
+   * Train with the new com.dupedetective.data and get the prediction from server
    * @returns {Observable<Prediction>}
    */
   fitPredict(scores: number[], label: number): Observable<Prediction> {

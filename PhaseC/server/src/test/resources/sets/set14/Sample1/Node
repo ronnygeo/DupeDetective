@@ -1,10 +1,10 @@
 /* Class to represent Tree node */
 class Node {
-    int data;
+    int com.dupedetective.data;
     Node left, right;
  
     public Node(int item) {
-        data = item;
+        com.dupedetective.data = item;
         left = null;
         right = null;
     }

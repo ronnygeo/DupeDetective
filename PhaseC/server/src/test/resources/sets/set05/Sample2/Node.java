@@ -48,13 +48,13 @@ public class Node {
 		return this.p;
 	}
 
-	/* Function to set data to node */
+	/* Function to set com.dupedetective.data to node */
 
 	public void setVal(String d) {
 		this.data = d;
 	}
 
-	/* Function to get data from node */
+	/* Function to get com.dupedetective.data from node */
 	public String getVal() {
 		return this.data;
 	}
