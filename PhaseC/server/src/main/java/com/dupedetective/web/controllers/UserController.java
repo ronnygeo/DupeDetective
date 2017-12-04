@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * User controller
+ * Controller class which handles the get, post, put and delete requests for the User object
  */
 @RestController
 @RequestMapping("/api")
@@ -32,7 +32,7 @@ public class UserController {
     }
 
     /**
-     * Get user by username
+     * Method which returns a user with username same as the input username
      * @param username username
      * @param password password
      * @return User object

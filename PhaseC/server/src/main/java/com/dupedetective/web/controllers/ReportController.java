@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Report controller
+ * Controller class which handles the get, post, put and delete requests for the Report object
  */
 @RestController
 @RequestMapping("/api")
@@ -21,7 +21,7 @@ public class ReportController {
     ReportRepository reportRepository;
 
     /**
-     * Get all reports
+     * Method which returns a list of all the reports
      * @return List of Reports
      */
     @GetMapping("/reports")
