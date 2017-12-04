@@ -12,6 +12,8 @@ public class TestWinnow {
       Winnow nGram = new Winnow(one.getAbsolutePath(),two.getAbsolutePath());
 
       float similarity = nGram.getSimilarity();
+
+      System.out.println(similarity);
     }
     else {
       System.out.println("File not found");
