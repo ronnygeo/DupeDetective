@@ -33,12 +33,12 @@ public class WinnowEngine {
 
     calculateHash();
 
-    stub();
+    generateCodeFingerPrint();
 
     return fingerPrint;
   }
 
-  private void stub() {
+  private void generateCodeFingerPrint() {
     int processed_element = 0;
     int hash_relative_index = -1;
     LineIndex minimum_hash = kGramHash.get(0);
@@ -60,7 +60,7 @@ public class WinnowEngine {
         minimum_hash = window.get(0);
 
         for (int index = 0; index < window.size(); index++) {
-          if (window.get(index).lineNumber <= minimum_hash.lineNumber) {
+          if (window.get(index).value <= minimum_hash.value) {
             minimum_hash = window.get(index);
             hash_relative_index = index;
           }
@@ -68,7 +68,7 @@ public class WinnowEngine {
         fingerPrint.add(minimum_hash);
       } else {
         //check if the new element added to the window is lesser or equal
-        if (kGramHash.get(processed_element).lineNumber <= minimum_hash.lineNumber) {
+        if (kGramHash.get(processed_element).value <= minimum_hash.value) {
           minimum_hash = kGramHash.get(processed_element);
           fingerPrint.add(minimum_hash);
           hash_relative_index = GlobalConstants.WINDOW_SIZE - 1;
@@ -87,10 +87,10 @@ public class WinnowEngine {
     int highOrder = getHighOrder();
     int cLen = content.length();
     int hashCode = 0;
-    int begin_line = find_line(0);
-    int end_line = find_line(k);
+    int begin_line = getLineNumber(0);
+    int end_line = getLineNumber(k);
 
-    LineRange line_span = new LineRange(begin_line, end_line);
+    Range line_span = new Range(begin_line, end_line);
 
     for (int c = 0; c < k; c++) {
       hashCode = calcHashCode(hashCode, content.charAt(c));
@@ -100,10 +100,10 @@ public class WinnowEngine {
     for (int c = 0; c < (cLen - k); c++) {
       hashCode = calcHashCode(hashCode - content.charAt(c) * highOrder, content.charAt(c + k));
 
-      begin_line = find_line(c + 1);
-      end_line = find_line(c + k);
+      begin_line = getLineNumber(c + 1);
+      end_line = getLineNumber(c + k);
 
-      line_span = new LineRange(begin_line, end_line);
+      line_span = new Range(begin_line, end_line);
 
       kGramHash.add(new LineIndex(line_span, hashCode));
     }
@@ -124,7 +124,7 @@ public class WinnowEngine {
         totalLines++;
         continue;
       }
-      LineRange range = new LineRange(index, index + line.length() - 1);
+      Range range = new Range(index, index + line.length() - 1);
       lineIndex.add(new LineIndex(range, totalLines));
       index = index + line.length();
       totalLines++;
@@ -136,6 +136,11 @@ public class WinnowEngine {
         % GlobalConstants.PRIME);
   }
 
+  /**
+   * @param weight
+   * @param constant
+   * @return HashCode for given weight and constant
+   */
   private int calcHashCode(int weight, int constant) {
     int n = GlobalConstants.RADIX * weight + constant;
     int p = GlobalConstants.PRIME;
@@ -149,22 +154,27 @@ public class WinnowEngine {
     return hashCode;
   }
 
-  private int find_line(int index) {
-    int begin_index = 0;
-    int end_index = this.lineIndex.size() - 1;
+  /**
+   * @param index
+   * @return Line Number in the hash for that index
+   */
+  private int getLineNumber(int index) {
+    int start = 0;
+    int end = this.lineIndex.size() - 1;
 
-    while (begin_index <= end_index) {
+    // Use Binary search to find line number from lineIndex
+    while (start <= end) {
 
-      int mid = (begin_index + end_index) / 2;
+      int mid = (start + end) / 2;
 
-      LineIndex index_object = lineIndex.get(mid);
+      LineIndex li = lineIndex.get(mid);
 
-      if (index_object.range.start <= index && index <= index_object.range.end) {
-        return index_object.lineNumber;
-      } else if (index < index_object.range.start) {
-        end_index = mid - 1;
+      if (li.range.start <= index && index <= li.range.end) {
+        return li.value;
+      } else if (index < li.range.start) {
+        end = mid - 1;
       } else {
-        begin_index = mid + 1;
+        start = mid + 1;
       }
     }
 
@@ -176,42 +186,38 @@ public class WinnowEngine {
    */
   public class LineIndex {
 
-    int lineNumber;
-    LineRange range;
+    int value;
+    Range range;
 
-    public int getLineNumber() {
-      return lineNumber;
+    public int getValue() {
+      return value;
     }
 
-    public LineRange getRange() {
+    public Range getRange() {
       return range;
     }
 
-    public LineIndex(LineRange range, int number) {
+    public LineIndex(Range range, int number) {
       this.range = range;
-      this.lineNumber = number;
+      this.value = number;
     }
-
-
   }
 
   /**
-   * Custom Range class to keep track of starting and end index
+   * Custom Range class to keep track of starting and end index of lines in file
    */
-  public class LineRange {
+  public class Range {
 
     int start;
     int end;
 
-    public int getStart() {
-      return start;
-    }
+    public int getStart() { return start; }
 
     public int getEnd() {
       return end;
     }
 
-    public LineRange(int start, int end) {
+    public Range(int start, int end) {
       this.start = start;
       this.end = end;
     }

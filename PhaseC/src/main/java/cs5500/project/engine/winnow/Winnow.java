@@ -2,7 +2,7 @@ package cs5500.project.engine.winnow;
 
 import cs5500.project.engine.winnow.engine.WinnowEngine;
 import cs5500.project.engine.winnow.engine.WinnowEngine.LineIndex;
-import cs5500.project.engine.winnow.engine.WinnowEngine.LineRange;
+import cs5500.project.engine.winnow.engine.WinnowEngine.Range;
 import cs5500.project.engine.winnow.normalise.NormalisedFile;
 import java.io.IOException;
 import java.util.HashMap;
@@ -78,11 +78,11 @@ public class Winnow {
     Set<Integer> union = new HashSet<>();
 
     for (LineIndex li : sfp) {
-      union.add(li.getLineNumber());
+      union.add(li.getValue());
     }
 
     for (LineIndex li : dfp) {
-      union.add(li.getLineNumber());
+      union.add(li.getValue());
     }
     return union.size();
   }
@@ -90,14 +90,14 @@ public class Winnow {
   private float getIntersection(List<LineIndex> sfp, List<LineIndex> dfp) {
     float intersection = 0;
 
-    Map<Integer, LineRange> common = new HashMap<>();
+    Map<Integer, Range> common = new HashMap<>();
 
     for (LineIndex li : sfp) {
-      common.put(li.getLineNumber(), li.getRange());
+      common.put(li.getValue(), li.getRange());
     }
 
     for (LineIndex li : dfp) {
-      if (common.containsKey(li.getLineNumber())) {
+      if (common.containsKey(li.getValue())) {
         intersection++;
       }
     }
