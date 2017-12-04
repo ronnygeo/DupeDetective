@@ -958,7 +958,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--Navbar for home-->\n<nav class=\"navbar navbar-expand-lg navbar-light fixed-top\" id=\"homeNav\">\n  <div class=\"container\">\n    <a class=\"navbar-brand js-scroll-trigger\" routerLink=\"\">Dupe Detective</a>\n      <button (click)=\"isCollapsed = !isCollapsed\"\n              class=\"navbar-toggler pull-xs-right hidden-sm-up\" type=\"button\"\n              aria-controls=\"bd-main-nav\"\n              aria-label=\"Toggle navigation\">\n      <i class=\"fa fa-bars\"></i>\n    </button>\n    <div class=\"navbar-toggleable-xs navbar-collapse\" id=\"bd-main-nav\"\n         [attr.aria-expanded]=\"!isCollapsed\" [ngClass]=\"{collapse: isCollapsed}\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li (click)=\"isCollapsed = true\"  class=\"nav-item\" *ngIf=\"!isLoggedIn()\">\n          <a class=\"nav-link js-scroll-trigger\" routerLink=\"/\">Home</a>\n        </li>\n        <li (click)=\"isCollapsed = true\" class=\"nav-item\" *ngIf=\"isLoggedIn() && isGrader()\">\n        <a class=\"nav-link\" routerLink=\"/assignments\">Assignments</a>\n        </li>\n        <li (click)=\"isCollapsed = true\"  class=\"nav-item\" *ngIf=\"isLoggedIn() && isGrader()\">\n          <a class=\"nav-link js-scroll-trigger\" routerLink=\"/submissions\">Submissions</a>\n        </li>\n        <li (click)=\"isCollapsed = true\"  class=\"nav-item dropdown\"  ngbDropdown  *ngIf=\"!isLoggedIn()\">\n        <a class=\"nav-link dropdown-toggle\" routerLink=\"\" id=\"dropdown01\" data-toggle=\"dropdown\"\n           aria-haspopup=\"true\" aria-expanded=\"false\"\n           ngbDropdownToggle>Login/Signup</a>\n        <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\" ngbDropdownMenu>\n        <a class=\"dropdown-item\" routerLink=\"/login\">Login</a>\n        <a class=\"dropdown-item\" routerLink=\"/register\">Signup</a>\n        </div>\n        </li>\n        <li (click)=\"isCollapsed = true\"  class=\"nav-item\" *ngIf=\"isLoggedIn() && !isGrader()\">\n          <a class=\"nav-link js-scroll-trigger\" routerLink=\"/submissions/new\">Upload Assignment</a>\n        </li>\n        <li (click)=\"isCollapsed = true\" *ngIf=\"isLoggedIn()\" class=\"nav-item\">\n          <a class=\"nav-link js-scroll-trigger\"  href=\"\" (click)=\"logout()\">Logout</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n"
+module.exports = "<!--Navbar for home-->\n<nav class=\"navbar navbar-expand-lg navbar-light fixed-top\" id=\"homeNav\">\n  <div class=\"container\">\n    <a class=\"navbar-brand js-scroll-trigger\" routerLink=\"\">Dupe Detective</a>\n      <button (click)=\"isCollapsed = !isCollapsed\"\n              class=\"navbar-toggler pull-xs-right hidden-sm-up\" type=\"button\"\n              aria-controls=\"bd-main-nav\"\n              aria-label=\"Toggle navigation\">\n      <i class=\"fa fa-bars\"></i>\n    </button>\n    <div class=\"navbar-toggleable-xs navbar-collapse\" id=\"bd-main-nav\"\n         [attr.aria-expanded]=\"!isCollapsed\" [ngClass]=\"{collapse: isCollapsed}\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li (click)=\"isCollapsed = true\"  class=\"nav-item\" *ngIf=\"!isLoggedIn()\">\n          <a class=\"nav-link js-scroll-trigger\" routerLink=\"/\">Home</a>\n        </li>\n        <li (click)=\"isCollapsed = true\" class=\"nav-item\" *ngIf=\"isLoggedIn() && isGrader()\">\n        <a class=\"nav-link\" routerLink=\"/assignments\">Assignments</a>\n        </li>\n        <li (click)=\"isCollapsed = true\"  class=\"nav-item\" *ngIf=\"isLoggedIn() && isGrader()\">\n          <a class=\"nav-link js-scroll-trigger\" routerLink=\"/submissions\">Submissions</a>\n        </li>\n        <li (click)=\"isCollapsed = true\"  class=\"nav-item dropdown\"  ngbDropdown  *ngIf=\"!isLoggedIn()\">\n        <a class=\"nav-link dropdown-toggle\" routerLink=\"\" id=\"dropdown01\" com.dupedetective.data-toggle=\"dropdown\"\n           aria-haspopup=\"true\" aria-expanded=\"false\"\n           ngbDropdownToggle>Login/Signup</a>\n        <div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\" ngbDropdownMenu>\n        <a class=\"dropdown-item\" routerLink=\"/login\">Login</a>\n        <a class=\"dropdown-item\" routerLink=\"/register\">Signup</a>\n        </div>\n        </li>\n        <li (click)=\"isCollapsed = true\"  class=\"nav-item\" *ngIf=\"isLoggedIn() && !isGrader()\">\n          <a class=\"nav-link js-scroll-trigger\" routerLink=\"/submissions/new\">Upload Assignment</a>\n        </li>\n        <li (click)=\"isCollapsed = true\" *ngIf=\"isLoggedIn()\" class=\"nav-item\">\n          <a class=\"nav-link js-scroll-trigger\"  href=\"\" (click)=\"logout()\">Logout</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -1372,7 +1372,7 @@ var ReportComponent = (function () {
      */
     ReportComponent.prototype.generateDownloadUrl = function () {
         var theJSON = JSON.stringify(this.selectedReport);
-        this.downloadLink = this.sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(theJSON));
+        this.downloadLink = this.sanitizer.bypassSecurityTrustUrl("com.dupedetective.data:text/json;charset=UTF-8," + encodeURIComponent(theJSON));
     };
     /**
      * Go back to previous page
@@ -1798,7 +1798,7 @@ var AnalyticsService = (function () {
         return this.http.post(this.predictUrl, data);
     };
     /**
-     * Train with the new data and get the prediction from server
+     * Train with the new com.dupedetective.data and get the prediction from server
      * @returns {Observable<Prediction>}
      */
     AnalyticsService.prototype.fitPredict = function (scores, label) {
@@ -2085,12 +2085,12 @@ var SubmissionService = (function () {
     };
     /**
      * Upload the given submission to server
-     * @param data form data
+     * @param data form com.dupedetective.data
      * @returns {Observable<any | any>}
      */
     SubmissionService.prototype.uploadSubmission = function (data) {
         // It is very important to leave the Content-Type empty
-        // do not use headers.append('Content-Type', 'multipart/form-data');
+        // do not use headers.append('Content-Type', 'multipart/form-com.dupedetective.data');
         return this.http.post("" + this.submissionUrl, JSON.stringify(data), httpOptions)
             .pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["a" /* catchError */])(this.handleError('uploadSubmission')));
     };

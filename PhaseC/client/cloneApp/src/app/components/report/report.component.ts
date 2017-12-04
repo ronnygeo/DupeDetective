@@ -201,7 +201,7 @@ export class ReportComponent implements OnInit {
    */
   generateDownloadUrl() {
     const theJSON = JSON.stringify(this.selectedReport);
-    this.downloadLink = this.sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(theJSON));
+    this.downloadLink = this.sanitizer.bypassSecurityTrustUrl("com.dupedetective.data:text/json;charset=UTF-8," + encodeURIComponent(theJSON));
   }
 
   /**

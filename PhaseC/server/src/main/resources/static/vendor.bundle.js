@@ -1160,7 +1160,7 @@ var NGB_DATEPICKER_VALIDATOR = {
 };
 /**
  * A directive that makes it possible to have datepickers on input fields.
- * Manages integration with the input field itself (data entry) and ngModel (validation etc.).
+ * Manages integration with the input field itself (com.dupedetective.data entry) and ngModel (validation etc.).
  */
 var NgbInputDatepicker = (function () {
     function NgbInputDatepicker(_parserFormatter, _elRef, _vcRef, _renderer, _cfr, ngZone, _service, _calendar) {
@@ -6153,7 +6153,7 @@ function cssWithMappingToString(item, useSourceMap) {
 function toComment(sourceMap) {
 	// eslint-disable-next-line no-undef
 	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+	var data = 'sourceMappingURL=com.dupedetective.data:application/json;charset=utf-8;base64,' + base64;
 
 	return '/*# ' + data + ' */';
 }
@@ -7164,7 +7164,7 @@ var ReplayEvent = /*@__PURE__*/ (/*@__PURE__*/ function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Scheduler; });
 /**
- * An execution context and a data structure to order tasks and schedule their
+ * An execution context and a com.dupedetective.data structure to order tasks and schedule their
  * execution. Provides a notion of (potentially virtual) time, through the
  * `now()` getter method.
  *
@@ -7199,7 +7199,7 @@ var Scheduler = /*@__PURE__*/ (/*@__PURE__*/ function () {
      * task, or some unit of work to be executed by the Scheduler.
      * @param {number} [delay] Time to wait before executing the work, where the
      * time unit is implicit and defined by the Scheduler itself.
-     * @param {T} [state] Some contextual data that the `work` function uses when
+     * @param {T} [state] Some contextual com.dupedetective.data that the `work` function uses when
      * called by the Scheduler.
      * @return {Subscription} A subscription in order to be able to unsubscribe
      * the scheduled work.
@@ -8938,7 +8938,7 @@ var FromObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
      *
      * <img src="./img/from.png" width="100%">
      *
-     * Convert various other objects and data types into Observables. `from`
+     * Convert various other objects and com.dupedetective.data types into Observables. `from`
      * converts a Promise or an array-like or an
      * [iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#iterable)
      * object into an Observable that emits the items in that promise or array or
@@ -10681,7 +10681,7 @@ function reduce(accumulator, seed) {
 
 /**
  * Returns a new Observable that multicasts (shares) the original Observable. As long as there is at least one
- * Subscriber this Observable will be subscribed and emitting data. When all subscribers have unsubscribed it will
+ * Subscriber this Observable will be subscribed and emitting com.dupedetective.data. When all subscribers have unsubscribed it will
  * unsubscribe from the source Observable. Because the Observable is multicasting it makes the stream `hot`.
  *
  * This behaves similarly to .publish().refCount(), with a behavior difference when the source observable emits complete.
@@ -14740,7 +14740,7 @@ var __extends = (this && this.__extends) || function (d, b) {
  * //
  * // [ { id: 3, name: 'qfs3' } ]
  *
- * @example <caption>Pivot data on the id field</caption>
+ * @example <caption>Pivot com.dupedetective.data on the id field</caption>
  * Observable.of<Obj>({id: 1, name: 'aze1'},
  *                    {id: 2, name: 'sf2'},
  *                    {id: 2, name: 'dg2'},
@@ -18420,7 +18420,7 @@ function shareSubjectFactory() {
 }
 /**
  * Returns a new Observable that multicasts (shares) the original Observable. As long as there is at least one
- * Subscriber this Observable will be subscribed and emitting data. When all subscribers have unsubscribed it will
+ * Subscriber this Observable will be subscribed and emitting com.dupedetective.data. When all subscribers have unsubscribed it will
  * unsubscribe from the source Observable. Because the Observable is multicasting it makes the stream `hot`.
  * This is an alias for .multicast(() => new Subject()).refCount().
  *
@@ -21839,7 +21839,7 @@ var Action = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
      * Schedules this action on its parent Scheduler for execution. May be passed
      * some context object, `state`. May happen at some point in the future,
      * according to the `delay` parameter, if specified.
-     * @param {T} [state] Some contextual data that the `work` function uses when
+     * @param {T} [state] Some contextual com.dupedetective.data that the `work` function uses when
      * called by the Scheduler.
      * @param {number} [delay] Time to wait before executing the work, where the
      * time unit is implicit and defined by the Scheduler.
@@ -24540,7 +24540,7 @@ function _stripIndexHtml(url) {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * \@whatItDoes Use URL hash for storing application location data.
+ * \@whatItDoes Use URL hash for storing application location com.dupedetective.data.
  * \@description
  * `HashLocationStrategy` is a {\@link LocationStrategy} used to configure the
  * {\@link Location} service to represent its state in the
@@ -24694,7 +24694,7 @@ var HashLocationStrategy = (function (_super) {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * \@whatItDoes Use URL for storing application location data.
+ * \@whatItDoes Use URL for storing application location com.dupedetective.data.
  * \@description
  * `PathLocationStrategy` is a {\@link LocationStrategy} used to configure the
  * {\@link Location} service to represent its state in the
@@ -25027,8 +25027,8 @@ var localeEn = [
  */
 var LOCALE_DATA = {};
 /**
- * Register global data to be used internally by Angular. See the
- * {\@linkDocs guide/i18n#i18n-pipes "I18n guide"} to know how to import additional locale data.
+ * Register global com.dupedetective.data to be used internally by Angular. See the
+ * {\@linkDocs guide/i18n#i18n-pipes "I18n guide"} to know how to import additional locale com.dupedetective.data.
  *
  * \@experimental i18n support is experimental.
  * @param {?} data
@@ -25446,7 +25446,7 @@ function getLocalePluralCase(locale) {
  */
 function checkFullData(data) {
     if (!data[18 /* ExtraData */]) {
-        throw new Error("Missing extra locale data for the locale \"" + data[0 /* LocaleId */] + "\". Use \"registerLocaleData\" to load new data. See the \"I18n guide\" on angular.io to know more.");
+        throw new Error("Missing extra locale com.dupedetective.data for the locale \"" + data[0 /* LocaleId */] + "\". Use \"registerLocaleData\" to load new com.dupedetective.data. See the \"I18n guide\" on angular.io to know more.");
     }
 }
 /**
@@ -25458,9 +25458,9 @@ function checkFullData(data) {
  * first rule is applied to the first day period and so on.
  * You should fallback to AM/PM when there are no rules available.
  *
- * Note: this is only available if you load the full locale data.
+ * Note: this is only available if you load the full locale com.dupedetective.data.
  * See the {\@linkDocs guide/i18n#i18n-pipes "I18n guide"} to know how to import additional locale
- * data.
+ * com.dupedetective.data.
  *
  * \@experimental i18n support is experimental.
  * @param {?} locale
@@ -25484,9 +25484,9 @@ function getLocaleExtraDayPeriodRules(locale) {
  * use.
  * You should fallback to AM/PM when there are no day periods available.
  *
- * Note: this is only available if you load the full locale data.
+ * Note: this is only available if you load the full locale com.dupedetective.data.
  * See the {\@linkDocs guide/i18n#i18n-pipes "I18n guide"} to know how to import additional locale
- * data.
+ * com.dupedetective.data.
  *
  * \@experimental i18n support is experimental.
  * @param {?} locale
@@ -25507,8 +25507,8 @@ function getLocaleExtraDayPeriods(locale, formStyle, width) {
 /**
  * Returns the first value that is defined in an array, going backwards.
  *
- * To avoid repeating the same data (e.g. when "format" and "standalone" are the same) we only
- * add the first one to the locale data arrays, the other ones are only defined when different.
+ * To avoid repeating the same com.dupedetective.data (e.g. when "format" and "standalone" are the same) we only
+ * add the first one to the locale com.dupedetective.data arrays, the other ones are only defined when different.
  * We use this function to retrieve the first defined value.
  *
  * \@experimental i18n support is experimental.
@@ -25523,7 +25523,7 @@ function getLastDefinedValue(data, index) {
             return data[i];
         }
     }
-    throw new Error('Locale data API: locale data undefined');
+    throw new Error('Locale com.dupedetective.data API: locale com.dupedetective.data undefined');
 }
 /**
  * Extract the hours and minutes from a string like "15:45"
@@ -25535,7 +25535,7 @@ function extractTime(time) {
     return { hours: +h, minutes: +m };
 }
 /**
- * Finds the locale data for a locale id
+ * Finds the locale com.dupedetective.data for a locale id
  *
  * \@experimental i18n support is experimental.
  * @param {?} locale
@@ -25556,7 +25556,7 @@ function findLocaleData(locale) {
     if (parentLocale === 'en') {
         return localeEn;
     }
-    throw new Error("Missing locale data for the locale \"" + locale + "\".");
+    throw new Error("Missing locale com.dupedetective.data for the locale \"" + locale + "\".");
 }
 /**
  * Return the currency symbol for a given currency code, or the code if no symbol available
@@ -25678,7 +25678,7 @@ var NgLocaleLocalization = (function (_super) {
 /**
  * Returns the plural case based on the locale
  *
- * @deprecated from v5 the plural case function is in locale data files common/locales/*.ts
+ * @deprecated from v5 the plural case function is in locale com.dupedetective.data files common/locales/*.ts
  * \@experimental
  * @param {?} locale
  * @param {?} nLike
@@ -26526,9 +26526,9 @@ var NgForOfContext = (function () {
  * be animated in, deleted rows can be animated out, and unchanged rows retain any unsaved state
  * such as user input.
  *
- * It is possible for the identities of elements in the iterator to change while the data does not.
+ * It is possible for the identities of elements in the iterator to change while the com.dupedetective.data does not.
  * This can happen, for example, if the iterator produced from an RPC to the server, and that
- * RPC is re-run. Even if the data hasn't changed, the second response will produce objects with
+ * RPC is re-run. Even if the com.dupedetective.data hasn't changed, the second response will produce objects with
  * different identities, and Angular will tear down the entire DOM and rebuild it (as if all old
  * elements were deleted and all new elements inserted). This is an expensive operation and should
  * be avoided if possible.
@@ -26766,7 +26766,7 @@ function getTypeNameForDebugging(type) {
  *
  * A common pattern is that we need to show a set of properties from the same object. If the
  * object is undefined, then we have to use the safe-traversal-operator `?.` to guard against
- * dereferencing a `null` value. This is especially the case when waiting on async data such as
+ * dereferencing a `null` value. This is especially the case when waiting on async com.dupedetective.data such as
  * when using the `async` pipe as shown in following example:
  *
  * ```
@@ -26776,7 +26776,7 @@ function getTypeNameForDebugging(type) {
  * There are several inefficiencies in the above example:
  *  - We create multiple subscriptions on `userStream`. One for each `async` pipe, or two in the
  *    example above.
- *  - We cannot display an alternative screen while waiting for the data to arrive asynchronously.
+ *  - We cannot display an alternative screen while waiting for the com.dupedetective.data to arrive asynchronously.
  *  - We have to use the safe-traversal-operator `?.` to access properties, which is cumbersome.
  *  - We have to place the `async` pipe in parenthesis.
  *
@@ -26790,8 +26790,8 @@ function getTypeNameForDebugging(type) {
  *  - `ngIf` stores the result of the `userStream|async` in the local variable `user`.
  *  - The local `user` can then be bound repeatedly in a more efficient way.
  *  - No need to use the safe-traversal-operator `?.` to access properties as `ngIf` will only
- *    display the data if `userStream` returns a value.
- *  - We can display an alternative template while waiting for the data.
+ *    display the com.dupedetective.data if `userStream` returns a value.
+ *  - We can display an alternative template while waiting for the com.dupedetective.data.
  *
  * ### Syntax
  *
@@ -28229,7 +28229,7 @@ function getDateFormatter(format) {
         case 'O':
         case 'OO':
         case 'OOO':
-        // Should be location, but fallback to format O instead because we don't have the data yet
+        // Should be location, but fallback to format O instead because we don't have the com.dupedetective.data yet
         case 'z':
         case 'zz':
         case 'zzz':
@@ -28238,7 +28238,7 @@ function getDateFormatter(format) {
         // Timezone GMT long format (GMT+0430)
         case 'OOOO':
         case 'ZZZZ':
-        // Should be location, but fallback to format O instead because we don't have the data yet
+        // Should be location, but fallback to format O instead because we don't have the com.dupedetective.data yet
         case 'zzzz':
             formatter = timeZoneGetter(ZoneWidth.Long);
             break;
@@ -28408,13 +28408,13 @@ var ISO8601_DATE_REGEX = /^(\d{4})-?(\d\d)-?(\d\d)(?:T(\d\d)(?::?(\d\d)(?::?(\d\
  * applied and the formatted text will have the same day, month and year of the expression.
  *
  * WARNINGS:
- * - this pipe has only access to en-US locale data by default. If you want to localize the dates
- *   in another language, you will have to import data for other locales.
+ * - this pipe has only access to en-US locale com.dupedetective.data by default. If you want to localize the dates
+ *   in another language, you will have to import com.dupedetective.data for other locales.
  *   See the {\@linkDocs guide/i18n#i18n-pipes "I18n guide"} to know how to import additional locale
- *   data.
+ *   com.dupedetective.data.
  * - Fields suffixed with * are only available in the extra dataset.
  *   See the {\@linkDocs guide/i18n#i18n-pipes "I18n guide"} to know how to import extra locale
- *   data.
+ *   com.dupedetective.data.
  * - this pipe is marked as pure hence it will not be re-evaluated when the input is mutated.
  *   Instead users should treat the date as an immutable object and change the reference when the
  *   pipe needs to re-run (this is to avoid reformatting the date on every change detection run
@@ -31400,7 +31400,7 @@ var HttpRequest = (function () {
          * The request body, or `null` if one isn't set.
          *
          * Bodies are not enforced to be immutable, as they can include a reference to any
-         * user-defined data type. However, interceptors should take care to preserve
+         * user-defined com.dupedetective.data type. However, interceptors should take care to preserve
          * idempotence by treating them as such.
          */
         this.body = null;
@@ -31560,7 +31560,7 @@ var HttpRequest = (function () {
         if (isArrayBuffer(this.body)) {
             return null;
         }
-        // Technically, strings could be a form of JSON data, but it's safe enough
+        // Technically, strings could be a form of JSON com.dupedetective.data, but it's safe enough
         // to assume they're plain strings.
         if (typeof this.body === 'string') {
             return 'text/plain';
@@ -31748,7 +31748,7 @@ var HttpResponseBase = (function () {
     return HttpResponseBase;
 }());
 /**
- * A partial HTTP response which only includes the status and header data,
+ * A partial HTTP response which only includes the status and header com.dupedetective.data,
  * but no response body.
  *
  * `HttpHeaderResponse` is a `HttpEvent` available on the response
@@ -32545,7 +32545,7 @@ var JsonpClientBackend = (function () {
                 if (cancelled) {
                     return;
                 }
-                // Set state to indicate data was received.
+                // Set state to indicate com.dupedetective.data was received.
                 body = data;
                 finished = true;
             };
@@ -32794,7 +32794,7 @@ var HttpXhrBackend = (function () {
                 // JSON responses need to be processed as text. This is because if the server
                 // returns an XSSI-prefixed JSON response, the browser will fail to parse it,
                 // xhr.response will be null, and xhr.responseText cannot be accessed to
-                // retrieve the prefixed JSON data in order to strip the prefix. Thus, all JSON
+                // retrieve the prefixed JSON com.dupedetective.data in order to strip the prefix. Thus, all JSON
                 // is parsed by first requesting text and then applying JSON.parse.
                 xhr.responseType = /** @type {?} */ (((responseType !== 'json') ? responseType : 'text'));
             }
@@ -32804,7 +32804,7 @@ var HttpXhrBackend = (function () {
             // in two events - the HttpHeaderResponse event and the full HttpResponse
             // event. However, since response headers don't change in between these
             // two events, it doesn't make sense to parse them twice. So headerResponse
-            // caches the data extracted from the response whenever it's first parsed,
+            // caches the com.dupedetective.data extracted from the response whenever it's first parsed,
             // to ensure parsing isn't duplicated.
             var /** @type {?} */ headerResponse = null;
             // partialFromXhr extracts the HttpHeaderResponse from the current XMLHttpRequest
@@ -32829,7 +32829,7 @@ var HttpXhrBackend = (function () {
             // emit. This allows them to be unregistered as event listeners later.
             // First up is the load event, which represents a response being fully available.
             var /** @type {?} */ onLoad = function () {
-                // Read response state from the memoized partial data.
+                // Read response state from the memoized partial com.dupedetective.data.
                 var _a = partialFromXhr(), headers = _a.headers, status = _a.status, statusText = _a.statusText, url = _a.url;
                 // The body will be read out if present.
                 var /** @type {?} */ body = null;
@@ -32844,7 +32844,7 @@ var HttpXhrBackend = (function () {
                 // ok determines whether the response will be transmitted on the event or
                 // error channel. Unsuccessful status codes (not 2xx) will always be errors,
                 // but a successful status code can still result in an error if the user
-                // asked for JSON data and the body cannot be parsed as such.
+                // asked for JSON com.dupedetective.data and the body cannot be parsed as such.
                 var /** @type {?} */ ok = status >= 200 && status < 300;
                 // Check whether the body needs to be parsed as JSON (in many cases the browser
                 // will have done that already).
@@ -35053,8 +35053,8 @@ CompileSummaryKind[CompileSummaryKind.Directive] = "Directive";
 CompileSummaryKind[CompileSummaryKind.NgModule] = "NgModule";
 CompileSummaryKind[CompileSummaryKind.Injectable] = "Injectable";
 /**
- * A CompileSummary is the data needed to use a directive / pipe / module
- * in other modules / components. However, this data is not enough to compile
+ * A CompileSummary is the com.dupedetective.data needed to use a directive / pipe / module
+ * in other modules / components. However, this com.dupedetective.data is not enough to compile
  * the directive / module itself.
  * @record
  */
@@ -53630,7 +53630,7 @@ var NgModuleResolver = (function () {
  */
 // https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit
 var VERSION$1 = 3;
-var JS_B64_PREFIX = '# sourceMappingURL=data:application/json;base64,';
+var JS_B64_PREFIX = '# sourceMappingURL=com.dupedetective.data:application/json;base64,';
 var SourceMapGenerator = (function () {
     function SourceMapGenerator(file) {
         if (file === void 0) { file = null; }
@@ -55480,7 +55480,7 @@ registerContext(SecurityContext.RESOURCE_URL, [
     'link|href',
     'media|src',
     'object|codebase',
-    'object|data',
+    'object|com.dupedetective.data',
     'script|src',
 ]);
 
@@ -55607,7 +55607,7 @@ var SCHEMA = [
     'meter^[HTMLElement]|#high,#low,#max,#min,#optimum,#value',
     'ins,del^[HTMLElement]|cite,dateTime',
     'ol^[HTMLElement]|!compact,!reversed,#start,type',
-    'object^[HTMLElement]|align,archive,border,code,codeBase,codeType,data,!declare,height,#hspace,name,standby,type,useMap,#vspace,width',
+    'object^[HTMLElement]|align,archive,border,code,codeBase,codeType,com.dupedetective.data,!declare,height,#hspace,name,standby,type,useMap,#vspace,width',
     'optgroup^[HTMLElement]|!disabled,label',
     'option^[HTMLElement]|!defaultSelected,!disabled,label,!selected,text,value',
     'output^[HTMLElement]|defaultValue,%htmlFor,name,value',
@@ -55701,7 +55701,7 @@ var SCHEMA = [
     ':svg:title^:svg:|',
     ':svg:use^:svg:graphics|',
     ':svg:view^:svg:|#zoomAndPan',
-    'data^[HTMLElement]|value',
+    'com.dupedetective.data^[HTMLElement]|value',
     'keygen^[HTMLElement]|!autofocus,challenge,!disabled,form,keytype,name',
     'menuitem^[HTMLElement]|type,label,icon,!disabled,!checked,radiogroup,!default',
     'summary^[HTMLElement]|',
@@ -62207,10 +62207,10 @@ var ToJsonSerializer = (function (_super) {
                 // We need to keep e.g. the ctor args, method names, method decorators
                 // so that the class can be extended in another compilation unit.
                 // We don't keep the class decorators as
-                // 1) they refer to data
+                // 1) they refer to com.dupedetective.data
                 //   that should not cause a rebuild of downstream compilation units
                 //   (e.g. inline templates of @Component, or @NgModule.declarations)
-                // 2) their data is already captured in TypeSummaries, e.g. DirectiveSummary.
+                // 2) their com.dupedetective.data is already captured in TypeSummaries, e.g. DirectiveSummary.
                 var /** @type {?} */ clone_1 = {};
                 Object.keys(metadata_1).forEach(function (propName) {
                     if (propName !== 'decorators') {
@@ -62250,7 +62250,7 @@ var ToJsonSerializer = (function (_super) {
         if (!unprocessedSummary.type && summary.type) {
             unprocessedSummary.type = summary.type;
             // Note: We don't add the summaries of all referenced symbols as for the ResolvedSymbols,
-            // as the type summaries already contain the transitive data that they require
+            // as the type summaries already contain the transitive com.dupedetective.data that they require
             // (in a minimal way).
             processedSummary.type = this.processValue(summary.type, 0 /* None */);
             // except for reexported directives / pipes, so we need to store
@@ -66864,7 +66864,7 @@ var JitEmitterVisitor = (function (_super) {
  * ready for linking into an application.
  *
  * \@security When compiling templates at runtime, you must ensure that the entire template comes
- * from a trusted source. Attacker-controlled data introduced by a template could expose your
+ * from a trusted source. Attacker-controlled com.dupedetective.data introduced by a template could expose your
  * application to XSS risks.  For more detail, see the [Security Guide](http://g.co/ng/security).
  */
 var JitCompiler = (function () {
@@ -67376,7 +67376,7 @@ function createOutputContext() {
  * @suppress {checkTypes} checked by tsc
  */
 /**
- * Provides access to reflection data about symbols that the compiler needs.
+ * Provides access to reflection com.dupedetective.data about symbols that the compiler needs.
  * @abstract
  */
 var CompileReflector = (function () {
@@ -67481,7 +67481,7 @@ function getUrlScheme(url) {
  * @param {?=} opt_port The port number.
  * @param {?=} opt_path The path, already URI-encoded.  If it is not
  *     empty, it must begin with a slash.
- * @param {?=} opt_queryData The URI-encoded query data.
+ * @param {?=} opt_queryData The URI-encoded query com.dupedetective.data.
  * @param {?=} opt_fragment The URI-encoded fragment identifier.
  * @return {?} The fully combined URI.
  */
@@ -70357,7 +70357,7 @@ function getParentCtor(ctor) {
  * @suppress {checkTypes} checked by tsc
  */
 /**
- * Provides access to reflection data about symbols. Used internally by Angular
+ * Provides access to reflection com.dupedetective.data about symbols. Used internally by Angular
  * to power dependency injection and compilation.
  */
 var Reflector = (function () {
@@ -73240,7 +73240,7 @@ var ALLOW_MULTIPLE_PLATFORMS = new InjectionToken('AllowMultipleToken');
  *
  * One important assertion this disables verifies that a change detection pass
  * does not result in additional changes to any bindings (also known as
- * unidirectional data flow).
+ * unidirectional com.dupedetective.data flow).
  *
  * \@stable
  * @return {?}
@@ -77177,7 +77177,7 @@ var defaultKeyValueDiffers = new KeyValueDiffers(keyValDiff);
 /**
  * @module
  * @description
- * Change detection enables data binding in Angular.
+ * Change detection enables com.dupedetective.data binding in Angular.
  */
 
 /**
@@ -77441,7 +77441,7 @@ var Sanitizer = (function () {
  */
 
 /**
- * View instance data.
+ * View instance com.dupedetective.data.
  * Attention: Adding fields to this is performance sensitive!
  * @record
  */
@@ -81571,7 +81571,7 @@ function createViewNodes(view) {
                 break;
             case 8 /* TypeNgContent */:
                 appendNgContent(view, renderHost, nodeDef);
-                // no runtime data needed for NgContent...
+                // no runtime com.dupedetective.data needed for NgContent...
                 nodeData = undefined;
                 break;
         }
@@ -82918,7 +82918,7 @@ var DebugRenderer2 = (function () {
     function DebugRenderer2(delegate) {
         this.delegate = delegate;
     }
-    Object.defineProperty(DebugRenderer2.prototype, "data", {
+    Object.defineProperty(DebugRenderer2.prototype, "com.dupedetective.data", {
         get: /**
          * @return {?}
          */
@@ -83489,7 +83489,7 @@ var NgModuleFactory_ = (function (_super) {
  * {\@link transition transition} entries that will be evaluated when the expression
  * bound to the trigger changes.
  *
- * Triggers are registered within the component annotation data under the
+ * Triggers are registered within the component annotation com.dupedetective.data under the
  * {\@link Component#animations animations section}. An animation trigger can be placed on an element
  * within a template by referencing the name of the trigger followed by the expression value that
  * the
@@ -83605,7 +83605,7 @@ function trigger$1(name, definitions) {
  * Component#animations component animations metadata page} to gain a better understanding of
  * how animations in Angular are used.
  *
- * `animate` specifies an animation step that will apply the provided `styles` data for a given
+ * `animate` specifies an animation step that will apply the provided `styles` com.dupedetective.data for a given
  * amount of time based on the provided `timing` expression value. Calls to `animate` are expected
  * to be used within {\@link sequence an animation sequence}, {\@link group group}, or {\@link
  * transition transition}.
@@ -83619,13 +83619,13 @@ function trigger$1(name, definitions) {
  * (therefore a value such as `1s 100ms ease-out` will be parse itself into `duration=1000,
  * delay=100, easing=ease-out`. If a numeric value is provided then that will be used as the
  * `duration` value in millisecond form.
- * - `styles` is the style input data which can either be a call to {\@link style style} or {\@link
+ * - `styles` is the style input com.dupedetective.data which can either be a call to {\@link style style} or {\@link
  * keyframes keyframes}. If left empty then the styles from the destination state will be collected
  * and used (this is useful when describing an animation step that will complete an animation by
  * {\@link transition#the-final-animate-call animating to the final state}).
  *
  * ```typescript
- * // various functions for specifying timing data
+ * // various functions for specifying timing com.dupedetective.data
  * animate(500, style(...))
  * animate("1s", style(...))
  * animate("100ms 0.5s", style(...))
@@ -83666,7 +83666,7 @@ function animate$1(timings, styles) {
  *
  * ### Usage
  *
- * The `steps` data that is passed into the `group` animation function can either consist of {\@link
+ * The `steps` com.dupedetective.data that is passed into the `group` animation function can either consist of {\@link
  * style style} or {\@link animate animate} function calls. Each call to `style()` or `animate()`
  * within a group will be executed instantly (use {\@link keyframes keyframes} or a {\@link
  * animate#usage animate() with a delay value} to offset styles to be applied at a later time).
@@ -83696,7 +83696,7 @@ function group$1(steps, options) {
  * how animations in Angular are used.
  *
  * `sequence` Specifies a list of animation steps that are run one by one. (`sequence` is used by
- * default when an array is passed as animation data into {\@link transition transition}.)
+ * default when an array is passed as animation com.dupedetective.data into {\@link transition transition}.)
  *
  * The `sequence` function can either be used within a {\@link group group} or a {\@link transition
  * transition} and it will only continue to the next instruction once each of the inner animation
@@ -83707,10 +83707,10 @@ function group$1(steps, options) {
  *
  * ### Usage
  *
- * The `steps` data that is passed into the `sequence` animation function can either consist of
+ * The `steps` com.dupedetective.data that is passed into the `sequence` animation function can either consist of
  * {\@link style style} or {\@link animate animate} function calls. A call to `style()` will apply the
- * provided styling data immediately while a call to `animate()` will apply its styling data over a
- * given time depending on its timing data.
+ * provided styling com.dupedetective.data immediately while a call to `animate()` will apply its styling com.dupedetective.data over a
+ * given time depending on its timing com.dupedetective.data.
  *
  * ```typescript
  * sequence([
@@ -83737,12 +83737,12 @@ function sequence$1(steps, options) {
  * how animations in Angular are used.
  *
  * `style` declares a key/value object containing CSS properties/styles that can then be used for
- * {\@link state animation states}, within an {\@link sequence animation sequence}, or as styling data
+ * {\@link state animation states}, within an {\@link sequence animation sequence}, or as styling com.dupedetective.data
  * for both {\@link animate animate} and {\@link keyframes keyframes}.
  *
  * ### Usage
  *
- * `style` takes in a key/value string map as data and expects one or more CSS property/value pairs
+ * `style` takes in a key/value string map as com.dupedetective.data and expects one or more CSS property/value pairs
  * to be defined.
  *
  * ```typescript
@@ -83756,7 +83756,7 @@ function sequence$1(steps, options) {
  * #### Auto-styles (using `*`)
  *
  * When an asterix (`*`) character is used as a value then it will be detected from the element
- * being animated and applied as animation data when the animation starts.
+ * being animated and applied as animation com.dupedetective.data when the animation starts.
  *
  * This feature proves useful for a state depending on layout and/or environment factors; in such
  * cases the styles are calculated just before the animation starts.
@@ -83808,7 +83808,7 @@ function style$1(tokens) {
  * within the given trigger.
  *
  * - `stateNameExpr` can be one or more state names separated by commas.
- * - `styles` refers to the {\@link style styling data} that will be persisted on the element once
+ * - `styles` refers to the {\@link style styling com.dupedetective.data} that will be persisted on the element once
  * the state has been reached.
  *
  * ```typescript
@@ -83955,7 +83955,7 @@ function keyframes$1(steps) {
  * #### The final `animate` call
  *
  * If the final step within the transition steps is a call to `animate()` that **only** uses a
- * timing value with **no style data** then it will be automatically used as the final animation arc
+ * timing value with **no style com.dupedetective.data** then it will be automatically used as the final animation arc
  * for the element to animate itself to the final state. This involves an automatic mix of
  * adding/removing CSS styles so that the element will be in the exact state it should be for the
  * applied state to be presented correctly.
@@ -84211,7 +84211,7 @@ function transition$1(stateChangeExpr, steps, options) {
  * ## The first frame of child animations
  * When sub animations are executed using `animateChild` the animation engine will always apply the
  * first frame of every sub animation immediately at the start of the animation sequence. This way
- * the parent animation does not need to set any initial styling data on the sub elements before the
+ * the parent animation does not need to set any initial styling com.dupedetective.data on the sub elements before the
  * sub animations kick off.
  *
  * In the example above the first frame of the `childAnimation`'s `false => true` transition
@@ -85014,13 +85014,13 @@ var AbstractControlDirective = (function () {
         return this.control ? this.control.hasError(errorCode, path) : false;
     };
     /**
-     * Returns error data if the control with the given path has the error specified. Otherwise
+     * Returns error com.dupedetective.data if the control with the given path has the error specified. Otherwise
      * returns null or undefined.
      *
      * If no path is given, it checks for the error on the present control.
      */
     /**
-     * Returns error data if the control with the given path has the error specified. Otherwise
+     * Returns error com.dupedetective.data if the control with the given path has the error specified. Otherwise
      * returns null or undefined.
      *
      * If no path is given, it checks for the error on the present control.
@@ -85029,7 +85029,7 @@ var AbstractControlDirective = (function () {
      * @return {?}
      */
     AbstractControlDirective.prototype.getError = /**
-     * Returns error data if the control with the given path has the error specified. Otherwise
+     * Returns error com.dupedetective.data if the control with the given path has the error specified. Otherwise
      * returns null or undefined.
      *
      * If no path is given, it checks for the error on the present control.
@@ -86301,8 +86301,8 @@ function _extractId(valueString) {
  * ### Caveat: Option selection
  *
  * Angular uses object identity to select option. It's possible for the identities of items
- * to change while the data does not. This can happen, for example, if the items are produced
- * from an RPC to the server, and that RPC is re-run. Even if the data hasn't changed, the
+ * to change while the com.dupedetective.data does not. This can happen, for example, if the items are produced
+ * from an RPC to the server, and that RPC is re-run. Even if the com.dupedetective.data hasn't changed, the
  * second response will produce objects with different identities.
  *
  * To customize the default option comparison algorithm, `<select>` supports `compareWith` input.
@@ -86605,8 +86605,8 @@ function _extractId$1(valueString) {
  *  ### Caveat: Options selection
  *
  * Angular uses object identity to select options. It's possible for the identities of items
- * to change while the data does not. This can happen, for example, if the items are produced
- * from an RPC to the server, and that RPC is re-run. Even if the data hasn't changed, the
+ * to change while the com.dupedetective.data does not. This can happen, for example, if the items are produced
+ * from an RPC to the server, and that RPC is re-run. Even if the com.dupedetective.data hasn't changed, the
  * second response will produce objects with different identities.
  *
  * To customize the default option comparison algorithm, `<select multiple>` supports `compareWith`
@@ -88215,13 +88215,13 @@ var AbstractControl = (function () {
      */
     function (path) { return _find(this, path, '.'); };
     /**
-     * Returns error data if the control with the given path has the error specified. Otherwise
+     * Returns error com.dupedetective.data if the control with the given path has the error specified. Otherwise
      * returns null or undefined.
      *
      * If no path is given, it checks for the error on the present control.
      */
     /**
-     * Returns error data if the control with the given path has the error specified. Otherwise
+     * Returns error com.dupedetective.data if the control with the given path has the error specified. Otherwise
      * returns null or undefined.
      *
      * If no path is given, it checks for the error on the present control.
@@ -88230,7 +88230,7 @@ var AbstractControl = (function () {
      * @return {?}
      */
     AbstractControl.prototype.getError = /**
-     * Returns error data if the control with the given path has the error specified. Otherwise
+     * Returns error com.dupedetective.data if the control with the given path has the error specified. Otherwise
      * returns null or undefined.
      *
      * If no path is given, it checks for the error on the present control.
@@ -95087,7 +95087,7 @@ var BrowserDomAdapter = (function (_super) {
      * @return {?}
      */
     function (element, name, value) {
-        this.setAttribute(element, 'data-' + name, value);
+        this.setAttribute(element, 'com.dupedetective.data-' + name, value);
     };
     /**
      * @param {?} element
@@ -95100,7 +95100,7 @@ var BrowserDomAdapter = (function (_super) {
      * @return {?}
      */
     function (element, name) {
-        return this.getAttribute(element, 'data-' + name);
+        return this.getAttribute(element, 'com.dupedetective.data-' + name);
     };
     /**
      * @param {?} element
@@ -97328,7 +97328,7 @@ var KeyEventsPlugin = (function (_super) {
  */
 var SAFE_URL_PATTERN = /^(?:(?:https?|mailto|ftp|tel|file):|[^&:/?#]*(?:[/?#]|$))/gi;
 /**
- * A pattern that matches safe data URLs. Only matches image, video and audio types.
+ * A pattern that matches safe com.dupedetective.data URLs. Only matches image, video and audio types.
  */
 var DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[a-z0-9+\/]+=*$/i;
 /**
@@ -97538,7 +97538,7 @@ var SanitizingHtmlSerializer = (function () {
                 _this.sanitizedSomething = true;
                 return;
             }
-            // TODO(martinprobst): Special case image URIs for data:image/...
+            // TODO(martinprobst): Special case image URIs for com.dupedetective.data:image/...
             if (URI_ATTRS[lower])
                 value = sanitizeUrl(value);
             if (SRCSET_ATTRS[lower])
@@ -97860,7 +97860,7 @@ function sanitizeStyle(value) {
  *
  * \@security Calling any of the `bypassSecurityTrust...` APIs disables Angular's built-in
  * sanitization for the value passed in. Carefully check and audit all values and code paths going
- * into this call. Make sure any user data is appropriately escaped for this security context.
+ * into this call. Make sure any user com.dupedetective.data is appropriately escaped for this security context.
  * For more detail, see the [Security Guide](http://g.co/ng/security).
  *
  * \@stable
@@ -98108,7 +98108,7 @@ var INTERNAL_BROWSER_PLATFORM_PROVIDERS = [
 ];
 /**
  * \@security Replacing built-in sanitization providers exposes the application to XSS risks.
- * Attacker-controlled data introduced by an unsanitized provider could expose your
+ * Attacker-controlled com.dupedetective.data introduced by an unsanitized provider could expose your
  * application to XSS risks. For more detail, see the [Security Guide](http://g.co/ng/security).
  * \@experimental
  */
@@ -98590,7 +98590,7 @@ var TransferState = (function () {
  * @return {?}
  */
 function initTransferState(doc, appId) {
-    // Locate the script tag with the JSON data transferred from the server.
+    // Locate the script tag with the JSON com.dupedetective.data transferred from the server.
     // The id of the script tag is set to the Angular appId + 'state'.
     var /** @type {?} */ script = doc.getElementById(appId + '-state');
     var /** @type {?} */ initialState = {};
@@ -99839,7 +99839,7 @@ function containsSegmentGroupHelper(container, containee, containeePaths) {
  *
  * Since a router state is a tree, and the URL is nothing but a serialized state, the URL is a
  * serialized tree.
- * UrlTree is a data structure that provides a lot of affordances in dealing with URLs
+ * UrlTree is a com.dupedetective.data structure that provides a lot of affordances in dealing with URLs
  *
  * \@stable
  */
@@ -101393,7 +101393,7 @@ function nodeChildrenAsMap(node) {
  *
  * \@description
  * RouterState is a tree of activated routes. Every node in this tree knows about the "consumed" URL
- * segments, the extracted parameters, and the resolved data.
+ * segments, the extracted parameters, and the resolved com.dupedetective.data.
  *
  * See {\@link ActivatedRoute} for more information.
  *
@@ -101459,8 +101459,8 @@ function createEmptyStateSnapshot(urlTree, rootComponent) {
  *   constructor(route: ActivatedRoute) {
  *     const id: Observable<string> = route.params.map(p => p.id);
  *     const url: Observable<string> = route.url.map(segments => segments.join(''));
- *     // route.data includes both `data` and `resolve`
- *     const user = route.data.map(d => d.user);
+ *     // route.com.dupedetective.data includes both `com.dupedetective.data` and `resolve`
+ *     const user = route.com.dupedetective.data.map(d => d.user);
  *   }
  * }
  * ```
@@ -101588,10 +101588,10 @@ function inheritedParamsDataResolve(route) {
     while (inhertingStartingFrom >= 1) {
         var /** @type {?} */ current = pathToRoot[inhertingStartingFrom];
         var /** @type {?} */ parent_1 = pathToRoot[inhertingStartingFrom - 1];
-        // current route is an empty path => inherits its parent's params and data
+        // current route is an empty path => inherits its parent's params and com.dupedetective.data
         if (current.routeConfig && current.routeConfig.path === '') {
             inhertingStartingFrom--;
-            // parent is componentless => current route should inherit its params and data
+            // parent is componentless => current route should inherit its params and com.dupedetective.data
         }
         else if (!parent_1.component) {
             inhertingStartingFrom--;
@@ -101621,7 +101621,7 @@ function inheritedParamsDataResolve(route) {
  *   constructor(route: ActivatedRoute) {
  *     const id: string = route.snapshot.params.id;
  *     const url: string = route.snapshot.url.join('');
- *     const user = route.snapshot.data.user;
+ *     const user = route.snapshot.com.dupedetective.data.user;
  *   }
  * }
  * ```
@@ -101753,7 +101753,7 @@ var ActivatedRouteSnapshot = (function () {
  *
  * \@description
  * RouterStateSnapshot is a tree of activated route snapshots. Every node in this tree knows about
- * the "consumed" URL segments, the extracted parameters, and the resolved data.
+ * the "consumed" URL segments, the extracted parameters, and the resolved com.dupedetective.data.
  *
  * \@stable
  */
@@ -101823,7 +101823,7 @@ function advanceActivatedRoute(route) {
     }
     else {
         route.snapshot = route._futureSnapshot;
-        // this is for resolved data
+        // this is for resolved com.dupedetective.data
         (/** @type {?} */ (route.data)).next(route._futureSnapshot.data);
     }
 }
@@ -102450,7 +102450,7 @@ var PreActivation = (function () {
                 this.canActivateChecks.push(new CanActivate(futurePath));
             }
             else {
-                // we need to set the data
+                // we need to set the com.dupedetective.data
                 future.data = curr.data;
                 future._resolvedData = curr._resolvedData;
             }
@@ -104168,7 +104168,7 @@ var Router = (function () {
             var /** @type {?} */ beforePreactivationDone$ = __WEBPACK_IMPORTED_MODULE_8_rxjs_operator_mergeMap__["a" /* mergeMap */].call(urlAndSnapshot$, function (p) {
                 return __WEBPACK_IMPORTED_MODULE_7_rxjs_operator_map__["a" /* map */].call(_this.hooks.beforePreactivation(p.snapshot), function () { return p; });
             });
-            // run preactivation: guards and data resolvers
+            // run preactivation: guards and com.dupedetective.data resolvers
             var /** @type {?} */ preActivation;
             var /** @type {?} */ preactivationSetup$ = __WEBPACK_IMPORTED_MODULE_7_rxjs_operator_map__["a" /* map */].call(beforePreactivationDone$, function (_a) {
                 var appliedUrl = _a.appliedUrl, snapshot = _a.snapshot;

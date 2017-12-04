@@ -67,9 +67,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 // import 'intl';  // Run `npm install --save intl`.
 /**
- * Need to import at least one locale-data with intl.
+ * Need to import at least one locale-com.dupedetective.data with intl.
  */
-// import 'intl/locale-data/jsonp/en';
+// import 'intl/locale-com.dupedetective.data/jsonp/en';
 
 
 /***/ }),
@@ -3730,8 +3730,8 @@ function patchEventTarget(_global, apis, patchOptions) {
         if (proto[zoneSymbolAddEventListener]) {
             return false;
         }
-        // a shared global taskData to pass data for scheduleEventTask
-        // so we do not need to create a new object just for pass some data
+        // a shared global taskData to pass com.dupedetective.data for scheduleEventTask
+        // so we do not need to create a new object just for pass some com.dupedetective.data
         var taskData = {};
         var nativeAddEventListener = proto[zoneSymbolAddEventListener] = proto[ADD_EVENT_LISTENER];
         var nativeRemoveEventListener = proto[zoneSymbol(REMOVE_EVENT_LISTENER)] =
@@ -3773,7 +3773,7 @@ function patchEventTarget(_global, apis, patchOptions) {
                         var existingTask = existingTasks[i];
                         if (existingTask === task) {
                             existingTasks.splice(i, 1);
-                            // set isRemoved to data for faster invokeTask check
+                            // set isRemoved to com.dupedetective.data for faster invokeTask check
                             task.isRemoved = true;
                             if (existingTasks.length === 0) {
                                 // all tasks for the eventName + capture have gone,
@@ -3903,7 +3903,7 @@ function patchEventTarget(_global, apis, patchOptions) {
                 if (!source) {
                     source = constructorName + addSource + eventName;
                 }
-                // do not create a new object as task.data to pass those things
+                // do not create a new object as task.com.dupedetective.data to pass those things
                 // just use the global shared one
                 taskData.options = options;
                 if (once) {
@@ -3983,7 +3983,7 @@ function patchEventTarget(_global, apis, patchOptions) {
                     var typeOfDelegate = typeof delegate;
                     if (compare(existingTask, delegate)) {
                         existingTasks.splice(i, 1);
-                        // set isRemoved to data for faster invokeTask check
+                        // set isRemoved to com.dupedetective.data for faster invokeTask check
                         existingTask.isRemoved = true;
                         if (existingTasks.length === 0) {
                             // all tasks for the eventName + capture have gone,
@@ -5025,7 +5025,7 @@ Zone.__load_patch('XHR', function (global, Zone, api) {
         function placeholderCallback() { }
         function clearTask(task) {
             var data = task.data;
-            // Note - ideally, we would call data.target.removeEventListener here, but it's too late
+            // Note - ideally, we would call com.dupedetective.data.target.removeEventListener here, but it's too late
             // to prevent it from firing. So instead, we store info for the event listener.
             data.aborted = true;
             return abortNative.apply(data.target, data.args);

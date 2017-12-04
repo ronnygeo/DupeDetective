@@ -1,4 +1,4 @@
-package com.dupedetective.engine.data.tests;
+package com.dupedetective.data.tests;
 
 import com.dupedetective.data.Assignment;
 import com.dupedetective.data.MongoOperation;
@@ -56,6 +56,11 @@ public class MongoTest {
         }
 
         @Test
+        public void testConstructor() {
+            MongoOperation mongoLive = new MongoOperation();
+        }
+
+        @Test
         public void saveReportTest() {
             DB db;
             DBCollection collection;
@@ -66,6 +71,8 @@ public class MongoTest {
                 collection = db.getCollection(colReport);
                 assertEquals(1, collection.getCount());
                 collection.drop();
+            } catch (MongoSocketException mso) {
+                logger.error(mso.getMessage());
             }
         }
 
@@ -87,6 +94,8 @@ public class MongoTest {
                 logger.info(mongo.getSubmissions("1").size());
                 assertEquals(l.size(), mongo.getSubmissions("1").size());
                 collection.drop();
+            } catch (MongoSocketException mso) {
+                logger.error(mso.getMessage());
             }
         }
 
@@ -119,6 +128,8 @@ public class MongoTest {
                 DBObject obj = collection.findOne(searchQuery);
                 assertEquals(true, obj.get("isAnalyzed"));
                 collection.drop();
+            } catch (MongoSocketException mso) {
+                logger.error(mso.getMessage());
             }
         }
 

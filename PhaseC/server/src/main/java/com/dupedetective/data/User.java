@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * User object in the system; namely, Student, Grader
+ * User object in the system; namely, Student,
  */
 @Document(collection = "user")
 @JsonIgnoreProperties(value = {"createdAt"}, allowGetters = true)

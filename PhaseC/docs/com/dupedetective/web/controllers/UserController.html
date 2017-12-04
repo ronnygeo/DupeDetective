@@ -150,8 +150,8 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../../../../com/dupedetective/data/User.html" title="class in com.dupedetective.data">User</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/dupedetective/web/controllers/UserController.html#createUser-com.dupedetective.data.User-">createUser</a></span>(<a href="../../../../com/dupedetective/data/User.html" title="class in com.dupedetective.data">User</a>&nbsp;user)</code>
+<td class="colFirst"><code><a href="../../../../com/dupedetective/com.dupedetective.data/User.html" title="class in com.dupedetective.com.dupedetective.data">User</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/dupedetective/web/controllers/UserController.html#createUser-com.dupedetective.com.dupedetective.data.User-">createUser</a></span>(<a href="../../../../com/dupedetective/com.dupedetective.data/User.html" title="class in com.dupedetective.com.dupedetective.data">User</a>&nbsp;user)</code>
 <div class="block">Create the given user</div>
 </td>
 </tr>
@@ -162,28 +162,28 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="../../../../com/dupedetective/data/User.html" title="class in com.dupedetective.data">User</a>&gt;</code></td>
+<td class="colFirst"><code>java.util.List&lt;<a href="../../../../com/dupedetective/com.dupedetective.data/User.html" title="class in com.dupedetective.com.dupedetective.data">User</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/dupedetective/web/controllers/UserController.html#getAllUsers--">getAllUsers</a></span>()</code>
 <div class="block">Get all users</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>org.springframework.http.ResponseEntity&lt;<a href="../../../../com/dupedetective/data/User.html" title="class in com.dupedetective.data">User</a>&gt;</code></td>
+<td class="colFirst"><code>org.springframework.http.ResponseEntity&lt;<a href="../../../../com/dupedetective/com.dupedetective.data/User.html" title="class in com.dupedetective.com.dupedetective.data">User</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/dupedetective/web/controllers/UserController.html#getUserById-java.lang.String-">getUserById</a></span>(java.lang.String&nbsp;id)</code>
 <div class="block">Get a user by Id</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code><a href="../../../../com/dupedetective/data/User.html" title="class in com.dupedetective.data">User</a></code></td>
+<td class="colFirst"><code><a href="../../../../com/dupedetective/com.dupedetective.data/User.html" title="class in com.dupedetective.com.dupedetective.data">User</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/dupedetective/web/controllers/UserController.html#getUserByUsername-java.lang.String-java.lang.String-">getUserByUsername</a></span>(java.lang.String&nbsp;username,
                  java.lang.String&nbsp;password)</code>
 <div class="block">Get user by username</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code>org.springframework.http.ResponseEntity&lt;<a href="../../../../com/dupedetective/data/User.html" title="class in com.dupedetective.data">User</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/dupedetective/web/controllers/UserController.html#updateUser-java.lang.String-com.dupedetective.data.User-">updateUser</a></span>(java.lang.String&nbsp;id,
-          <a href="../../../../com/dupedetective/data/User.html" title="class in com.dupedetective.data">User</a>&nbsp;user)</code>
+<td class="colFirst"><code>org.springframework.http.ResponseEntity&lt;<a href="../../../../com/dupedetective/com.dupedetective.data/User.html" title="class in com.dupedetective.com.dupedetective.data">User</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/dupedetective/web/controllers/UserController.html#updateUser-java.lang.String-com.dupedetective.com.dupedetective.data.User-">updateUser</a></span>(java.lang.String&nbsp;id,
+          <a href="../../../../com/dupedetective/com.dupedetective.data/User.html" title="class in com.dupedetective.com.dupedetective.data">User</a>&nbsp;user)</code>
 <div class="block">Update the user</div>
 </td>
 </tr>
@@ -233,7 +233,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getAllUsers</h4>
 <pre>@GetMapping(value="/users")
-public&nbsp;java.util.List&lt;<a href="../../../../com/dupedetective/data/User.html" title="class in com.dupedetective.data">User</a>&gt;&nbsp;getAllUsers()</pre>
+public&nbsp;java.util.List&lt;<a href="../../../../com/dupedetective/com.dupedetective.data/User.html" title="class in com.dupedetective.com.dupedetective.data">User</a>&gt;&nbsp;getAllUsers()</pre>
 <div class="block">Get all users</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -248,7 +248,7 @@ public&nbsp;java.util.List&lt;<a href="../../../../com/dupedetective/data/User.h
 <li class="blockList">
 <h4>getUserByUsername</h4>
 <pre>@GetMapping(value="/users/login")
-public&nbsp;<a href="../../../../com/dupedetective/data/User.html" title="class in com.dupedetective.data">User</a>&nbsp;getUserByUsername(@RequestParam(value="username",required=false)
+public&nbsp;<a href="../../../../com/dupedetective/com.dupedetective.data/User.html" title="class in com.dupedetective.com.dupedetective.data">User</a>&nbsp;getUserByUsername(@RequestParam(value="username",required=false)
                                                                 java.lang.String&nbsp;username,
                                                                 @RequestParam(value="password",required=false)
                                                                 java.lang.String&nbsp;password)</pre>
@@ -262,15 +262,15 @@ public&nbsp;<a href="../../../../com/dupedetective/data/User.html" title="class 
 </dl>
 </li>
 </ul>
-<a name="createUser-com.dupedetective.data.User-">
+<a name="createUser-com.dupedetective.com.dupedetective.data.User-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>createUser</h4>
 <pre>@PostMapping(value="/users")
-public&nbsp;<a href="../../../../com/dupedetective/data/User.html" title="class in com.dupedetective.data">User</a>&nbsp;createUser(@RequestBody
-                                                    <a href="../../../../com/dupedetective/data/User.html" title="class in com.dupedetective.data">User</a>&nbsp;user)</pre>
+public&nbsp;<a href="../../../../com/dupedetective/com.dupedetective.data/User.html" title="class in com.dupedetective.com.dupedetective.data">User</a>&nbsp;createUser(@RequestBody
+                                                    <a href="../../../../com/dupedetective/com.dupedetective.data/User.html" title="class in com.dupedetective.com.dupedetective.data">User</a>&nbsp;user)</pre>
 <div class="block">Create the given user</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -287,7 +287,7 @@ public&nbsp;<a href="../../../../com/dupedetective/data/User.html" title="class 
 <li class="blockList">
 <h4>getUserById</h4>
 <pre>@GetMapping(value="/users/{id}")
-public&nbsp;org.springframework.http.ResponseEntity&lt;<a href="../../../../com/dupedetective/data/User.html" title="class in com.dupedetective.data">User</a>&gt;&nbsp;getUserById(@PathVariable(value="id")
+public&nbsp;org.springframework.http.ResponseEntity&lt;<a href="../../../../com/dupedetective/com.dupedetective.data/User.html" title="class in com.dupedetective.com.dupedetective.data">User</a>&gt;&nbsp;getUserById(@PathVariable(value="id")
                                                                                                   java.lang.String&nbsp;id)</pre>
 <div class="block">Get a user by Id</div>
 <dl>
@@ -298,17 +298,17 @@ public&nbsp;org.springframework.http.ResponseEntity&lt;<a href="../../../../com/
 </dl>
 </li>
 </ul>
-<a name="updateUser-java.lang.String-com.dupedetective.data.User-">
+<a name="updateUser-java.lang.String-com.dupedetective.com.dupedetective.data.User-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>updateUser</h4>
 <pre>@PutMapping(value="/users/{id}")
-public&nbsp;org.springframework.http.ResponseEntity&lt;<a href="../../../../com/dupedetective/data/User.html" title="class in com.dupedetective.data">User</a>&gt;&nbsp;updateUser(@PathVariable(value="id")
+public&nbsp;org.springframework.http.ResponseEntity&lt;<a href="../../../../com/dupedetective/com.dupedetective.data/User.html" title="class in com.dupedetective.com.dupedetective.data">User</a>&gt;&nbsp;updateUser(@PathVariable(value="id")
                                                                                                  java.lang.String&nbsp;id,
                                                                                                  @RequestBody
-                                                                                                 <a href="../../../../com/dupedetective/data/User.html" title="class in com.dupedetective.data">User</a>&nbsp;user)</pre>
+                                                                                                 <a href="../../../../com/dupedetective/com.dupedetective.data/User.html" title="class in com.dupedetective.com.dupedetective.data">User</a>&nbsp;user)</pre>
 <div class="block">Update the user</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>

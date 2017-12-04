@@ -1,11 +1,11 @@
 // A binary tree node
 class Node {
  
-    int data;
+    int com.dupedetective.data;
     Node left, right;
  
     Node(int item) {
-        data = item;
+        com.dupedetective.data = item;
         left = right = null;
     }
 }

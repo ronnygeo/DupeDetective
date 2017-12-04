@@ -36,7 +36,7 @@ def predict():
 @app.route('/fit', methods=['POST'])
 def fit():
     """
-    update the model with the new data
+    update the model with the new com.dupedetective.data
     :return: the new score from the network
     """
     clf = joblib.load(os.path.join(os.getcwd(), MODEL_NAME))

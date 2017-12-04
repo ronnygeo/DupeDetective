@@ -1,7 +1,7 @@
 from sklearn.neural_network import MLPRegressor
 from sklearn.externals import joblib
 
-# Initial train data
+# Initial train com.dupedetective.data
 X = [[0., 0., 0., 0., 0.],
      [1., 1., 1., 1., 1.],
     [1., 0., 0., 0., 0.],
@@ -16,7 +16,7 @@ y = [0, 1, 1, 1, 1, 1, 0.5]
 clf = MLPRegressor(solver='adam', alpha=1e-5,
                      hidden_layer_sizes=(5,), random_state=9, warm_start=True)
 
-# Fitting train data
+# Fitting train com.dupedetective.data
 clf.fit(X, y)
 
 # Write model to folder

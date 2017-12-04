@@ -24,7 +24,7 @@ class BinaryTree {
             For more information on poll() visit 
             http://www.tutorialspoint.com/java/util/linkedlist_poll.htm */
             Node tempNode = queue.poll();
-            System.out.print(tempNode.data + " ");
+            System.out.print(tempNode.com.dupedetective.data + " ");
  
             /*Enqueue left child */
             if (tempNode.left != null) {
