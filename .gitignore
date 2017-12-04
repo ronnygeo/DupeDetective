@@ -61,3 +61,6 @@ local.properties
 .scala_dependencies
 .worksheet
 
+
+.idea/
+/PhaseC/.idea/

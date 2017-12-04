@@ -1,0 +1,18 @@
+<div class="card mx-auto mt-5">
+  <div class="card-header">Upload Submission</div>
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <label for="InputAssignment">Assignment</label>
+        <select [(ngModel)]="assignmentId" class="form-control" name="assignment" id="InputAssignment" aria-describedby="assignmentHelp">
+          <option *ngFor="let assignment of assignments" value={{assignment.id}}>{{assignment.name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="InputFile">File</label>
+        <input type="file" class="form-control" id="InputFile" (change)="fileChange($event)" name="file" />
+      </div>
+<a class="btn btn-primary btn-block white-text" (click)="upload()">Upload!</a>
+    </form>
+  </div>
+</div>

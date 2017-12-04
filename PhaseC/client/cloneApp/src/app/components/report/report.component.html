@@ -1,0 +1,149 @@
+<div class="card mb-3" *ngIf="selectedReport">
+  <div class="card-header">
+    <i class="fa fa-table"></i> Report</div>
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <div class="form-row">
+          <label for="assignment">Assignment</label>
+          <select class="form-control" id="assignment" name="assignment" [(ngModel)]="selectedAssignment" (change)="updateReport()">
+            <option *ngFor="let assignment of assignments" [ngValue]="assignment.id">{{assignment.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+      <div class="form-group" *ngIf="students1">
+        <label for="student1">Student 1</label>
+        <select class="form-control" id="student1" name="student1" [(ngModel)]="student1" (change)="updateReport()">
+          <option *ngFor="let student of students1" [ngValue]="student.id">{{student.name}}</option>
+        </select>
+      </div>
+        </div>
+        <div class="col">
+      <div class="form-group" *ngIf="students2">
+        <label for="student2">Student 2</label>
+        <select class="form-control" id="student2" name="student2" [(ngModel)]="student2" (change)="updateReport()">
+          <option *ngFor="let student of students2" [ngValue]="student.id">{{student.name}}</option>
+        </select>
+      </div>
+        </div>
+      </div>
+    </form>
+    <div class="row" *ngIf="selectedReport && selectedReport.md5Result">
+      <div class="col">
+        <div class="alert alert-danger" role="alert">
+          <strong>This is a live one!</strong> The files are an exact copy!
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card text-white o-hidden h-100" style="background-color: darkcyan">
+          <div class="card-body">
+            <div class="card-header" style="background-color: transparent;font-size: larger " *ngIf="selectedReport">
+              {{overallScore*100 | number : '1.2-2'}}%
+            </div>
+            <div class="card-body-icon" style="margin-top: 7px">
+              <i class="fa fa-fw fa-comments"></i> &nbsp; Overall Score
+            </div>
+            <div class="mr-5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <!-- Icon Cards-->
+    <div class="row">
+      <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-primary o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              Structure
+            </div>
+            <div class="mr-5" *ngIf="selectedReport"> {{structureScore*100 | number : '1.2-2'}}%</div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" (click)="open('structure')">
+            <span class="float-left">View Details</span>
+            <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+          </a>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-warning o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              Methods
+            </div>
+            <div class="mr-5" *ngIf="selectedReport">{{methodScore*100 | number : '1.2-2'}}%</div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" (click)="open('method')">
+            <span class="float-left">View Details</span>
+            <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+          </a>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-success o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              Loop/Cond
+            </div>
+            <div class="mr-5" *ngIf="selectedReport">{{loopScore * 100 | number : '1.2-2'}}%</div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" (click)="open('loop')">
+            <span class="float-left">View Details</span>
+            <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+          </a>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-danger o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              Winnowing
+            </div>
+            <div class="mr-5" *ngIf="selectedReport">{{winnowingScore * 100 | number : '1.2-2'}}%</div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" (click)="open('winnowing')">
+            <span class="float-left">View Details</span>
+            <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row align-content-center" *ngIf="enableAnalytics">
+      <div class="col" style="text-align: center;">
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Help us help you.</h4>
+        <p>Is this Plagiarised?</p>
+        <select class="form-control" id="plagiarised" name="plagiarised" [(ngModel)]="plagiarised" (change)="updateModel()">
+          <option value=0.0>No</option>
+          <option value=1.0>Yes</option>
+        </select>
+        <br>
+        <p>SmartScore&trade;: {{smartScore | number : '1.2-2'}} (experimental)<p>
+      </div>
+    </div>
+    </div>
+    <div class="row align-content-center"><div class="col" style="text-align: center;">
+      <a class="btn btn-primary white-text" [href]="downloadLink" download="{{selectedReport.submissionId}}_report.json">Download Report</a>
+    </div></div>
+  </div>
+</div>
+
+<div class="card mb-3" *ngIf="!selectedReport">
+  <div class="card-header">
+    <i class="fa fa-table"></i> Report</div>
+  <div class="card-body">
+    <p>No Reports Available</p>
+  </div>
+</div>
