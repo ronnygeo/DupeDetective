@@ -1,9 +1,8 @@
 package com.dupedetective.web.tests;
 
-import static org.junit.Assert.*;
-
-
 import com.dupedetective.data.User;
+import com.dupedetective.web.controllers.UserController;
+import com.dupedetective.web.repository.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -19,8 +18,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.dupedetective.web.controllers.UserController;
-import com.dupedetective.web.repository.UserRepository;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = UserController.class, secure = false)
@@ -37,7 +35,7 @@ public class UserControllerTests {
 	
 	String exampleCreateUserJson = "{\"name\":\"srikar\",\"email\":\"srikar@gmail\",\"username\":\"sri\",\"password\":\"sri\",\"grader\": false}";
 	
-	/*
+	/**
 	 *  testing the get request to return a user object when the username and password are sent 
 	 *  as parameters to the get request
 	 */
@@ -57,7 +55,7 @@ public class UserControllerTests {
 				.getContentAsString(), false);
 	}
 	
-	/*
+	/**
 	 *  testing the post request to return a status 200(Success code) when 
 	 *  a user object is sent as a part of the request body to create the object
 	 */
@@ -74,7 +72,7 @@ public class UserControllerTests {
 		assertEquals(200, response.getStatus());
 	}
 	
-	/*
+	/**
 	 *  testing the get request to return a user object when the user id is sent 
 	 *  as parameter to the get request
 	 */
@@ -95,7 +93,7 @@ public class UserControllerTests {
 	}
 	
 	
-	/*
+	/**
 	 *  testing the delete request to return a status 200(Success code) when 
 	 *  a user with the specified user id, that is a part of the url, is deleted
 	 */

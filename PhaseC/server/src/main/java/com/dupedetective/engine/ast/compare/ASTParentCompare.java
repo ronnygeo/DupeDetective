@@ -1,7 +1,7 @@
 package com.dupedetective.engine.ast.compare;
 
-import com.dupedetective.engine.CustomComparator;
 import com.dupedetective.data.ReportLine;
+import com.dupedetective.engine.CustomComparator;
 import com.dupedetective.engine.ast.ASTHashObject;
 
 import java.util.ArrayList;

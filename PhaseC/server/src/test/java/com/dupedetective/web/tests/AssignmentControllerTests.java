@@ -1,12 +1,9 @@
 package com.dupedetective.web.tests;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-
 import com.dupedetective.data.Assignment;
 import com.dupedetective.web.controllers.AssignmentController;
 import com.dupedetective.web.repository.AssignmentRepository;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -22,10 +19,17 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
+
+
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = AssignmentController.class, secure = false)
 public class AssignmentControllerTests {
+
+	final static Logger logger = Logger.getLogger(AssignmentControllerTests.class);
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -40,7 +44,7 @@ public class AssignmentControllerTests {
 	
 	String exampleAssignmentJson = "{\"id\":\"1\",\"name\":\"ProblemSet1\",\"course\":\"CS5500\",\"year\":2017,\"isAnalyzed\":true,\"dueDate\":\"12/2/17\",\"creationDate\":\"1/2/17\",\"analyzedDate\":\"1/2/17\"}";
 	
-	/*
+	/**
 	 *  testing the get request to return an assignment object when the assignment id is sent 
 	 *  as parameter to the get request
 	 */
@@ -55,14 +59,14 @@ public class AssignmentControllerTests {
 
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
-		System.out.println(result.getResponse());
+		logger.info(result.getResponse());
 		String expected = "{name:ProblemSet1,course:CS5500}";
 
 		JSONAssert.assertEquals(expected, result.getResponse()
 				.getContentAsString(), false);
 	}
 	
-	/*
+	/**
 	 *  testing the delete request to return a status 200(Success code) when 
 	 *  a assignment with the specified assignment id, that is a part of the url, is deleted
 	 */
@@ -76,7 +80,7 @@ public class AssignmentControllerTests {
 		assertEquals(200, response.getStatus());
 	}
 
-	/*
+	/**
 	 *  testing the post request to return a status 200(Success code) when 
 	 *  a assignment object is sent as a part of the request body to create the object
 	 */

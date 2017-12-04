@@ -1,9 +1,9 @@
 package com.example;
 
+import com.example.Clone1;
+
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import com.example.Clone1;
 
 /**
  * Some comments

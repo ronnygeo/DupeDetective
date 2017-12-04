@@ -1,15 +1,14 @@
 package com.dupedetective.engine.ast.tests;
 
 import com.dupedetective.engine.Parser;
-import com.dupedetective.engine.ast.visitor.ASTStructureVisitor;
 import com.dupedetective.engine.ast.CustomASTParser;
+import com.dupedetective.engine.ast.visitor.ASTStructureVisitor;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotEquals;
 
 /**

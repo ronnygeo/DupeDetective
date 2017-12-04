@@ -1,12 +1,12 @@
 package com.dupedetective.engine.winnow;
 
 import com.dupedetective.engine.winnow.WinnowEngine.LineIndex;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author Joyal Winnow class implements winnowing strategy to detect plagiarism between two java

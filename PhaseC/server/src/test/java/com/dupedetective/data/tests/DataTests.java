@@ -1,26 +1,24 @@
 package com.dupedetective.data.tests;
 
-import static org.junit.Assert.*;
+import com.dupedetective.data.*;
+import com.dupedetective.engine.Model;
+import org.apache.log4j.Logger;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.dupedetective.engine.Model;
-import org.junit.Test;
-
-import com.dupedetective.data.Assignment;
-import com.dupedetective.data.ModelReport;
-import com.dupedetective.data.Report;
-import com.dupedetective.data.ReportLine;
-import com.dupedetective.data.Submission;
-import com.dupedetective.data.User;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 /**
  * Tests of Data classes
  */
 public class DataTests {
+
+	final static Logger logger = Logger.getLogger(DataTests.class);
 
 	Assignment assign = new Assignment("1","ProblemSet1","CS5500",2017,true,"12/2/17","1/2/17","1/2/17");
 	User u = new User("1","nikhila","nik@gmail","nikhi","nikhi",false);

@@ -2,6 +2,7 @@ package com.dupedetective.engine;
 
 import com.dupedetective.data.ReportLine;
 import com.dupedetective.engine.winnow.Winnow;
+
 import java.util.ArrayList;
 import java.util.List;
 

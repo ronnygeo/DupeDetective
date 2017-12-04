@@ -1,8 +1,3 @@
-
-
-import java.util.HashMap;
-import java.util.Map;
-
 public class IntegerConverter {
 	
 	int number;
