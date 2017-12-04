@@ -1,17 +1,16 @@
 package engine.ast.tests;
 
-import cs5500.project.engine.Parser;
-import cs5500.project.engine.ast.ASTStructureVisitor;
-import cs5500.project.engine.ast.CustomASTParser;
+import com.dupedetective.engine.Parser;
+import com.dupedetective.engine.ast.visitor.ASTStructureVisitor;
+import com.dupedetective.engine.ast.CustomASTParser;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * AST Structure visitor tests
@@ -42,7 +41,7 @@ public class ASTStructureVisitorTests {
         ASTVisitor visitor = new ASTStructureVisitor();
         cu.accept(visitor);
 
-        assertEquals(7, ((ASTStructureVisitor) visitor).getList().size());
+        assertEquals(8, ((ASTStructureVisitor) visitor).getList().size());
     }
 
     @Test
@@ -78,6 +77,25 @@ public class ASTStructureVisitorTests {
         ASTVisitor visitor = new ASTStructureVisitor();
         cu.accept(visitor);
 
-        assertEquals(19, ((ASTStructureVisitor) visitor).getList().size());
+        assertEquals(22, ((ASTStructureVisitor) visitor).getList().size());
+    }
+
+    @Test
+    public void testIfSwitch() {
+        String testCode1 = "\n public class A {" +
+                "@Override\npublic String parse(String txt) {int i = 9;  \n int j; \n " +
+                "if (i == 10) j = 0; else j=1;} \n} ";
+        String testCode2 = "\n public class A {" +
+                "@Override\npublic String parse(String txt) {int i = 9;  \n int j; \n " +
+                "switch(i) {case 10: j = 0; break; default: j=1; break;}} \n} ";
+        CompilationUnit cu1 = astParser.parse(testCode1);
+        CompilationUnit cu2 = astParser.parse(testCode2);
+
+        ASTVisitor visitor1 = new ASTStructureVisitor();
+        ASTVisitor visitor2 = new ASTStructureVisitor();
+        cu1.accept(visitor1);
+        cu2.accept(visitor2);
+
+        assertNotEquals(((ASTStructureVisitor) visitor1).getList().get(0), ((ASTStructureVisitor) visitor2).getList().get(0));
     }
 }
