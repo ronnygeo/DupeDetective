@@ -95,7 +95,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTTypeCompare astlc = new ASTTypeCompare();
-        assertEquals(52, astlc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()).size(), 0.01);
+        assertEquals(43, astlc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()).size(), 0.01);
     }
 
     @Test
@@ -144,7 +144,7 @@ public class ASTStructureCompareTests {
         cu2.accept(visitor2);
 
         ASTTypeCompare astlc = new ASTTypeCompare();
-        assertEquals(73, astlc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()).size(), 0.01);
+        assertEquals(63, astlc.compare(((ASTStructureVisitor) visitor1).getList(), ((ASTStructureVisitor) visitor2).getList()).size(), 0.01);
     }
 
     @Test

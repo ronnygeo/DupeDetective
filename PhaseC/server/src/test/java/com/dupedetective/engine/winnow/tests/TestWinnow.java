@@ -30,7 +30,7 @@ public class TestWinnow {
 
   @Test
   public void testWinnowClones() {
-    assertEquals(0.69, getSimilarity(t.readFile("Clone1.java"), t.readFile("Clone2.java")), 0.01);
+    assertEquals(0.54, getSimilarity(t.readFile("Clone1.java"), t.readFile("Clone2.java")), 0.01);
   }
 
   private float getSimilarity(String data1, String data2) {
