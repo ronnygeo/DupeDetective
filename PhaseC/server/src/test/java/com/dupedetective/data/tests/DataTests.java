@@ -166,11 +166,16 @@ public class DataTests {
     	assertEquals("1",rep.getModels().get(0).getModel().toString());
     	assertEquals("22",rep.getRefFileId());	
     }
+
+    @Test
+	public void testComputeScore() {
+
+	}
     
     @Test
     public void testSetAndGetModelReport(){
-    	 List<ReportLine> lines = new ArrayList<ReportLine>();
-    	 List<ReportLine> lines1 = new ArrayList<ReportLine>();
+		List<ReportLine> lines = new ArrayList<ReportLine>();
+		List<ReportLine> lines1 = new ArrayList<ReportLine>();
     	lines.add(rLine);
     	ModelReport modRep = new ModelReport(1);
     	ModelReport mRep1 = new ModelReport();

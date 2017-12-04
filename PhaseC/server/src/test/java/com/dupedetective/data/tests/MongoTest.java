@@ -33,19 +33,19 @@ public class MongoTest {
         private String colReport;
         private String colSubmission;
         private String colAssignment;
-        private final String PROPERTIES_FILE = "mongo-test.properties";
+        private final String PROPERTIES_FILE_TEST = "mongo-test.properties";
         private Map<Integer, Float> weights;
         private MongoOperation mongo;
 
         @Before
         public void setup() {
             ReadProperties mongoProps = new ReadProperties();
-            host = mongoProps.readKey(PROPERTIES_FILE, "host");
-            port = mongoProps.readKey(PROPERTIES_FILE, "port");
-            database = mongoProps.readKey(PROPERTIES_FILE, "db");
-            colReport = mongoProps.readKey(PROPERTIES_FILE, "colReport");
-            colSubmission = mongoProps.readKey(PROPERTIES_FILE, "colSubmission");
-            colAssignment = mongoProps.readKey(PROPERTIES_FILE, "colAssignment");
+            host = mongoProps.readKey(PROPERTIES_FILE_TEST, "host");
+            port = mongoProps.readKey(PROPERTIES_FILE_TEST, "port");
+            database = mongoProps.readKey(PROPERTIES_FILE_TEST, "db");
+            colReport = mongoProps.readKey(PROPERTIES_FILE_TEST, "colReport");
+            colSubmission = mongoProps.readKey(PROPERTIES_FILE_TEST, "colSubmission");
+            colAssignment = mongoProps.readKey(PROPERTIES_FILE_TEST, "colAssignment");
             mongo = new MongoOperation(host, port, database, colReport, colSubmission, colAssignment);
 
             weights = new HashMap<>();
