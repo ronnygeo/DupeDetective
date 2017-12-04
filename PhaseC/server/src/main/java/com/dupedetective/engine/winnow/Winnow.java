@@ -1,10 +1,10 @@
 package com.dupedetective.engine.winnow;
 
-import com.dupedetective.engine.winnow.engine.WinnowEngine.LineIndex;
-import com.dupedetective.engine.winnow.engine.WinnowEngine.Range;
-import com.dupedetective.engine.winnow.engine.WinnowEngine;
-import com.dupedetective.engine.winnow.normalise.NormalisedFile;
+import com.dupedetective.engine.winnow.WinnowEngine.LineIndex;
+import com.dupedetective.engine.winnow.WinnowEngine.Range;
+
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -76,11 +76,9 @@ public class Winnow {
 
   private int getUnion(List<LineIndex> sfp, List<LineIndex> dfp) {
     Set<Integer> union = new HashSet<>();
-
     for (LineIndex li : sfp) {
       union.add(li.getValue());
     }
-
     for (LineIndex li : dfp) {
       union.add(li.getValue());
     }
@@ -88,21 +86,21 @@ public class Winnow {
   }
 
   private float getIntersection(List<LineIndex> sfp, List<LineIndex> dfp) {
-    float intersection = 0;
-
-    Map<Integer, Range> common = new HashMap<>();
-
+    List<Integer> list1 = new ArrayList<>();
+    List<Integer> list2 = new ArrayList<>();
     for (LineIndex li : sfp) {
-      common.put(li.getValue(), li.getRange());
+      list1.add(li.getValue());
     }
-
     for (LineIndex li : dfp) {
-      if (common.containsKey(li.getValue())) {
-        intersection++;
+      list2.add(li.getValue());
+    }
+    Set<Integer> list = new HashSet<>();
+    for (Integer t : list1) {
+      if(list2.contains(t)) {
+        list.add(t);
       }
     }
-
-    return intersection;
+    return (float)list.size();
   }
 
   /**

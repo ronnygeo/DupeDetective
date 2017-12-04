@@ -16,12 +16,12 @@ public class TestWinnow {
 
     @Test
     public void testWinnow() {
-        assertEquals(0.25, getSimilarity("one.java", "two.java"), 0.01);
+        assertEquals(0.18, getSimilarity("one.java", "two.java"), 0.01);
     }
 
     @Test
     public void testWinnowClones() {
-        assertEquals(1.1, getSimilarity("Clone1.java", "Clone2.java"), 0.01);
+        assertEquals(0.69, getSimilarity("Clone1.java", "Clone2.java"), 0.01);
     }
 
     private float getSimilarity(String file1, String file2) {
