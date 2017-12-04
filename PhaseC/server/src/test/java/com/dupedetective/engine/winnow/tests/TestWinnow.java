@@ -1,43 +1,40 @@
 package com.dupedetective.engine.winnow.tests;
 
-import com.dupedetective.engine.winnow.Winnow;
-import org.apache.log4j.Logger;
-import org.junit.Test;
-
-import java.io.File;
-
 import static org.junit.Assert.assertEquals;
 
+import com.dupedetective.engine.TestUtils;
+import com.dupedetective.engine.winnow.Winnow;
+import java.io.File;
+import java.net.URISyntaxException;
+import org.apache.log4j.Logger;
+import org.junit.Before;
+import org.junit.Test;
+
 public class TestWinnow {
-    /*
-      Logger for error or info messages
-    */
-    final static Logger logger = Logger.getLogger(TestWinnow.class);
 
-    @Test
-    public void testWinnow() {
-        assertEquals(0.18, getSimilarity("one.java", "two.java"), 0.01);
-    }
+  /*
+    Logger for error or info messages
+  */
+  final static Logger logger = Logger.getLogger(TestWinnow.class);
+  TestUtils t;
 
-    @Test
-    public void testWinnowClones() {
-        assertEquals(0.69, getSimilarity("Clone1.java", "Clone2.java"), 0.01);
-    }
+  @Before
+  public void setup() throws URISyntaxException {
+    t = new TestUtils();
+  }
 
-    private float getSimilarity(String file1, String file2) {
-        ClassLoader classLoader = getClass().getClassLoader();
-        File one = new File(classLoader.getResource(file1).getPath());
-        File two = new File(classLoader.getResource(file2).getPath());
+  @Test
+  public void testWinnow() {
+    assertEquals(0.18, getSimilarity(t.readFile("one.java"), t.readFile("two.java")), 0.01);
+  }
 
-        if (one.isFile() && two.isFile()) {
+  @Test
+  public void testWinnowClones() {
+    assertEquals(0.69, getSimilarity(t.readFile("Clone1.java"), t.readFile("Clone2.java")), 0.01);
+  }
 
-            Winnow nGram = new Winnow(one.getAbsolutePath(), two.getAbsolutePath());
-
-            return nGram.getSimilarity();
-
-        } else {
-            logger.error("File not found");
-            return 0;
-        }
-    }
+  private float getSimilarity(String data1, String data2) {
+    Winnow nGram = new Winnow(data1, data2);
+    return nGram.getSimilarity();
+  }
 }

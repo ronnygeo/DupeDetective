@@ -183,7 +183,7 @@ public class WinnowEngine {
   }
 
   /**
-   * Custom class for keeping in check range and line_number
+   * Custom class for keeping in check value(line_number/hashCode) and range
    */
   public class LineIndex {
 

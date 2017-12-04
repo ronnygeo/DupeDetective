@@ -1,14 +1,10 @@
 package com.dupedetective.engine.winnow;
 
 import com.dupedetective.engine.winnow.WinnowEngine.LineIndex;
-import com.dupedetective.engine.winnow.WinnowEngine.Range;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import org.apache.commons.lang3.StringUtils;
 
@@ -18,18 +14,18 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class Winnow {
 
-  // Path of java file under suspect
-  String srcFilePath;
-  // Path of java file from whom suspect might have plagiarised
-  String dstFilePath;
+  // Data of java file under suspect
+  String srcFileData;
+  // Data of java file from whom suspect might have plagiarised
+  String dstFileData;
   // Normalised src file
   String normalisedSrcFile;
   // Normalised dest file
   String normalisedDestFile;
 
-  public Winnow(String path1, String path2) {
-    srcFilePath = path1;
-    dstFilePath = path2;
+  public Winnow(String fileData1, String fileData2) {
+    this.srcFileData = fileData1;
+    this.dstFileData = fileData2;
   }
 
   /**
@@ -48,8 +44,8 @@ public class Winnow {
       // 5. Remove Keywords
       // 6. Remove Punctuations
       // 7. Remove WhiteSpaces
-      normalisedSrcFile = normaliseFile(srcFilePath);
-      normalisedDestFile = normaliseFile(dstFilePath);
+      normalisedSrcFile = normaliseFile(srcFileData);
+      normalisedDestFile = normaliseFile(dstFileData);
       
       if (!StringUtils.isEmpty(normalisedSrcFile) && !StringUtils.isEmpty(normalisedDestFile)) {
         WinnowEngine srcEngine = new WinnowEngine(normalisedSrcFile);
@@ -63,9 +59,6 @@ public class Winnow {
         }
 
       }
-    } catch (IOException ex) {
-      // Todo Implement Logging
-      ex.printStackTrace();
     } catch (Exception ex) {
       // Todo Implement Logging
       ex.printStackTrace();
@@ -104,16 +97,15 @@ public class Winnow {
   }
 
   /**
-   * Given a filePath, the function parses the code file and gets a filtered version of the file
+   * Given file contents, the function parses the code file and gets a filtered version of the file
    * where following semantics of file are modified 1. Lower Case for files 2. Remove Comments 3.
    * Remove Space Tokens 4. Replace Identifiers 5. Remove Keywords 6. Remove Punctuations 7. Remove
    * WhiteSpaces
    *
-   * @param filePath absolute path of file
+   * @param fileContents content of code file
    */
-  private String normaliseFile(String filePath) throws IOException {
-    String normalisedFile = new NormalisedFile(filePath).getNormalisedFile();
-    return normalisedFile;
+  private String normaliseFile(String fileContents){
+    return new NormalisedFile(fileContents).getNormalisedFile();
   }
 
 }
