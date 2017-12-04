@@ -1,5 +1,5 @@
-package src;
-import src.NumberStringConstants;;
+package sets.set07.Sample2.src;
+;
 
 public class ConverterX {
 	

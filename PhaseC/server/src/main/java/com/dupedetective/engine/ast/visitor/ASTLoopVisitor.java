@@ -103,7 +103,7 @@ public class ASTLoopVisitor extends ASTVisitorAC {
      */
     @Override
     public boolean visit(ReturnStatement node) {
-       addNodeToNodes(new ASTHashObject(node.getExpression().toString(), node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
+       addNodeToNodes(new ASTHashObject("return", node.getNodeType(), node.getStartPosition(), node.getLength(), (long) node.hashCode()));
         return false;
     }
 
