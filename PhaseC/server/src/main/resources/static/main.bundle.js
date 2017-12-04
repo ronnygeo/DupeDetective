@@ -1566,7 +1566,7 @@ var AssignmentService = (function () {
      */
     function AssignmentService(http) {
         this.http = http;
-        this.assignmentUrl = 'http://localhost:8080/api/assignments'; // URL to web api
+        this.assignmentUrl = 'http://localhost:8080/api/assignments'; // URL to com.dupedetective.web api
     }
     /**
      * Get all the assignments
@@ -1665,7 +1665,7 @@ var ReportService = (function () {
      */
     function ReportService(http) {
         this.http = http;
-        this.reportUrl = 'http://localhost:8080/api/reports'; // URL to web api
+        this.reportUrl = 'http://localhost:8080/api/reports'; // URL to com.dupedetective.web api
     }
     /**
      * Get all the reports
@@ -1755,7 +1755,7 @@ var SubmissionService = (function () {
      */
     function SubmissionService(http) {
         this.http = http;
-        this.submissionUrl = 'http://localhost:8080/api/submissions'; // URL to web api
+        this.submissionUrl = 'http://localhost:8080/api/submissions'; // URL to com.dupedetective.web api
     }
     /**
      * Get all the submissions

@@ -1,7 +1,7 @@
-package engine.md5.tests;
+package com.dupedetective.engine.md5.tests;
 
 import com.dupedetective.engine.md5.MD5Generator;
-import engine.TestUtils;
+import com.dupedetective.engine.TestUtils;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

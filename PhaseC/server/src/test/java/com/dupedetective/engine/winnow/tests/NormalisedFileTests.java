@@ -1,4 +1,4 @@
-package engine.winnow.tests;
+package com.dupedetective.engine.winnow.tests;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,7 +11,7 @@ import org.junit.Test;
  */
 public class NormalisedFileTests {
 
-  private String prjPath = "/Study/CS5500/Project/team-27/PhaseC/server/src/test/java/engine/winnow/tests/testfiles/";
+  private String prjPath = "/Study/CS5500/Project/team-27/PhaseC/server/src/test/java/com.dupedetective.engine/winnow/tests/testfiles/";
 
   @Test
   public void testLowerCase() {
@@ -21,7 +21,7 @@ public class NormalisedFileTests {
       nf.changeToLowerCase();
 
       String expectedOutput = String.format(
-          "package engine.winnow.tests.testfiles;\r\npublic class tolowercase {\r\n  public static void main(string[] args){\r\n    system.out.println(\"this text should be converted to lowercase\");\r\n  }\r\n}\n");
+          "package com.dupedetective.engine.winnow.tests.testfiles;\r\npublic class tolowercase {\r\n  public static void main(string[] args){\r\n    system.out.println(\"this text should be converted to lowercase\");\r\n  }\r\n}\n");
 
       String actualOutput = nf.getFileContents();
       assertEquals(expectedOutput, actualOutput);
@@ -37,7 +37,7 @@ public class NormalisedFileTests {
       NormalisedFile nf = new NormalisedFile(filePath);
       nf.removeFileComments();
 
-      String expectedOutput = "package engine.winnow.tests.testfiles;\n"
+      String expectedOutput = "package com.dupedetective.engine.winnow.tests.testfiles;\n"
           + "\n"
           + "\n"
           + "public class testFile1 {\n"
@@ -63,7 +63,7 @@ public class NormalisedFileTests {
     try {
       NormalisedFile nf = new NormalisedFile(filePath);
       nf.tokenizeKeywords();
-      String expectedOutput = " package engine. winnow. tests. testfiles ; \r\n"
+      String expectedOutput = " package com.dupedetective.engine. winnow. tests. testfiles ; \r\n"
           + " public  class testFile2 { \r\n"
           + " public  static  void main(  String  [  ] args )  { \r\n"
           + " int i ; \r\n"
@@ -85,7 +85,7 @@ public class NormalisedFileTests {
       NormalisedFile nf = new NormalisedFile(filePath);
       nf.replaceIdentifiers();
 
-      String expectedOutput = "package engine.winnow.tests.testfiles;\n"
+      String expectedOutput = "package com.dupedetective.engine.winnow.tests.testfiles;\n"
           + "\n"
           + " /** \n"
           + " *  @author  Joyal \n"
@@ -113,7 +113,7 @@ public class NormalisedFileTests {
     try {
       NormalisedFile nf = new NormalisedFile(filePath);
       nf.removeKeywords();
-      String expectedOutput = " engine.winnow.tests.testfiles;\r\n"
+      String expectedOutput = " com.dupedetective.engine.winnow.tests.testfiles;\r\n"
           + "\r\n"
           + "/**\r\n"
           + " * @author Joyal\r\n"

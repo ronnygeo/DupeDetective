@@ -1,4 +1,4 @@
-package engine.ast.tests;
+package com.dupedetective.engine.ast.tests;
 
 import com.dupedetective.engine.ast.compare.LCSCompare;
 import org.junit.Test;

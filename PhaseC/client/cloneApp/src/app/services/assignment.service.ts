@@ -16,7 +16,7 @@ const httpOptions = {
 @Injectable()
 export class AssignmentService {
 
-  private assignmentUrl = 'http://localhost:8080/api/assignments';  // URL to web api
+  private assignmentUrl = 'http://localhost:8080/api/assignments';  // URL to com.dupedetective.web api
 
   /**
    * Default Constructor

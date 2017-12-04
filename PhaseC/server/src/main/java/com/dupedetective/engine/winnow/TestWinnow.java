@@ -11,8 +11,8 @@ public class TestWinnow {
     final static Logger logger = Logger.getLogger(TestWinnow.class);
 
     public static void main(String[] args) {
-        File one = new File("/Study/CS5500/Project/team-27/PhaseC/src/main/java/cs5500/project/engine/winnow/input/one.java");
-        File two = new File("/Study/CS5500/Project/team-27/PhaseC/src/main/java/cs5500/project/engine/winnow/input/two.java");
+        File one = new File("/Study/CS5500/Project/team-27/PhaseC/src/main/java/cs5500/project/com.dupedetective.engine/winnow/input/one.java");
+        File two = new File("/Study/CS5500/Project/team-27/PhaseC/src/main/java/cs5500/project/com.dupedetective.engine/winnow/input/two.java");
 
         if (one.isFile() && two.isFile()) {
 

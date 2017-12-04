@@ -24110,7 +24110,7 @@ module.exports = g;
  * This means that we can have different implementation of `PlatformLocation` for the different
  * platforms that angular supports. For example, `\@angular/platform-browser` provides an
  * implementation specific to the browser environment, while `\@angular/platform-webworker` provides
- * one suitable for use with web workers.
+ * one suitable for use with com.dupedetective.web workers.
  *
  * The `PlatformLocation` class is used directly by all implementations of {\@link LocationStrategy}
  * when they need to interact with the DOM apis like pushState, popState, etc...
@@ -30492,7 +30492,7 @@ function isPlatformServer(platformId) {
     return platformId === PLATFORM_SERVER_ID;
 }
 /**
- * Returns whether a platform id represents a web worker app platform.
+ * Returns whether a platform id represents a com.dupedetective.web worker app platform.
  * \@experimental
  * @param {?} platformId
  * @return {?}
@@ -30501,7 +30501,7 @@ function isPlatformWorkerApp(platformId) {
     return platformId === PLATFORM_WORKER_APP_ID;
 }
 /**
- * Returns whether a platform id represents a web worker UI platform.
+ * Returns whether a platform id represents a com.dupedetective.web worker UI platform.
  * \@experimental
  * @param {?} platformId
  * @return {?}
@@ -70830,13 +70830,13 @@ var UNDEFINED = new Object();
  *
  * \@Injectable()
  * class Car {
- *   constructor(public engine:Engine) {}
+ *   constructor(public com.dupedetective.engine:Engine) {}
  * }
  *
  * var injector = ReflectiveInjector.resolveAndCreate([Car, Engine]);
  * var car = injector.get(Car);
  * expect(car instanceof Car).toBe(true);
- * expect(car.engine instanceof Engine).toBe(true);
+ * expect(car.com.dupedetective.engine instanceof Engine).toBe(true);
  * ```
  *
  * Notice, we don't use the `new` operator because we explicitly want to have the `Injector`
@@ -73366,7 +73366,7 @@ function getPlatform() {
  */
 
 /**
- * The Angular platform is the entry point for Angular on a web page. Each page
+ * The Angular platform is the entry point for Angular on a com.dupedetective.web page. Each page
  * has exactly one platform, and services (such as reflection) which are common
  * to every Angular application running on the page are bound in its scope.
  *
@@ -105760,7 +105760,7 @@ function routerNgProbeToken() {
  * \@description
  *
  * Managing state transitions is one of the hardest parts of building applications. This is
- * especially true on the web, where you also need to ensure that the state is reflected in the URL.
+ * especially true on the com.dupedetective.web, where you also need to ensure that the state is reflected in the URL.
  * In addition, we often want to split applications into multiple bundles and load them on demand.
  * Doing this transparently is not trivial.
  *
