@@ -2,7 +2,7 @@ package com.dupedetective.engine.winnow.tests;
 
 import static org.junit.Assert.assertEquals;
 
-import com.dupedetective.engine.winnow.normalise.NormalisedFile;
+import com.dupedetective.engine.winnow.NormalisedFile;
 import java.io.IOException;
 import org.junit.Test;
 
@@ -11,11 +11,9 @@ import org.junit.Test;
  */
 public class NormalisedFileTests {
 
-  private String prjPath = "/Study/CS5500/Project/team-27/PhaseC/server/src/test/java/com.dupedetective.engine/winnow/tests/testfiles/";
-
   @Test
   public void testLowerCase() {
-    String filePath = prjPath + "testFile2.java";
+    String filePath = getClass().getClassLoader().getResource("testFile2.java").getPath();
     try {
       NormalisedFile nf = new NormalisedFile(filePath);
       nf.changeToLowerCase();
@@ -32,7 +30,7 @@ public class NormalisedFileTests {
 
   @Test
   public void testFileComments() {
-    String filePath = prjPath + "testFile1.java";
+    String filePath = getClass().getClassLoader().getResource("testFile1.java").getPath();
     try {
       NormalisedFile nf = new NormalisedFile(filePath);
       nf.removeFileComments();
@@ -59,7 +57,7 @@ public class NormalisedFileTests {
 
   @Test
   public void testTokeniseKeyword() {
-    String filePath = prjPath + "testFile2.java";
+    String filePath = getClass().getClassLoader().getResource("testFile2.java").getPath();
     try {
       NormalisedFile nf = new NormalisedFile(filePath);
       nf.tokenizeKeywords();
@@ -80,7 +78,7 @@ public class NormalisedFileTests {
 
   @Test
   public void testReplaceIdentifiers() {
-    String filePath = prjPath + "testFile1.java";
+    String filePath = getClass().getClassLoader().getResource("testFile1.java").getPath();
     try {
       NormalisedFile nf = new NormalisedFile(filePath);
       nf.replaceIdentifiers();
@@ -109,7 +107,7 @@ public class NormalisedFileTests {
 
   @Test
   public void testRemoveKeywords() {
-    String filePath = prjPath + "testFile1.java";
+    String filePath = getClass().getClassLoader().getResource("testFile1.java").getPath();
     try {
       NormalisedFile nf = new NormalisedFile(filePath);
       nf.removeKeywords();
@@ -137,7 +135,7 @@ public class NormalisedFileTests {
 
   @Test
   public void testRemovePunctuations() {
-    String filePath = prjPath + "testFile1.java";
+    String filePath = getClass().getClassLoader().getResource("testFile1.java").getPath();
     try {
       NormalisedFile nf = new NormalisedFile(filePath);
       nf.removePunctuations();
@@ -165,7 +163,7 @@ public class NormalisedFileTests {
 
   @Test
   public void testGetNormalisedFile(){
-    String filePath = prjPath + "testFile2.java";
+    String filePath = getClass().getClassLoader().getResource("testFile2.java").getPath();
     try {
       NormalisedFile nf = new NormalisedFile(filePath);
 
