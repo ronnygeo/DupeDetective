@@ -12,9 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "user")
 @JsonIgnoreProperties(value = {"createdAt"}, allowGetters = true)
 public class User {
-    /*
-    Logger for error or info messages
-     */
+    // Logger for error or info messages
     final static Logger logger = Logger.getLogger(User.class);
 
     @Id

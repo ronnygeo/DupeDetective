@@ -143,6 +143,10 @@ public class Report {
         this.models.add(model);
     }
 
+    /**
+     * Compute the overall score for the Report object
+     * @param weights weights to perform average
+     */
     public void computeScore(Map<Integer, Float> weights) {
         float score = 0;
         float weightSum = 0f;

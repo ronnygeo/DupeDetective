@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * Start analyze controller
+ * Assignment controller
  */
 @RestController
 @RequestMapping("/api")
@@ -24,12 +24,21 @@ public class AssignmentController {
     @Autowired
     AssignmentRepository assignmentRepository;
 
+    /**
+     * Get all assignments
+     * @return a list of Assignments
+     */
     @GetMapping("/assignments")
     public List<Assignment> getAllAssignments() {
         Sort sortByCreatedAtDesc = new Sort(Sort.Direction.DESC, "createdAt");
         return assignmentRepository.findAll(sortByCreatedAtDesc);
     }
 
+    /**
+     * Create an assignment
+     * @param assignment an Assignment object
+     * @return new Assignment object
+     */
     @PostMapping("/assignments")
     public Assignment createAssignment(@Valid @RequestBody Assignment assignment) {
         assignment.setAnalyzed(false);
@@ -37,6 +46,11 @@ public class AssignmentController {
         return assignmentRepository.save(assignment);
     }
 
+    /**
+     * Get an assignment by id
+     * @param id assignment id
+     * @return a Response Entity with Assignment
+     */
     @GetMapping(value="/assignments/{id}")
     public ResponseEntity<Assignment> getAssignmentById(@PathVariable("id") String id) {
         Assignment assignment = assignmentRepository.findOne(id);
@@ -47,6 +61,12 @@ public class AssignmentController {
         }
     }
 
+    /**
+     * Update an assignment
+     * @param id assignment id
+     * @param assignment Assignment object
+     * @return new Assignment object
+     */
     @PutMapping(value="/assignments/{id}")
     public ResponseEntity<Assignment> updateAssignment(@PathVariable("id") String id,
                                            @Valid @RequestBody Assignment assignment) {
@@ -63,6 +83,10 @@ public class AssignmentController {
         return new ResponseEntity<>(updatedAssignment, HttpStatus.OK);
     }
 
+    /**
+     * Delete an Assignment
+     * @param id assignment id
+     */
     @DeleteMapping(value="/assignments/{id}")
     public void deleteAssignment(@PathVariable("id") String id) {
         assignmentRepository.delete(id);
