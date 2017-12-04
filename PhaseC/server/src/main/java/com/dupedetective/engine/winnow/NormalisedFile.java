@@ -29,17 +29,9 @@ public class NormalisedFile {
   // Normalised file content
   StringBuilder normalisedFileContents;
 
-  public NormalisedFile(String filePath) throws IOException {
-    fileContents = readFileAsString(filePath);
-    normalisedFileContents = new StringBuilder();
-  }
-
-  /**
-   * @param filePath absolute path of file
-   * @return file content at filePath as String
-   */
-  private String readFileAsString(String filePath) throws IOException {
-    return new String(Files.readAllBytes(Paths.get(filePath)));
+  public NormalisedFile(String fileContents){
+    this.fileContents = fileContents;
+    this.normalisedFileContents = new StringBuilder();
   }
 
   /**
