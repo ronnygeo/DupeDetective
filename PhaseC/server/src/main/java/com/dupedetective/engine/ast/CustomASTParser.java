@@ -20,6 +20,7 @@ public class CustomASTParser implements Parser<CompilationUnit> {
      * @return the parsed AST Tree
      */
     public CompilationUnit parse(String txt) {
+        if (txt == null) txt = "";
         ASTParser parser = ASTParser.newParser(AST.JLS3);
         parser.setSource(txt.toCharArray());
         parser.setKind(ASTParser.K_COMPILATION_UNIT);

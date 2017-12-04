@@ -27,7 +27,7 @@ public class ReadProperties {
         if (propertiesFilename != null && !propertiesFilename.trim().isEmpty()
                 && key != null && !key.trim().isEmpty()) {
             try(
-                    FileInputStream objFileInputStream = new FileInputStream(objClassLoader.getResource(propertiesFilename).getFile());
+                    FileInputStream objFileInputStream = new FileInputStream(objClassLoader.getResource(propertiesFilename).getFile())
             ){
                 commonProperties.load(objFileInputStream);
                 return String.valueOf(commonProperties.get(key));

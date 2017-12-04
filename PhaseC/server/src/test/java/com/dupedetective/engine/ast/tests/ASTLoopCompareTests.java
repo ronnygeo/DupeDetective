@@ -11,10 +11,12 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * AST Loop Comparison tests
@@ -29,6 +31,32 @@ public class ASTLoopCompareTests {
     public void setup() {
         astParser = new CustomASTParser();
         utils = new TestUtils();
+    }
+
+    @Test
+    public void testEmptyString() {
+        String testCode = "";
+        CompilationUnit cu = astParser.parse(testCode);
+
+        ASTVisitor visitor = new ASTLoopVisitor();
+        cu.accept(visitor);
+
+        List<ASTHashObject> hashedList = ((ASTLoopVisitor) visitor).getList();
+
+        assertTrue(hashedList.size() == 0);
+    }
+
+    @Test
+    public void testNullInput() {
+        String testCode = null;
+        CompilationUnit cu = astParser.parse(testCode);
+
+        ASTVisitor visitor = new ASTLoopVisitor();
+        cu.accept(visitor);
+
+        List<ASTHashObject> hashedList = ((ASTLoopVisitor) visitor).getList();
+
+        assertTrue(hashedList.size() == 0);
     }
 
     @Test

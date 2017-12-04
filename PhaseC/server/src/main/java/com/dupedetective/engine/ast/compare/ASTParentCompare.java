@@ -26,6 +26,7 @@ public class ASTParentCompare implements CustomComparator<List<ASTHashObject>> {
      */
     @Override
     public List<ReportLine> compare(List<ASTHashObject> l1, List<ASTHashObject> l2) {
+        if (l1.isEmpty() || l2.isEmpty()) return new ArrayList<>();
         List<ReportLine> items = new ArrayList<>();
 
         for (int i = 0; i < l1.size(); i++) {
@@ -62,11 +63,11 @@ public class ASTParentCompare implements CustomComparator<List<ASTHashObject>> {
      * @return the similarity score
      */
     public float getScore(List<ASTHashObject> l1, List<ASTHashObject> l2) {
+        if (l1.isEmpty() || l2.isEmpty()) return 0;
         LCSCompare lcsc = new LCSCompare();
         List<ASTHashObject>lcsList = lcsc.compare(l1, l2);
 
         float score = lcsList.size() / ((float) Math.max(l1.size(), l2.size()));
-        if (Float.isNaN(score)) score = 0;
         cleanLists(l1, lcsList);
         cleanLists(l2, lcsList);
 
@@ -81,6 +82,7 @@ public class ASTParentCompare implements CustomComparator<List<ASTHashObject>> {
      * @return a value that represents how similar the two documents are
      */
     public float getScoreParent(List<ASTHashObject> l1, List<ASTHashObject> l2) {
+        if (l1.isEmpty() || l2.isEmpty()) return 0;
         float max = 0;
         Integer count = 0;
 

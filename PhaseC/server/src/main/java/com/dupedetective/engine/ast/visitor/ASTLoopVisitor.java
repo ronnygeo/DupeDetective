@@ -11,6 +11,9 @@ import java.util.List;
  */
 public class ASTLoopVisitor extends ASTVisitorAC {
 
+    /**
+     * Default constructor
+     */
     public ASTLoopVisitor() {
         nodes = new ArrayList<>();
         currentNode = new ASTHashObject();

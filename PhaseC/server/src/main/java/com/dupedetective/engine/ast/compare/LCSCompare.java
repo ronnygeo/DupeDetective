@@ -4,6 +4,7 @@ import com.dupedetective.engine.ast.ASTHashObject;
 import org.apache.commons.collections4.Equator;
 import org.apache.commons.collections4.ListUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,13 +33,14 @@ public class LCSCompare {
     /**
      * Compare the first object with the other
      *
-     * @param obj1 : the first object to compare
-     * @param obj2 : the second object to compare
+     * @param l1 : the first object to compare
+     * @param l2 : the second object to compare
      * @return list of similar AST nodes
      */
-    public List<ASTHashObject> compare(List<ASTHashObject> obj1, List<ASTHashObject> obj2) {
-        if (mode == LCSCompareMode.HASH) return (ListUtils.longestCommonSubsequence(obj1, obj2, new LCSHashEquator()));
-        else return (ListUtils.longestCommonSubsequence(obj1, obj2, new LCSTypeEquator()));
+    public List<ASTHashObject> compare(List<ASTHashObject> l1, List<ASTHashObject> l2) {
+        if (l1.isEmpty() || l2.isEmpty()) return new ArrayList<>();
+        if (mode == LCSCompareMode.HASH) return (ListUtils.longestCommonSubsequence(l1, l2, new LCSHashEquator()));
+        else return (ListUtils.longestCommonSubsequence(l1, l2, new LCSTypeEquator()));
     }
 
     /**
@@ -47,6 +49,7 @@ public class LCSCompare {
      * @return the hash value of the object
      */
     public Integer getHash(ASTHashObject a) {
+        if (a == null) return 0;
         LCSTypeEquator typeEquator = new LCSTypeEquator();
         LCSHashEquator hashEquator = new LCSHashEquator();
         if (mode == LCSCompareMode.HASH) return hashEquator.hash(a);

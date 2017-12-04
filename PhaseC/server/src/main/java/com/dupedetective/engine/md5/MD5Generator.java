@@ -19,10 +19,11 @@ public class MD5Generator {
      */
     public static String getMD5File(String filename) {
         try {
+            if (filename == null || filename.equals("")) return "0";
             HashCode hash = com.google.common.io.Files.hash(new File(filename), Hashing.md5());
             return hash.toString();
         } catch (IOException io) {
-            return null;
+            return "0";
         }
     }
 
@@ -31,6 +32,7 @@ public class MD5Generator {
      * @return the checksum of the given string
      */
     public static String getMD5String(String text) {
+        if (text == null || text.equals("")) return "0";
         HashFunction hf = Hashing.md5();
         HashCode hc = hf.newHasher()
                         .putString(text, Charsets.UTF_8)

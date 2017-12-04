@@ -19,6 +19,13 @@ public class Md5Tests {
     }
 
     @Test
+    public void testMd5NullFile() {
+        String file = null;
+        assertEquals("0", MD5Generator.getMD5File(file));
+    }
+
+
+    @Test
     public void testMd5SimilarFiles() {
         String file1 =  this.getClass().getResource("/test.txt").getFile();
         String file2 =  this.getClass().getResource("/sameTest.txt").getFile();
@@ -36,6 +43,12 @@ public class Md5Tests {
     public void testMd5ValueString() {
         String file = "Hi, Im the test file to check my MD5. I have a twin.";
         assertEquals("cba8589898ec23aab33e2eba90bad873", MD5Generator.getMD5String(file));
+    }
+
+    @Test
+    public void testMd5NullString() {
+        String file = null;
+        assertEquals("0", MD5Generator.getMD5String(file));
     }
 
     @Test
