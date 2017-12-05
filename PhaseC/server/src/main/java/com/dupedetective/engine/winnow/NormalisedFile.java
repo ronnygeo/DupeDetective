@@ -275,10 +275,6 @@ public class NormalisedFile {
       }
 
       normalisedFileContents.append("\n");
-
-      if (isMultiLine && line.contains(GlobalConstants.MULTI_LINE_END)) {
-        isMultiLine = false;
-      }
     }
     setContent();
   }
