@@ -4,6 +4,7 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError} from 'rxjs/operators';
 import {Report} from "../models/report";
+import {AlertService} from "./alert.service";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,8 +21,9 @@ export class ReportService {
   /**
    * Default Constructor
    * @param {HttpClient} http the http client service
+   * @param {AlertService} alertService alert service
    */
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private alertService: AlertService) { }
 
   /**
    * Get all the reports
@@ -68,8 +70,7 @@ export class ReportService {
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      console.error(error); // log to console instead
-
+      this.alertService.error(error.message);
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
