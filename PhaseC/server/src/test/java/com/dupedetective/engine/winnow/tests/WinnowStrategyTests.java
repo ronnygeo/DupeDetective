@@ -1,6 +1,5 @@
 package com.dupedetective.engine.winnow.tests;
 
-import com.dupedetective.engine.ASTLoopStrategy;
 import com.dupedetective.engine.PDContext;
 import com.dupedetective.engine.WinnowStrategy;
 import org.junit.Before;

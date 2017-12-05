@@ -1,12 +1,12 @@
 package com.dupedetective.engine.ast.tests;
 
-import static org.junit.Assert.*;
-
 import com.dupedetective.engine.ASTLoopStrategy;
 import com.dupedetective.engine.ASTStructureStrategy;
 import com.dupedetective.engine.PDContext;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * AST Loop Strategy Tests

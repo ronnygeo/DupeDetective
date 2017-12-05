@@ -3,12 +3,13 @@ package com.dupedetective.engine.winnow;
 import com.dupedetective.data.ReportLine;
 import com.dupedetective.engine.Model;
 import com.dupedetective.engine.winnow.WinnowEngine.LineIndex;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
 
 /**
  * @author Joyal
