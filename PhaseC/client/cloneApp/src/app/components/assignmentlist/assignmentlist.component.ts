@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AssignmentService} from "../../services/assignment.service";
 import { Location } from '@angular/common';
+import {AlertService} from "../../services/alert.service";
 
 /**
  * The Component that creates the Assignment List page
@@ -15,7 +16,8 @@ export class AssignmentListComponent implements OnInit {
   private assignments;
 
   constructor(private assignmentService: AssignmentService,
-              private location: Location) {}
+              private location: Location,
+              private alertService: AlertService) {}
 
   /**
    * On page load
