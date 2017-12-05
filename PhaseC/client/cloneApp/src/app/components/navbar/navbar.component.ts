@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
 
   private currentRt;
   private isCollapsed = true;
+  private isHome = true;
 
   constructor(private router: Router) { }
 
@@ -24,8 +25,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        console.log("Current Route: " + event.url);
         this.currentRt = event.url;
+        this.isHomePage();
       }
     });
 
@@ -46,6 +47,13 @@ export class NavbarComponent implements OnInit {
   isGrader(): boolean {
     const tmp = localStorage.getItem("currentUser");
     return !!(tmp && !isUndefined(tmp) && JSON.parse(tmp)["grader"] === true);
+  }
+
+  /**
+   * Fn to check if current route is home
+   */
+  isHomePage(): void {
+    this.isHome = this.router.url == "/";
   }
 
   /**
