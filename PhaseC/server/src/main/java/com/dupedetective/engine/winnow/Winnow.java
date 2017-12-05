@@ -3,15 +3,17 @@ package com.dupedetective.engine.winnow;
 import com.dupedetective.data.ReportLine;
 import com.dupedetective.engine.Model;
 import com.dupedetective.engine.winnow.WinnowEngine.LineIndex;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
 
 /**
- * @author Joyal Winnow class implements winnowing strategy to detect plagiarism between two java
+ * @author Joyal
+ * Winnow class implements winnowing strategy to detect plagiarism between two java
  * files
  */
 public class Winnow {
@@ -33,19 +35,28 @@ public class Winnow {
   // Similarity Rate
   float similarity;
 
+  /**
+   * Default Constructor
+   */
   public Winnow() {
     sfp = new ArrayList<>();
     dfp = new ArrayList<>();
     similarity = 0f;
   }
 
+  /**
+   * @param fileData1 file 1 content
+   * @param fileData2 file 2 content
+   */
   public Winnow(String fileData1, String fileData2) {
     this();
     this.srcFileData = fileData1;
     this.dstFileData = fileData2;
   }
 
-  // Getter for similarity
+  /**
+   * @return Getter for similarity
+   */
   public float getSimilarity() {
     return similarity;
   }
@@ -124,8 +135,8 @@ public class Winnow {
    * where following semantics of file are modified 1. Lower Case for files 2. Remove Comments 3.
    * Remove Space Tokens 4. Replace Identifiers 5. Remove Keywords 6. Remove Punctuations 7. Remove
    * WhiteSpaces
-   *
    * @param fileData file data
+   * @return normalized file
    */
   private String normaliseFile(String fileData) {
     return new NormalisedFile(fileData).getNormalisedFile();

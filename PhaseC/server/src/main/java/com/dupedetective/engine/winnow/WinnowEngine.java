@@ -1,6 +1,7 @@
 package com.dupedetective.engine.winnow;
 
 import com.dupedetective.engine.GlobalConstants;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,9 @@ public class WinnowEngine {
   List<LineIndex> kGramHash;
   List<LineIndex> lineIndex;
 
+  /**
+   * @param content the file content
+   */
   public WinnowEngine(String content) {
     this.content = content;
     this.fingerPrint = new ArrayList<>();
@@ -148,6 +152,9 @@ public class WinnowEngine {
   }
 
   /**
+   *
+   * @param weight weight
+   * @param constant constant
    * @return HashCode for given weight and constant
    */
   private int calcHashCode(int weight, int constant) {
@@ -164,6 +171,8 @@ public class WinnowEngine {
   }
 
   /**
+   * get line number
+   * @param index index of line
    * @return Line Number in the hash for that index
    */
   private int getLineNumber(int index) {
@@ -198,15 +207,25 @@ public class WinnowEngine {
     int value;
     Range range;
 
+    /**
+     * @param range range of line
+     * @param number line number
+     */
     public LineIndex(Range range, int number) {
       this.range = range;
       this.value = number;
     }
 
+    /**
+     * @return the value
+     */
     public int getValue() {
       return value;
     }
 
+    /**
+     * @return the range
+     */
     public Range getRange() {
       return range;
     }
@@ -220,15 +239,25 @@ public class WinnowEngine {
     int start;
     int end;
 
+    /**
+     * @param start start of range
+     * @param end end of range
+     */
     public Range(int start, int end) {
       this.start = start;
       this.end = end;
     }
 
+    /**
+     * @return the start
+     */
     public int getStart() {
       return start;
     }
 
+    /**
+     * @return the end
+     */
     public int getEnd() {
       return end;
     }

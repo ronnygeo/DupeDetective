@@ -1,6 +1,5 @@
 package com.dupedetective.engine.winnow.tests;
 
-import com.dupedetective.engine.ASTLoopStrategy;
 import com.dupedetective.engine.PDContext;
 import com.dupedetective.engine.WinnowStrategy;
 import org.junit.Before;
@@ -8,6 +7,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Winnow Strategy tests
+ */
 public class WinnowStrategyTests {
     private PDContext pdContext;
     private String testCode1, testCode2;

@@ -6,12 +6,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.net.URISyntaxException;
-import java.nio.file.Paths;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * @author Joyal Tests for checking whether a file has been normalised or not
+ * @author Joyal
+ * Tests for checking whether a file has been normalised or not
  */
 public class NormalisedFileTests {
 

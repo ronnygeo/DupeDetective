@@ -7,15 +7,20 @@ import java.util.List;
 
 /**
  * This class normalises a given file
- *
  * @author Joyal
  */
 public class NormalisedFile {
 
+  /**
+   * @return get file content
+   */
   public String getFileContents() {
     return fileContents;
   }
 
+  /**
+   * @return get normalized file content
+   */
   public StringBuilder getNormalisedFileContents() {
     return normalisedFileContents;
   }
@@ -25,6 +30,9 @@ public class NormalisedFile {
   // Normalised file content
   StringBuilder normalisedFileContents;
 
+  /**
+   * @param fileContents file contents
+   */
   public NormalisedFile(String fileContents){
     this.fileContents = fileContents;
     this.normalisedFileContents = new StringBuilder();
@@ -33,7 +41,6 @@ public class NormalisedFile {
   /**
    * This method updates semantics of file for winnowing strategy and gets normalised content of
    * file
-   *
    * @return normalised content of file
    */
   public String getNormalisedFile() {
@@ -118,9 +125,11 @@ public class NormalisedFile {
     setContent();
   }
 
-  // 1. replace identifiers with v
-  // 2. skip import lines
-  // 3. skip function calls
+  /**
+   * 1. replace identifiers with v
+   * 2. skip import lines
+   * 3. skip function calls
+   */
   public void replaceIdentifiers() {
     String[] lines = getLineOfContents();
     List<String> noIdentifier = GlobalConstants.NO_IDENTIFIER;
@@ -281,7 +290,6 @@ public class NormalisedFile {
 
   /**
    * Given a line, it removes all leading/trailing white-space
-   *
    * @param line line from where white spaces are to be removed
    * @return Line
    */
