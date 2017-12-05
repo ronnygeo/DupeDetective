@@ -25,15 +25,15 @@ public class TestWinnow {
 
   @Test
   public void testWinnow() {
-    assertEquals(0.18, getSimilarity(t.readFile("one.java"), t.readFile("two.java")), 0.01);
+    assertEquals(0.18, getSimilarityScore(t.readFile("one.java"), t.readFile("two.java")), 0.01);
   }
 
   @Test
   public void testWinnowClones() {
-    assertEquals(0.54, getSimilarity(t.readFile("Clone1.java"), t.readFile("Clone2.java")), 0.01);
+    assertEquals(0.54, getSimilarityScore(t.readFile("Clone1.java"), t.readFile("Clone2.java")), 0.01);
   }
 
-  private float getSimilarity(String data1, String data2) {
+  private float getSimilarityScore(String data1, String data2) {
     Winnow nGram = new Winnow(data1, data2);
     nGram.calcSimilarityRate();
     return nGram.getSimilarity();
