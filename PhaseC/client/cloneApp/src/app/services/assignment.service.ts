@@ -91,7 +91,7 @@ export class AssignmentService {
    */
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      this.alertService.error(error.message);
+      this.alertService.error(error.statusCode);
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };

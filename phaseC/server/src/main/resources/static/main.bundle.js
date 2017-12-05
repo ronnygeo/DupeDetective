@@ -295,6 +295,7 @@ module.exports = "<div class=\"card mb-3\">\n  <div class=\"card-header\">\n    
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_assignment_service__ = __webpack_require__("../../../../../src/app/services/assignment.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("../../../common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_alert_service__ = __webpack_require__("../../../../../src/app/services/alert.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -307,13 +308,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * The Component that creates the Assignment List page
  */
 var AssignmentListComponent = (function () {
-    function AssignmentListComponent(assignmentService, location) {
+    function AssignmentListComponent(assignmentService, location, alertService) {
         this.assignmentService = assignmentService;
         this.location = location;
+        this.alertService = alertService;
     }
     /**
      * On page load
@@ -349,7 +352,8 @@ var AssignmentListComponent = (function () {
             styles: [__webpack_require__("../../../../../src/app/components/assignmentlist/assignmentlist.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_assignment_service__["a" /* AssignmentService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common__["f" /* Location */]])
+            __WEBPACK_IMPORTED_MODULE_2__angular_common__["f" /* Location */],
+            __WEBPACK_IMPORTED_MODULE_3__services_alert_service__["a" /* AlertService */]])
     ], AssignmentListComponent);
     return AssignmentListComponent;
 }());
@@ -1551,6 +1555,7 @@ module.exports = "<div class=\"card mx-auto mt-5\">\n  <div class=\"card-header\
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_submission_service__ = __webpack_require__("../../../../../src/app/services/submission.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_assignment_service__ = __webpack_require__("../../../../../src/app/services/assignment.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__("../../../common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_alert_service__ = __webpack_require__("../../../../../src/app/services/alert.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1564,14 +1569,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * Upload submission component
  */
 var UploadSubmissionComponent = (function () {
-    function UploadSubmissionComponent(submissionService, assignmentService, location) {
+    function UploadSubmissionComponent(submissionService, assignmentService, location, alertService) {
         this.submissionService = submissionService;
         this.assignmentService = assignmentService;
         this.location = location;
+        this.alertService = alertService;
     }
     /**
      * On page load
@@ -1609,10 +1616,11 @@ var UploadSubmissionComponent = (function () {
      * Upload the submission
      */
     UploadSubmissionComponent.prototype.upload = function () {
+        var _this = this;
         if (this.fileContent != null || this.filename != null || this.assignmentId != null || this.userId != null) {
             this.submissionService.uploadSubmission({ "filename": this.filename, "filecontent": this.fileContent,
                 "assignmentId": this.assignmentId, "studentId": this.userId, "submittedOn": new Date().toJSON(), "checksum": "4ghvg77" }).subscribe(function (data) {
-                console.log('success');
+                _this.alertService.success("Upload successful.");
                 location.reload();
             });
         }
@@ -1625,7 +1633,8 @@ var UploadSubmissionComponent = (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_submission_service__["a" /* SubmissionService */],
             __WEBPACK_IMPORTED_MODULE_2__services_assignment_service__["a" /* AssignmentService */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_common__["f" /* Location */]])
+            __WEBPACK_IMPORTED_MODULE_3__angular_common__["f" /* Location */],
+            __WEBPACK_IMPORTED_MODULE_4__services_alert_service__["a" /* AlertService */]])
     ], UploadSubmissionComponent);
     return UploadSubmissionComponent;
 }());
@@ -1870,7 +1879,7 @@ var AssignmentService = (function () {
         var _this = this;
         if (operation === void 0) { operation = 'operation'; }
         return function (error) {
-            _this.alertService.error(error.message);
+            _this.alertService.error(error.statusCode);
             // Let the app keep running by returning an empty result.
             return Object(__WEBPACK_IMPORTED_MODULE_1_rxjs_observable_of__["a" /* of */])(result);
         };

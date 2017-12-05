@@ -3,6 +3,7 @@ import {SubmissionService} from "../../services/submission.service";
 import {AssignmentService} from "../../services/assignment.service";
 import {Assignment} from "../../models/assignment";
 import { Location } from '@angular/common';
+import {AlertService} from "../../services/alert.service";
 
 
 /**
@@ -24,7 +25,8 @@ export class UploadSubmissionComponent implements OnInit {
 
   constructor(private submissionService: SubmissionService,
               private assignmentService: AssignmentService,
-              private location: Location) {
+              private location: Location,
+              private alertService: AlertService) {
   }
 
   /**
@@ -70,7 +72,7 @@ export class UploadSubmissionComponent implements OnInit {
       this.submissionService.uploadSubmission({"filename": this.filename, "filecontent": this.fileContent,
         "assignmentId": this.assignmentId, "studentId": this.userId, "submittedOn": new Date().toJSON(), "checksum": "4ghvg77"}).subscribe(
         data => {
-          console.log('success');
+          this.alertService.success("Upload successful.");
           location.reload();
         }
       );
