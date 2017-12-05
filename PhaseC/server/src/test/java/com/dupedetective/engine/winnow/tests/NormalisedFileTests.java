@@ -17,6 +17,7 @@ public class NormalisedFileTests {
 
   private String file1Data;
   private String file2Data;
+  private String file3Data;
 
   @Before
   public void setup() throws URISyntaxException {
@@ -24,11 +25,7 @@ public class NormalisedFileTests {
 
     file1Data = t.readFile("testFile1.java");
     file2Data = t.readFile("testFile2.java");
-  }
-
-  private String getFilePath(String fileName) throws URISyntaxException {
-    return Paths.get(getClass().getClassLoader().getResource(fileName).toURI()).toString();
-
+    file3Data = t.readFile("testFile3.java");
   }
 
   @Test
@@ -38,11 +35,11 @@ public class NormalisedFileTests {
 
     String expectedOutput = "package com.dupedetective.engine.winnow.tests.testfiles;\r\n"
         + "public class testfile2 {\r\n"
-        + "    public static void main(string[] args){\r\n"
-        + "        int i;\r\n"
-        + "        string j;\r\n"
-        + "        system.out.println(\"this text should be converted to lowercase\");\r\n"
-        + "    }\r\n"
+        + "  public static void main(string[] args){\r\n"
+        + "    int i;\r\n"
+        + "    string j;\r\n"
+        + "    system.out.println(\"this text should be converted to lowercase\");\r\n"
+        + "  }\r\n"
         + "}\n";
 
     String actualOutput = nf.getFileContents();
@@ -131,7 +128,7 @@ public class NormalisedFileTests {
         + "        //Pr Statement\r\n"
         + "        .out.prln(\"When run  test, the output should not contain any comments\");\r\n"
         + "    }\r\n"
-        + "}\r\n";
+        + "}\n";
     String actualOutput = nf.getFileContents();
     assertEquals(expectedOutput, actualOutput);
   }
@@ -154,7 +151,7 @@ public class NormalisedFileTests {
           + "        //Print Statement\r\n"
           + "        SystemoutprintlnWhen run for test the output should not contain any comments\r\n"
           + "    \r\n"
-          + "\r\n";
+          + "\n";
       String actualOutput = nf.getFileContents();
       assertEquals(expectedOutput, actualOutput);
   }
@@ -174,5 +171,23 @@ public class NormalisedFileTests {
       String actualOutput = nf.getNormalisedFile();
 
       assertEquals(expectedOutput, actualOutput);
+  }
+
+  @Test
+  public void testMultiInlineComments(){
+    NormalisedFile nf = new NormalisedFile(file3Data);
+    nf.removeFileComments();
+    String expectedOutput = "package com.dupedetective.engine.winnow.tests.testfiles;\n"
+        + "\n"
+        + "\n"
+        + "public class testFile3 {\n"
+        + "public static void main(String[] args){\n"
+        + "//In line Comment\n"
+        + "String j;\n"
+        + "System.out.println(\"MultiLineComment\");\n"
+        + "}\n"
+        + "}\n";
+    String actualOutput = nf.getFileContents();
+    assertEquals(expectedOutput, actualOutput);
   }
 }

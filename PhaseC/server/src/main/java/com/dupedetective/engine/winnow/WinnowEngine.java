@@ -1,7 +1,6 @@
 package com.dupedetective.engine.winnow;
 
 import com.dupedetective.engine.GlobalConstants;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,44 +37,47 @@ public class WinnowEngine {
     return fingerPrint;
   }
 
+  /**
+   * Based on HashCode and Window Size, this method generates Code fingerPrint
+   */
   private void generateCodeFingerPrint() {
-    int processed_element = 0;
-    int hash_relative_index = -1;
-    LineIndex minimum_hash = kGramHash.get(0);
+    int element = 0;
+    int hashIndex = -1;
+    LineIndex minHash = kGramHash.get(0);
     List<LineIndex> window;
 
-    while (processed_element < kGramHash.size()) {
+    while (element < kGramHash.size()) {
 
-      if (hash_relative_index < 0) { //A new window span to begin
-        if (processed_element == 0) {
+      if (hashIndex < 0) {
+        if (element == 0) {
           window = kGramHash.subList(0, GlobalConstants.WINDOW_SIZE);
-          processed_element += GlobalConstants.WINDOW_SIZE;
+          element += GlobalConstants.WINDOW_SIZE;
         } else {
           window = kGramHash
-              .subList(processed_element - (GlobalConstants.WINDOW_SIZE - 1), processed_element+1);
-          processed_element += 1;
+              .subList(element - (GlobalConstants.WINDOW_SIZE - 1),
+                  element + 1);
+          element += 1;
         }
 
         //find the minimum element in the window with its index
-        minimum_hash = window.get(0);
+        minHash = window.get(0);
 
         for (int index = 0; index < window.size(); index++) {
-          if (window.get(index).value <= minimum_hash.value) {
-            minimum_hash = window.get(index);
-            hash_relative_index = index;
+          if (window.get(index).value <= minHash.value) {
+            minHash = window.get(index);
+            hashIndex = index;
           }
         }
-        fingerPrint.add(minimum_hash);
+        fingerPrint.add(minHash);
       } else {
-        //check if the new element added to the window is lesser or equal
-        if (kGramHash.get(processed_element).value <= minimum_hash.value) {
-          minimum_hash = kGramHash.get(processed_element);
-          fingerPrint.add(minimum_hash);
-          hash_relative_index = GlobalConstants.WINDOW_SIZE - 1;
+        if (kGramHash.get(element).value <= minHash.value) {
+          minHash = kGramHash.get(element);
+          fingerPrint.add(minHash);
+          hashIndex = GlobalConstants.WINDOW_SIZE - 1;
         }
-        processed_element += 1;
+        element += 1;
       }
-      hash_relative_index -= 1;
+      hashIndex -= 1;
     }
   }
 
@@ -84,7 +86,7 @@ public class WinnowEngine {
    */
   private void calculateHash() {
     int k = GlobalConstants.N_GRAM;
-    int highOrder = getHighOrder();
+    int weight = getWeight();
     int cLen = content.length();
     int hashCode = 0;
     int begin_line = getLineNumber(0);
@@ -98,7 +100,7 @@ public class WinnowEngine {
     kGramHash.add(new LineIndex(line_span, hashCode));
 
     for (int c = 0; c < (cLen - k); c++) {
-      hashCode = calcHashCode(hashCode - content.charAt(c) * highOrder, content.charAt(c + k));
+      hashCode = calcHashCode(hashCode - content.charAt(c) * weight, content.charAt(c + k));
 
       begin_line = getLineNumber(c + 1);
       end_line = getLineNumber(c + k);
@@ -118,6 +120,9 @@ public class WinnowEngine {
     content = content.replace("$", "");
   }
 
+  /**
+   * Stores a map of lineLength and lineSpan
+   */
   private void populateLineSpan() {
     String[] lines = content.split("\n");
     int index = 0;
@@ -135,16 +140,14 @@ public class WinnowEngine {
   }
 
   /**
-   * @return
+   * @return Weight to ensure proper normalization of hash calculation
    */
-  private int getHighOrder() {
+  private int getWeight() {
     return (int) (Math.pow(GlobalConstants.RADIX, GlobalConstants.N_GRAM - 1)
         % GlobalConstants.PRIME);
   }
 
   /**
-   * @param weight
-   * @param constant
    * @return HashCode for given weight and constant
    */
   private int calcHashCode(int weight, int constant) {
@@ -161,13 +164,12 @@ public class WinnowEngine {
   }
 
   /**
-   * @param index
    * @return Line Number in the hash for that index
    */
   private int getLineNumber(int index) {
     int start = 0;
     int end = this.lineIndex.size() - 1;
-
+    int lineNumber = -1;
     // Use Binary search to find line number from lineIndex
     while (start <= end) {
 
@@ -175,16 +177,17 @@ public class WinnowEngine {
 
       LineIndex li = lineIndex.get(mid);
 
-      if (li.range.start <= index && index <= li.range.end) {
-        return li.value;
-      } else if (index < li.range.start) {
+      if (li.getRange().getStart() <= index && index <= li.getRange().getEnd()) {
+        lineNumber = li.value;
+        break;
+      } else if (index < li.getRange().getStart()) {
         end = mid - 1;
       } else {
         start = mid + 1;
       }
     }
 
-    return -1;
+    return lineNumber;
   }
 
   /**
@@ -195,17 +198,17 @@ public class WinnowEngine {
     int value;
     Range range;
 
+    public LineIndex(Range range, int number) {
+      this.range = range;
+      this.value = number;
+    }
+
     public int getValue() {
       return value;
     }
 
     public Range getRange() {
       return range;
-    }
-
-    public LineIndex(Range range, int number) {
-      this.range = range;
-      this.value = number;
     }
   }
 
@@ -217,15 +220,17 @@ public class WinnowEngine {
     int start;
     int end;
 
-    public int getStart() { return start; }
-
-    public int getEnd() {
-      return end;
-    }
-
     public Range(int start, int end) {
       this.start = start;
       this.end = end;
+    }
+
+    public int getStart() {
+      return start;
+    }
+
+    public int getEnd() {
+      return end;
     }
   }
 

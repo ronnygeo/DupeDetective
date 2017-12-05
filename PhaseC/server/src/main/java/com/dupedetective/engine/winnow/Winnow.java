@@ -3,7 +3,6 @@ package com.dupedetective.engine.winnow;
 import com.dupedetective.data.ReportLine;
 import com.dupedetective.engine.Model;
 import com.dupedetective.engine.winnow.WinnowEngine.LineIndex;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -34,12 +33,7 @@ public class Winnow {
   // Similarity Rate
   float similarity;
 
-  // Getter for similarity
-  public float getSimilarity() {
-    return similarity;
-  }
-
-  public Winnow(){
+  public Winnow() {
     sfp = new ArrayList<>();
     dfp = new ArrayList<>();
     similarity = 0f;
@@ -51,21 +45,24 @@ public class Winnow {
     this.dstFileData = fileData2;
   }
 
+  // Getter for similarity
+  public float getSimilarity() {
+    return similarity;
+  }
+
   /**
    * Calculates Similarity Rate for source and destination files
    */
   public void calcSimilarityRate() {
-    try {
-      normaliseData();
-      if (!StringUtils.isEmpty(normalisedSrcFile) && !StringUtils.isEmpty(normalisedDestFile)) {
-        populateFingerPrint();
-        if (sfp.size() > 0 || dfp.size() > 0) {
-          similarity = getIntersection() / getUnion();
-        }
+
+    normaliseData();
+    if (!StringUtils.isEmpty(normalisedSrcFile) && !StringUtils.isEmpty(normalisedDestFile)) {
+      populateFingerPrint();
+      if (sfp.size() > 0 || dfp.size() > 0) {
+        similarity = getIntersection() / getUnion();
       }
-    } catch (Exception ex) {
-      logger.error(ex.getMessage());
     }
+
   }
 
   /**
@@ -79,14 +76,8 @@ public class Winnow {
   }
 
   /**
-   * Normalise both the files
-   * 1. Lower Case for files
-   * 2. Remove Comments
-   * 3. Remove Space Tokens
-   * 4. Replace Identifiers
-   * 5. Remove Keywords
-   * 6. Remove Punctuations
-   * 7. Remove WhiteSpaces
+   * Normalise both the files 1. Lower Case for files 2. Remove Comments 3. Remove Space Tokens 4.
+   * Replace Identifiers 5. Remove Keywords 6. Remove Punctuations 7. Remove WhiteSpaces
    */
   private void normaliseData() {
     normalisedSrcFile = normaliseFile(srcFileData);
@@ -121,11 +112,11 @@ public class Winnow {
     }
     Set<Integer> list = new HashSet<>();
     for (Integer t : list1) {
-      if(list2.contains(t)) {
+      if (list2.contains(t)) {
         list.add(t);
       }
     }
-    return (float)list.size();
+    return (float) list.size();
   }
 
   /**
@@ -136,7 +127,7 @@ public class Winnow {
    *
    * @param fileData file data
    */
-  private String normaliseFile(String fileData){
+  private String normaliseFile(String fileData) {
     return new NormalisedFile(fileData).getNormalisedFile();
   }
 
