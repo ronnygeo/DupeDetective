@@ -8,6 +8,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Winnow Strategy tests
+ */
 public class WinnowStrategyTests {
     private PDContext pdContext;
     private String testCode1, testCode2;

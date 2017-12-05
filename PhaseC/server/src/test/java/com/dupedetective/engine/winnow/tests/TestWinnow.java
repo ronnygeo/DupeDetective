@@ -10,6 +10,9 @@ import java.net.URISyntaxException;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Test for Winnowing
+ */
 public class TestWinnow {
 
   /*
