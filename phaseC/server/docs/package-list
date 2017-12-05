@@ -1,0 +1,15 @@
+com.dupedetective.data
+com.dupedetective.data.tests
+com.dupedetective.engine
+com.dupedetective.engine.ast
+com.dupedetective.engine.ast.compare
+com.dupedetective.engine.ast.tests
+com.dupedetective.engine.ast.visitor
+com.dupedetective.engine.md5
+com.dupedetective.engine.md5.tests
+com.dupedetective.engine.winnow
+com.dupedetective.engine.winnow.tests
+com.dupedetective.web
+com.dupedetective.web.controllers
+com.dupedetective.web.repository
+com.dupedetective.web.tests
