@@ -67,8 +67,8 @@ export class ReportComponent implements OnInit {
    */
   updateUsers() {
     this.userService.getUsers().subscribe(users => {
-      this.students1 = users.filter(u => u.grader === false && u.id != this.student2);
-      this.students2 = users.filter(u => u.grader === false && u.id != this.student1);
+      this.students1 = users.filter(u => u.grader === false && u.id != this.student2 && u.name !== "");
+      this.students2 = users.filter(u => u.grader === false && u.id != this.student1 && u.name !== "");
     });
   }
 
