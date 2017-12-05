@@ -23,4 +23,7 @@ html {
 .highlight-similar {
   background-color: red !important; }
 
+input.ng-invalid.ng-touched {
+  border: 1px solid red; }
+
 /*# sourceMappingURL=styles.css.map */

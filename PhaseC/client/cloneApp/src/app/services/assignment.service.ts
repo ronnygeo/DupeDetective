@@ -5,6 +5,7 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError} from 'rxjs/operators';
 import {Submission} from "../models/submission";
+import {AlertService} from "./alert.service";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -21,8 +22,9 @@ export class AssignmentService {
   /**
    * Default Constructor
    * @param {HttpClient} http the http client service
+   * @param {AlertService} alertService alert service
    */
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private alertService: AlertService) { }
 
   /**
    * Get all the assignments
@@ -89,9 +91,7 @@ export class AssignmentService {
    */
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      console.error(error); // log to console instead
-
+      this.alertService.error(error.message);
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };

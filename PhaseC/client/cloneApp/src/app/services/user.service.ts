@@ -4,6 +4,7 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError} from 'rxjs/operators';
 import {User} from "../models/user";
+import {AlertService} from "./alert.service";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,7 +18,12 @@ export class UserService {
 
   private userUrl = 'http://localhost:8080/api/users';
 
-  constructor(private http: HttpClient) { }
+  /**
+   * Default constructor
+   * @param {HttpClient} http
+   * @param {AlertService} alertService alert service
+   */
+  constructor(private http: HttpClient, private alertService: AlertService) { }
 
   /**
    * Get all the users
@@ -74,8 +80,7 @@ export class UserService {
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      console.error(error); // log to console instead
-
+      this.alertService.error(error.message);
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };

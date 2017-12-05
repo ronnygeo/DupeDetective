@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
+import {AlertService} from "../../services/alert.service";
 
 /**
  * Handle user login
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   private username: string;
   private password: string;
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router,
+              private alertService: AlertService) { }
 
   /**
    * On page load
@@ -33,6 +35,8 @@ export class LoginComponent implements OnInit {
         } else if (user && !user["grader"]) {
           this.router.navigate(['/submissions/new']);
         }
+      } else {
+        this.alertService.error("Username password combination not found.")
       }
     });
   }
