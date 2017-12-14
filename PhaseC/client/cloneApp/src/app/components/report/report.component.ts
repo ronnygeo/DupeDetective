@@ -66,9 +66,19 @@ export class ReportComponent implements OnInit {
    * Gets all the users
    */
   updateUsers() {
+    if (this.route.snapshot.paramMap.get('assignmentId') !== "") {
+      this.selectedAssignment = this.route.snapshot.paramMap.get('assignmentId');
+    } else {
+      this.assignmentService.getAssignments().subscribe(assignments => {
+        this.selectedAssignment = assignments[0].id;
+      });
+    }
     this.userService.getUsers().subscribe(users => {
-      this.students1 = users.filter(u => u.grader === false && u.id != this.student2 && u.name !== "");
-      this.students2 = users.filter(u => u.grader === false && u.id != this.student1 && u.name !== "");
+      this.assignmentService.getSubmissionsByAssignmentId(this.selectedAssignment).subscribe(submissions => {
+        const submittedStudents = submissions.map(s => s.studentId);
+        this.students1 = users.filter(u => u.grader === false && u.name !== "" && submittedStudents.includes(u.id));
+        this.students2 = users.filter(u => u.grader === false && u.id != this.student1 && u.name !== "" && submittedStudents.includes(u.id));
+      });
     });
   }
 
