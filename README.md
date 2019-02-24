@@ -7,8 +7,8 @@
 * Shalin Sitwala
 
 For more information, click on any link below:
-* [Wiki Home](https://github.ccs.neu.edu/cs5500/team-27/wiki)
-* [Installation Guide](https://github.ccs.neu.edu/cs5500/team-27/wiki/Installation-Guide)
-* [Core Modules](https://github.ccs.neu.edu/cs5500/team-27/wiki/Core-Modules)
-* [Running Tests](https://github.ccs.neu.edu/cs5500/team-27/wiki/Running-Tests)
-* [UI](https://github.ccs.neu.edu/cs5500/team-27/wiki/UI)
+* [Wiki Home](https://github.com/ronnygeo/plagiarismDetector/wiki)
+* [Installation Guide](https://github.com/ronnygeo/plagiarismDetector/wiki/Installation-Guide)
+* [Core Modules](https://github.com/ronnygeo/plagiarismDetector/wiki/Core-Modules)
+* [Running Tests](https://github.com/ronnygeo/plagiarismDetector/wiki/Running-Tests)
+* [UI](https://github.com/ronnygeo/plagiarismDetector/wiki/UI)
