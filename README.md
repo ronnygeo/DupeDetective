@@ -1,4 +1,8 @@
-# Welcome to team-27 Home!
+# Plagiarism Detector in Java
+
+### Phase A: Design
+### Phase B: Design
+### Phase C: Implementation and Code
 
 ### Members
 * Joyal Shah
