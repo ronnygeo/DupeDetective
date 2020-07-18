@@ -1,4 +1,4 @@
-# Plagiarism Detector in Java
+# Dupe Detective: A Plagiarism Detector in Java
 
 ### Phase A: Design
 ### Phase B: Design
